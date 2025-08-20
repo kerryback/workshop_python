@@ -1,0 +1,216 @@
+\documentclass[11pt]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=blue
+}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{enumitem}
+\geometry{letterpaper, margin=1in}
+\onehalfspacing
+\setlist[itemize]{itemsep=-2pt}
+
+\title{\textbf{JGSB Workshop\\
+Python + Data Analysis + AI + Finance}}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+This workshop teaches Python programming, data analysis, and the use of generative AI for financial applications. Participants are not expected to have prior programming experience nor to have prior experience with AI. The workshop culminates with using generative AI to build and deploy an app that automates a financial analysis.
+
+\section*{Day 1 Morning: Introduction to Python}
+
+Python has become the world's most popular programming language. From startups to Fortune 500 companies, organizations are leveraging Python to drive data-driven decision making and to automate complex processes. Its intuitive syntax and extensive ecosystem of business-focused libraries make it an ideal tool for business professionals.
+
+Due to the emergence of generative AI, it is no longer necessary to spend years of study or to memorize syntax to use Python effectively. What business professionals need is an understanding of the overall structure of the language and some familiarity with the key libraries for data analysis and business applications. The details that would have been stumbling blocks for effective use a few years ago can now be handled by AI.
+
+This component of the workshop introduces the basics of the Python language, the use of \textbf{Google Colab}, and the value added by \textbf{Google Gemini} within Colab.
+
+\vspace{\baselineskip}
+\noindent\textbf{Method of Instruction:}
+
+\begin{itemize}
+\item Self-guided Jupyter notebooks with built-in exercises and individual assistance as needed
+\item Group discussions
+\end{itemize}
+
+\noindent\textbf{Learning Objectives:}
+
+\begin{itemize}
+\item How to navigate a Jupyter notebook
+\item Key Python data types (floats, integers, strings, booleans)
+\item Key Python objects (lists, dictionaries)
+\item Flow control in Python (loops, if-else)
+\item How to create and use Python functions
+\item Methods and attributes of Python objects (what is all that abc.xyz stuff about?)
+\item How to import Python libraries
+\end{itemize}
+
+\section*{Day 1 Afternoon: Data Analysis with Python}
+
+Python is the most useful and most widely used programming language for data analysis. It has extensive libraries for data handling, statistical analysis, and visualization. This component of the workshop teaches participants some of the most important things they can do with those libraries in Google Colab and with AI assistance from Google Gemini.
+
+\vspace{\baselineskip}
+\noindent\textbf{Method of Instruction:}
+
+\begin{itemize}
+\item Self-guided Jupyter notebooks with built-in exercises and individual assistance as needed
+\item Group discussions
+\end{itemize}
+
+\noindent\textbf{Learning Objectives:}
+
+\begin{itemize}
+\item How to get data into Google Colab and how to get results out
+\item How to work with data tables with the Pandas library
+\item How to do statistics with the Pandas and Statsmodels libraries
+\item How to visualize data with the Matplotlib and Seaborn libraries
+\item How to do simulation with the Numpy library
+\item How to do goal-seek with the Scipy library
+\end{itemize}
+
+\section*{Day 1 Integrative Exercise}
+
+We will do this exercise as a group and individually, using \textbf{Julius.ai} and its built-in access to \textbf{Claude Sonnet}.
+
+\begin{itemize}
+\item Clean a dataset
+\item Run a logistic regression
+\item Visualize results
+\item Generate a report, including an analysis drafted by AI
+\end{itemize}
+
+\newpage
+\section*{Day 2 Morning: Machine Learning}
+
+Machine learning is the foundation of data-driven decision making, and Python is the most important language for implementing it. As with data analysis generally, generative AI is very proficient at coding for machine learning. Participants will build working examples of training, testing, and deploying machine learning models using Julius.ai and the integrated Claude Sonnet. The working example of a neural network will be a multi-layer perceptron trained on a CPU. We will have time only for high-level explanations of different network architectures and the details of training networks (automatic differentiation, stochastic gradient descent, GPU usage, etc.).
+
+\vspace{\baselineskip}
+\noindent\textbf{Method of Instruction:}
+
+\begin{itemize}
+\item Lecture with slides
+\item Hands-on implementation on Julius.ai
+\end{itemize}
+
+
+
+\noindent\textbf{Learning Objectives:}
+
+\begin{itemize}
+\item Understand concept of neural networks
+\item Understand concepts of training, testing, and tuning neural networks
+\item Understand decision-tree-based models (random forests, gradient boosting)
+\item How to train, test, and tune decision-tree-based models
+\item Understand goodness-of-fit measures for predicting continuous variables
+\item Understand classification diagnostics (confusion matrix, ROC curve, type I and type II errors)
+\end{itemize}
+
+\section*{Day 2 Lunch Break}
+
+Participants will install Python, Windsurf, and Claude Code on their laptops. Also, participants using Windows laptops will install Windows Subsystem for Linux (WSL), which is necessary for using Claude Code on Windows.
+
+\section*{Day 2 Afternoon: Generative AI}
+
+Generative AI was spawned by the development of a new neural network architecture by Google researchers in 2017. They called the new architecture a ``transformer,'' leading to GPT = Generative Pre-trained Transformer. When trained on text data and when containing a large number of parameters, these models are called Large Language Models (LLMs). So, the study of neural networks leads naturally to the study of generative AI. Of course, what we really want to know about LLMs is what we can do with them, from a corporate perspective and for personal productivity.
+
+One application is automation. The workshop will explore current AI tools including Julius.ai and \textbf{Replit} for building apps to automate activities. This includes building apps that themselves use AI via APIs, including custom chatbots.
+
+Participants will also learn about RAG (retrieval-augmented generation) systems. These are standard and important elements of corporate implementations. A RAG chatbot answers questions based on what the developer has previous uploaded to a database -- for example, company manuals, reports, policies, etc. -- rather than relying on its general training. Here is an example of a RAG chatbot that answers questions based on textbook materials: \href{https://chat.derivative-securities.org}{chat.derivative-securities.org}. It was created entirely by chatting in natural language with an AI tool (Replit).
+
+
+Through workshop projects, participants will gain experience in collaborating with AI, which is one of the most important aspects of the workshop. Frequently, the most fruitful way to use AI is to treat it as a colleague rather than trying to engineer a precise prompt to produce a specific result. When tackling almost any project, we can ask AI for advice, we can ask it to compare or check work, and we can assign it pieces of the project that we prefer not to do ourselves. It can simultaneously be a mentor, peer, and assistant. It is important to learn to make effective use of this transformative resource.
+
+\vspace{\baselineskip}
+\noindent\textbf{Method of Instruction:}
+
+\begin{itemize}
+\item Lecture with slides
+\item Hands-on implementation on Julius.ai and Replit
+\end{itemize}
+
+
+\noindent\textbf{Learning Objectives:}
+
+\begin{itemize}
+\item How to programmatically access AI using APIs
+\item How to create a custom chatbot using code-generating AI tools
+\item How to create apps to automate processes using code-generating AI tools
+\item How to create a RAG app using code-generating AI tools
+\item How to use the MCP database tool created by Google AI
+\item How to run Streamlit apps locally
+\end{itemize}
+
+\section*{Day 2 Integrative Exercise}
+
+We will do this exercise as a group and individually using \textbf{Windsurf} and \textbf{Claude Code}.  Claude Code is an agentic AI tool that, in addition to coding, can create and edit files, run python scripts, search the web, and operate command-line tools, all with only natural language prompting.
+
+\begin{itemize}
+\item Get company financial and stock price data from an online SQL database
+\item Train a machine learning model to value stocks based on fundamentals
+\item Create an app that deploys the model and sends a list of "mispriced" stocks to an LLM for a written analysis
+\end{itemize}
+
+\newpage
+
+\section*{Day 3 Morning: Financial Applications}
+
+Participants will analyze three financial cases using Windsurf, Claude Code, and Excel.   The presumption is that most participants will have some knowledge of financial ratios and discounted cash flow calculations, but pre-workshop prep materials will be provided to level up participants' understanding. The cases are Harvard Business School Press cases and will be provided to participants in advance.  They cover financial statement analysis, valuing companies by discounting cash flows, and capital budgeting.  
+  
+\begin{itemize}
+\item Case 1: Costco Wholesale Corporation Financial Statement Analysis
+\item Case 2: Valuing Walmart 2010
+\item Case 3: The Sneaker Project
+\end{itemize}
+
+\textbf{Method of Instruction:}
+
+\begin{itemize}
+\item Group break-outs for case analysis using Windsurf, Claude Code, and Excel
+\item In-class discussions of cases and techniques
+\end{itemize}
+
+\textbf{Learning Objectives:}
+
+\begin{itemize}
+\item How to use AI for different financial applications
+\item Gain experience in financial statement analysis, discounted cash flow valuation, and capital budgeting
+\item Gain experience working in Excel while collaborating with AI that uses python 
+\end{itemize}
+
+\section*{Day 3 Afternoon: Capstone}
+
+Participants will gain additional hands-on practice of the concepts covered in the first 2.5 days of the workshop to reinforce and cement their learning. Each participant will build an app of their own design to automate some activity that they do regularly, using Windsurf and Claude Code.
+
+Participants will also learn to deploy apps in the cloud on \textbf{Koyeb} and how to create apps that others can run locally in \textbf{Docker} containers. The capstone of the workshop will be for participants to deploy the apps they have built. Claude Code can do all of the following, with only natural language prompting:
+
+\begin{itemize}
+\item Write the app
+\item Install the Git, GitHub, and Koyeb command line tools
+\item Initialize a Git repository and commit the app to it
+\item Create a GitHub repository and push the app to it 
+\item Create a Koyeb app and link to the GitHub repository
+\item Launch the Koyeb app and confirm deployment status
+\item Use GitHub Actions to build a Docker image from the GitHub repository
+\item Push the Docker image to the GitHub Docker registry
+\end{itemize}
+
+\section*{Workshop Director}
+
+Kerry Back \\
+J. Howard Creekmore Professor of Finance and Professor of Economics, Rice University \\
+\href{https://kerryback.com}{kerryback.com} \\
+\href{https://kerryback.substack.com}{kerryback.substack.com} \\
+\href{https://learn-investments.rice-business.org}{learn-investments.rice-business.org} \\
+\href{https://book.derivative-securities.org}{book.derivative-securities.org} \\
+\href{https://github.com/kerryback}{github.com/kerryback}
+
+\end{document}
