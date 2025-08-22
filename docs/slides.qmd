@@ -21,7 +21,7 @@ format:
     self-contained: true
     controls: true
     transition: fade
-    theme: [default, custom-flatly.scss]
+    theme: [solarized]
     incremental: false
     code-line-numbers: false
 ---
@@ -34,51 +34,60 @@ format:
 
 At the end of this workshop,
 
-- You will **not** be able to program in python
-- But, you will be able to say:
-  - I think I remember seeing something like that in the workshop.  I'll ask AI how to do it.  
-  - Or, I can't remember if I saw something like that in the workshop.  But, it seems like something python should be able to do.  I'll ask AI.
-  - Or, I don't have any idea if python can do that.  But, I'll ask AI anyway.
+- You will <span style="color: tomato; font-weight: bold;">not</span> be able to program in Python
 
-- And, you will be comfortable with the process of question $\mapsto$ AI $\mapsto$ python $\mapsto$ usable product.
+But, you will be able to say:
+
+- I think I remember seeing something like that in the workshop.  I'll ask AI how to do it.  
+- Or, I don't know if Python can do that.  But, I'll ask AI anyway.
+
+##
+
+And, you will be <span style="color: tomato; font-weight: bold;">comfortable with the process</span> of 
+
+$$\text{Question} \; \mapsto \; \text{AI} \; \mapsto \; \text{Python} \; \mapsto \; \text{Output}.$$
 
 ## How Will We Get There?
 
-- 13 self-guided and AI-guided notebooks
+- 14 self-guided and AI-guided notebooks
 - Pause at designated points for everyone to catch up and then discuss
-- Start slow.
-  - After first 6 notebooks, you won't be able to do anything useful.
-  - But, you'll understand the basic building blocks of python.
-- Then speed up dramatically.
-  - Fire hose of code.
-  - You will see what python can do.
-  - No need to understand or remember every detail.  AI can do it!
-## Plan for the Workshop
 
-- We will work through notebooks together 
-- Respond to the **Ready/Stuck** poll if you get stuck or when you finish a notebook
-- When everyone is finished, we will discuss and then move on together to the next part
+## Start Slow 
 
 
+- After first 6 notebooks, you won't be able to do anything useful.
+- But, you'll understand the <span style="color: tomato; font-weight: bold;">basic building blocks</span> of Python.
+
+## Then Speed Up
+
+- Fire hose of code.
+- You will see what Python can do.
+- Exercises become <span style="color: tomato; font-weight: bold;">ask Gemini to ...</span>
+- No need to understand or remember every detail.  AI can do it!
 
 ## Get Started
 
-- Select Working on the [Working/Stuck/Ready poll](https://workshop.kerryback.com)
 - You need a Google account.
 - You need to [install Google Drive](https://support.google.com/drive/answer/10838124?hl=en#d4d_install)  
 - Drive should appear as a folder on your laptop.  In Windows Explorer, it is under `This PC`
 - Create a new folder `This PC\Google Drive\My Drive\Workshop`
+
+## Download and Extract the Zip File
+
 - Download the zip file linked on [workshop.kerryback.com](https://workshop.kerryback.com) to `This PC\Google Drive\My Drive`
-- Extract all of the files to `This PC\Google Drive\My Drive\Workshop`
+- Extract all the files to `This PC\Google Drive\My Drive\Workshop`
 
 ## Open Colab
 
 - Go to [https://colab.research.google.com](https://colab.research.google.com)
 - You should be looking at an Open Notebook screen
 - Choose Google Drive
-- Find and open `Part1_Colab.ipynb`
+- Find and open `part1_colab.ipynb`
+
+## Or use the Colab Links
+
 - If for any reason you are unable to use Google Drive, open `Part1 Colab` at [workshop.kerryback.com](https://workshop.kerryback.com)
-- Respond to the Working/Stuck/Ready poll when you are ready to move on or if you are stuck
+
 
 
 

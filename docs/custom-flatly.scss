@@ -24,8 +24,8 @@ $presentation-heading-font: $font-family-sans-serif;
 $presentation-heading-color: #2c3e50;
 $presentation-heading-font-weight: 700;
 
-// Font sizes - smaller for better readability
-$presentation-font-size-root: 32px;  // Base font size (default is usually 40px)
+// Font sizes - standard Quarto reveal.js sizes
+$presentation-font-size-root: 40px;  // Base font size (Quarto default)
 
 $code-block-bg: #f7f7f9;
 $code-color: #d14;
@@ -45,12 +45,12 @@ $code-color: #d14;
   }
   
   h1 {
-    font-size: 2.0em;
+    font-size: 2.5em;
     color: $presentation-heading-color;
   }
   
   h2 {
-    font-size: 1.4em;
+    font-size: 1.6em;
     color: $presentation-heading-color;
     border-bottom: 2px solid $primary;
     padding-bottom: 8px;
@@ -58,12 +58,12 @@ $code-color: #d14;
   }
   
   h3 {
-    font-size: 1.2em;
+    font-size: 1.3em;
     color: lighten($presentation-heading-color, 10%);
   }
   
   h4 {
-    font-size: 1.0em;
+    font-size: 1.1em;
     color: lighten($presentation-heading-color, 15%);
   }
   
@@ -107,11 +107,11 @@ $code-color: #d14;
   ul, ol {
     display: block;
     margin-left: 1em;
-    font-size: 0.95em;
+    font-size: 1.0em;
     
     li {
-      margin-bottom: 0.4em;
-      line-height: 1.4;
+      margin-bottom: 0.5em;
+      line-height: 1.6;
     }
   }
   
@@ -199,7 +199,7 @@ $code-color: #d14;
     .author, .date {
       text-align: center;
       color: lighten($dark, 15%);
-      font-size: 1.0em;
+      font-size: 1.2em;
     }
   }
   
