@@ -19,7 +19,10 @@
       "Bash(cat:*)",
       "Bash(identify:*)",
       "Bash(convert:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "WebFetch(domain:faculty.utrgv.edu)"
     ],
     "deny": []
   }

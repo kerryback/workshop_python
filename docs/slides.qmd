@@ -12,7 +12,7 @@ execute:
   cache: true
 format: 
   revealjs:
-    highlight-style: monokai
+    highlight-style: github
     code-fold: true
     code-copy: hover
     scrollable: true
@@ -21,34 +21,44 @@ format:
     self-contained: true
     controls: true
     transition: fade
-    theme: league
+    theme: [default, custom-flatly.scss]
     incremental: false
     code-line-numbers: false
 ---
 
 
-## Workshop Materials
-
-Slides and other resources are at https://workshop.kerryback.com 
 
 
 
-## Why Python?
+## What Will you Learn Today? {.incremental}
 
+At the end of this workshop,
 
-- Data analysis
-- Automate things 
-- Example from MGMT 675: [Cost of Equity App](https://costofequity.koyeb.app/) 
-- The app is written entirely in python. 
-- [**All of the python code was written by AI.**]{style="color: tomato;"} 
+- You will **not** be able to program in python
+- But, you will be able to say:
+  - I think I remember seeing something like that in the workshop.  I'll ask AI how to do it.  
+  - Or, I can't remember if I saw something like that in the workshop.  But, it seems like something python should be able to do.  I'll ask AI.
+  - Or, I don't have any idea if python can do that.  But, I'll ask AI anyway.
 
+- And, you will be comfortable with the process of question $\mapsto$ AI $\mapsto$ python $\mapsto$ usable product.
+
+## How Will We Get There?
+
+- 13 self-guided and AI-guided notebooks
+- Pause at designated points for everyone to catch up and then discuss
+- Start slow.
+  - After first 6 notebooks, you won't be able to do anything useful.
+  - But, you'll understand the basic building blocks of python.
+- Then speed up dramatically.
+  - Fire hose of code.
+  - You will see what python can do.
+  - No need to understand or remember every detail.  AI can do it!
 ## Plan for the Workshop
 
 - We will work through notebooks together 
-- Respond to the Working/Stuck/Ready poll if you get stuck or when you finish a notebook
-- When everyone is finished, we will discuss and then move on together to the next notebook
-- <span style="color: tomato; font-weight: bold;">Important</span>: Our goal is to learn [what can be done]{style="color: tomato;"} and how python works [in general]{style="color: tomato;"}.  It is [not our goal to remember exactly]{style="color: tomato;"} how to do all of the things we will cover.  
-- We can always ask AI to supply the details.
+- Respond to the **Ready/Stuck** poll if you get stuck or when you finish a notebook
+- When everyone is finished, we will discuss and then move on together to the next part
+
 
 
 ## Get Started

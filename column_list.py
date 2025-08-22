@@ -1,0 +1,6 @@
+columns = ['wage', 'educ', 'exper', 'tenure', 'nonwhite', 'female', 'married', 'numdep',
+           'smsa', 'northcen', 'south', 'west', 'construc', 'ndurman', 'trcommpu', 'trade',
+           'services', 'profserv', 'profocc', 'clerocc', 'servocc', 'lwage', 'expersq', 'tenursq']
+
+print(columns)
+print(f"\nTotal columns: {len(columns)}")
