@@ -13,8 +13,7 @@ def zip_notebooks():
     
     # Define the notebooks directory and output zip file
     notebooks_dir = "notebooks"
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    zip_filename = f"workshop_notebooks_{timestamp}.zip"
+    zip_filename = "notebooks.zip"
     
     # List of notebook files to include (part1 through part14)
     notebook_files = [
