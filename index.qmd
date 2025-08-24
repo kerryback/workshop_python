@@ -34,9 +34,9 @@ a {
 }
 </style>
 
-# JGSB Python Workshop<br>September 6, 2025
+# JGSB PYTHON WORKSHOP<br>SEPTEMBER 6, 2025
 <br>
-<div style="margin-top: 40px; padding: 20px; background-color: rgba(0,0,0,0.3); border-radius: 10px;">
+<div style="margin-top: 40px; padding: 20px; background-color: rgba(160, 76, 3, 0.7); border-radius: 10px;">
 <div style="text-align: center;">🐍 PRIMARY RESOURCES 🐍<br></div>
 
 - <a href="slides.html" target="_blank">Introduction</a>
@@ -45,11 +45,11 @@ a {
 
 </div>
 
-<div style="margin-top: 40px; padding: 20px; background-color: rgba(0,0,0,0.3); border-radius: 10px;">
+<div style="margin-top: 40px; padding: 20px; background-color: rgba(4, 66, 147, 0.41); border-radius: 10px;">
 <div style="text-align: center;">🐍 BONUS: <a href="https://data-portal.rice-business.org" target="_blank">RICE BUSINESS DATA PORTAL</a> 🐍<br></div>
 </div>
 
-<div style="margin-top: 40px; padding: 20px; background-color: rgba(0,0,0,0.3); border-radius: 10px;">
+<div style="margin-top: 40px; padding: 20px; background-color: rgba(160, 76, 3, 0.7);  border-radius: 10px;">
 <div style="text-align: center;">🐍 NOTEBOOKS IN THE ZIP FILE 🐍<br></div>
 
 ::: {.two-columns}
@@ -79,7 +79,7 @@ a {
 :::
 </div>
 
-<div style="text-align: center; margin-top: 40px; padding: 20px; background-color: rgba(0,0,0,0.3); border-radius: 10px;">
+<div style="text-align: center; margin-top: 40px; padding: 20px; background-color: rgba(4, 66, 147, 0.41);  border-radius: 10px;">
 🐍 ADDITIONAL PYTHON RESOURCES 🐍<br>
 <span style="font-size: 0.9em; font-style: italic;"><a href="resources.html" target="_blank">Practice exercises and learning materials for self-paced exploration</a></span>
 </div>
