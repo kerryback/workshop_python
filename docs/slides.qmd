@@ -21,7 +21,7 @@ format:
     self-contained: true
     controls: true
     transition: fade
-    theme: [solarized]
+    theme: [sky]
     incremental: false
     code-line-numbers: false
 ---
@@ -87,8 +87,6 @@ $$\text{Question} \; \mapsto \; \text{AI} \; \mapsto \; \text{Python} \; \mapsto
 ## Or use the Colab Links
 
 - If for any reason you are unable to use Google Drive, open `Part1 Colab` at [workshop.kerryback.com](https://workshop.kerryback.com)
-
-
 
 
 

@@ -44,7 +44,7 @@ a {
 
 - <a href="slides.html" target="_blank">Introduction</a>
 - <a href="https://raw.githubusercontent.com/kerryback/workshop_python/main/notebooks.zip" target="_blank">Zip File for Google Drive</a>
-- <a href="https://pollev.com/kerryback136" target="_blank">Progress Poll</a>
+- <a href="https://progress-poll.kerryback.com" target="_blank">Progress Poll</a>
 
 </div>
 
