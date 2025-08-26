@@ -1,11 +1,7 @@
 ---
 title: JGSB PYTHON WORKSHOP
-title-slide-attributes:
-  data-background-image: https://www.dropbox.com/scl/fi/o007eltevsum30hq7nurg/mcnair.jpg?rlkey=bv3ircgq8ea877siqo9qt2k5x&dl=1
-  data-background-position: top
-  data-background-opacity: "1.0"
 date: September 6, 2025
-author: <b>Directed by Kerry Back<br>https://workshop.kerryback.com<br>Rice University></b>
+author: <b>Directed by Kerry Back<br>Rice University<br>[workshop.kerryback.com](https://workshop.kerryback.com)</b>
 execute:
   echo: false
   jupyter: python3
@@ -21,7 +17,7 @@ format:
     self-contained: true
     controls: true
     transition: fade
-    theme: [sky]
+    theme: [league]
     incremental: false
     code-line-numbers: false
 ---
@@ -34,18 +30,21 @@ format:
 
 At the end of this workshop,
 
-- You will <span style="color: tomato; font-weight: bold;">not</span> be able to program in Python
+- You will <span style="color: #13DAEC; font-weight: bold;">not</span> be able to write useful Python programs on your own.
 
 But, you will be able to say:
 
-- I think I remember seeing something like that in the workshop.  I'll ask AI how to do it.  
-- Or, I don't know if Python can do that.  But, I'll ask AI anyway.
+- I think I remember seeing something like that in the workshop.  I'll <span style="color: #13DAEC; font-weight: bold;">ask AI how to do it</span>.  
+- Or, I don't know if Python can do that.  But, I'll <span style="color: #13DAEC; font-weight: bold;">ask AI anyway</span>.
 
 ##
 
-And, you will be <span style="color: tomato; font-weight: bold;">comfortable with the process</span> of 
+- You will learn where and how to <span style="color: #13DAEC; font-weight: bold;">ask AI.
+- And, you will be <span style="color: #13DAEC; font-weight: bold;">comfortable with the process</span> of 
 
-$$\text{Question} \; \mapsto \; \text{AI} \; \mapsto \; \text{Python} \; \mapsto \; \text{Output}.$$
+$$\text{Idea} \; \mapsto \; \text{AI} \; \mapsto \; \text{Python} \; \mapsto \; \text{Result}$$
+
+- So, you will regard this as a go-to tool that you might <span style="color: #13DAEC; font-weight: bold;">use every day</span>.
 
 ## How Will We Get There?
 
@@ -56,37 +55,37 @@ $$\text{Question} \; \mapsto \; \text{AI} \; \mapsto \; \text{Python} \; \mapsto
 
 
 - After first 6 notebooks, you won't be able to do anything useful.
-- But, you'll understand the <span style="color: tomato; font-weight: bold;">basic building blocks</span> of Python.
+- But, you'll understand the <span style="color: #13DAEC; font-weight: bold;">basic building blocks</span> of Python.
 
 ## Then Speed Up
 
 - Fire hose of code.
 - You will see what Python can do.
-- Exercises become <span style="color: tomato; font-weight: bold;">ask Gemini to ...</span>
+- Exercises become <span style="color: #13DAEC; font-weight: bold;">ask Gemini to ...</span>
 - No need to understand or remember every detail.  AI can do it!
 
 ## Get Started
 
 - You need a Google account.
 - You need to [install Google Drive](https://support.google.com/drive/answer/10838124?hl=en#d4d_install)  
-- Drive should appear as a folder on your laptop.  In Windows Explorer, it is under `This PC`
-- Create a new folder `This PC\Google Drive\My Drive\Workshop`
+- Drive should appear as a folder on your laptop.  In Windows Explorer, it is under <span style="color: #13DAEC; font-weight: bold;"> This PC</span>   
+- Create a new folder <span style="color: #13DAEC; font-weight: bold;"> This PC - Google Drive - My Drive -Workshop</span>   
 
 ## Download and Extract the Zip File
 
-- Download the zip file linked on [workshop.kerryback.com](https://workshop.kerryback.com) to `This PC\Google Drive\My Drive`
-- Extract all the files to `This PC\Google Drive\My Drive\Workshop`
+- Download the zip file linked on [workshop.kerryback.com](https://workshop.kerryback.com) to <span style="color: #13DAEC; font-weight: bold;"> This PC - Google Drive - My Drive</span>   
+- Extract all the files to <span style="color: #13DAEC; font-weight: bold;"> This PC - Google Drive - My Drive - Workshop</span>   
 
 ## Open Colab
 
 - Go to [https://colab.research.google.com](https://colab.research.google.com)
 - You should be looking at an Open Notebook screen
 - Choose Google Drive
-- Find and open `part1_colab.ipynb`
+- Find and open <span style="color: #13DAEC; font-weight: bold;"> part1_colab.ipynb</span>   
 
 ## Or use the Colab Links
 
-- If for any reason you are unable to use Google Drive, open `Part1 Colab` at [workshop.kerryback.com](https://workshop.kerryback.com)
+If for any reason you are unable to use Google Drive, use the 'Notebooks in the Zip File' links  at [workshop.kerryback.com](https://workshop.kerryback.com)
 
 
 

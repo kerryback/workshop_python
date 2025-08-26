@@ -42,7 +42,7 @@ a {
 <div style="margin-top: 40px; padding: 20px; background-color: rgba(160, 76, 3, 0.51); border-radius: 10px;">
 <div style="text-align: center;">🐍 PRIMARY RESOURCES 🐍<br></div>
 
-- <a href="slides.html" target="_blank">Introduction</a>
+- <a href="slides.html" target="_blank">Introductory Slides</a>
 - <a href="https://raw.githubusercontent.com/kerryback/workshop_python/main/notebooks.zip" target="_blank">Zip File for Google Drive</a>
 - <a href="https://progress-poll.kerryback.com" target="_blank">Progress Poll</a>
 
