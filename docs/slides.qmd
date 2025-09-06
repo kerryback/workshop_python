@@ -75,6 +75,7 @@ $$\text{Idea} \; \mapsto \; \text{AI} \; \mapsto \; \text{Python} \; \mapsto \; 
 
 - Download the zip file linked on [workshop.kerryback.com](https://workshop.kerryback.com) to <span style="color: #ff6b6b;"> This PC - Google Drive - My Drive</span>   
 - Extract all the files to <span style="color: #ff6b6b;"> This PC - Google Drive - My Drive - Workshop</span>   
+- Select 'Ready' on the [Progress Poll](https://progress-poll.kerryback.com/) when you have completed this step.
 
 ## Open Colab
 
