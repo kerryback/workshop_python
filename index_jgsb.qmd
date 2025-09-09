@@ -1,0 +1,95 @@
+<style>
+body {
+  background-image: url('mcnair.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  color: white;
+  font-weight: bold;
+  font-size: 1.4em;
+}
+
+h1 {
+  color: white;
+  font-weight: bold;
+  font-size: 1.4em;
+  text-align: center;
+}
+
+a {
+  color: white !important;
+  font-weight: bold;
+}
+
+.two-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.two-columns li {
+  font-size: 0.9em;
+  font-style: italic;
+}
+</style>
+
+# JGSB PYTHON WORKSHOP
+
+<div style="margin-top: 40px; padding: 20px; background-color: rgba(26, 83, 154, 0.51); border-radius: 10px;">
+<div style="text-align: center;">September 6, 2025 <br>9:00 AM - 3:30 PM<br>Room 318, McNair Hall</div>
+</div>
+<div style="margin-top: 40px; padding: 20px; background-color: rgba(160, 76, 3, 0.51); border-radius: 10px;">
+<div style="text-align: center;">🐍 PRIMARY RESOURCES 🐍<br></div>
+
+- <a href="slides.html" target="_blank">Introductory Slides</a>
+- <a href="https://raw.githubusercontent.com/kerryback/workshop_python/main/notebooks.zip" target="_blank">Zip File for Google Drive</a>
+- <a href="https://progress-poll.kerryback.com" target="_blank">Progress Poll</a>
+
+</div>
+
+
+<div style="margin-top: 40px; padding: 20px; background-color: rgba(26, 83, 154, 0.51); border-radius: 10px;">
+<div style="text-align: center;">🐍 NOTEBOOKS IN THE ZIP FILE 🐍<br></div>
+
+::: {.two-columns}
+<div>
+
+- <a href="https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part1_colab.ipynb" target="_blank">Part 1: Colab</a>
+- <a href="https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part2_objects.ipynb" target="_blank">Part 2: Objects</a>
+- <a href="https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part3_lists_dictionaries.ipynb" target="_blank">Part 3: Lists, etc.</a>
+- <a href="https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part4_flow_control.ipynb" target="_blank">Part 4: Flow Control</a>
+- <a href="https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part5_functions.ipynb" target="_blank">Part 5: Functions</a>
+- <a href="https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part6_libraries.ipynb" target="_blank">Part 6: Libraries</a>
+- <a href="https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part7_pandas_intro.ipynb" target="_blank">Part 7: Intro to Pandas</a>
+
+</div>
+<div>
+
+
+- <a href="https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part8_pandas_more.ipynb" target="_blank">Part 8: More Pandas</a>
+- <a href="https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part9_visualization_intro.ipynb" target="_blank">Part 9: Intro to Visualization</a>
+- <a href="https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part10_visualization_more.ipynb" target="_blank">Part 10: More Visualization</a>
+- <a href="https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part11_visualization_plotly.ipynb" target="_blank">Part 11: Plotly</a>
+- <a href="https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part12_simulation.ipynb" target="_blank">Part 12: Simulation</a>
+- <a href="https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part13_goal_seek.ipynb" target="_blank">Part 13: Goal Seek</a>
+- <a href="https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part14_neural_networks.ipynb" target="_blank">Part 14: Neural Networks</a>
+
+</div>
+:::
+</div>
+
+<div style="text-align: center; margin-top: 40px; padding: 20px; background-color: rgba(160, 76, 3, 0.51); border-radius: 10px;">
+🐍 ADDITIONAL PYTHON RESOURCES 🐍<br>
+<span style="font-size: 0.9em; font-style: italic;"><a href="resources.html" target="_blank">Practice exercises and learning materials for self-paced exploration</a></span>
+</div>
+
+
+<div style="margin-top: 40px; padding: 20px; background-color: rgba(26, 83, 154, 0.51);; border-radius: 10px;">
+<div style="text-align: center;">🐍 BONUS: <a href="https://data-portal.rice-business.org" target="_blank">RICE BUSINESS DATA PORTAL</a> 🐍<br></div>
+</div>
+
+<div style="margin-top: 40px; padding: 20px; background-color: rgba(160, 76, 3, 0.51); border-radius: 10px;">
+<div style="text-align: center;"><a href="https://forms.gle/XH87oXL7tWGKnWiH7" target="_blank">WORKSHOP EVALUATION FORM</a> <br></div>
+</div>
+
