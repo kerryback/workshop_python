@@ -1,6 +1,6 @@
 <style>
 body {
-  background-image: url('mcnair.jpg');
+  background-image: url('python_data_bg.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -34,12 +34,16 @@ a {
 }
 </style>
 
-# JGSB PYTHON WORKSHOP
+<div style="padding: 30px 20px; background-color: rgba(0, 20, 40, 0.7); border-radius: 10px; margin-bottom: 30px; text-align: center; border: 1px solid rgba(0, 200, 255, 0.3);">
 
-<div style="margin-top: 40px; padding: 20px; background-color: rgba(26, 83, 154, 0.51); border-radius: 10px;">
-<div style="text-align: center;">September 6, 2025 <br>9:00 AM - 3:30 PM<br>Room 318, McNair Hall</div>
+# PYTHON WORKSHOP
+
+<div style="font-size: 0.7em; font-weight: normal; margin-top: 10px; color: rgba(255, 255, 255, 0.8);">
+© Kerry Back, Rice University
 </div>
-<div style="margin-top: 40px; padding: 20px; background-color: rgba(160, 76, 3, 0.51); border-radius: 10px;">
+</div>
+
+<div style="margin-top: 40px; padding: 20px; background-color: rgba(0, 60, 80, 0.5); border-radius: 10px;">
 <div style="text-align: center;">🐍 PRIMARY RESOURCES 🐍<br></div>
 
 - <a href="slides.html" target="_blank">Introductory Slides</a>
@@ -49,7 +53,7 @@ a {
 </div>
 
 
-<div style="margin-top: 40px; padding: 20px; background-color: rgba(26, 83, 154, 0.51); border-radius: 10px;">
+<div style="margin-top: 40px; padding: 20px; background-color: rgba(0, 30, 60, 0.55); border-radius: 10px;">
 <div style="text-align: center;">🐍 NOTEBOOKS IN THE ZIP FILE 🐍<br></div>
 
 ::: {.two-columns}
@@ -79,17 +83,17 @@ a {
 :::
 </div>
 
-<div style="text-align: center; margin-top: 40px; padding: 20px; background-color: rgba(160, 76, 3, 0.51); border-radius: 10px;">
+<div style="text-align: center; margin-top: 40px; padding: 20px; background-color: rgba(0, 60, 80, 0.5); border-radius: 10px;">
 🐍 ADDITIONAL PYTHON RESOURCES 🐍<br>
 <span style="font-size: 0.9em; font-style: italic;"><a href="resources.html" target="_blank">Practice exercises and learning materials for self-paced exploration</a></span>
 </div>
 
 
-<div style="margin-top: 40px; padding: 20px; background-color: rgba(26, 83, 154, 0.51);; border-radius: 10px;">
+<div style="margin-top: 40px; padding: 20px; background-color: rgba(0, 30, 60, 0.55); border-radius: 10px;">
 <div style="text-align: center;">🐍 BONUS: <a href="https://data-portal.rice-business.org" target="_blank">RICE BUSINESS DATA PORTAL</a> 🐍<br></div>
 </div>
 
-<div style="margin-top: 40px; padding: 20px; background-color: rgba(160, 76, 3, 0.51); border-radius: 10px;">
+<div style="margin-top: 40px; padding: 20px; background-color: rgba(0, 60, 80, 0.5); border-radius: 10px;">
 <div style="text-align: center;"><a href="https://forms.gle/XH87oXL7tWGKnWiH7" target="_blank">WORKSHOP EVALUATION FORM</a> <br></div>
 </div>
 
