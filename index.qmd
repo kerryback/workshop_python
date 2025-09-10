@@ -1,6 +1,6 @@
 <style>
 body {
-  background-image: url('python_data_bg.jpg');
+  background-image: url('python_data_bg5.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
