@@ -65,7 +65,7 @@ Here are some additional online resources for learning Python.
 - [Automate the Boring Stuff with Python](https://automatetheboringstuff.com/) - Practical programming for total beginners
 
 
-#### Jupyter Notebooks 
+#### More Notebooks for Learning Python
 
 - [Learn to Code Python](https://colab.research.google.com/github/ryanorsinger/learn-to-code-python-workshop/blob/main/intro-to-python.ipynb)
 - [101 Exercises](https://colab.research.google.com/github/ryanorsinger/101-exercises/blob/main/101-exercises.ipynb)
