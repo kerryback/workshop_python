@@ -21,7 +21,9 @@ site:
         href: https://genai4finance.kerryback.com
     right:
       - text: Blog
-        href: index.qmd
+        href: https://blog.kerryback.com
+        target: _blank
+
       - text: Syllabus
         href: https://mgmt675-2026.kerryback.com/MGMT675.pdf
         target: _blank
