@@ -1,0 +1,16 @@
+[
+  {
+    "objectID": "index.html#introduction-to-python-notebooks",
+    "href": "index.html#introduction-to-python-notebooks",
+    "title": "Python Workshop",
+    "section": "Introduction to Python Notebooks",
+    "text": "Introduction to Python Notebooks\nThis is a set of notebooks designed to teach Python with the aid of Google Colab and Gemini. The notebooks will automatically open in Colab. They explain Python concepts and include example code and self-grading exercises. The first notebook provides some instruction on how to use Google Colab.\n\n\n\nPart 1: Colab\nPart 2: Objects\nPart 3: Lists, etc.\nPart 4: Flow Control\nPart 5: Functions\nPart 6: Libraries\nPart 7: Intro to Pandas\n\n\n\nPart 8: More Pandas\nPart 9: Intro to Visualization\nPart 10: More Visualization\nPart 11: Plotly\nPart 12: Simulation\nPart 13: Goal Seek\nPart 14: Neural Networks"
+  },
+  {
+    "objectID": "index.html#additional-resources",
+    "href": "index.html#additional-resources",
+    "title": "Python Workshop",
+    "section": "Additional Resources",
+    "text": "Additional Resources\nHere are some additional online resources for learning Python.\n\nQuick References\n\nPython Tutor - Visualize code execution step-by-step\nPython Cheat Sheet - Concise syntax reference\nReal Python’s Python Tricks - Short, digestible articles\nPython Graph Gallery - Simple plotting examples with matplotlib\n\n\n\nOnline Practice Platforms\n\nHackerRank Python Domain - Basic problems like “Hello World”, simple math, string manipulation\nCodewars 8 kyu Python Problems - Easiest level problems\nCodewars 7 kyu Python Problems - Slightly more challenging\nLeetCode Easy Python Problems - Filter by Python and “Easy” difficulty\n\n\n\nGreat Books\n\nPython for Data Analysis (3rd Edition) by Wes McKinney - The definitive guide to data manipulation with Python, pandas, and NumPy\nAutomate the Boring Stuff with Python - Practical programming for total beginners\n\n\n\nJupyter Notebooks\n\nLearn to Code Python\n101 Exercises\nPython Programming Exercises (100+ exercises)\n100 Days of Python Course\n100+ Python Programming Exercises Extended\nLearn Python 3 Interactive Notebooks\nTiny Python Projects\nPractical Python Programming Course\nA Gallery of Interesting Jupyter Notebooks - Curated collection of educational notebooks"
+  }
+]

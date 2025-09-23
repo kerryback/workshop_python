@@ -1,99 +1,78 @@
-<style>
-body {
-  background-image: url('python_data_bg5.jpg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
-  color: white;
-  font-weight: bold;
-  font-size: 1.4em;
-}
+---
+title: ""
+page-layout: full
+title-block-banner: false
+---
 
-h1 {
-  color: white;
-  font-weight: bold;
-  font-size: 1.4em;
-  text-align: center;
-}
 
-a {
-  color: white !important;
-  font-weight: bold;
-}
-
-.two-columns {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-
-.two-columns li {
-  font-size: 0.9em;
-  font-style: italic;
-}
-</style>
-
-<div style="padding: 30px 20px; background-color: rgba(0, 20, 40, 0.7); border-radius: 10px; margin-bottom: 30px; text-align: center; border: 1px solid rgba(0, 200, 255, 0.3);">
-
-# PYTHON WORKSHOP
-
-<div style="font-size: 0.7em; font-weight: normal; margin-top: 10px; color: rgba(255, 255, 255, 0.8);">
-© Kerry Back, Rice University
-</div>
+<div style="text-align: center; margin: 2rem 0;">
+  <img src="genai4finance.png" alt="Teaching Finance with AI" style="max-width: 400px; width: 100%; height: auto;">
 </div>
 
-<div style="margin-top: 40px; padding: 20px; background-color: rgba(0, 60, 80, 0.5); border-radius: 10px;">
-<div style="text-align: center;">🐍 PRIMARY RESOURCES 🐍<br></div>
+## Introduction to Python Notebooks
 
-- <a href="slides.html" target="_blank">Introductory Slides</a>
-- <a href="https://raw.githubusercontent.com/kerryback/workshop_python/main/notebooks.zip" target="_blank">Zip File for Google Drive</a>
-- <a href="https://progress-poll.kerryback.com" target="_blank">Progress Poll</a>
+This is a set of notebooks designed to teach Python with the aid of Google Colab and Gemini.  The notebooks will automatically open in Colab.  They explain Python concepts and include example code and self-grading exercises.  The first notebook provides some instruction on how to use Google Colab.
 
-</div>
+::: {.columns}
+::: {.column}
 
-
-<div style="margin-top: 40px; padding: 20px; background-color: rgba(0, 30, 60, 0.55); border-radius: 10px;">
-<div style="text-align: center;">🐍 NOTEBOOKS IN THE ZIP FILE 🐍<br></div>
-
-::: {.two-columns}
-<div>
-
-- <a href="https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part1_colab.ipynb" target="_blank">Part 1: Colab</a>
-- <a href="https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part2_objects.ipynb" target="_blank">Part 2: Objects</a>
-- <a href="https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part3_lists_dictionaries.ipynb" target="_blank">Part 3: Lists, etc.</a>
-- <a href="https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part4_flow_control.ipynb" target="_blank">Part 4: Flow Control</a>
-- <a href="https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part5_functions.ipynb" target="_blank">Part 5: Functions</a>
-- <a href="https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part6_libraries.ipynb" target="_blank">Part 6: Libraries</a>
-- <a href="https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part7_pandas_intro.ipynb" target="_blank">Part 7: Intro to Pandas</a>
-
-</div>
-<div>
-
-
-- <a href="https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part8_pandas_more.ipynb" target="_blank">Part 8: More Pandas</a>
-- <a href="https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part9_visualization_intro.ipynb" target="_blank">Part 9: Intro to Visualization</a>
-- <a href="https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part10_visualization_more.ipynb" target="_blank">Part 10: More Visualization</a>
-- <a href="https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part11_visualization_plotly.ipynb" target="_blank">Part 11: Plotly</a>
-- <a href="https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part12_simulation.ipynb" target="_blank">Part 12: Simulation</a>
-- <a href="https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part13_goal_seek.ipynb" target="_blank">Part 13: Goal Seek</a>
-- <a href="https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part14_neural_networks.ipynb" target="_blank">Part 14: Neural Networks</a>
-
-</div>
+- [Part 1: Colab](https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part1_colab.ipynb)
+- [Part 2: Objects](https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part2_objects.ipynb)
+- [Part 3: Lists, etc.](https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part3_lists_dictionaries.ipynb)
+- [Part 4: Flow Control](https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part4_flow_control.ipynb)
+- [Part 5: Functions](https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part5_functions.ipynb)
+- [Part 6: Libraries](https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part6_libraries.ipynb)
+- [Part 7: Intro to Pandas](https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part7_pandas_intro.ipynb)
 :::
-</div>
 
-<div style="text-align: center; margin-top: 40px; padding: 20px; background-color: rgba(0, 60, 80, 0.5); border-radius: 10px;">
-🐍 ADDITIONAL PYTHON RESOURCES 🐍<br>
-<span style="font-size: 0.9em; font-style: italic;"><a href="resources.html" target="_blank">Practice exercises and learning materials for self-paced exploration</a></span>
-</div>
+::: {.column}
+
+- [Part 8: More Pandas](https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part8_pandas_more.ipynb)
+- [Part 9: Intro to Visualization](https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part9_visualization_intro.ipynb)
+- [Part 10: More Visualization](https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part10_visualization_more.ipynb)
+- [Part 11: Plotly](https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part11_visualization_plotly.ipynb)
+- [Part 12: Simulation](https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part12_simulation.ipynb)
+- [Part 13: Goal Seek](https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part13_goal_seek.ipynb)
+- [Part 14: Neural Networks](https://colab.research.google.com/github/kerryback/workshop/blob/main/notebooks/part14_neural_networks.ipynb)
 
 
-<div style="margin-top: 40px; padding: 20px; background-color: rgba(0, 30, 60, 0.55); border-radius: 10px;">
-<div style="text-align: center;">🐍 BONUS: <a href="https://data-portal.rice-business.org" target="_blank">RICE BUSINESS DATA PORTAL</a> 🐍<br></div>
-</div>
+:::
+:::
 
-<div style="margin-top: 40px; padding: 20px; background-color: rgba(0, 60, 80, 0.5); border-radius: 10px;">
-<div style="text-align: center;"><a href="https://forms.gle/XH87oXL7tWGKnWiH7" target="_blank">WORKSHOP EVALUATION FORM</a> <br></div>
-</div>
+## Additional Resources
 
+Here are some additional online resources for learning Python.
+
+#### Quick References
+- [Python Tutor](http://pythontutor.com/) - Visualize code execution step-by-step
+- [Python Cheat Sheet](https://www.python-cheatsheet.org/) - Concise syntax reference
+- [Real Python's Python Tricks](https://realpython.com/python-tricks/) - Short, digestible articles
+- [Python Graph Gallery](https://python-graph-gallery.com/) - Simple plotting examples with matplotlib
+
+#### Online Practice Platforms
+
+- [HackerRank Python Domain](https://www.hackerrank.com/domains/python) - Basic problems like "Hello World", simple math, string manipulation
+- [Codewars 8 kyu Python Problems](https://www.codewars.com/kata/search/python?q=&r%5B%5D=-8&tags=Fundamentals&beta=false) - Easiest level problems
+- [Codewars 7 kyu Python Problems](https://www.codewars.com/kata/search/python?q=&r%5B%5D=-7&tags=Fundamentals&beta=false) - Slightly more challenging
+- [LeetCode Easy Python Problems](https://leetcode.com/problemset/all/?difficulty=Easy&listId=wpwgkgt) - Filter by Python and "Easy" difficulty
+
+
+
+
+#### Great Books
+
+- [Python for Data Analysis (3rd Edition)](https://wesmckinney.com/book/) by Wes McKinney - The definitive guide to data manipulation with Python, pandas, and NumPy
+- [Automate the Boring Stuff with Python](https://automatetheboringstuff.com/) - Practical programming for total beginners
+
+
+#### Jupyter Notebooks 
+
+- [Learn to Code Python](https://colab.research.google.com/github/ryanorsinger/learn-to-code-python-workshop/blob/main/intro-to-python.ipynb)
+- [101 Exercises](https://colab.research.google.com/github/ryanorsinger/101-exercises/blob/main/101-exercises.ipynb)
+- [Python Programming Exercises (100+ exercises)](https://colab.research.google.com/github/zhiwehu/Python-programming-exercises/blob/master/)
+- [100 Days of Python Course](https://colab.research.google.com/github/talkpython/100daysofcode-with-python-course/blob/master/)
+- [100+ Python Programming Exercises Extended](https://colab.research.google.com/github/darkprinx/100-plus-Python-programming-exercises-extended/blob/master/)
+- [Learn Python 3 Interactive Notebooks](https://colab.research.google.com/github/jerry-git/learn-python3/blob/master/)
+- [Tiny Python Projects](https://colab.research.google.com/github/kyclark/tiny_python_projects/blob/master/)
+- [Practical Python Programming Course](https://colab.research.google.com/github/dabeaz-course/practical-python/blob/master/)
+- [A Gallery of Interesting Jupyter Notebooks](https://github.com/jupyter/jupyter/wiki/A-gallery-of-interesting-Jupyter-Notebooks) - Curated collection of educational notebooks

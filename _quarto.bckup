@@ -1,0 +1,20 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    - index.qmd
+    - resources.qmd
+                
+website:
+  title: ""
+  search: false  
+  
+        
+format:
+  html:
+    link-external-newwindow: true
+    
+   
+
+
+

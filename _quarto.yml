@@ -1,20 +1,52 @@
 project:
   type: website
-  output-dir: docs
+  output-dir: _site
   render:
     - index.qmd
-    - resources.qmd
-                
-website:
-  title: ""
-  search: false  
-  
-        
+  resources:
+    - CNAME
+    - .nojekyll
+
+site:
+  title: "Python Workshop"
+  site-url: https://workshop.kerryback.com
+  feed:
+    type: rss2
+  description: "introduction to python workshop"
+  navbar:
+    title: false
+    search: true
+    left:
+      - icon: house-door-fill
+        href: https://genai4finance.kerryback.com
+    right:
+      - text: Blog
+        href: index.qmd
+      - text: Syllabus
+        href: https://mgmt675-2026.kerryback.com/MGMT675.pdf
+        target: _blank
+      - text: FMA Tutorial
+        href: https://fma2025.kerryback.com
+        target: _blank
+      - text: FMA Award
+        href: "#"
+      - text: Python
+        href: https://workshop.kerryback.com
+        target: _blank
+
+  page-footer:
+    right: "Built with [Quarto](https://quarto.org/)"
+    left: "&copy; Copyright 2025, Kerry Back"
+
 format:
   html:
-    link-external-newwindow: true
-    
-   
+    code-overflow: wrap
+    theme:
+      light: flatly
+      dark: superhero
+      
+      
+    css: styles.css
 
-
-
+execute:
+  freeze: auto
