@@ -20,23 +20,6 @@ site:
       - icon: house-door-fill
         href: https://genai4finance.kerryback.com
         target: _blank
-    right:
-      - text: Blog
-        href: https://blog.kerryback.com
-        target: _blank
-
-      - text: Syllabus
-        href: https://mgmt675-2026.kerryback.com/MGMT675.pdf
-        target: _blank
-      - text: FMA Tutorial
-        href: https://fma2025.kerryback.com
-        target: _blank
-      - text: FMA Award
-        href: https://fma2025.kerryback.com/InnovationInTeaching.pdf
-        target: _blank
-      - text: Python
-        href: https://workshop.kerryback.com
-        target: _blank
 
   page-footer:
     right: "Built with [Quarto](https://quarto.org/)"
