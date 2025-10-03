@@ -13,6 +13,8 @@ title-block-banner: false
 
 This is a set of notebooks designed to teach Python with the aid of Google Colab and Gemini.  The notebooks will automatically open in Colab.  They explain Python concepts and include example code and self-grading exercises.  The first notebook provides some instruction on how to use Google Colab.
 
+
+
 ::: {.columns}
 ::: {.column}
 
@@ -38,6 +40,10 @@ This is a set of notebooks designed to teach Python with the aid of Google Colab
 
 :::
 :::
+
+<div style="text-align: center; margin: 2rem 0;">
+  <img src="slides-theater-cropped.png" alt="Teaching Finance with AI" style="width: 40%; height: auto;">
+</div>
 
 ## Additional Resources
 
