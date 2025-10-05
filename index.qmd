@@ -6,7 +6,7 @@ title-block-banner: false
 
 
 <div style="text-align: center; margin: 2rem 0;">
-  <img src="genai4finance.png" alt="Teaching Finance with AI" style="max-width: 400px; width: 100%; height: auto;">
+  <img src="workshop.png" alt="Python Workshop" style="max-width: 400px; width: 100%; height: auto;">
 </div>
 
 ## Introduction to Python
@@ -42,7 +42,7 @@ This is a set of notebooks designed to teach Python with the aid of Google Colab
 :::
 
 <div style="text-align: center; margin: 2rem 0;">
-  <img src="slides-theater-cropped.png" alt="Teaching Finance with AI" style="width: 40%; height: auto;">
+  <img src="slides-theater-cropped.png" alt="Slides Coming Soon" style="width: 40%; height: auto;">
 </div>
 
 ## Additional Resources
