@@ -1,0 +1,263 @@
+---
+title: "Part 5: Flow Control"
+author: Kerry Back, Rice University
+execute:
+  echo: true
+  jupyter: python3
+  cache: false
+format:
+  revealjs:
+    highlight-style: github
+    code-fold: false
+    code-copy: hover
+    scrollable: true
+    slide-number: true
+    preview-links: true
+    self-contained: true
+    controls: true
+    transition: fade
+    theme: [league]
+    incremental: false
+    code-line-numbers: false
+---
+
+## If-Elif-Else Statements
+
+**Conditional statements** let your program make decisions:
+
+```{python}
+score = 85
+
+if score >= 90:
+    grade = "A"
+elif score >= 80:
+    grade = "B"
+elif score >= 70:
+    grade = "C"
+else:
+    grade = "F"
+
+print(f"Score: {score}, Grade: {grade}")
+```
+
+**Key points:** Use comparison operators (`==`, `!=`, `<`, `>`, `<=`, `>=`) and indentation is crucial!
+
+## Logical Operators
+
+Combine conditions with **logical operators**:
+
+- **`and`** - True if both conditions are True
+- **`or`** - True if at least one is True
+- **`not`** - True if condition is False
+
+```{python}
+age = 25
+has_license = True
+
+if age >= 18 and has_license:
+    print("You can drive!")
+else:
+    print("Cannot drive")
+```
+
+## Membership Testing
+
+Check if an item is **in** a collection:
+
+```{python}
+vowels = "aeiou"
+letter = "a"
+
+if letter in vowels:
+    print(f"{letter} is a vowel")
+else:
+    print(f"{letter} is a consonant")
+```
+
+Works with strings, lists, dictionaries, and more!
+
+## Float Precision Warning
+
+**Problem:** Floating-point arithmetic can have precision errors:
+
+```{python}
+result = 0.1 + 0.2
+print(f"0.1 + 0.2 = {result}")
+print(f"0.1 + 0.2 == 0.3: {result == 0.3}")
+```
+
+**Solution:** Use `round()` for comparisons:
+
+```{python}
+if round(0.1 + 0.2, 1) == round(0.3, 1):
+    print("Equal when rounded!")
+```
+
+## Ternary Operator (Compact If-Else)
+
+Write simple if-else in one line:
+
+```{python}
+number = -15
+abs_value = number if number >= 0 else -number
+print(abs_value)
+
+# Equivalent to:
+# if number >= 0:
+#     abs_value = number
+# else:
+#     abs_value = -number
+```
+
+Syntax: `value_if_true if condition else value_if_false`
+
+## For Loops with range()
+
+**`range()`** generates sequences of numbers:
+
+- `range(n)` → 0 to n-1
+- `range(start, stop)` → start to stop-1
+- `range(start, stop, step)` → with custom increment
+
+```{python}
+# Calculate sum of 1 to 10
+total = 0
+for i in range(1, 11):
+    total += i
+print(f"Sum: {total}")
+```
+
+## Looping Through Lists
+
+Use **for loops** to iterate over lists:
+
+```{python}
+fruits = ["apple", "banana", "cherry"]
+
+for fruit in fruits:
+    print(fruit)
+
+# With indices using enumerate
+for i, fruit in enumerate(fruits):
+    print(f"{i}: {fruit}")
+```
+
+## While Loops
+
+**While loops** repeat while a condition is True:
+
+```{python}
+# Find first power of 2 > 1000
+power = 0
+result = 1
+
+while result <= 1000:
+    power += 1
+    result = 2 ** power
+
+print(f"2^{power} = {result}")
+```
+
+**Warning:** Make sure the condition eventually becomes False to avoid infinite loops!
+
+## Try/Except Error Handling
+
+Handle errors gracefully instead of crashing:
+
+```{python}
+#| error: true
+# Without error handling - crashes
+result = 10 / 0
+```
+
+```{python}
+# With error handling - graceful
+try:
+    result = 10 / 0
+except ZeroDivisionError:
+    print("Cannot divide by zero!")
+    result = None
+```
+
+## Common Exception Types
+
+Useful exception types to catch:
+
+- **`ValueError`** - invalid value (e.g., `int("abc")`)
+- **`ZeroDivisionError`** - division by zero
+- **`IndexError`** - list index out of range
+- **`KeyError`** - dictionary key not found
+- **`FileNotFoundError`** - file doesn't exist
+- **`TypeError`** - wrong data type
+
+```{python}
+try:
+    int("not a number")
+except ValueError:
+    print("Invalid number format!")
+```
+
+## List Comprehensions
+
+Create lists in a compact, readable way:
+
+```{python}
+# Traditional approach
+squares = []
+for i in range(1, 6):
+    squares.append(i ** 2)
+print(squares)
+
+# List comprehension
+squares = [i**2 for i in range(1, 6)]
+print(squares)
+```
+
+Syntax: `[expression for item in iterable]`
+
+## List Comprehensions with Conditions
+
+Add conditions to filter items:
+
+```{python}
+# Only even squares
+even_squares = [i**2 for i in range(1, 11) if i % 2 == 0]
+print(even_squares)
+
+# Transform strings
+words = ["hello", "world", "python"]
+upper_words = [w.upper() for w in words]
+print(upper_words)
+```
+
+Syntax: `[expression for item in iterable if condition]`
+
+## Dictionary Comprehensions
+
+Create dictionaries compactly:
+
+```{python}
+# Map words to their lengths
+words = ["cat", "dog", "elephant", "bird"]
+word_lengths = {word: len(word) for word in words}
+print(word_lengths)
+
+# Create from two lists
+keys = ["a", "b", "c"]
+values = [1, 2, 3]
+my_dict = {k: v for k, v in zip(keys, values)}
+print(my_dict)
+```
+
+Syntax: `{key_expr: value_expr for item in iterable}`
+
+## Summary
+
+- **If-elif-else** for decisions with comparison and logical operators
+- **Ternary operator** for compact if-else: `x if condition else y`
+- **For loops** iterate over sequences; use `range()` for numbers
+- **While loops** repeat while condition is True
+- **Try/except** handles errors gracefully
+- **List/dict comprehensions** create collections compactly
+
+Flow control is essential for writing programs that make decisions and repeat tasks!

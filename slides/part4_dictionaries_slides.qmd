@@ -1,0 +1,154 @@
+---
+title: "Part 4: Dictionaries"
+author: Kerry Back, Rice University
+execute:
+  echo: true
+  jupyter: python3
+  cache: false
+format:
+  revealjs:
+    highlight-style: github
+    code-fold: false
+    code-copy: hover
+    scrollable: true
+    slide-number: true
+    preview-links: true
+    self-contained: true
+    controls: true
+    transition: fade
+    theme: [league]
+    incremental: false
+    code-line-numbers: false
+---
+
+## Dictionaries
+
+**Dictionaries** store data as **key-value pairs**.
+
+Created with **curly braces** `{}`:
+
+```{python}
+car = {
+    "brand": "Toyota",
+    "model": "Camry",
+    "year": 2020,
+    "color": "blue"
+}
+
+print(car)
+```
+
+Think of it like a real dictionary: the **key** is the word, the **value** is the definition.
+
+## Accessing Dictionary Values
+
+Access values using **keys** in square brackets:
+
+```{python}
+print("Brand:", car["brand"])
+print("Year:", car["year"])
+
+# Check if a key exists
+print("Has 'model':", "model" in car)
+print("Has 'price':", "price" in car)
+```
+
+Unlike lists (indexed by position), dictionaries use **meaningful keys** like `"brand"` or `"year"`.
+
+## Dictionary Methods
+
+Useful methods to work with dictionaries:
+
+```{python}
+print("All keys:", list(car.keys()))
+print("All values:", list(car.values()))
+print("All items:", list(car.items()))
+```
+
+- **`.keys()`** - returns all keys
+- **`.values()`** - returns all values
+- **`.items()`** - returns key-value pairs as tuples
+
+## Adding and Modifying
+
+Add new key-value pairs or modify existing ones with assignment:
+
+```{python}
+# Add a new key-value pair
+car["price"] = 25000
+print("After adding price:", car)
+
+# Modify existing value
+car["year"] = 2021
+print("After updating year:", car)
+```
+
+**Key point:** If key exists → update value. If key doesn't exist → create new pair.
+
+## Formatting Long Dictionaries
+
+For readability, break dictionaries across multiple lines:
+
+```{python}
+inventory = {
+    "apples": 50,
+    "bananas": 30,
+    "oranges": 25,
+    "grapes": 40
+}
+
+print(inventory)
+```
+
+**Rule:** Can break anywhere **except before a comma**.
+
+## Lists vs. Dictionaries
+
+| Feature | Lists | Dictionaries |
+|---------|-------|------------|
+| **Structure** | Ordered sequence | Key-value pairs |
+| **Access** | By index: `list[0]` | By key: `dict["key"]` |
+| **Indexing** | Numeric (0, 1, 2...) | Custom keys |
+| **Best For** | Sequences, order matters | Lookups by name/ID |
+| **Examples** | Shopping list, scores | Phone book, inventory |
+
+## Lists vs. Dictionaries Examples
+
+**Use a list** when you have a sequence:
+```{python}
+test_scores = [85, 92, 78, 95]
+print("First score:", test_scores[0])
+```
+
+**Use a dictionary** when you need named lookups:
+```{python}
+student = {"name": "Alice", "age": 20, "gpa": 3.8}
+print("Student name:", student["name"])
+```
+
+## The `len` Function
+
+**`len()`** returns the length of strings, lists, and dictionaries:
+
+```{python}
+my_list = [1, 2, 3, 4, 5]
+my_dict = {"a": 1, "b": 2, "c": 3}
+my_string = "hello"
+
+print("List length:", len(my_list))
+print("Dict length:", len(my_dict))  # counts key-value pairs
+print("String length:", len(my_string))
+```
+
+For dictionaries, `len()` returns the number of key-value pairs.
+
+## Summary
+
+- **Dictionaries** store key-value pairs using `{}`
+- Access values by key: `dict["key"]`
+- **Methods**: `.keys()`, `.values()`, `.items()`
+- Add/modify with assignment: `dict["new_key"] = value`
+- Use **lists** for sequences, **dictionaries** for named lookups
+- **`len()`** works on strings, lists, and dictionaries
+
+Dictionaries are perfect when you need to look up information by name or ID!

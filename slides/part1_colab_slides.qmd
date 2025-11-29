@@ -1,0 +1,125 @@
+---
+title: "Part 1: Google Colab"
+author: Kerry Back, Rice University
+execute:
+  echo: true
+  jupyter: python3
+  cache: false
+format:
+  revealjs:
+    highlight-style: github
+    code-fold: false
+    code-copy: hover
+    scrollable: true
+    slide-number: true
+    preview-links: true
+    self-contained: true
+    controls: true
+    transition: fade
+    theme: [league]
+    incremental: false
+    code-line-numbers: false
+---
+
+## Open Colab
+
+Open [https://colab.research.google.com](https://colab.research.google.com).
+
+Select `New Notebook`.
+
+## What are Notebooks?
+
+- The Colab interface is a **Jupyter notebook**.
+- A notebook is a collection of cells.
+- Cells contain either explanatory text or executable code and its output.
+- You can add new cells by using the `+ CODE` and `+ TEXT` buttons in the toolbar or the buttons that show when you hover between cells.
+
+## Running Code: Assignment Statements
+
+Type the following in a cell. Then hit the Play/Run button at the left side of the cell to execute it.
+
+```{python}
+x = 10
+print(x)
+```
+
+The statement `x=10` assigns the value 10 to the variable `x`. The statement `print(x)` prints the value of `x` to the screen.
+
+## Running More Code
+
+Add a new code cell and type:
+
+```{python}
+y = 2 * x
+print(y)
+```
+
+- Spaces around the `=` and `*` are optional.
+- Now we have two variables in our Python session. They are independent.
+- If we change `x`, it will not affect `y`.
+
+```{python}
+x = 0
+print(y)
+```
+
+## Saving and Opening Notebooks
+
+- Notebooks are portable. They can be saved and used in many other environments.
+- Save your notebook to your Google drive and then close it.
+- Open it again from Google drive.
+- Open a code cell, type `print(x)` and run the cell.
+- You will get an error message that `x` is not defined.
+
+## Notebooks vs Spreadsheets
+
+- Notebooks are similar to spreadsheets in some ways but differ in others.
+- Assigning the value 10 to `x` and defining `y` as `2*x` is similar to having the value 10 in cell `A1` in a spreadsheet and putting `=2*A1` in cell `B1`.
+- The cell names in a spreadsheet are similar to variable names in Python.
+
+## Key Difference: Execution Order
+
+- An important difference: all formulas in a spreadsheet become active when we open it, but nothing is activated when we open a notebook.
+- When we open a notebook, we are just getting an image of a text file rendered by our browser.
+- Python has not yet done anything. It doesn't know any variables and it doesn't know any formulas.
+
+## Execution Order Matters
+
+- Python becomes active when we execute a code cell. Only the executed code cells are meaningful.
+- Code cells are meaningful **in the order they are executed, not in the order in which they appear in the notebook.**
+- This is important to keep in mind when moving around in a notebook.
+
+**Tip:** If it becomes confusing, use **Runtime/Restart Session** to clear Python, then use **Runtime/Run Before** to run all cells before a selected cell.
+
+## Text Cells
+
+This is a **text cell**. You can **double-click** to edit this cell. Text cells use markdown syntax.
+
+To learn more, see the [markdown cheat sheet](https://www.markdownguide.org/cheat-sheet/).
+
+## Gemini: Within-Cell Code Generation
+
+Create a new code cell. If you choose `generate with AI`, a prompt window will appear within the cell.
+
+Tell Gemini what you want, and it will write code for it.
+
+**Example:** Tell Gemini you want to calculate the sum of the first 100 integers. Click the `play` button after Gemini writes the code, and the cell will execute.
+
+## Gemini: Chatbot
+
+If you want advice instead of code or in addition to code, click the `Gemini` at the top right of the Colab window to open a chatbot.
+
+If you ask the chatbot to do something, it will add code cells to the notebook and generate code for you.
+
+## Error Messages
+
+Everyone makes errors. We need to learn to read error messages to find the line of code with the error and to get information about the error.
+
+```{python}
+#| error: true
+x = 1
+y = 4
+z = y/(1-x)
+```
+
+If an error message isn't clear, ask the chatbot to explain it and how to fix the error.

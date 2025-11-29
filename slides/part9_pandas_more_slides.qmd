@@ -1,0 +1,220 @@
+---
+title: "Part 9: More Pandas"
+author: Kerry Back, Rice University
+execute:
+  echo: true
+  jupyter: python3
+  cache: false
+format:
+  revealjs:
+    highlight-style: github
+    code-fold: false
+    code-copy: hover
+    scrollable: true
+    slide-number: true
+    preview-links: true
+    self-contained: true
+    controls: true
+    transition: fade
+    theme: [league]
+    incremental: false
+    code-line-numbers: false
+---
+
+## Sorting Data
+
+```{python}
+import pandas as pd
+
+employees = pd.DataFrame({
+    'name': ['Alice', 'Bob', 'Charlie', 'Diana', 'Eve'],
+    'department': ['Sales', 'Engineering', 'Sales', 'Marketing', 'Engineering'],
+    'salary': [50000, 80000, 55000, 60000, 85000]
+})
+
+# Sort by salary (descending)
+print(employees.sort_values('salary', ascending=False))
+```
+
+## Grouping and Aggregation
+
+Group data by categories and compute statistics:
+
+```{python}
+# Average salary by department
+dept_avg = employees.groupby('department')['salary'].mean()
+print(dept_avg)
+```
+
+Common aggregation functions: `mean()`, `median()`, `min()`, `max()`, `std()`, `count()`
+
+## Pivot Tables
+
+Reshape data to summarize by multiple dimensions:
+
+```{python}
+import random
+random.seed(42)
+
+sales = pd.DataFrame({
+    'product': ['Widget A', 'Widget B', 'Widget C'] * 6,
+    'region': ['North'] * 9 + ['South'] * 9,
+    'revenue': [random.randint(100, 500) for _ in range(18)]
+})
+
+pivot = sales.pivot_table(values='revenue',
+                          index='product',
+                          columns='region',
+                          aggfunc='sum')
+print(pivot)
+```
+
+## Handling Missing Data
+
+```{python}
+import numpy as np
+
+data = pd.DataFrame({
+    'product': ['Widget A', 'Widget B', None, 'Widget C'],
+    'price': [10.5, None, 15.0, 12.75],
+    'quantity': [100, 200, 150, None]
+})
+
+print("Missing values per column:")
+print(data.isnull().sum())
+```
+
+## Filling Missing Values
+
+```{python}
+# Fill missing values
+filled = data.copy()
+filled['product'] = filled['product'].fillna('Unknown')
+filled['price'] = filled['price'].fillna(data['price'].mean())
+filled['quantity'] = filled['quantity'].fillna(0)
+
+print(filled)
+```
+
+## Merging DataFrames
+
+Combine data from multiple sources:
+
+```{python}
+employees_info = pd.DataFrame({
+    'id': [101, 102, 103],
+    'name': ['Alice', 'Bob', 'Charlie']
+})
+
+salaries = pd.DataFrame({
+    'id': [101, 102, 104],
+    'salary': [50000, 80000, 60000]
+})
+
+# Inner merge - only matching records
+inner = pd.merge(employees_info, salaries, on='id')
+print("Inner merge:")
+print(inner)
+```
+
+## Types of Merges
+
+- **Inner**: Only matching records from both DataFrames
+- **Left**: All records from left, matching from right
+- **Right**: All records from right, matching from left
+- **Outer**: All records from both DataFrames
+
+```{python}
+# Left merge - all employees
+left = pd.merge(employees_info, salaries, on='id', how='left')
+print("Left merge:")
+print(left)
+```
+
+## Concatenating DataFrames
+
+Combine data from the same structure:
+
+```{python}
+q1 = pd.DataFrame({
+    'product': ['Widget A', 'Widget B'],
+    'sales': [100, 150]
+})
+
+q2 = pd.DataFrame({
+    'product': ['Widget A', 'Widget B'],
+    'sales': [120, 140]
+})
+
+all_sales = pd.concat([q1, q2])
+print(all_sales)
+```
+
+## Reading and Writing Files
+
+```{python}
+#| eval: false
+
+# Read Excel file
+df = pd.read_excel('data.xlsx')
+
+# Read CSV file
+df = pd.read_csv('data.csv')
+
+# Write to Excel
+df.to_excel('output.xlsx', index=False)
+
+# Write to CSV
+df.to_csv('output.csv', index=False)
+```
+
+**Common formats:** Excel (.xlsx), CSV (.csv), JSON (.json)
+
+## String Processing
+
+Clean and transform text data:
+
+```{python}
+customer_data = pd.DataFrame({
+    'name': ['  John Smith  ', 'JANE DOE', 'bob jones'],
+    'email': ['john@email.com', 'JANE@GMAIL.COM', 'bob@yahoo.com']
+})
+
+# Clean names
+customer_data['name_clean'] = customer_data['name'].str.strip().str.title()
+
+# Lowercase emails
+customer_data['email_clean'] = customer_data['email'].str.lower()
+
+print(customer_data[['name', 'name_clean', 'email_clean']])
+```
+
+## Common String Methods
+
+Useful `.str` methods:
+
+- `.str.lower()`, `.str.upper()` - Change case
+- `.str.strip()` - Remove whitespace
+- `.str.contains()` - Check for substring
+- `.str.split()` - Split strings
+- `.str.replace()` - Replace text
+
+```{python}
+# Extract email domain
+customer_data['domain'] = customer_data['email_clean'].str.split('@').str[1]
+print(customer_data[['email_clean', 'domain']])
+```
+
+## Summary
+
+**Key Operations:**
+
+- **Sort**: `sort_values()`
+- **Group**: `groupby()` with aggregation functions
+- **Pivot**: `pivot_table()` for multi-dimensional summaries
+- **Missing Data**: `isnull()`, `fillna()`, `dropna()`
+- **Merge**: `pd.merge()` with different join types
+- **Concatenate**: `pd.concat()` for stacking data
+- **String Operations**: `.str` accessor for text processing
+
+These tools form the foundation of data cleaning and analysis!

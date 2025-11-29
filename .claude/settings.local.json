@@ -1,33 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(curl:*)",
-      "Bash(rm:*)",
-      "Bash(python:*)",
-      "Bash(grep:*)",
-      "Bash(pip install:*)",
-      "Bash(rg:*)",
-      "Bash(sed:*)",
-      "mcp__ide__executeCode",
-      "Bash(ls:*)",
-      "Bash(cp:*)",
-      "Bash(chmod:*)",
-      "Bash(source:*)",
-      "Bash(find:*)",
-      "Bash(export GOOGLE_CLOUD_PROJECT_ID=\"edgar-downloader\")",
-      "Bash(pkill:*)",
-      "Bash(cat:*)",
-      "Bash(identify:*)",
-      "Bash(convert:*)",
-      "Bash(git add:*)",
-      "Bash(git commit:*)",
-      "Bash(git push:*)",
-      "WebFetch(domain:faculty.utrgv.edu)",
-      "Bash(quarto render:*)",
-      "Bash(git remote set-url:*)",
-      "Bash(git pull:*)",
-      "Bash(git rm:*)"
+      "Bash(dir \"C:\\Users\\kerry\\repos\\workshop_python\\part12_visualization_plotly_slides.*\")"
     ],
-    "deny": []
+    "deny": [],
+    "ask": []
   }
 }

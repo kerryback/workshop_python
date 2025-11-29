@@ -1,0 +1,173 @@
+---
+title: "Part 7: Libraries"
+author: Kerry Back, Rice University
+execute:
+  echo: true
+  jupyter: python3
+  cache: false
+format:
+  revealjs:
+    highlight-style: github
+    code-fold: false
+    code-copy: hover
+    scrollable: true
+    slide-number: true
+    preview-links: true
+    self-contained: true
+    controls: true
+    transition: fade
+    theme: [league]
+    incremental: false
+    code-line-numbers: false
+---
+
+## Why Libraries?
+
+Python's power comes from its **libraries** - collections of pre-written code for specific tasks.
+
+- Built-in libraries: `math`, `datetime`, `random`
+- Third-party libraries: `pandas`, `numpy`, `matplotlib`
+
+Libraries save time and provide tested, optimized solutions to common problems.
+
+## Importing from Libraries
+
+Import specific functions from a library:
+
+```{python}
+from math import sqrt
+
+result = sqrt(9)
+print(result)
+```
+
+Use the function directly without a prefix.
+
+## Importing Entire Libraries
+
+Import the whole library and access its contents:
+
+```{python}
+import math
+
+result = math.sqrt(9)
+print(f"Square root: {result}")
+print(f"Pi: {math.pi}")
+print(f"Cosine of 0: {math.cos(0)}")
+```
+
+Use `library.function()` syntax.
+
+## Using Aliases
+
+Abbreviate library names with **`as`**:
+
+```{python}
+import math as m
+
+result = m.sqrt(16)
+print(result)
+```
+
+Especially useful for libraries with long names!
+
+## Standard Alias Conventions
+
+These conventions are universally used:
+
+```python
+import pandas as pd              # Data manipulation
+import numpy as np               # Numerical arrays
+import matplotlib.pyplot as plt  # Plotting
+import seaborn as sns            # Statistical plotting
+import statsmodels.api as sm     # Statistics
+```
+
+**Important:** AI tools like Gemini understand these conventions!
+
+If you ask about `pd.DataFrame`, it knows you mean pandas.
+
+## Import Patterns Comparison
+
+Three common patterns:
+
+```{python}
+# 1. Import entire module
+import math
+x = math.sqrt(25)
+
+# 2. Import with alias
+import math as m
+y = m.sqrt(25)
+
+# 3. Import specific functions
+from math import sqrt
+z = sqrt(25)
+
+print(f"All equal: {x == y == z}")
+```
+
+## Installing Libraries with pip
+
+Use **pip** to install third-party libraries:
+
+```python
+# Install a library
+!pip install yfinance
+
+# Install specific version
+!pip install yfinance==0.2.50
+
+# Upgrade to latest
+!pip install --upgrade yfinance
+
+# Check installed packages
+!pip list
+```
+
+**Note:** In Colab, use `!pip`. In a terminal, use `pip` without `!`.
+
+## Common Libraries You'll Use
+
+**Data Science:**
+- **pandas** - data manipulation
+- **numpy** - numerical computing
+- **scipy** - scientific computing
+
+**Visualization:**
+- **matplotlib** - basic plotting
+- **seaborn** - statistical plots
+- **plotly** - interactive plots
+
+**Finance:**
+- **yfinance** - stock data
+- **pandas-datareader** - financial data
+
+## Example: Using Multiple Libraries
+
+```{python}
+import math
+from datetime import date, timedelta
+
+# Use math
+circle_area = math.pi * (5 ** 2)
+print(f"Circle area: {circle_area:.2f}")
+
+# Use datetime
+today = date.today()
+next_week = today + timedelta(weeks=1)
+print(f"Today: {today}")
+print(f"Next week: {next_week}")
+```
+
+## Summary
+
+- **Libraries** extend Python with specialized functionality
+- **Import** entire libraries: `import math`
+- **Import** specific functions: `from math import sqrt`
+- **Aliases** abbreviate names: `import pandas as pd`
+- **Standard conventions**: `pd`, `np`, `plt`, `sns`, `sm`
+- **pip** installs third-party libraries
+- Libraries make Python powerful for data science, finance, and more!
+
+Next: We'll use pandas for data manipulation!
