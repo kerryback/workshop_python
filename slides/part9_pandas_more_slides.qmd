@@ -36,6 +36,12 @@ employees = pd.DataFrame({
 print(employees.sort_values('salary', ascending=False))
 ```
 
+## Practice: Sorting Data
+
+**Exercise 1 (with Gemini):** Ask Gemini to "sort a DataFrame by the 'name' column in alphabetical order"
+
+**Exercise 2 (on your own):** Type `employees.sort_values('salary')` and run it to sort by salary ascending.
+
 ## Grouping and Aggregation
 
 Group data by categories and compute statistics:
@@ -47,6 +53,12 @@ print(dept_avg)
 ```
 
 Common aggregation functions: `mean()`, `median()`, `min()`, `max()`, `std()`, `count()`
+
+## Practice: Grouping Data
+
+**Exercise 1 (with Gemini):** Ask Gemini to "group a DataFrame by department and calculate the maximum salary in each department"
+
+**Exercise 2 (on your own):** Type `employees.groupby('department')['salary'].count()` and run it to count employees per department.
 
 ## Pivot Tables
 
@@ -96,6 +108,12 @@ filled['quantity'] = filled['quantity'].fillna(0)
 print(filled)
 ```
 
+## Practice: Handling Missing Data
+
+**Exercise 1 (with Gemini):** Ask Gemini to "check for missing values in a DataFrame and fill them with the column mean"
+
+**Exercise 2 (on your own):** Type `data.isnull().sum()` and run it to count missing values per column.
+
 ## Merging DataFrames
 
 Combine data from multiple sources:
@@ -130,6 +148,12 @@ left = pd.merge(employees_info, salaries, on='id', how='left')
 print("Left merge:")
 print(left)
 ```
+
+## Practice: Merging DataFrames
+
+**Exercise 1 (with Gemini):** Ask Gemini to "merge two DataFrames on a common 'id' column using an inner join"
+
+**Exercise 2 (on your own):** Type `pd.merge(employees_info, salaries, on='id')` and run it to perform an inner merge.
 
 ## Concatenating DataFrames
 
@@ -204,6 +228,12 @@ Useful `.str` methods:
 customer_data['domain'] = customer_data['email_clean'].str.split('@').str[1]
 print(customer_data[['email_clean', 'domain']])
 ```
+
+## Practice: String Processing
+
+**Exercise 1 (with Gemini):** Ask Gemini to "convert a column of names to lowercase and remove leading/trailing spaces"
+
+**Exercise 2 (on your own):** Type `customer_data['name'].str.upper()` and run it to convert names to uppercase.
 
 ## Summary
 

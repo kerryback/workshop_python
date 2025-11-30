@@ -47,6 +47,12 @@ print('\n2-Dimensional Array:')
 print(arr_2d)
 ```
 
+## Practice: Creating Arrays
+
+**Exercise 1 (with Gemini):** Ask Gemini to "create a 2D numpy array with 3 rows and 4 columns"
+
+**Exercise 2 (on your own):** Type `import numpy as np` then `arr = np.array([1, 2, 3])` then `print(arr)` and run it.
+
 ## Slicing Arrays
 
 ```{python}
@@ -59,6 +65,12 @@ print('\nExtract element from 2d array:', arr_2d[0, 1])
 print('Extract range from 2d array:')
 print(arr_2d[:, :2])
 ```
+
+## Practice: Slicing Arrays
+
+**Exercise 1 (with Gemini):** Ask Gemini to "extract the first row from a 2D numpy array"
+
+**Exercise 2 (on your own):** Type `arr = np.array([[1, 2], [3, 4]])` then `print(arr[0, 1])` and run it.
 
 ## Array Operations
 
@@ -75,6 +87,12 @@ print('\nBroadcast (multiply by 2):')
 print(2 * arr_2d)
 ```
 
+## Practice: Array Operations
+
+**Exercise 1 (with Gemini):** Ask Gemini to "create two numpy arrays and add them together element-wise"
+
+**Exercise 2 (on your own):** Type `import numpy as np` then `arr = np.array([1, 2, 3])` then `print(arr * 2)` and run it.
+
 ## Array Methods
 
 ```{python}
@@ -88,6 +106,12 @@ print('\nStandard deviation:', arr_1d.std())
 # other useful methods: mean(), min(), max()
 print('Mean:', arr_1d.mean())
 ```
+
+## Practice: Array Methods
+
+**Exercise 1 (with Gemini):** Ask Gemini to "calculate the sum and mean of a numpy array"
+
+**Exercise 2 (on your own):** Type `arr = np.array([10, 20, 30])` then `print(arr.max())` and run it.
 
 ## Random Number Generation
 
@@ -105,6 +129,12 @@ dice_rolls = np.random.randint(1, 7, num_rolls)
 print(f"First 10 rolls: {dice_rolls[:10]}")
 print(f"Average: {dice_rolls.mean():.2f} (expected: 3.5)")
 ```
+
+## Practice: Random Dice Rolls
+
+**Exercise 1 (with Gemini):** Ask Gemini to "simulate rolling two dice 100 times and calculate the average sum"
+
+**Exercise 2 (on your own):** Type `np.random.randint(1, 7, 10)` and run it to simulate 10 dice rolls.
 
 ## Visualizing Dice Rolls
 
@@ -175,6 +205,12 @@ print(f"Maximum: ${all_annual_totals.max():,.0f}")
 print(f"10th percentile: ${np.percentile(all_annual_totals, 10):,.0f}")
 print(f"90th percentile: ${np.percentile(all_annual_totals, 90):,.0f}")
 ```
+
+## Practice: Monte Carlo Simulation
+
+**Exercise 1 (with Gemini):** Ask Gemini to "run a Monte Carlo simulation to estimate the probability of getting heads at least 6 times in 10 coin flips"
+
+**Exercise 2 (on your own):** Type `results = [np.random.randint(0, 2, 10).sum() for _ in range(1000)]` then `print(np.mean(results))` and run it.
 
 ## Visualizing Results
 

@@ -1075,7 +1075,7 @@ Kerry Back, Rice University
 <section id="importing-from-libraries" class="slide level2">
 <h2>Importing from Libraries</h2>
 <p>Import specific functions from a library:</p>
-<div id="2c58212b" class="cell" data-execution_count="1">
+<div id="6bdc421e" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> sqrt</span>
 <span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> sqrt(<span class="dv">9</span>)</span>
@@ -1086,10 +1086,15 @@ Kerry Back, Rice University
 </div>
 <p>Use the function directly without a prefix.</p>
 </section>
+<section id="practice-importing-functions" class="slide level2">
+<h2>Practice: Importing Functions</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that imports the sqrt function from math and uses it”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>from math import pi</code> then <code>print(pi)</code> and run it.</p>
+</section>
 <section id="importing-entire-libraries" class="slide level2">
 <h2>Importing Entire Libraries</h2>
 <p>Import the whole library and access its contents:</p>
-<div id="ebf6c3e2" class="cell" data-execution_count="2">
+<div id="16480b00" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
 <span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> math.sqrt(<span class="dv">9</span>)</span>
@@ -1104,10 +1109,15 @@ Cosine of 0: 1.0</code></pre>
 </div>
 <p>Use <code>library.function()</code> syntax.</p>
 </section>
+<section id="practice-importing-libraries" class="slide level2">
+<h2>Practice: Importing Libraries</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that imports the math library and calculates the square root of 16”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>import math</code> then <code>print(math.sqrt(25))</code> and run it.</p>
+</section>
 <section id="using-aliases" class="slide level2">
 <h2>Using Aliases</h2>
 <p>Abbreviate library names with <strong><code>as</code></strong>:</p>
-<div id="d722cfc1" class="cell" data-execution_count="3">
+<div id="66f71938" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math <span class="im">as</span> m</span>
 <span id="cb5-2"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> m.sqrt(<span class="dv">16</span>)</span>
@@ -1117,6 +1127,11 @@ Cosine of 0: 1.0</code></pre>
 </div>
 </div>
 <p>Especially useful for libraries with long names!</p>
+</section>
+<section id="practice-using-aliases" class="slide level2">
+<h2>Practice: Using Aliases</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that imports math as m and uses it to calculate pi times 2”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>import math as m</code> then <code>print(m.pi)</code> and run it.</p>
 </section>
 <section id="standard-alias-conventions" class="slide level2">
 <h2>Standard Alias Conventions</h2>
@@ -1132,7 +1147,7 @@ Cosine of 0: 1.0</code></pre>
 <section id="import-patterns-comparison" class="slide level2">
 <h2>Import Patterns Comparison</h2>
 <p>Three common patterns:</p>
-<div id="1d2d2358" class="cell" data-execution_count="4">
+<div id="e524d3e5" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Import entire module</span></span>
 <span id="cb8-2"><a aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
 <span id="cb8-3"><a aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> math.sqrt(<span class="dv">25</span>)</span>
@@ -1150,6 +1165,11 @@ Cosine of 0: 1.0</code></pre>
 <pre><code>All equal: True</code></pre>
 </div>
 </div>
+</section>
+<section id="practice-import-patterns" class="slide level2">
+<h2>Practice: Import Patterns</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “explain the difference between ‘import math’ and ‘from math import sqrt’”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>import math</code> then <code>from math import pi</code> then <code>print(math.sqrt(9), pi)</code> and run it.</p>
 </section>
 <section id="installing-libraries-with-pip" class="slide level2">
 <h2>Installing Libraries with pip</h2>
@@ -1175,7 +1195,7 @@ Cosine of 0: 1.0</code></pre>
 </section>
 <section id="example-using-multiple-libraries" class="slide level2">
 <h2>Example: Using Multiple Libraries</h2>
-<div id="899b700c" class="cell" data-execution_count="5">
+<div id="baae8e26" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
 <span id="cb11-2"><a aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> date, timedelta</span>
 <span id="cb11-3"><a aria-hidden="true" tabindex="-1"></a></span>
@@ -1190,10 +1210,15 @@ Cosine of 0: 1.0</code></pre>
 <span id="cb11-12"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Next week: </span><span class="sc">{</span>next_week<span class="sc">}</span><span class="ss">&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Circle area: 78.54
-Today: 2025-11-29
-Next week: 2025-12-06</code></pre>
+Today: 2025-11-30
+Next week: 2025-12-07</code></pre>
 </div>
 </div>
+</section>
+<section id="practice-multiple-libraries" class="slide level2">
+<h2>Practice: Multiple Libraries</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that imports and uses both math and datetime libraries”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>import math</code> then <code>from datetime import date</code> then <code>print(math.pi, date.today())</code> and run it.</p>
 </section>
 <section id="summary" class="slide level2">
 <h2>Summary</h2>

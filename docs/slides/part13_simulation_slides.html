@@ -1075,7 +1075,7 @@ Kerry Back, Rice University
 </section>
 <section id="creating-numpy-arrays" class="slide level2">
 <h2>Creating Numpy Arrays</h2>
-<div id="0660030d" class="cell" data-execution_count="1">
+<div id="3b00963d" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a><span class="co"># create a 1-dimensional array</span></span>
@@ -1098,9 +1098,14 @@ Kerry Back, Rice University
 </div>
 </div>
 </section>
+<section id="practice-creating-arrays" class="slide level2">
+<h2>Practice: Creating Arrays</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “create a 2D numpy array with 3 rows and 4 columns”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>import numpy as np</code> then <code>arr = np.array([1, 2, 3])</code> then <code>print(arr)</code> and run it.</p>
+</section>
 <section id="slicing-arrays" class="slide level2">
 <h2>Slicing Arrays</h2>
-<div id="fd3bdd15" class="cell" data-execution_count="2">
+<div id="7e80b49b" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># slice a 1-dimensional array (like slicing a list)</span></span>
 <span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;Extract a single element:&#39;</span>, arr_1d[<span class="dv">1</span>])</span>
 <span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;Extract a range:&#39;</span>, arr_1d[:<span class="dv">2</span>])</span>
@@ -1120,9 +1125,14 @@ Extract range from 2d array:
 </div>
 </div>
 </section>
+<section id="practice-slicing-arrays" class="slide level2">
+<h2>Practice: Slicing Arrays</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “extract the first row from a 2D numpy array”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>arr = np.array([[1, 2], [3, 4]])</code> then <code>print(arr[0, 1])</code> and run it.</p>
+</section>
 <section id="array-operations" class="slide level2">
 <h2>Array Operations</h2>
-<div id="cef94713" class="cell" data-execution_count="3">
+<div id="89e6d907" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># array addition (sum element by element)</span></span>
 <span id="cb5-2"><a aria-hidden="true" tabindex="-1"></a>arr_1d_second <span class="op">=</span> np.array([<span class="dv">7</span>, <span class="fl">4.3</span>, <span class="fl">1.1</span>])</span>
 <span id="cb5-3"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;Sum of arrays:&#39;</span>, arr_1d <span class="op">+</span> arr_1d_second)</span>
@@ -1143,9 +1153,14 @@ Broadcast (multiply by 2):
 </div>
 </div>
 </section>
+<section id="practice-array-operations" class="slide level2">
+<h2>Practice: Array Operations</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “create two numpy arrays and add them together element-wise”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>import numpy as np</code> then <code>arr = np.array([1, 2, 3])</code> then <code>print(arr * 2)</code> and run it.</p>
+</section>
 <section id="array-methods" class="slide level2">
 <h2>Array Methods</h2>
-<div id="0a9d2985" class="cell" data-execution_count="4">
+<div id="738e195c" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># sum method</span></span>
 <span id="cb7-2"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;Array:&#39;</span>, arr_1d)</span>
 <span id="cb7-3"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;Sum:&#39;</span>, arr_1d.<span class="bu">sum</span>())</span>
@@ -1164,9 +1179,14 @@ Mean: 1.7</code></pre>
 </div>
 </div>
 </section>
+<section id="practice-array-methods" class="slide level2">
+<h2>Practice: Array Methods</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “calculate the sum and mean of a numpy array”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>arr = np.array([10, 20, 30])</code> then <code>print(arr.max())</code> and run it.</p>
+</section>
 <section id="random-number-generation" class="slide level2">
 <h2>Random Number Generation</h2>
-<div id="2ea28d15" class="cell" data-execution_count="5">
+<div id="ae7b23b9" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb9-2"><a aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb9-3"><a aria-hidden="true" tabindex="-1"></a></span>
@@ -1185,9 +1205,14 @@ Average: 3.46 (expected: 3.5)</code></pre>
 </div>
 </div>
 </section>
+<section id="practice-random-dice-rolls" class="slide level2">
+<h2>Practice: Random Dice Rolls</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “simulate rolling two dice 100 times and calculate the average sum”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>np.random.randint(1, 7, 10)</code> and run it to simulate 10 dice rolls.</p>
+</section>
 <section id="visualizing-dice-rolls" class="slide level2">
 <h2>Visualizing Dice Rolls</h2>
-<div id="19bddea7" class="cell" data-execution_count="6">
+<div id="a329ca44" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">4</span>))</span>
 <span id="cb11-2"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
@@ -1219,7 +1244,7 @@ Average: 3.46 (expected: 3.5)</code></pre>
 </section>
 <section id="normal-distributions" class="slide level2">
 <h2>Normal Distributions</h2>
-<div id="45986bbc" class="cell" data-execution_count="7">
+<div id="2710673f" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Monte Carlo simulation: monthly sales forecast</span></span>
 <span id="cb12-2"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a aria-hidden="true" tabindex="-1"></a>base_monthly_sales <span class="op">=</span> <span class="dv">25000</span></span>
@@ -1244,7 +1269,7 @@ Average: 3.46 (expected: 3.5)</code></pre>
 </section>
 <section id="monte-carlo-simulation" class="slide level2">
 <h2>Monte Carlo Simulation</h2>
-<div id="0571a580" class="cell" data-execution_count="8">
+<div id="d689b350" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate 1,000 possible years</span></span>
 <span id="cb13-2"><a aria-hidden="true" tabindex="-1"></a>num_simulations <span class="op">=</span> <span class="dv">1000</span></span>
 <span id="cb13-3"><a aria-hidden="true" tabindex="-1"></a>all_annual_totals <span class="op">=</span> []</span>
@@ -1269,9 +1294,14 @@ Maximum: $373,673
 </div>
 </div>
 </section>
+<section id="practice-monte-carlo-simulation" class="slide level2">
+<h2>Practice: Monte Carlo Simulation</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “run a Monte Carlo simulation to estimate the probability of getting heads at least 6 times in 10 coin flips”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>results = [np.random.randint(0, 2, 10).sum() for _ in range(1000)]</code> then <code>print(np.mean(results))</code> and run it.</p>
+</section>
 <section id="visualizing-results" class="slide level2">
 <h2>Visualizing Results</h2>
-<div id="3641b92a" class="cell" data-execution_count="9">
+<div id="2da393fa" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">4</span>))</span>
 <span id="cb15-2"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
@@ -1305,7 +1335,7 @@ Maximum: $373,673
 </section>
 <section id="probability-analysis" class="slide level2">
 <h2>Probability Analysis</h2>
-<div id="29834777" class="cell" data-execution_count="10">
+<div id="46f00ac0" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Business question: What&#39;s the probability of meeting target?</span></span>
 <span id="cb16-2"><a aria-hidden="true" tabindex="-1"></a>target_sales <span class="op">=</span> <span class="dv">300000</span></span>
 <span id="cb16-3"><a aria-hidden="true" tabindex="-1"></a>prob_meeting_target <span class="op">=</span> np.mean(all_annual_totals <span class="op">&gt;=</span> target_sales) <span class="op">*</span> <span class="dv">100</span></span>

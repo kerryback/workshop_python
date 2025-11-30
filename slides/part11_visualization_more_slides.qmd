@@ -75,6 +75,12 @@ plt.title('Wage vs Education with Trend Line')
 plt.show()
 ```
 
+## Practice: Regression Plots
+
+**Exercise 1 (with Gemini):** Ask Gemini to "create a regression plot showing the relationship between two numeric variables"
+
+**Exercise 2 (on your own):** Type `sns.regplot(x=[1, 2, 3, 4], y=[2, 4, 3, 5])` then `plt.show()` and run it.
+
 ## Single Categorical Explanatory Variable
 
 **Box plot:** Shows distribution of wages within each category (preferred)
@@ -91,6 +97,12 @@ plt.show()
 ```
 
 **Alternatives:** Strip plot, violin plot, or bar plot with error bars
+
+## Practice: Box Plots
+
+**Exercise 1 (with Gemini):** Ask Gemini to "create a box plot comparing test scores across different classes"
+
+**Exercise 2 (on your own):** Type `sns.boxplot(x=['A', 'A', 'B', 'B'], y=[10, 12, 15, 17])` then `plt.show()` and run it.
 
 ## Multiple Categorical Variables
 
@@ -117,6 +129,12 @@ sns.heatmap(pivot_data, annot=True, fmt='.2f', cmap='YlOrRd')
 plt.title('Mean Wage by Gender and Marital Status')
 plt.show()
 ```
+
+## Practice: Heatmaps
+
+**Exercise 1 (with Gemini):** Ask Gemini to "create a heatmap showing average values for different category combinations"
+
+**Exercise 2 (on your own):** Type `sns.heatmap([[1, 2], [3, 4]], annot=True)` then `plt.show()` and run it.
 
 ## Numeric + Categorical Variables
 

@@ -1066,7 +1066,7 @@ Kerry Back, Rice University
 <section id="if-elif-else-statements" class="slide level2">
 <h2>If-Elif-Else Statements</h2>
 <p><strong>Conditional statements</strong> let your program make decisions:</p>
-<div id="fad87fa8" class="cell" data-execution_count="1">
+<div id="9e077957" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a>score <span class="op">=</span> <span class="dv">85</span></span>
 <span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> score <span class="op">&gt;=</span> <span class="dv">90</span>:</span>
@@ -1085,6 +1085,11 @@ Kerry Back, Rice University
 </div>
 <p><strong>Key points:</strong> Use comparison operators (<code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>) and indentation is crucial!</p>
 </section>
+<section id="practice-if-elif-else" class="slide level2">
+<h2>Practice: If-Elif-Else</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that checks if a temperature is hot, warm, or cold”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>x = 15</code> then <code>if x &gt; 10: print(&quot;big&quot;)</code> and run it.</p>
+</section>
 <section id="logical-operators" class="slide level2">
 <h2>Logical Operators</h2>
 <p>Combine conditions with <strong>logical operators</strong>:</p>
@@ -1093,7 +1098,7 @@ Kerry Back, Rice University
 <li><strong><code>or</code></strong> - True if at least one is True</li>
 <li><strong><code>not</code></strong> - True if condition is False</li>
 </ul>
-<div id="a6cc19e4" class="cell" data-execution_count="2">
+<div id="58a20bcb" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a>age <span class="op">=</span> <span class="dv">25</span></span>
 <span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a>has_license <span class="op">=</span> <span class="va">True</span></span>
 <span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a></span>
@@ -1106,10 +1111,15 @@ Kerry Back, Rice University
 </div>
 </div>
 </section>
+<section id="practice-logical-operators" class="slide level2">
+<h2>Practice: Logical Operators</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that checks if a number is between 10 and 20 using ‘and’”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>print(True and False)</code> and run it.</p>
+</section>
 <section id="membership-testing" class="slide level2">
 <h2>Membership Testing</h2>
 <p>Check if an item is <strong>in</strong> a collection:</p>
-<div id="d0b9572a" class="cell" data-execution_count="3">
+<div id="7dddb3e4" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a>vowels <span class="op">=</span> <span class="st">&quot;aeiou&quot;</span></span>
 <span id="cb5-2"><a aria-hidden="true" tabindex="-1"></a>letter <span class="op">=</span> <span class="st">&quot;a&quot;</span></span>
 <span id="cb5-3"><a aria-hidden="true" tabindex="-1"></a></span>
@@ -1123,10 +1133,15 @@ Kerry Back, Rice University
 </div>
 <p>Works with strings, lists, dictionaries, and more!</p>
 </section>
+<section id="practice-membership-testing" class="slide level2">
+<h2>Practice: Membership Testing</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that checks if ‘apple’ is in a list of fruits”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>print(&quot;x&quot; in &quot;example&quot;)</code> and run it.</p>
+</section>
 <section id="float-precision-warning" class="slide level2">
 <h2>Float Precision Warning</h2>
 <p><strong>Problem:</strong> Floating-point arithmetic can have precision errors:</p>
-<div id="9944b0e1" class="cell" data-execution_count="4">
+<div id="4725716b" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> <span class="fl">0.1</span> <span class="op">+</span> <span class="fl">0.2</span></span>
 <span id="cb7-2"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;0.1 + 0.2 = </span><span class="sc">{</span>result<span class="sc">}</span><span class="ss">&quot;</span>)</span>
 <span id="cb7-3"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;0.1 + 0.2 == 0.3: </span><span class="sc">{</span>result <span class="op">==</span> <span class="fl">0.3</span><span class="sc">}</span><span class="ss">&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1136,7 +1151,7 @@ Kerry Back, Rice University
 </div>
 </div>
 <p><strong>Solution:</strong> Use <code>round()</code> for comparisons:</p>
-<div id="ebcf18f2" class="cell" data-execution_count="5">
+<div id="04b8e936" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">round</span>(<span class="fl">0.1</span> <span class="op">+</span> <span class="fl">0.2</span>, <span class="dv">1</span>) <span class="op">==</span> <span class="bu">round</span>(<span class="fl">0.3</span>, <span class="dv">1</span>):</span>
 <span id="cb9-2"><a aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;Equal when rounded!&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1144,10 +1159,15 @@ Kerry Back, Rice University
 </div>
 </div>
 </section>
+<section id="practice-float-precision" class="slide level2">
+<h2>Practice: Float Precision</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “explain why 0.1 + 0.2 doesn’t equal 0.3 in Python”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>print(round(3.14159, 2))</code> and run it.</p>
+</section>
 <section id="ternary-operator-compact-if-else" class="slide level2">
 <h2>Ternary Operator (Compact If-Else)</h2>
 <p>Write simple if-else in one line:</p>
-<div id="2e448477" class="cell" data-execution_count="6">
+<div id="43b9206a" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a>number <span class="op">=</span> <span class="op">-</span><span class="dv">15</span></span>
 <span id="cb11-2"><a aria-hidden="true" tabindex="-1"></a>abs_value <span class="op">=</span> number <span class="cf">if</span> number <span class="op">&gt;=</span> <span class="dv">0</span> <span class="cf">else</span> <span class="op">-</span>number</span>
 <span id="cb11-3"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(abs_value)</span>
@@ -1163,6 +1183,11 @@ Kerry Back, Rice University
 </div>
 <p>Syntax: <code>value_if_true if condition else value_if_false</code></p>
 </section>
+<section id="practice-ternary-operator" class="slide level2">
+<h2>Practice: Ternary Operator</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that uses a ternary operator to find the maximum of two numbers”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>x = 10</code> then <code>result = &quot;big&quot; if x &gt; 5 else &quot;small&quot;</code> then <code>print(result)</code> and run it.</p>
+</section>
 <section id="for-loops-with-range" class="slide level2">
 <h2>For Loops with range()</h2>
 <p><strong><code>range()</code></strong> generates sequences of numbers:</p>
@@ -1171,7 +1196,7 @@ Kerry Back, Rice University
 <li><code>range(start, stop)</code> → start to stop-1</li>
 <li><code>range(start, stop, step)</code> → with custom increment</li>
 </ul>
-<div id="a1a59c0b" class="cell" data-execution_count="7">
+<div id="799eccb6" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate sum of 1 to 10</span></span>
 <span id="cb13-2"><a aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb13-3"><a aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>):</span>
@@ -1182,10 +1207,15 @@ Kerry Back, Rice University
 </div>
 </div>
 </section>
+<section id="practice-for-loops" class="slide level2">
+<h2>Practice: For Loops</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that uses a for loop to print numbers 1 to 5”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>for i in range(3): print(i)</code> and run it.</p>
+</section>
 <section id="looping-through-lists" class="slide level2">
 <h2>Looping Through Lists</h2>
 <p>Use <strong>for loops</strong> to iterate over lists:</p>
-<div id="c050d6e8" class="cell" data-execution_count="8">
+<div id="ab8956c3" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a>fruits <span class="op">=</span> [<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;cherry&quot;</span>]</span>
 <span id="cb15-2"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> fruit <span class="kw">in</span> fruits:</span>
@@ -1204,10 +1234,15 @@ cherry
 </div>
 </div>
 </section>
+<section id="practice-looping-through-lists" class="slide level2">
+<h2>Practice: Looping Through Lists</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that loops through a list of colors and prints each one”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>for x in [1, 2, 3]: print(x * 2)</code> and run it.</p>
+</section>
 <section id="while-loops" class="slide level2">
 <h2>While Loops</h2>
 <p><strong>While loops</strong> repeat while a condition is True:</p>
-<div id="c327dc2d" class="cell" data-execution_count="9">
+<div id="a815d0a9" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Find first power of 2 &gt; 1000</span></span>
 <span id="cb17-2"><a aria-hidden="true" tabindex="-1"></a>power <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb17-3"><a aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> <span class="dv">1</span></span>
@@ -1223,10 +1258,15 @@ cherry
 </div>
 <p><strong>Warning:</strong> Make sure the condition eventually becomes False to avoid infinite loops!</p>
 </section>
+<section id="practice-while-loops" class="slide level2">
+<h2>Practice: While Loops</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that uses a while loop to count from 1 to 5”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>x = 0</code> then <code>while x &lt; 3: print(x); x += 1</code> and run it.</p>
+</section>
 <section id="tryexcept-error-handling" class="slide level2">
 <h2>Try/Except Error Handling</h2>
 <p>Handle errors gracefully instead of crashing:</p>
-<div id="3ea46a87" class="cell" data-execution_count="10">
+<div id="2a00c5cf" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Without error handling - crashes</span></span>
 <span id="cb19-2"><a aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> <span class="dv">10</span> <span class="op">/</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
@@ -1241,7 +1281,7 @@ Cell <span class="ansi-green-fg ansi-bold">In[10], line 2</span>
 </div>
 </div>
 </div>
-<div id="8bc9fff5" class="cell" data-execution_count="11">
+<div id="bcf8d850" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># With error handling - graceful</span></span>
 <span id="cb20-2"><a aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
 <span id="cb20-3"><a aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> <span class="dv">10</span> <span class="op">/</span> <span class="dv">0</span></span>
@@ -1252,6 +1292,11 @@ Cell <span class="ansi-green-fg ansi-bold">In[10], line 2</span>
 <pre><code>Cannot divide by zero!</code></pre>
 </div>
 </div>
+</section>
+<section id="practice-tryexcept" class="slide level2">
+<h2>Practice: Try/Except</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that uses try/except to handle division by zero”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>try: print(10/2)</code> then <code>except: print(&quot;error&quot;)</code> and run it.</p>
 </section>
 <section id="common-exception-types" class="slide level2">
 <h2>Common Exception Types</h2>
@@ -1264,7 +1309,7 @@ Cell <span class="ansi-green-fg ansi-bold">In[10], line 2</span>
 <li><strong><code>FileNotFoundError</code></strong> - file doesn’t exist</li>
 <li><strong><code>TypeError</code></strong> - wrong data type</li>
 </ul>
-<div id="214c01a7" class="cell" data-execution_count="12">
+<div id="7df372de" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
 <span id="cb22-2"><a aria-hidden="true" tabindex="-1"></a>    <span class="bu">int</span>(<span class="st">&quot;not a number&quot;</span>)</span>
 <span id="cb22-3"><a aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">ValueError</span>:</span>
@@ -1274,10 +1319,15 @@ Cell <span class="ansi-green-fg ansi-bold">In[10], line 2</span>
 </div>
 </div>
 </section>
+<section id="practice-exception-types" class="slide level2">
+<h2>Practice: Exception Types</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that catches a ValueError when converting a string to int”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>try: int(&quot;hello&quot;)</code> then <code>except ValueError: print(&quot;Not a number&quot;)</code> and run it.</p>
+</section>
 <section id="list-comprehensions" class="slide level2">
 <h2>List Comprehensions</h2>
 <p>Create lists in a compact, readable way:</p>
-<div id="a8148410" class="cell" data-execution_count="13">
+<div id="3991494c" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Traditional approach</span></span>
 <span id="cb24-2"><a aria-hidden="true" tabindex="-1"></a>squares <span class="op">=</span> []</span>
 <span id="cb24-3"><a aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">6</span>):</span>
@@ -1294,10 +1344,15 @@ Cell <span class="ansi-green-fg ansi-bold">In[10], line 2</span>
 </div>
 <p>Syntax: <code>[expression for item in iterable]</code></p>
 </section>
+<section id="practice-list-comprehensions" class="slide level2">
+<h2>Practice: List Comprehensions</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that uses a list comprehension to create cubes of 1 to 5”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>nums = [x * 2 for x in range(3)]</code> then <code>print(nums)</code> and run it.</p>
+</section>
 <section id="list-comprehensions-with-conditions" class="slide level2">
 <h2>List Comprehensions with Conditions</h2>
 <p>Add conditions to filter items:</p>
-<div id="64c03d80" class="cell" data-execution_count="14">
+<div id="ec8c6881" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Only even squares</span></span>
 <span id="cb26-2"><a aria-hidden="true" tabindex="-1"></a>even_squares <span class="op">=</span> [i<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>) <span class="cf">if</span> i <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>]</span>
 <span id="cb26-3"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(even_squares)</span>
@@ -1313,10 +1368,15 @@ Cell <span class="ansi-green-fg ansi-bold">In[10], line 2</span>
 </div>
 <p>Syntax: <code>[expression for item in iterable if condition]</code></p>
 </section>
+<section id="practice-comprehensions-with-conditions" class="slide level2">
+<h2>Practice: Comprehensions with Conditions</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that uses a list comprehension to get only odd numbers from 1 to 10”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>evens = [x for x in range(10) if x % 2 == 0]</code> then <code>print(evens)</code> and run it.</p>
+</section>
 <section id="dictionary-comprehensions" class="slide level2">
 <h2>Dictionary Comprehensions</h2>
 <p>Create dictionaries compactly:</p>
-<div id="7c273d6a" class="cell" data-execution_count="15">
+<div id="8a8e1dd8" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Map words to their lengths</span></span>
 <span id="cb28-2"><a aria-hidden="true" tabindex="-1"></a>words <span class="op">=</span> [<span class="st">&quot;cat&quot;</span>, <span class="st">&quot;dog&quot;</span>, <span class="st">&quot;elephant&quot;</span>, <span class="st">&quot;bird&quot;</span>]</span>
 <span id="cb28-3"><a aria-hidden="true" tabindex="-1"></a>word_lengths <span class="op">=</span> {word: <span class="bu">len</span>(word) <span class="cf">for</span> word <span class="kw">in</span> words}</span>
@@ -1333,6 +1393,11 @@ Cell <span class="ansi-green-fg ansi-bold">In[10], line 2</span>
 </div>
 </div>
 <p>Syntax: <code>{key_expr: value_expr for item in iterable}</code></p>
+</section>
+<section id="practice-dictionary-comprehensions" class="slide level2">
+<h2>Practice: Dictionary Comprehensions</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that uses a dictionary comprehension to create squares for numbers 1-5”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>d = {x: x*2 for x in range(3)}</code> then <code>print(d)</code> and run it.</p>
 </section>
 <section id="summary" class="slide level2">
 <h2>Summary</h2>

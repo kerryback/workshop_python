@@ -53,6 +53,12 @@ print(df)
 print(f"\nShape: {df.shape}")  # (rows, columns)
 ```
 
+## Practice: Creating DataFrames
+
+**Exercise 1 (with Gemini):** Ask Gemini to "create a DataFrame with three columns: 'product', 'price', and 'quantity' with at least 3 products"
+
+**Exercise 2 (on your own):** Type `data = {'a': [1, 2, 3], 'b': [4, 5, 6]}` then `df = pd.DataFrame(data)` then `print(df)` and run it.
+
 ## Understanding Series
 
 A **Series** is a one-dimensional labeled array - essentially one column of data.
@@ -96,6 +102,12 @@ print(f"Most expensive: ${products.max()}")
 print(f"Cheapest: ${products.min()}")
 print(f"Standard deviation: ${products.std():.2f}")
 ```
+
+## Practice: Series Operations
+
+**Exercise 1 (with Gemini):** Ask Gemini to "create a Series with 5 numbers and calculate the mean and standard deviation"
+
+**Exercise 2 (on your own):** Type `s = pd.Series([10, 20, 30, 40])` then `print(s.mean())` and run it.
 
 ## Creating a Larger Dataset
 
@@ -151,6 +163,12 @@ print(f"\nSubset shape: {subset.shape}")
 print(subset.head(3))
 ```
 
+## Practice: Selecting Columns
+
+**Exercise 1 (with Gemini):** Ask Gemini to "select the 'Name' and 'Age' columns from a DataFrame"
+
+**Exercise 2 (on your own):** Type `df['Name']` and run it to select a single column.
+
 ## Selecting Rows
 
 Use `.loc` for label-based or `.iloc` for position-based row selection:
@@ -181,6 +199,12 @@ print(f"\nEngineering high earners:")
 print(eng_high[['Name', 'Salary', 'Department']])
 ```
 
+## Practice: Filtering Data
+
+**Exercise 1 (with Gemini):** Ask Gemini to "filter a DataFrame to show only rows where Age is greater than 30"
+
+**Exercise 2 (on your own):** Type `df[df['Salary'] > 65000]` and run it to filter rows.
+
 ## Adding and Modifying Columns
 
 Create new columns or modify existing ones:
@@ -201,6 +225,12 @@ df['Experience'] = pd.cut(
 print(f"\nExperience levels:")
 print(df['Experience'].value_counts())
 ```
+
+## Practice: Adding Columns
+
+**Exercise 1 (with Gemini):** Ask Gemini to "add a new column to a DataFrame that calculates 15% tax on a Salary column"
+
+**Exercise 2 (on your own):** Type `df['Double_Salary'] = df['Salary'] * 2` then `print(df[['Name', 'Salary', 'Double_Salary']].head())` and run it.
 
 ## Working with Indexes
 

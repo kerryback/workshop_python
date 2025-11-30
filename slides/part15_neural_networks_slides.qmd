@@ -58,6 +58,12 @@ print(f"  Classes: {len(np.unique(y))} (digits 0-9)")
 print(f"  Feature range: [{X.min():.1f}, {X.max():.1f}]")
 ```
 
+## Practice: Loading Data
+
+**Exercise 1 (with Gemini):** Ask Gemini to "load the digits dataset from sklearn and print its shape"
+
+**Exercise 2 (on your own):** Type `from sklearn.datasets import load_digits` then `digits = load_digits()` then `print(digits.data.shape)` and run it.
+
 ## Visualize Sample Digits
 
 ```{python}
@@ -109,6 +115,12 @@ customer_data = pd.DataFrame({
 print("Customer Data Sample:")
 print(customer_data.head())
 ```
+
+## Practice: Generating Data
+
+**Exercise 1 (with Gemini):** Ask Gemini to "generate random data with numpy and create a pandas DataFrame"
+
+**Exercise 2 (on your own):** Type `x = np.random.uniform(0, 1, 10)` then `print(x)` and run it.
 
 ## Visualize Purchase Behavior
 
@@ -174,6 +186,12 @@ def sigmoid(z):
     return 1 / (1 + np.exp(-z))
 ```
 
+## Practice: Sigmoid Function
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write a Python function that implements the sigmoid activation function"
+
+**Exercise 2 (on your own):** Type `def sigmoid(z): return 1 / (1 + np.exp(-z))` then `print(sigmoid(0))` and run it.
+
 ## Example: Forward Propagation
 
 ```{python}
@@ -199,6 +217,12 @@ print(f"Hidden: h1={h[0]:.3f}, h2={h[1]:.3f}, h3={h[2]:.3f}")
 print(f"Output: y_hat={y_hat:.3f} ({y_hat:.1%} probability)")
 print(f"Prediction: {'Purchase' if y_hat >= 0.5 else 'No Purchase'}")
 ```
+
+## Practice: Forward Propagation
+
+**Exercise 1 (with Gemini):** Ask Gemini to "explain how forward propagation works in a neural network with one hidden layer"
+
+**Exercise 2 (on your own):** Type `z = np.array([0.5, -0.3]) @ np.array([1.2, 0.8])` then `print(z)` and run it to practice matrix multiplication.
 
 ## Summary
 

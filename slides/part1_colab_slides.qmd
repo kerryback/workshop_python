@@ -45,6 +45,12 @@ print(x)
 
 The statement `x=10` assigns the value 10 to the variable `x`. The statement `print(x)` prints the value of `x` to the screen.
 
+## Practice: Variables
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that creates a variable named age with value 25 and prints it"
+
+**Exercise 2 (on your own):** Type `y = 100` then `print(y)` and run it.
+
 ## Running More Code
 
 Add a new code cell and type:
@@ -62,6 +68,12 @@ print(y)
 x = 0
 print(y)
 ```
+
+## Practice: Operations
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that creates a variable z equal to 5 times 3 and prints it"
+
+**Exercise 2 (on your own):** Type `a = 10 + 20` then `print(a)` and run it.
 
 ## Saving and Opening Notebooks
 
@@ -123,3 +135,9 @@ z = y/(1-x)
 ```
 
 If an error message isn't clear, ask the chatbot to explain it and how to fix the error.
+
+## Practice: Error Messages
+
+**Exercise 1 (with Gemini):** Ask Gemini to "explain what ZeroDivisionError means and how to avoid it"
+
+**Exercise 2 (on your own):** Type `print(10 / 2)` and run it (this works correctly).

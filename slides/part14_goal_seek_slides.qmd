@@ -57,6 +57,12 @@ print(f"Starting near 0: solution = {solution1}")
 print(f"Starting near 5: solution = {solution2}")
 ```
 
+## Practice: Using fsolve
+
+**Exercise 1 (with Gemini):** Ask Gemini to "use fsolve to find the value of x where x^2 - 9 = 0"
+
+**Exercise 2 (on your own):** Type `from scipy.optimize import fsolve` then `fsolve(lambda x: x - 5, 0)` and run it to find where x - 5 = 0.
+
 ## Verify the Solutions
 
 ```{python}
@@ -184,6 +190,12 @@ print(f'Was the minimization successful? {result.success}')
 print(f'What is the minimizing value of x? {result.x}')
 print(f'What is the value of the function at the minimum? {result.fun}')
 ```
+
+## Practice: Minimize
+
+**Exercise 1 (with Gemini):** Ask Gemini to "use scipy.optimize.minimize to find the minimum of the function f(x) = x^2 + 3x + 2"
+
+**Exercise 2 (on your own):** Type `from scipy.optimize import minimize` then `result = minimize(lambda x: x**2, 5)` then `print(result.x)` and run it.
 
 ## Maximization via Minimization
 

@@ -40,6 +40,12 @@ print(car)
 
 Think of it like a real dictionary: the **key** is the word, the **value** is the definition.
 
+## Practice: Creating Dictionaries
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that creates a dictionary with keys 'name', 'age', and 'city' and prints it"
+
+**Exercise 2 (on your own):** Type `person = {"name": "Alice", "age": 30}` then `print(person)` and run it.
+
 ## Accessing Dictionary Values
 
 Access values using **keys** in square brackets:
@@ -55,6 +61,12 @@ print("Has 'price':", "price" in car)
 
 Unlike lists (indexed by position), dictionaries use **meaningful keys** like `"brand"` or `"year"`.
 
+## Practice: Accessing Values
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that accesses the 'model' value from a car dictionary"
+
+**Exercise 2 (on your own):** Type `student = {"name": "Bob", "grade": 85}` then `print(student["name"])` and run it.
+
 ## Dictionary Methods
 
 Useful methods to work with dictionaries:
@@ -68,6 +80,12 @@ print("All items:", list(car.items()))
 - **`.keys()`** - returns all keys
 - **`.values()`** - returns all values
 - **`.items()`** - returns key-value pairs as tuples
+
+## Practice: Dictionary Methods
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that prints all keys from a dictionary"
+
+**Exercise 2 (on your own):** Type `d = {"a": 1, "b": 2}` then `print(list(d.values()))` and run it.
 
 ## Adding and Modifying
 
@@ -85,6 +103,12 @@ print("After updating year:", car)
 
 **Key point:** If key exists → update value. If key doesn't exist → create new pair.
 
+## Practice: Adding and Modifying
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that adds a new key 'color' to a car dictionary"
+
+**Exercise 2 (on your own):** Type `book = {"title": "Python"}` then `book["author"] = "Smith"` then `print(book)` and run it.
+
 ## Formatting Long Dictionaries
 
 For readability, break dictionaries across multiple lines:
@@ -101,6 +125,12 @@ print(inventory)
 ```
 
 **Rule:** Can break anywhere **except before a comma**.
+
+## Practice: Formatting
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that creates a multi-line dictionary with 4 items"
+
+**Exercise 2 (on your own):** Create a dictionary on multiple lines for practice (no specific code required).
 
 ## Lists vs. Dictionaries
 
@@ -126,6 +156,12 @@ student = {"name": "Alice", "age": 20, "gpa": 3.8}
 print("Student name:", student["name"])
 ```
 
+## Practice: Lists vs Dictionaries
+
+**Exercise 1 (with Gemini):** Ask Gemini to "explain when to use a list versus a dictionary in Python"
+
+**Exercise 2 (on your own):** Type `scores = [85, 92, 78]` then `print(scores[0])` and run it.
+
 ## The `len` Function
 
 **`len()`** returns the length of strings, lists, and dictionaries:
@@ -141,6 +177,12 @@ print("String length:", len(my_string))
 ```
 
 For dictionaries, `len()` returns the number of key-value pairs.
+
+## Practice: len() Function
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that finds the length of a dictionary"
+
+**Exercise 2 (on your own):** Type `items = [1, 2, 3, 4, 5]` then `print(len(items))` and run it.
 
 ## Summary
 

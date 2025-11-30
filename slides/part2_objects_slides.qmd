@@ -37,6 +37,12 @@ print(type("abc"))
 print(type(print))
 ```
 
+## Practice: Object Types
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that prints the type of the number 3.14"
+
+**Exercise 2 (on your own):** Type `print(type(100))` in a code cell and run it.
+
 ## Floats
 
 Numbers with decimal points are a different type called **floating point** objects, or **floats**.
@@ -47,6 +53,12 @@ They require more space in memory to store than integers.
 x = 10.0
 print(type(x))
 ```
+
+## Practice: Floats
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that creates a variable with a decimal number and prints its type"
+
+**Exercise 2 (on your own):** Type `print(5.0 + 3.0)` and run it.
 
 ## Mathematical Operations
 
@@ -62,6 +74,12 @@ print("2 * 10.0 =", 2*10.0)
 print("3**2 =", 3**2)
 ```
 
+## Practice: Math Operations
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that calculates 5 to the power of 3"
+
+**Exercise 2 (on your own):** Type `print(8 * 7)` and run it.
+
 ## Division Operations
 
 Python has three types of division operators:
@@ -75,6 +93,12 @@ print("10 / 3 =", 10 / 3)
 print("10 // 3 =", 10 // 3)
 print("10 % 3 =", 10 % 3)
 ```
+
+## Practice: Division
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that shows the remainder when 17 is divided by 5"
+
+**Exercise 2 (on your own):** Type `print(20 // 6)` and run it. What is the result?
 
 ## Strings
 
@@ -92,6 +116,12 @@ We can concatenate (paste) strings together with `+`:
 ```{python}
 "abc" + 'xyz'
 ```
+
+## Practice: Strings
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that concatenates 'Hello' and 'World' with a space between them"
+
+**Exercise 2 (on your own):** Type `print("Python" + "!")` and run it.
 
 ## Booleans
 
@@ -112,6 +142,12 @@ print(10 > 5)
 print(3 == 3)
 ```
 
+## Practice: Booleans
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that checks if 15 is greater than or equal to 10"
+
+**Exercise 2 (on your own):** Type `print(7 < 5)` and run it. Is the result True or False?
+
 ## Logical Operators
 
 We can combine booleans with **logical operators**:
@@ -126,6 +162,12 @@ print("A and B:", A and B)
 print("A or B:", A or B)
 ```
 
+## Practice: Logical Operators
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that uses 'and' to check if a number is between 10 and 20"
+
+**Exercise 2 (on your own):** Type `print(True or False)` and run it.
+
 ## Type Conversions
 
 Python provides functions to convert between types:
@@ -139,6 +181,12 @@ print("int(10.7) =", int(10.7))
 print("float(5) =", float(5))
 print("str(42) =", str(42))
 ```
+
+## Practice: Type Conversions
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that converts the string '100' to an integer"
+
+**Exercise 2 (on your own):** Type `print(str(999))` and run it.
 
 ## Attributes and Methods
 
@@ -175,6 +223,12 @@ print(text.strip())
 print("hello".replace("l", "x"))
 ```
 
+## Practice: String Methods
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that converts 'python programming' to uppercase"
+
+**Exercise 2 (on your own):** Type `print("hello".replace("h", "j"))` and run it.
+
 ## f-strings
 
 **f-strings** (formatted strings) let us insert variables into strings.
@@ -187,7 +241,11 @@ statement = f'Alice is {age} years old.'
 print(statement)
 ```
 
-Much easier than concatenating with `+` and `str()`!
+## Practice: f-strings
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code using an f-string to print 'My name is Bob and I am 30 years old'"
+
+**Exercise 2 (on your own):** Type `name = "Sam"` then `print(f"Hello, {name}!")` and run it.
 
 ## Formatting in f-strings
 
@@ -207,6 +265,12 @@ print(f'as percentage: {x:.0%}')
 y = 1000000
 print(f'with commas: {y:,}')
 ```
+
+## Practice: Formatting
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that formats the number 0.75 as a percentage"
+
+**Exercise 2 (on your own):** Type `num = 1234567` then `print(f'{num:,}')` and run it.
 
 ## Summary
 

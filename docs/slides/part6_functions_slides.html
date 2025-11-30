@@ -1073,7 +1073,7 @@ Kerry Back, Rice University
 </section>
 <section id="built-in-functions-examples" class="slide level2">
 <h2>Built-in Functions Examples</h2>
-<div id="a271297b" class="cell" data-execution_count="1">
+<div id="db0120e3" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> [<span class="op">-</span><span class="dv">5</span>, <span class="dv">3</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">8</span>, <span class="dv">2</span>]</span>
 <span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Max:&quot;</span>, <span class="bu">max</span>(numbers))</span>
@@ -1090,9 +1090,14 @@ Round 3.14159 to 2 decimals: 3.14</code></pre>
 </div>
 </div>
 </section>
+<section id="practice-built-in-functions" class="slide level2">
+<h2>Practice: Built-in Functions</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that finds the maximum of a list of numbers”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>print(abs(-10))</code> and run it.</p>
+</section>
 <section id="sequence-functions" class="slide level2">
 <h2>Sequence Functions</h2>
-<div id="d1b35ceb" class="cell" data-execution_count="2">
+<div id="1a283720" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a>fruits <span class="op">=</span> [<span class="st">&quot;banana&quot;</span>, <span class="st">&quot;apple&quot;</span>, <span class="st">&quot;cherry&quot;</span>]</span>
 <span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> [<span class="dv">85</span>, <span class="dv">92</span>, <span class="dv">78</span>]</span>
 <span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a></span>
@@ -1111,10 +1116,15 @@ cherry: 78</code></pre>
 </div>
 </div>
 </section>
+<section id="practice-sequence-functions" class="slide level2">
+<h2>Practice: Sequence Functions</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that sorts a list of names alphabetically”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>print(sorted([3, 1, 4, 1, 5]))</code> and run it.</p>
+</section>
 <section id="enumerate" class="slide level2">
 <h2>Enumerate</h2>
 <p><strong><code>enumerate()</code></strong> adds index numbers to items:</p>
-<div id="f3e7e0e9" class="cell" data-execution_count="3">
+<div id="08cc33f0" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a>fruits <span class="op">=</span> [<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;cherry&quot;</span>]</span>
 <span id="cb5-2"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> index, fruit <span class="kw">in</span> <span class="bu">enumerate</span>(fruits):</span>
@@ -1133,10 +1143,15 @@ cherry: 78</code></pre>
 </div>
 </div>
 </section>
+<section id="practice-enumerate" class="slide level2">
+<h2>Practice: Enumerate</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that uses enumerate to print index and value for a list”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>for i, x in enumerate([&#39;a&#39;, &#39;b&#39;]): print(i, x)</code> and run it.</p>
+</section>
 <section id="creating-custom-functions" class="slide level2">
 <h2>Creating Custom Functions</h2>
 <p>Define your own functions with <strong><code>def</code></strong>:</p>
-<div id="48ba7969" class="cell" data-execution_count="4">
+<div id="d02b4b1c" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add_numbers(a, b):</span>
 <span id="cb7-2"><a aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;Add two numbers together.&quot;&quot;&quot;</span></span>
 <span id="cb7-3"><a aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a <span class="op">+</span> b</span>
@@ -1149,9 +1164,14 @@ cherry: 78</code></pre>
 </div>
 <p><strong>Components:</strong> - <code>def</code> keyword - Function name (lowercase_with_underscores) - Parameters in parentheses - Docstring (optional) - Indented function body - <code>return</code> statement (optional)</p>
 </section>
+<section id="practice-creating-functions" class="slide level2">
+<h2>Practice: Creating Functions</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that creates a function to multiply two numbers”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>def greet(): print(&quot;Hi&quot;)</code> then <code>greet()</code> and run it.</p>
+</section>
 <section id="functions-examples" class="slide level2">
 <h2>Functions Examples</h2>
-<div id="d2abfec8" class="cell" data-execution_count="5">
+<div id="29ed999d" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> greet_person(name):</span>
 <span id="cb9-2"><a aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;Print a greeting.&quot;&quot;&quot;</span></span>
 <span id="cb9-3"><a aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;Hello, </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">!&quot;</span>)</span>
@@ -1174,10 +1194,15 @@ moderate</code></pre>
 </div>
 </div>
 </section>
+<section id="practice-function-examples" class="slide level2">
+<h2>Practice: Function Examples</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that creates a function to check if a number is even”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>def double(x): return x * 2</code> then <code>print(double(5))</code> and run it.</p>
+</section>
 <section id="variable-scope" class="slide level2">
 <h2>Variable Scope</h2>
 <p>Variables created inside functions are <strong>local</strong> - they only exist within the function:</p>
-<div id="235e416e" class="cell" data-execution_count="6">
+<div id="395e8cdb" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_function(x):</span>
 <span id="cb11-2"><a aria-hidden="true" tabindex="-1"></a>    local_var <span class="op">=</span> x <span class="op">*</span> <span class="dv">2</span></span>
 <span id="cb11-3"><a aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> local_var</span>
@@ -1207,7 +1232,7 @@ Cell <span class="ansi-green-fg ansi-bold">In[6], line 9</span>
 <section id="returning-multiple-values" class="slide level2">
 <h2>Returning Multiple Values</h2>
 <p>Functions can return <strong>multiple values</strong> as a tuple:</p>
-<div id="d78b53f2" class="cell" data-execution_count="7">
+<div id="f0d33d34" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_name_parts():</span>
 <span id="cb13-2"><a aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">&quot;John&quot;</span>, <span class="st">&quot;Smith&quot;</span></span>
 <span id="cb13-3"><a aria-hidden="true" tabindex="-1"></a></span>
@@ -1224,9 +1249,14 @@ Tuple: (&#39;John&#39;, &#39;Smith&#39;)</code></pre>
 </div>
 </div>
 </section>
+<section id="practice-multiple-returns" class="slide level2">
+<h2>Practice: Multiple Returns</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that creates a function returning two values and unpacks them”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>def nums(): return 1, 2</code> then <code>a, b = nums()</code> then <code>print(a, b)</code> and run it.</p>
+</section>
 <section id="multiple-return-example" class="slide level2">
 <h2>Multiple Return Example</h2>
-<div id="26124d69" class="cell" data-execution_count="8">
+<div id="836e9fd9" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> rectangle_properties(length, width):</span>
 <span id="cb15-2"><a aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;Calculate area and perimeter of a rectangle.&quot;&quot;&quot;</span></span>
 <span id="cb15-3"><a aria-hidden="true" tabindex="-1"></a>    area <span class="op">=</span> length <span class="op">*</span> width</span>
@@ -1242,10 +1272,15 @@ Perimeter: 16</code></pre>
 </div>
 </div>
 </section>
+<section id="practice-multiple-return-example" class="slide level2">
+<h2>Practice: Multiple Return Example</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that creates a function to calculate circle area and circumference”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>def calc(): return 10, 20</code> then <code>x, y = calc()</code> then <code>print(x + y)</code> and run it.</p>
+</section>
 <section id="default-values" class="slide level2">
 <h2>Default Values</h2>
 <p>Parameters can have <strong>default values</strong> making them optional:</p>
-<div id="33bc86f7" class="cell" data-execution_count="9">
+<div id="518699bd" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> greet(name, greeting<span class="op">=</span><span class="st">&quot;Hello&quot;</span>):</span>
 <span id="cb17-2"><a aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;Greet someone with customizable greeting.&quot;&quot;&quot;</span></span>
 <span id="cb17-3"><a aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="ss">f&quot;</span><span class="sc">{</span>greeting<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">!&quot;</span></span>
@@ -1264,10 +1299,15 @@ Hey, Carol!</code></pre>
 </div>
 <p><strong>Best practice:</strong> Required parameters first, optional ones last.</p>
 </section>
+<section id="practice-default-values" class="slide level2">
+<h2>Practice: Default Values</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that creates a function with a default parameter”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>def say(msg=&quot;Hi&quot;): print(msg)</code> then <code>say()</code> and <code>say(&quot;Hello&quot;)</code> and run it.</p>
+</section>
 <section id="named-arguments" class="slide level2">
 <h2>Named Arguments</h2>
 <p>Call functions with <strong>named arguments</strong> for clarity:</p>
-<div id="9e04bcb0" class="cell" data-execution_count="10">
+<div id="304bac01" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> power(x, y<span class="op">=</span><span class="dv">2</span>):</span>
 <span id="cb19-2"><a aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;Calculate x raised to the power y.&quot;&quot;&quot;</span></span>
 <span id="cb19-3"><a aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">**</span> y</span>
@@ -1289,10 +1329,15 @@ Hey, Carol!</code></pre>
 </div>
 </div>
 </section>
+<section id="practice-named-arguments" class="slide level2">
+<h2>Practice: Named Arguments</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that calls a function using named arguments”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>def add(a, b): return a + b</code> then <code>print(add(b=5, a=3))</code> and run it.</p>
+</section>
 <section id="the-help-function" class="slide level2">
 <h2>The help() Function</h2>
 <p>Use <strong><code>help()</code></strong> to see function documentation:</p>
-<div id="21ebd00d" class="cell" data-execution_count="11">
+<div id="b75f717b" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">help</span>(<span class="bu">round</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Help on built-in function round in module builtins:
@@ -1306,7 +1351,7 @@ round(number, ndigits=None)
 </div>
 </div>
 <p>Also works with methods:</p>
-<div id="dc2b04f8" class="cell" data-execution_count="12">
+<div id="e3e79e27" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">help</span>(<span class="bu">str</span>.replace)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Help on method_descriptor:

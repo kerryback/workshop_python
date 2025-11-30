@@ -42,6 +42,12 @@ plt.ylabel('Sales ($)')
 plt.show()
 ```
 
+## Practice: Line Plots
+
+**Exercise 1 (with Gemini):** Ask Gemini to "create a line plot showing temperature over 7 days"
+
+**Exercise 2 (on your own):** Type `plt.plot([1, 2, 3], [10, 20, 15])` then `plt.show()` and run it.
+
 ## Bar Charts
 
 ```{python}
@@ -57,6 +63,12 @@ plt.ylabel('Number of Employees')
 plt.show()
 ```
 
+## Practice: Bar Charts
+
+**Exercise 1 (with Gemini):** Ask Gemini to "create a bar chart showing sales for 4 different products"
+
+**Exercise 2 (on your own):** Type `plt.bar(['A', 'B', 'C'], [10, 20, 15])` then `plt.show()` and run it.
+
 ## Scatter Plots
 
 ```{python}
@@ -71,6 +83,12 @@ plt.xlabel('Years of Experience')
 plt.ylabel('Salary ($)')
 plt.show()
 ```
+
+## Practice: Scatter Plots
+
+**Exercise 1 (with Gemini):** Ask Gemini to "create a scatter plot showing the relationship between study hours and test scores"
+
+**Exercise 2 (on your own):** Type `plt.scatter([1, 2, 3, 4], [5, 7, 6, 8])` then `plt.show()` and run it.
 
 ## Histograms
 
@@ -127,6 +145,12 @@ ax2.set_ylabel('Profit ($)')
 plt.tight_layout()
 plt.show()
 ```
+
+## Practice: Object-Oriented Plotting
+
+**Exercise 1 (with Gemini):** Ask Gemini to "create a figure with 2 subplots side by side using the object-oriented style"
+
+**Exercise 2 (on your own):** Type `fig, ax = plt.subplots()` then `ax.plot([1, 2, 3])` then `plt.show()` and run it.
 
 ## Styling with Seaborn Themes
 

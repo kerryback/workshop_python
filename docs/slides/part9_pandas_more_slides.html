@@ -1065,7 +1065,7 @@ Kerry Back, Rice University
 </section>
 <section id="sorting-data" class="slide level2">
 <h2>Sorting Data</h2>
-<div id="f3040a57" class="cell" data-execution_count="1">
+<div id="73bfa949" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a>employees <span class="op">=</span> pd.DataFrame({</span>
@@ -1086,10 +1086,15 @@ Kerry Back, Rice University
 </div>
 </div>
 </section>
+<section id="practice-sorting-data" class="slide level2">
+<h2>Practice: Sorting Data</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “sort a DataFrame by the ‘name’ column in alphabetical order”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>employees.sort_values(&#39;salary&#39;)</code> and run it to sort by salary ascending.</p>
+</section>
 <section id="grouping-and-aggregation" class="slide level2">
 <h2>Grouping and Aggregation</h2>
 <p>Group data by categories and compute statistics:</p>
-<div id="aa5bdbd8" class="cell" data-execution_count="2">
+<div id="d0d6938b" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Average salary by department</span></span>
 <span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a>dept_avg <span class="op">=</span> employees.groupby(<span class="st">&#39;department&#39;</span>)[<span class="st">&#39;salary&#39;</span>].mean()</span>
 <span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dept_avg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1103,10 +1108,15 @@ Name: salary, dtype: float64</code></pre>
 </div>
 <p>Common aggregation functions: <code>mean()</code>, <code>median()</code>, <code>min()</code>, <code>max()</code>, <code>std()</code>, <code>count()</code></p>
 </section>
+<section id="practice-grouping-data" class="slide level2">
+<h2>Practice: Grouping Data</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “group a DataFrame by department and calculate the maximum salary in each department”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>employees.groupby(&#39;department&#39;)[&#39;salary&#39;].count()</code> and run it to count employees per department.</p>
+</section>
 <section id="pivot-tables" class="slide level2">
 <h2>Pivot Tables</h2>
 <p>Reshape data to summarize by multiple dimensions:</p>
-<div id="7c3773d8" class="cell" data-execution_count="3">
+<div id="2113f213" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
 <span id="cb5-2"><a aria-hidden="true" tabindex="-1"></a>random.seed(<span class="dv">42</span>)</span>
 <span id="cb5-3"><a aria-hidden="true" tabindex="-1"></a></span>
@@ -1132,7 +1142,7 @@ Widget C    814    996</code></pre>
 </section>
 <section id="handling-missing-data" class="slide level2">
 <h2>Handling Missing Data</h2>
-<div id="25bba1e7" class="cell" data-execution_count="4">
+<div id="77d03e18" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb7-2"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.DataFrame({</span>
@@ -1154,7 +1164,7 @@ dtype: int64</code></pre>
 </section>
 <section id="filling-missing-values" class="slide level2">
 <h2>Filling Missing Values</h2>
-<div id="e9ec2ce2" class="cell" data-execution_count="5">
+<div id="32b24d4f" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Fill missing values</span></span>
 <span id="cb9-2"><a aria-hidden="true" tabindex="-1"></a>filled <span class="op">=</span> data.copy()</span>
 <span id="cb9-3"><a aria-hidden="true" tabindex="-1"></a>filled[<span class="st">&#39;product&#39;</span>] <span class="op">=</span> filled[<span class="st">&#39;product&#39;</span>].fillna(<span class="st">&#39;Unknown&#39;</span>)</span>
@@ -1171,10 +1181,15 @@ dtype: int64</code></pre>
 </div>
 </div>
 </section>
+<section id="practice-handling-missing-data" class="slide level2">
+<h2>Practice: Handling Missing Data</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “check for missing values in a DataFrame and fill them with the column mean”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>data.isnull().sum()</code> and run it to count missing values per column.</p>
+</section>
 <section id="merging-dataframes" class="slide level2">
 <h2>Merging DataFrames</h2>
 <p>Combine data from multiple sources:</p>
-<div id="78d7a2bd" class="cell" data-execution_count="6">
+<div id="9f95c22b" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a>employees_info <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb11-2"><a aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;id&#39;</span>: [<span class="dv">101</span>, <span class="dv">102</span>, <span class="dv">103</span>],</span>
 <span id="cb11-3"><a aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;name&#39;</span>: [<span class="st">&#39;Alice&#39;</span>, <span class="st">&#39;Bob&#39;</span>, <span class="st">&#39;Charlie&#39;</span>]</span>
@@ -1205,7 +1220,7 @@ dtype: int64</code></pre>
 <li><strong>Right</strong>: All records from right, matching from left</li>
 <li><strong>Outer</strong>: All records from both DataFrames</li>
 </ul>
-<div id="100d3d1b" class="cell" data-execution_count="7">
+<div id="c31cf1fb" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Left merge - all employees</span></span>
 <span id="cb13-2"><a aria-hidden="true" tabindex="-1"></a>left <span class="op">=</span> pd.merge(employees_info, salaries, on<span class="op">=</span><span class="st">&#39;id&#39;</span>, how<span class="op">=</span><span class="st">&#39;left&#39;</span>)</span>
 <span id="cb13-3"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Left merge:&quot;</span>)</span>
@@ -1219,10 +1234,15 @@ dtype: int64</code></pre>
 </div>
 </div>
 </section>
+<section id="practice-merging-dataframes" class="slide level2">
+<h2>Practice: Merging DataFrames</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “merge two DataFrames on a common ‘id’ column using an inner join”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>pd.merge(employees_info, salaries, on=&#39;id&#39;)</code> and run it to perform an inner merge.</p>
+</section>
 <section id="concatenating-dataframes" class="slide level2">
 <h2>Concatenating DataFrames</h2>
 <p>Combine data from the same structure:</p>
-<div id="be6f7a1a" class="cell" data-execution_count="8">
+<div id="5e07c183" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a>q1 <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb15-2"><a aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;product&#39;</span>: [<span class="st">&#39;Widget A&#39;</span>, <span class="st">&#39;Widget B&#39;</span>],</span>
 <span id="cb15-3"><a aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;sales&#39;</span>: [<span class="dv">100</span>, <span class="dv">150</span>]</span>
@@ -1246,7 +1266,7 @@ dtype: int64</code></pre>
 </section>
 <section id="reading-and-writing-files" class="slide level2">
 <h2>Reading and Writing Files</h2>
-<div id="66d98387" class="cell" data-execution_count="9">
+<div id="c2a8372c" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Read Excel file</span></span>
 <span id="cb17-2"><a aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_excel(<span class="st">&#39;data.xlsx&#39;</span>)</span>
 <span id="cb17-3"><a aria-hidden="true" tabindex="-1"></a></span>
@@ -1264,7 +1284,7 @@ dtype: int64</code></pre>
 <section id="string-processing" class="slide level2">
 <h2>String Processing</h2>
 <p>Clean and transform text data:</p>
-<div id="9f8775c1" class="cell" data-execution_count="10">
+<div id="583e364c" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a aria-hidden="true" tabindex="-1"></a>customer_data <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb18-2"><a aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;name&#39;</span>: [<span class="st">&#39;  John Smith  &#39;</span>, <span class="st">&#39;JANE DOE&#39;</span>, <span class="st">&#39;bob jones&#39;</span>],</span>
 <span id="cb18-3"><a aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;email&#39;</span>: [<span class="st">&#39;john@email.com&#39;</span>, <span class="st">&#39;JANE@GMAIL.COM&#39;</span>, <span class="st">&#39;bob@yahoo.com&#39;</span>]</span>
@@ -1295,7 +1315,7 @@ dtype: int64</code></pre>
 <li><code>.str.split()</code> - Split strings</li>
 <li><code>.str.replace()</code> - Replace text</li>
 </ul>
-<div id="7a1db315" class="cell" data-execution_count="11">
+<div id="97396534" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Extract email domain</span></span>
 <span id="cb20-2"><a aria-hidden="true" tabindex="-1"></a>customer_data[<span class="st">&#39;domain&#39;</span>] <span class="op">=</span> customer_data[<span class="st">&#39;email_clean&#39;</span>].<span class="bu">str</span>.split(<span class="st">&#39;@&#39;</span>).<span class="bu">str</span>[<span class="dv">1</span>]</span>
 <span id="cb20-3"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(customer_data[[<span class="st">&#39;email_clean&#39;</span>, <span class="st">&#39;domain&#39;</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1306,6 +1326,11 @@ dtype: int64</code></pre>
 2   bob@yahoo.com  yahoo.com</code></pre>
 </div>
 </div>
+</section>
+<section id="practice-string-processing" class="slide level2">
+<h2>Practice: String Processing</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “convert a column of names to lowercase and remove leading/trailing spaces”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>customer_data[&#39;name&#39;].str.upper()</code> and run it to convert names to uppercase.</p>
 </section>
 <section id="summary" class="slide level2">
 <h2>Summary</h2>

@@ -28,6 +28,13 @@
     "text": "Load and Explore the Digits Dataset\n\n# Load the digits dataset\ndigits = load_digits()\nX = digits.data  # 8x8 images flattened to 64 features\ny = digits.target  # Digit labels 0-9\n\nprint(f\"Digits Dataset:\")\nprint(f\"  Total samples: {X.shape[0]:,}\")\nprint(f\"  Features per sample: {X.shape[1]} (8×8 pixels)\")\nprint(f\"  Classes: {len(np.unique(y))} (digits 0-9)\")\nprint(f\"  Feature range: [{X.min():.1f}, {X.max():.1f}]\")\n\nDigits Dataset:\n  Total samples: 1,797\n  Features per sample: 64 (8×8 pixels)\n  Classes: 10 (digits 0-9)\n  Feature range: [0.0, 16.0]"
   },
   {
+    "objectID": "slides/part15_neural_networks_slides.html#practice-loading-data",
+    "href": "slides/part15_neural_networks_slides.html#practice-loading-data",
+    "title": "Part 15: Neural Networks",
+    "section": "Practice: Loading Data",
+    "text": "Practice: Loading Data\nExercise 1 (with Gemini): Ask Gemini to “load the digits dataset from sklearn and print its shape”\nExercise 2 (on your own): Type from sklearn.datasets import load_digits then digits = load_digits() then print(digits.data.shape) and run it."
+  },
+  {
     "objectID": "slides/part15_neural_networks_slides.html#visualize-sample-digits",
     "href": "slides/part15_neural_networks_slides.html#visualize-sample-digits",
     "title": "Part 15: Neural Networks",
@@ -47,6 +54,13 @@
     "title": "Part 15: Neural Networks",
     "section": "Generate Customer Data",
     "text": "Generate Customer Data\n\nnp.random.seed(42)\nn_customers = 200\n\nx1_age = np.random.uniform(-2, 2, n_customers)\nx2_income = np.random.uniform(-2, 2, n_customers)\n\nnoise = np.random.normal(0, 1, n_customers)\ntrue_score = x1_age + x2_income + noise\ny_purchase = (true_score &gt;= 0).astype(int)\n\ncustomer_data = pd.DataFrame({\n    'age_normalized': x1_age,\n    'income_normalized': x2_income,\n    'purchase': y_purchase\n})\n\nprint(\"Customer Data Sample:\")\nprint(customer_data.head())\n\nCustomer Data Sample:\n   age_normalized  income_normalized  purchase\n0       -0.501840           0.568127         1\n1        1.802857          -1.663440         1\n2        0.927976          -1.353485         1\n3        0.394634           1.594217         1\n4       -1.375925           0.425716         0"
+  },
+  {
+    "objectID": "slides/part15_neural_networks_slides.html#practice-generating-data",
+    "href": "slides/part15_neural_networks_slides.html#practice-generating-data",
+    "title": "Part 15: Neural Networks",
+    "section": "Practice: Generating Data",
+    "text": "Practice: Generating Data\nExercise 1 (with Gemini): Ask Gemini to “generate random data with numpy and create a pandas DataFrame”\nExercise 2 (on your own): Type x = np.random.uniform(0, 1, 10) then print(x) and run it."
   },
   {
     "objectID": "slides/part15_neural_networks_slides.html#visualize-purchase-behavior",
@@ -77,11 +91,25 @@
     "text": "Define Sigmoid Function\n\ndef sigmoid(z):\n    \"\"\"Sigmoid activation function: converts any real number to (0,1)\"\"\"\n    z = np.clip(z, -500, 500)  # Prevent overflow\n    return 1 / (1 + np.exp(-z))"
   },
   {
+    "objectID": "slides/part15_neural_networks_slides.html#practice-sigmoid-function",
+    "href": "slides/part15_neural_networks_slides.html#practice-sigmoid-function",
+    "title": "Part 15: Neural Networks",
+    "section": "Practice: Sigmoid Function",
+    "text": "Practice: Sigmoid Function\nExercise 1 (with Gemini): Ask Gemini to “write a Python function that implements the sigmoid activation function”\nExercise 2 (on your own): Type def sigmoid(z): return 1 / (1 + np.exp(-z)) then print(sigmoid(0)) and run it."
+  },
+  {
     "objectID": "slides/part15_neural_networks_slides.html#example-forward-propagation",
     "href": "slides/part15_neural_networks_slides.html#example-forward-propagation",
     "title": "Part 15: Neural Networks",
     "section": "Example: Forward Propagation",
     "text": "Example: Forward Propagation\n\n# Network parameters (example values)\nW1 = np.array([[0.5, 0.3], [-0.4, 0.6], [0.2, -0.3]])\nb1 = np.array([0.1, -0.2, 0.3])\nW2 = np.array([[0.7], [-0.5], [0.8]])\nb2 = np.array([0.2])\n\n# Example input\nx_input = np.array([1.2, -0.8])\n\n# Hidden layer calculation\nz1 = W1 @ x_input + b1\nh = sigmoid(z1)\n\n# Output layer calculation\nz2 = W2.T @ h + b2\ny_hat = sigmoid(z2)[0]\n\nprint(f\"Input: x1={x_input[0]}, x2={x_input[1]}\")\nprint(f\"Hidden: h1={h[0]:.3f}, h2={h[1]:.3f}, h3={h[2]:.3f}\")\nprint(f\"Output: y_hat={y_hat:.3f} ({y_hat:.1%} probability)\")\nprint(f\"Prediction: {'Purchase' if y_hat &gt;= 0.5 else 'No Purchase'}\")\n\nInput: x1=1.2, x2=-0.8\nHidden: h1=0.613, h2=0.239, h3=0.686\nOutput: y_hat=0.742 (74.2% probability)\nPrediction: Purchase"
+  },
+  {
+    "objectID": "slides/part15_neural_networks_slides.html#practice-forward-propagation",
+    "href": "slides/part15_neural_networks_slides.html#practice-forward-propagation",
+    "title": "Part 15: Neural Networks",
+    "section": "Practice: Forward Propagation",
+    "text": "Practice: Forward Propagation\nExercise 1 (with Gemini): Ask Gemini to “explain how forward propagation works in a neural network with one hidden layer”\nExercise 2 (on your own): Type z = np.array([0.5, -0.3]) @ np.array([1.2, 0.8]) then print(z) and run it to practice matrix multiplication."
   },
   {
     "objectID": "slides/part15_neural_networks_slides.html#summary",
@@ -105,11 +133,25 @@
     "text": "Creating Numpy Arrays\n\nimport numpy as np\n\n# create a 1-dimensional array\narr_1d = np.array([1.1, 1.4, 2.6])\nprint('1-Dimensional Array:', arr_1d)\n\n# create a 2-dimensional array\narr_2d = np.array([\n    [1.1, 1.4, 2.6],\n    [-3.2, 5.603, 4]\n])\nprint('\\n2-Dimensional Array:')\nprint(arr_2d)\n\n1-Dimensional Array: [1.1 1.4 2.6]\n\n2-Dimensional Array:\n[[ 1.1    1.4    2.6  ]\n [-3.2    5.603  4.   ]]"
   },
   {
+    "objectID": "slides/part13_simulation_slides.html#practice-creating-arrays",
+    "href": "slides/part13_simulation_slides.html#practice-creating-arrays",
+    "title": "Part 13: Simulation",
+    "section": "Practice: Creating Arrays",
+    "text": "Practice: Creating Arrays\nExercise 1 (with Gemini): Ask Gemini to “create a 2D numpy array with 3 rows and 4 columns”\nExercise 2 (on your own): Type import numpy as np then arr = np.array([1, 2, 3]) then print(arr) and run it."
+  },
+  {
     "objectID": "slides/part13_simulation_slides.html#slicing-arrays",
     "href": "slides/part13_simulation_slides.html#slicing-arrays",
     "title": "Part 13: Simulation",
     "section": "Slicing Arrays",
     "text": "Slicing Arrays\n\n# slice a 1-dimensional array (like slicing a list)\nprint('Extract a single element:', arr_1d[1])\nprint('Extract a range:', arr_1d[:2])\n\n# slice a 2-dimensional array - index is [row, column]\nprint('\\nExtract element from 2d array:', arr_2d[0, 1])\nprint('Extract range from 2d array:')\nprint(arr_2d[:, :2])\n\nExtract a single element: 1.4\nExtract a range: [1.1 1.4]\n\nExtract element from 2d array: 1.4\nExtract range from 2d array:\n[[ 1.1    1.4  ]\n [-3.2    5.603]]"
+  },
+  {
+    "objectID": "slides/part13_simulation_slides.html#practice-slicing-arrays",
+    "href": "slides/part13_simulation_slides.html#practice-slicing-arrays",
+    "title": "Part 13: Simulation",
+    "section": "Practice: Slicing Arrays",
+    "text": "Practice: Slicing Arrays\nExercise 1 (with Gemini): Ask Gemini to “extract the first row from a 2D numpy array”\nExercise 2 (on your own): Type arr = np.array([[1, 2], [3, 4]]) then print(arr[0, 1]) and run it."
   },
   {
     "objectID": "slides/part13_simulation_slides.html#array-operations",
@@ -119,6 +161,13 @@
     "text": "Array Operations\n\n# array addition (sum element by element)\narr_1d_second = np.array([7, 4.3, 1.1])\nprint('Sum of arrays:', arr_1d + arr_1d_second)\n\n# array multiplication (multiply element by element)\nprint('Product of arrays:', arr_1d * arr_1d_second)\n\n# broadcasting: multiply by scalar\nprint('\\nBroadcast (multiply by 2):')\nprint(2 * arr_2d)\n\nSum of arrays: [8.1 5.7 3.7]\nProduct of arrays: [7.7  6.02 2.86]\n\nBroadcast (multiply by 2):\n[[ 2.2    2.8    5.2  ]\n [-6.4   11.206  8.   ]]"
   },
   {
+    "objectID": "slides/part13_simulation_slides.html#practice-array-operations",
+    "href": "slides/part13_simulation_slides.html#practice-array-operations",
+    "title": "Part 13: Simulation",
+    "section": "Practice: Array Operations",
+    "text": "Practice: Array Operations\nExercise 1 (with Gemini): Ask Gemini to “create two numpy arrays and add them together element-wise”\nExercise 2 (on your own): Type import numpy as np then arr = np.array([1, 2, 3]) then print(arr * 2) and run it."
+  },
+  {
     "objectID": "slides/part13_simulation_slides.html#array-methods",
     "href": "slides/part13_simulation_slides.html#array-methods",
     "title": "Part 13: Simulation",
@@ -126,11 +175,25 @@
     "text": "Array Methods\n\n# sum method\nprint('Array:', arr_1d)\nprint('Sum:', arr_1d.sum())\n\n# standard deviation method\nprint('\\nStandard deviation:', arr_1d.std())\n\n# other useful methods: mean(), min(), max()\nprint('Mean:', arr_1d.mean())\n\nArray: [1.1 1.4 2.6]\nSum: 5.1\n\nStandard deviation: 0.6480740698407861\nMean: 1.7"
   },
   {
+    "objectID": "slides/part13_simulation_slides.html#practice-array-methods",
+    "href": "slides/part13_simulation_slides.html#practice-array-methods",
+    "title": "Part 13: Simulation",
+    "section": "Practice: Array Methods",
+    "text": "Practice: Array Methods\nExercise 1 (with Gemini): Ask Gemini to “calculate the sum and mean of a numpy array”\nExercise 2 (on your own): Type arr = np.array([10, 20, 30]) then print(arr.max()) and run it."
+  },
+  {
     "objectID": "slides/part13_simulation_slides.html#random-number-generation",
     "href": "slides/part13_simulation_slides.html#random-number-generation",
     "title": "Part 13: Simulation",
     "section": "Random Number Generation",
     "text": "Random Number Generation\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\n# Set random seed for reproducible results\nnp.random.seed(42)\n\n# Roll a six-sided die 1000 times\nnum_rolls = 1000\ndice_rolls = np.random.randint(1, 7, num_rolls)\n\nprint(f\"First 10 rolls: {dice_rolls[:10]}\")\nprint(f\"Average: {dice_rolls.mean():.2f} (expected: 3.5)\")\n\nFirst 10 rolls: [4 5 3 5 5 2 3 3 3 5]\nAverage: 3.46 (expected: 3.5)"
+  },
+  {
+    "objectID": "slides/part13_simulation_slides.html#practice-random-dice-rolls",
+    "href": "slides/part13_simulation_slides.html#practice-random-dice-rolls",
+    "title": "Part 13: Simulation",
+    "section": "Practice: Random Dice Rolls",
+    "text": "Practice: Random Dice Rolls\nExercise 1 (with Gemini): Ask Gemini to “simulate rolling two dice 100 times and calculate the average sum”\nExercise 2 (on your own): Type np.random.randint(1, 7, 10) and run it to simulate 10 dice rolls."
   },
   {
     "objectID": "slides/part13_simulation_slides.html#visualizing-dice-rolls",
@@ -152,6 +215,13 @@
     "title": "Part 13: Simulation",
     "section": "Monte Carlo Simulation",
     "text": "Monte Carlo Simulation\n\n# Simulate 1,000 possible years\nnum_simulations = 1000\nall_annual_totals = []\n\nfor sim in range(num_simulations):\n    year_sales = simulate_one_year()\n    all_annual_totals.append(sum(year_sales))\n\nall_annual_totals = np.array(all_annual_totals)\n\nprint(f\"Average annual sales: ${all_annual_totals.mean():,.0f}\")\nprint(f\"Minimum: ${all_annual_totals.min():,.0f}\")\nprint(f\"Maximum: ${all_annual_totals.max():,.0f}\")\nprint(f\"10th percentile: ${np.percentile(all_annual_totals, 10):,.0f}\")\nprint(f\"90th percentile: ${np.percentile(all_annual_totals, 90):,.0f}\")\n\nAverage annual sales: $314,614\nMinimum: $256,747\nMaximum: $373,673\n10th percentile: $292,487\n90th percentile: $336,429"
+  },
+  {
+    "objectID": "slides/part13_simulation_slides.html#practice-monte-carlo-simulation",
+    "href": "slides/part13_simulation_slides.html#practice-monte-carlo-simulation",
+    "title": "Part 13: Simulation",
+    "section": "Practice: Monte Carlo Simulation",
+    "text": "Practice: Monte Carlo Simulation\nExercise 1 (with Gemini): Ask Gemini to “run a Monte Carlo simulation to estimate the probability of getting heads at least 6 times in 10 coin flips”\nExercise 2 (on your own): Type results = [np.random.randint(0, 2, 10).sum() for _ in range(1000)] then print(np.mean(results)) and run it."
   },
   {
     "objectID": "slides/part13_simulation_slides.html#visualizing-results",
@@ -203,6 +273,13 @@
     "text": "Single Numeric Explanatory Variable\nScatter plot: Shows relationship and correlation\n```{python}\nplt.figure(figsize=(8, 5))\nsns.scatterplot(data=wages, x='educ', y='wage', alpha=0.5)\nplt.xlabel('Years of Education')\nplt.ylabel('Hourly Wage ($)')\nplt.title('Wage vs Education')\nplt.show()\n```\nRegression plot: Adds trend line to see direction and strength\n```{python}\nplt.figure(figsize=(8, 5))\nsns.regplot(data=wages, x='educ', y='wage', scatter_kws={'alpha':0.5})\nplt.xlabel('Years of Education')\nplt.ylabel('Hourly Wage ($)')\nplt.title('Wage vs Education with Trend Line')\nplt.show()\n```"
   },
   {
+    "objectID": "slides/part11_visualization_more_slides.html#practice-regression-plots",
+    "href": "slides/part11_visualization_more_slides.html#practice-regression-plots",
+    "title": "Part 11: More Visualization",
+    "section": "Practice: Regression Plots",
+    "text": "Practice: Regression Plots\nExercise 1 (with Gemini): Ask Gemini to “create a regression plot showing the relationship between two numeric variables”\nExercise 2 (on your own): Type sns.regplot(x=[1, 2, 3, 4], y=[2, 4, 3, 5]) then plt.show() and run it."
+  },
+  {
     "objectID": "slides/part11_visualization_more_slides.html#single-categorical-explanatory-variable",
     "href": "slides/part11_visualization_more_slides.html#single-categorical-explanatory-variable",
     "title": "Part 11: More Visualization",
@@ -210,11 +287,25 @@
     "text": "Single Categorical Explanatory Variable\nBox plot: Shows distribution of wages within each category (preferred)\n```{python}\n# Create categorical variable\nwages['Gender'] = wages['female'].map({0: 'Male', 1: 'Female'})\n\nplt.figure(figsize=(8, 5))\nsns.boxplot(data=wages, x='Gender', y='wage')\nplt.ylabel('Hourly Wage ($)')\nplt.title('Wage Distribution by Gender')\nplt.show()\n```\nAlternatives: Strip plot, violin plot, or bar plot with error bars"
   },
   {
+    "objectID": "slides/part11_visualization_more_slides.html#practice-box-plots",
+    "href": "slides/part11_visualization_more_slides.html#practice-box-plots",
+    "title": "Part 11: More Visualization",
+    "section": "Practice: Box Plots",
+    "text": "Practice: Box Plots\nExercise 1 (with Gemini): Ask Gemini to “create a box plot comparing test scores across different classes”\nExercise 2 (on your own): Type sns.boxplot(x=['A', 'A', 'B', 'B'], y=[10, 12, 15, 17]) then plt.show() and run it."
+  },
+  {
     "objectID": "slides/part11_visualization_more_slides.html#multiple-categorical-variables",
     "href": "slides/part11_visualization_more_slides.html#multiple-categorical-variables",
     "title": "Part 11: More Visualization",
     "section": "Multiple Categorical Variables",
     "text": "Multiple Categorical Variables\nGrouped box plots: Use hue for a second categorical variable\n```{python}\nwages['Marital_Status'] = wages['married'].map({0: 'Not Married', 1: 'Married'})\n\nplt.figure(figsize=(10, 6))\nsns.boxplot(data=wages, x='Gender', y='wage', hue='Marital_Status')\nplt.ylabel('Hourly Wage ($)')\nplt.title('Wage by Gender and Marital Status')\nplt.show()\n```\nHeatmap: Matrix showing mean wage for each combination\n```{python}\npivot_data = wages.pivot_table(values='wage',\n                               index='Gender',\n                               columns='Marital_Status')\nplt.figure(figsize=(8, 5))\nsns.heatmap(pivot_data, annot=True, fmt='.2f', cmap='YlOrRd')\nplt.title('Mean Wage by Gender and Marital Status')\nplt.show()\n```"
+  },
+  {
+    "objectID": "slides/part11_visualization_more_slides.html#practice-heatmaps",
+    "href": "slides/part11_visualization_more_slides.html#practice-heatmaps",
+    "title": "Part 11: More Visualization",
+    "section": "Practice: Heatmaps",
+    "text": "Practice: Heatmaps\nExercise 1 (with Gemini): Ask Gemini to “create a heatmap showing average values for different category combinations”\nExercise 2 (on your own): Type sns.heatmap([[1, 2], [3, 4]], annot=True) then plt.show() and run it."
   },
   {
     "objectID": "slides/part11_visualization_more_slides.html#numeric-categorical-variables",
@@ -245,11 +336,25 @@
     "text": "Sorting Data\n\nimport pandas as pd\n\nemployees = pd.DataFrame({\n    'name': ['Alice', 'Bob', 'Charlie', 'Diana', 'Eve'],\n    'department': ['Sales', 'Engineering', 'Sales', 'Marketing', 'Engineering'],\n    'salary': [50000, 80000, 55000, 60000, 85000]\n})\n\n# Sort by salary (descending)\nprint(employees.sort_values('salary', ascending=False))\n\n      name   department  salary\n4      Eve  Engineering   85000\n1      Bob  Engineering   80000\n3    Diana    Marketing   60000\n2  Charlie        Sales   55000\n0    Alice        Sales   50000"
   },
   {
+    "objectID": "slides/part9_pandas_more_slides.html#practice-sorting-data",
+    "href": "slides/part9_pandas_more_slides.html#practice-sorting-data",
+    "title": "Part 9: More Pandas",
+    "section": "Practice: Sorting Data",
+    "text": "Practice: Sorting Data\nExercise 1 (with Gemini): Ask Gemini to “sort a DataFrame by the ‘name’ column in alphabetical order”\nExercise 2 (on your own): Type employees.sort_values('salary') and run it to sort by salary ascending."
+  },
+  {
     "objectID": "slides/part9_pandas_more_slides.html#grouping-and-aggregation",
     "href": "slides/part9_pandas_more_slides.html#grouping-and-aggregation",
     "title": "Part 9: More Pandas",
     "section": "Grouping and Aggregation",
     "text": "Grouping and Aggregation\nGroup data by categories and compute statistics:\n\n# Average salary by department\ndept_avg = employees.groupby('department')['salary'].mean()\nprint(dept_avg)\n\ndepartment\nEngineering    82500.0\nMarketing      60000.0\nSales          52500.0\nName: salary, dtype: float64\n\n\nCommon aggregation functions: mean(), median(), min(), max(), std(), count()"
+  },
+  {
+    "objectID": "slides/part9_pandas_more_slides.html#practice-grouping-data",
+    "href": "slides/part9_pandas_more_slides.html#practice-grouping-data",
+    "title": "Part 9: More Pandas",
+    "section": "Practice: Grouping Data",
+    "text": "Practice: Grouping Data\nExercise 1 (with Gemini): Ask Gemini to “group a DataFrame by department and calculate the maximum salary in each department”\nExercise 2 (on your own): Type employees.groupby('department')['salary'].count() and run it to count employees per department."
   },
   {
     "objectID": "slides/part9_pandas_more_slides.html#pivot-tables",
@@ -273,6 +378,13 @@
     "text": "Filling Missing Values\n\n# Fill missing values\nfilled = data.copy()\nfilled['product'] = filled['product'].fillna('Unknown')\nfilled['price'] = filled['price'].fillna(data['price'].mean())\nfilled['quantity'] = filled['quantity'].fillna(0)\n\nprint(filled)\n\n    product  price  quantity\n0  Widget A  10.50     100.0\n1  Widget B  12.75     200.0\n2   Unknown  15.00     150.0\n3  Widget C  12.75       0.0"
   },
   {
+    "objectID": "slides/part9_pandas_more_slides.html#practice-handling-missing-data",
+    "href": "slides/part9_pandas_more_slides.html#practice-handling-missing-data",
+    "title": "Part 9: More Pandas",
+    "section": "Practice: Handling Missing Data",
+    "text": "Practice: Handling Missing Data\nExercise 1 (with Gemini): Ask Gemini to “check for missing values in a DataFrame and fill them with the column mean”\nExercise 2 (on your own): Type data.isnull().sum() and run it to count missing values per column."
+  },
+  {
     "objectID": "slides/part9_pandas_more_slides.html#merging-dataframes",
     "href": "slides/part9_pandas_more_slides.html#merging-dataframes",
     "title": "Part 9: More Pandas",
@@ -285,6 +397,13 @@
     "title": "Part 9: More Pandas",
     "section": "Types of Merges",
     "text": "Types of Merges\n\nInner: Only matching records from both DataFrames\nLeft: All records from left, matching from right\nRight: All records from right, matching from left\nOuter: All records from both DataFrames\n\n\n# Left merge - all employees\nleft = pd.merge(employees_info, salaries, on='id', how='left')\nprint(\"Left merge:\")\nprint(left)\n\nLeft merge:\n    id     name   salary\n0  101    Alice  50000.0\n1  102      Bob  80000.0\n2  103  Charlie      NaN"
+  },
+  {
+    "objectID": "slides/part9_pandas_more_slides.html#practice-merging-dataframes",
+    "href": "slides/part9_pandas_more_slides.html#practice-merging-dataframes",
+    "title": "Part 9: More Pandas",
+    "section": "Practice: Merging DataFrames",
+    "text": "Practice: Merging DataFrames\nExercise 1 (with Gemini): Ask Gemini to “merge two DataFrames on a common ‘id’ column using an inner join”\nExercise 2 (on your own): Type pd.merge(employees_info, salaries, on='id') and run it to perform an inner merge."
   },
   {
     "objectID": "slides/part9_pandas_more_slides.html#concatenating-dataframes",
@@ -315,6 +434,13 @@
     "text": "Common String Methods\nUseful .str methods:\n\n.str.lower(), .str.upper() - Change case\n.str.strip() - Remove whitespace\n.str.contains() - Check for substring\n.str.split() - Split strings\n.str.replace() - Replace text\n\n\n# Extract email domain\ncustomer_data['domain'] = customer_data['email_clean'].str.split('@').str[1]\nprint(customer_data[['email_clean', 'domain']])\n\n      email_clean     domain\n0  john@email.com  email.com\n1  jane@gmail.com  gmail.com\n2   bob@yahoo.com  yahoo.com"
   },
   {
+    "objectID": "slides/part9_pandas_more_slides.html#practice-string-processing",
+    "href": "slides/part9_pandas_more_slides.html#practice-string-processing",
+    "title": "Part 9: More Pandas",
+    "section": "Practice: String Processing",
+    "text": "Practice: String Processing\nExercise 1 (with Gemini): Ask Gemini to “convert a column of names to lowercase and remove leading/trailing spaces”\nExercise 2 (on your own): Type customer_data['name'].str.upper() and run it to convert names to uppercase."
+  },
+  {
     "objectID": "slides/part9_pandas_more_slides.html#summary",
     "href": "slides/part9_pandas_more_slides.html#summary",
     "title": "Part 9: More Pandas",
@@ -336,6 +462,13 @@
     "text": "Importing from Libraries\nImport specific functions from a library:\n\nfrom math import sqrt\n\nresult = sqrt(9)\nprint(result)\n\n3.0\n\n\nUse the function directly without a prefix."
   },
   {
+    "objectID": "slides/part7_libraries_slides.html#practice-importing-functions",
+    "href": "slides/part7_libraries_slides.html#practice-importing-functions",
+    "title": "Part 7: Libraries",
+    "section": "Practice: Importing Functions",
+    "text": "Practice: Importing Functions\nExercise 1 (with Gemini): Ask Gemini to “write Python code that imports the sqrt function from math and uses it”\nExercise 2 (on your own): Type from math import pi then print(pi) and run it."
+  },
+  {
     "objectID": "slides/part7_libraries_slides.html#importing-entire-libraries",
     "href": "slides/part7_libraries_slides.html#importing-entire-libraries",
     "title": "Part 7: Libraries",
@@ -343,11 +476,25 @@
     "text": "Importing Entire Libraries\nImport the whole library and access its contents:\n\nimport math\n\nresult = math.sqrt(9)\nprint(f\"Square root: {result}\")\nprint(f\"Pi: {math.pi}\")\nprint(f\"Cosine of 0: {math.cos(0)}\")\n\nSquare root: 3.0\nPi: 3.141592653589793\nCosine of 0: 1.0\n\n\nUse library.function() syntax."
   },
   {
+    "objectID": "slides/part7_libraries_slides.html#practice-importing-libraries",
+    "href": "slides/part7_libraries_slides.html#practice-importing-libraries",
+    "title": "Part 7: Libraries",
+    "section": "Practice: Importing Libraries",
+    "text": "Practice: Importing Libraries\nExercise 1 (with Gemini): Ask Gemini to “write Python code that imports the math library and calculates the square root of 16”\nExercise 2 (on your own): Type import math then print(math.sqrt(25)) and run it."
+  },
+  {
     "objectID": "slides/part7_libraries_slides.html#using-aliases",
     "href": "slides/part7_libraries_slides.html#using-aliases",
     "title": "Part 7: Libraries",
     "section": "Using Aliases",
     "text": "Using Aliases\nAbbreviate library names with as:\n\nimport math as m\n\nresult = m.sqrt(16)\nprint(result)\n\n4.0\n\n\nEspecially useful for libraries with long names!"
+  },
+  {
+    "objectID": "slides/part7_libraries_slides.html#practice-using-aliases",
+    "href": "slides/part7_libraries_slides.html#practice-using-aliases",
+    "title": "Part 7: Libraries",
+    "section": "Practice: Using Aliases",
+    "text": "Practice: Using Aliases\nExercise 1 (with Gemini): Ask Gemini to “write Python code that imports math as m and uses it to calculate pi times 2”\nExercise 2 (on your own): Type import math as m then print(m.pi) and run it."
   },
   {
     "objectID": "slides/part7_libraries_slides.html#standard-alias-conventions",
@@ -362,6 +509,13 @@
     "title": "Part 7: Libraries",
     "section": "Import Patterns Comparison",
     "text": "Import Patterns Comparison\nThree common patterns:\n\n# 1. Import entire module\nimport math\nx = math.sqrt(25)\n\n# 2. Import with alias\nimport math as m\ny = m.sqrt(25)\n\n# 3. Import specific functions\nfrom math import sqrt\nz = sqrt(25)\n\nprint(f\"All equal: {x == y == z}\")\n\nAll equal: True"
+  },
+  {
+    "objectID": "slides/part7_libraries_slides.html#practice-import-patterns",
+    "href": "slides/part7_libraries_slides.html#practice-import-patterns",
+    "title": "Part 7: Libraries",
+    "section": "Practice: Import Patterns",
+    "text": "Practice: Import Patterns\nExercise 1 (with Gemini): Ask Gemini to “explain the difference between ‘import math’ and ‘from math import sqrt’”\nExercise 2 (on your own): Type import math then from math import pi then print(math.sqrt(9), pi) and run it."
   },
   {
     "objectID": "slides/part7_libraries_slides.html#installing-libraries-with-pip",
@@ -382,7 +536,14 @@
     "href": "slides/part7_libraries_slides.html#example-using-multiple-libraries",
     "title": "Part 7: Libraries",
     "section": "Example: Using Multiple Libraries",
-    "text": "Example: Using Multiple Libraries\n\nimport math\nfrom datetime import date, timedelta\n\n# Use math\ncircle_area = math.pi * (5 ** 2)\nprint(f\"Circle area: {circle_area:.2f}\")\n\n# Use datetime\ntoday = date.today()\nnext_week = today + timedelta(weeks=1)\nprint(f\"Today: {today}\")\nprint(f\"Next week: {next_week}\")\n\nCircle area: 78.54\nToday: 2025-11-29\nNext week: 2025-12-06"
+    "text": "Example: Using Multiple Libraries\n\nimport math\nfrom datetime import date, timedelta\n\n# Use math\ncircle_area = math.pi * (5 ** 2)\nprint(f\"Circle area: {circle_area:.2f}\")\n\n# Use datetime\ntoday = date.today()\nnext_week = today + timedelta(weeks=1)\nprint(f\"Today: {today}\")\nprint(f\"Next week: {next_week}\")\n\nCircle area: 78.54\nToday: 2025-11-30\nNext week: 2025-12-07"
+  },
+  {
+    "objectID": "slides/part7_libraries_slides.html#practice-multiple-libraries",
+    "href": "slides/part7_libraries_slides.html#practice-multiple-libraries",
+    "title": "Part 7: Libraries",
+    "section": "Practice: Multiple Libraries",
+    "text": "Practice: Multiple Libraries\nExercise 1 (with Gemini): Ask Gemini to “write Python code that imports and uses both math and datetime libraries”\nExercise 2 (on your own): Type import math then from datetime import date then print(math.pi, date.today()) and run it."
   },
   {
     "objectID": "slides/part7_libraries_slides.html#summary",
@@ -399,11 +560,25 @@
     "text": "If-Elif-Else Statements\nConditional statements let your program make decisions:\n\nscore = 85\n\nif score &gt;= 90:\n    grade = \"A\"\nelif score &gt;= 80:\n    grade = \"B\"\nelif score &gt;= 70:\n    grade = \"C\"\nelse:\n    grade = \"F\"\n\nprint(f\"Score: {score}, Grade: {grade}\")\n\nScore: 85, Grade: B\n\n\nKey points: Use comparison operators (==, !=, &lt;, &gt;, &lt;=, &gt;=) and indentation is crucial!"
   },
   {
+    "objectID": "slides/part5_flow_control_slides.html#practice-if-elif-else",
+    "href": "slides/part5_flow_control_slides.html#practice-if-elif-else",
+    "title": "Part 5: Flow Control",
+    "section": "Practice: If-Elif-Else",
+    "text": "Practice: If-Elif-Else\nExercise 1 (with Gemini): Ask Gemini to “write Python code that checks if a temperature is hot, warm, or cold”\nExercise 2 (on your own): Type x = 15 then if x &gt; 10: print(\"big\") and run it."
+  },
+  {
     "objectID": "slides/part5_flow_control_slides.html#logical-operators",
     "href": "slides/part5_flow_control_slides.html#logical-operators",
     "title": "Part 5: Flow Control",
     "section": "Logical Operators",
     "text": "Logical Operators\nCombine conditions with logical operators:\n\nand - True if both conditions are True\nor - True if at least one is True\nnot - True if condition is False\n\n\nage = 25\nhas_license = True\n\nif age &gt;= 18 and has_license:\n    print(\"You can drive!\")\nelse:\n    print(\"Cannot drive\")\n\nYou can drive!"
+  },
+  {
+    "objectID": "slides/part5_flow_control_slides.html#practice-logical-operators",
+    "href": "slides/part5_flow_control_slides.html#practice-logical-operators",
+    "title": "Part 5: Flow Control",
+    "section": "Practice: Logical Operators",
+    "text": "Practice: Logical Operators\nExercise 1 (with Gemini): Ask Gemini to “write Python code that checks if a number is between 10 and 20 using ‘and’”\nExercise 2 (on your own): Type print(True and False) and run it."
   },
   {
     "objectID": "slides/part5_flow_control_slides.html#membership-testing",
@@ -413,11 +588,25 @@
     "text": "Membership Testing\nCheck if an item is in a collection:\n\nvowels = \"aeiou\"\nletter = \"a\"\n\nif letter in vowels:\n    print(f\"{letter} is a vowel\")\nelse:\n    print(f\"{letter} is a consonant\")\n\na is a vowel\n\n\nWorks with strings, lists, dictionaries, and more!"
   },
   {
+    "objectID": "slides/part5_flow_control_slides.html#practice-membership-testing",
+    "href": "slides/part5_flow_control_slides.html#practice-membership-testing",
+    "title": "Part 5: Flow Control",
+    "section": "Practice: Membership Testing",
+    "text": "Practice: Membership Testing\nExercise 1 (with Gemini): Ask Gemini to “write Python code that checks if ‘apple’ is in a list of fruits”\nExercise 2 (on your own): Type print(\"x\" in \"example\") and run it."
+  },
+  {
     "objectID": "slides/part5_flow_control_slides.html#float-precision-warning",
     "href": "slides/part5_flow_control_slides.html#float-precision-warning",
     "title": "Part 5: Flow Control",
     "section": "Float Precision Warning",
     "text": "Float Precision Warning\nProblem: Floating-point arithmetic can have precision errors:\n\nresult = 0.1 + 0.2\nprint(f\"0.1 + 0.2 = {result}\")\nprint(f\"0.1 + 0.2 == 0.3: {result == 0.3}\")\n\n0.1 + 0.2 = 0.30000000000000004\n0.1 + 0.2 == 0.3: False\n\n\nSolution: Use round() for comparisons:\n\nif round(0.1 + 0.2, 1) == round(0.3, 1):\n    print(\"Equal when rounded!\")\n\nEqual when rounded!"
+  },
+  {
+    "objectID": "slides/part5_flow_control_slides.html#practice-float-precision",
+    "href": "slides/part5_flow_control_slides.html#practice-float-precision",
+    "title": "Part 5: Flow Control",
+    "section": "Practice: Float Precision",
+    "text": "Practice: Float Precision\nExercise 1 (with Gemini): Ask Gemini to “explain why 0.1 + 0.2 doesn’t equal 0.3 in Python”\nExercise 2 (on your own): Type print(round(3.14159, 2)) and run it."
   },
   {
     "objectID": "slides/part5_flow_control_slides.html#ternary-operator-compact-if-else",
@@ -427,11 +616,25 @@
     "text": "Ternary Operator (Compact If-Else)\nWrite simple if-else in one line:\n\nnumber = -15\nabs_value = number if number &gt;= 0 else -number\nprint(abs_value)\n\n# Equivalent to:\n# if number &gt;= 0:\n#     abs_value = number\n# else:\n#     abs_value = -number\n\n15\n\n\nSyntax: value_if_true if condition else value_if_false"
   },
   {
+    "objectID": "slides/part5_flow_control_slides.html#practice-ternary-operator",
+    "href": "slides/part5_flow_control_slides.html#practice-ternary-operator",
+    "title": "Part 5: Flow Control",
+    "section": "Practice: Ternary Operator",
+    "text": "Practice: Ternary Operator\nExercise 1 (with Gemini): Ask Gemini to “write Python code that uses a ternary operator to find the maximum of two numbers”\nExercise 2 (on your own): Type x = 10 then result = \"big\" if x &gt; 5 else \"small\" then print(result) and run it."
+  },
+  {
     "objectID": "slides/part5_flow_control_slides.html#for-loops-with-range",
     "href": "slides/part5_flow_control_slides.html#for-loops-with-range",
     "title": "Part 5: Flow Control",
     "section": "For Loops with range()",
     "text": "For Loops with range()\nrange() generates sequences of numbers:\n\nrange(n) → 0 to n-1\nrange(start, stop) → start to stop-1\nrange(start, stop, step) → with custom increment\n\n\n# Calculate sum of 1 to 10\ntotal = 0\nfor i in range(1, 11):\n    total += i\nprint(f\"Sum: {total}\")\n\nSum: 55"
+  },
+  {
+    "objectID": "slides/part5_flow_control_slides.html#practice-for-loops",
+    "href": "slides/part5_flow_control_slides.html#practice-for-loops",
+    "title": "Part 5: Flow Control",
+    "section": "Practice: For Loops",
+    "text": "Practice: For Loops\nExercise 1 (with Gemini): Ask Gemini to “write Python code that uses a for loop to print numbers 1 to 5”\nExercise 2 (on your own): Type for i in range(3): print(i) and run it."
   },
   {
     "objectID": "slides/part5_flow_control_slides.html#looping-through-lists",
@@ -441,11 +644,25 @@
     "text": "Looping Through Lists\nUse for loops to iterate over lists:\n\nfruits = [\"apple\", \"banana\", \"cherry\"]\n\nfor fruit in fruits:\n    print(fruit)\n\n# With indices using enumerate\nfor i, fruit in enumerate(fruits):\n    print(f\"{i}: {fruit}\")\n\napple\nbanana\ncherry\n0: apple\n1: banana\n2: cherry"
   },
   {
+    "objectID": "slides/part5_flow_control_slides.html#practice-looping-through-lists",
+    "href": "slides/part5_flow_control_slides.html#practice-looping-through-lists",
+    "title": "Part 5: Flow Control",
+    "section": "Practice: Looping Through Lists",
+    "text": "Practice: Looping Through Lists\nExercise 1 (with Gemini): Ask Gemini to “write Python code that loops through a list of colors and prints each one”\nExercise 2 (on your own): Type for x in [1, 2, 3]: print(x * 2) and run it."
+  },
+  {
     "objectID": "slides/part5_flow_control_slides.html#while-loops",
     "href": "slides/part5_flow_control_slides.html#while-loops",
     "title": "Part 5: Flow Control",
     "section": "While Loops",
     "text": "While Loops\nWhile loops repeat while a condition is True:\n\n# Find first power of 2 &gt; 1000\npower = 0\nresult = 1\n\nwhile result &lt;= 1000:\n    power += 1\n    result = 2 ** power\n\nprint(f\"2^{power} = {result}\")\n\n2^10 = 1024\n\n\nWarning: Make sure the condition eventually becomes False to avoid infinite loops!"
+  },
+  {
+    "objectID": "slides/part5_flow_control_slides.html#practice-while-loops",
+    "href": "slides/part5_flow_control_slides.html#practice-while-loops",
+    "title": "Part 5: Flow Control",
+    "section": "Practice: While Loops",
+    "text": "Practice: While Loops\nExercise 1 (with Gemini): Ask Gemini to “write Python code that uses a while loop to count from 1 to 5”\nExercise 2 (on your own): Type x = 0 then while x &lt; 3: print(x); x += 1 and run it."
   },
   {
     "objectID": "slides/part5_flow_control_slides.html#tryexcept-error-handling",
@@ -455,11 +672,25 @@
     "text": "Try/Except Error Handling\nHandle errors gracefully instead of crashing:\n\n# Without error handling - crashes\nresult = 10 / 0\n\n\n---------------------------------------------------------------------------\nZeroDivisionError                         Traceback (most recent call last)\nCell In[10], line 2\n      1 # Without error handling - crashes\n----&gt; 2 result = 10 / 0\n\nZeroDivisionError: division by zero\n\n\n\n\n# With error handling - graceful\ntry:\n    result = 10 / 0\nexcept ZeroDivisionError:\n    print(\"Cannot divide by zero!\")\n    result = None\n\nCannot divide by zero!"
   },
   {
+    "objectID": "slides/part5_flow_control_slides.html#practice-tryexcept",
+    "href": "slides/part5_flow_control_slides.html#practice-tryexcept",
+    "title": "Part 5: Flow Control",
+    "section": "Practice: Try/Except",
+    "text": "Practice: Try/Except\nExercise 1 (with Gemini): Ask Gemini to “write Python code that uses try/except to handle division by zero”\nExercise 2 (on your own): Type try: print(10/2) then except: print(\"error\") and run it."
+  },
+  {
     "objectID": "slides/part5_flow_control_slides.html#common-exception-types",
     "href": "slides/part5_flow_control_slides.html#common-exception-types",
     "title": "Part 5: Flow Control",
     "section": "Common Exception Types",
     "text": "Common Exception Types\nUseful exception types to catch:\n\nValueError - invalid value (e.g., int(\"abc\"))\nZeroDivisionError - division by zero\nIndexError - list index out of range\nKeyError - dictionary key not found\nFileNotFoundError - file doesn’t exist\nTypeError - wrong data type\n\n\ntry:\n    int(\"not a number\")\nexcept ValueError:\n    print(\"Invalid number format!\")\n\nInvalid number format!"
+  },
+  {
+    "objectID": "slides/part5_flow_control_slides.html#practice-exception-types",
+    "href": "slides/part5_flow_control_slides.html#practice-exception-types",
+    "title": "Part 5: Flow Control",
+    "section": "Practice: Exception Types",
+    "text": "Practice: Exception Types\nExercise 1 (with Gemini): Ask Gemini to “write Python code that catches a ValueError when converting a string to int”\nExercise 2 (on your own): Type try: int(\"hello\") then except ValueError: print(\"Not a number\") and run it."
   },
   {
     "objectID": "slides/part5_flow_control_slides.html#list-comprehensions",
@@ -469,6 +700,13 @@
     "text": "List Comprehensions\nCreate lists in a compact, readable way:\n\n# Traditional approach\nsquares = []\nfor i in range(1, 6):\n    squares.append(i ** 2)\nprint(squares)\n\n# List comprehension\nsquares = [i**2 for i in range(1, 6)]\nprint(squares)\n\n[1, 4, 9, 16, 25]\n[1, 4, 9, 16, 25]\n\n\nSyntax: [expression for item in iterable]"
   },
   {
+    "objectID": "slides/part5_flow_control_slides.html#practice-list-comprehensions",
+    "href": "slides/part5_flow_control_slides.html#practice-list-comprehensions",
+    "title": "Part 5: Flow Control",
+    "section": "Practice: List Comprehensions",
+    "text": "Practice: List Comprehensions\nExercise 1 (with Gemini): Ask Gemini to “write Python code that uses a list comprehension to create cubes of 1 to 5”\nExercise 2 (on your own): Type nums = [x * 2 for x in range(3)] then print(nums) and run it."
+  },
+  {
     "objectID": "slides/part5_flow_control_slides.html#list-comprehensions-with-conditions",
     "href": "slides/part5_flow_control_slides.html#list-comprehensions-with-conditions",
     "title": "Part 5: Flow Control",
@@ -476,11 +714,25 @@
     "text": "List Comprehensions with Conditions\nAdd conditions to filter items:\n\n# Only even squares\neven_squares = [i**2 for i in range(1, 11) if i % 2 == 0]\nprint(even_squares)\n\n# Transform strings\nwords = [\"hello\", \"world\", \"python\"]\nupper_words = [w.upper() for w in words]\nprint(upper_words)\n\n[4, 16, 36, 64, 100]\n['HELLO', 'WORLD', 'PYTHON']\n\n\nSyntax: [expression for item in iterable if condition]"
   },
   {
+    "objectID": "slides/part5_flow_control_slides.html#practice-comprehensions-with-conditions",
+    "href": "slides/part5_flow_control_slides.html#practice-comprehensions-with-conditions",
+    "title": "Part 5: Flow Control",
+    "section": "Practice: Comprehensions with Conditions",
+    "text": "Practice: Comprehensions with Conditions\nExercise 1 (with Gemini): Ask Gemini to “write Python code that uses a list comprehension to get only odd numbers from 1 to 10”\nExercise 2 (on your own): Type evens = [x for x in range(10) if x % 2 == 0] then print(evens) and run it."
+  },
+  {
     "objectID": "slides/part5_flow_control_slides.html#dictionary-comprehensions",
     "href": "slides/part5_flow_control_slides.html#dictionary-comprehensions",
     "title": "Part 5: Flow Control",
     "section": "Dictionary Comprehensions",
     "text": "Dictionary Comprehensions\nCreate dictionaries compactly:\n\n# Map words to their lengths\nwords = [\"cat\", \"dog\", \"elephant\", \"bird\"]\nword_lengths = {word: len(word) for word in words}\nprint(word_lengths)\n\n# Create from two lists\nkeys = [\"a\", \"b\", \"c\"]\nvalues = [1, 2, 3]\nmy_dict = {k: v for k, v in zip(keys, values)}\nprint(my_dict)\n\n{'cat': 3, 'dog': 3, 'elephant': 8, 'bird': 4}\n{'a': 1, 'b': 2, 'c': 3}\n\n\nSyntax: {key_expr: value_expr for item in iterable}"
+  },
+  {
+    "objectID": "slides/part5_flow_control_slides.html#practice-dictionary-comprehensions",
+    "href": "slides/part5_flow_control_slides.html#practice-dictionary-comprehensions",
+    "title": "Part 5: Flow Control",
+    "section": "Practice: Dictionary Comprehensions",
+    "text": "Practice: Dictionary Comprehensions\nExercise 1 (with Gemini): Ask Gemini to “write Python code that uses a dictionary comprehension to create squares for numbers 1-5”\nExercise 2 (on your own): Type d = {x: x*2 for x in range(3)} then print(d) and run it."
   },
   {
     "objectID": "slides/part5_flow_control_slides.html#summary",
@@ -497,11 +749,25 @@
     "text": "Lists\nLists are ordered collections of items that can be of any type.\nKey features: - Created with square brackets [], items separated by commas - Zero-based indexing (first element is at index 0) - Can contain mixed data types - Are mutable (can be changed after creation)\n\n# List of numbers\nnumbers = [1, 2, 3, 4, 5]\n\n# List of strings\nfruits = [\"apple\", \"banana\", \"cherry\"]\n\n# Mixed types\nmixed = [1, \"hello\", 3.14, True]"
   },
   {
+    "objectID": "slides/part3_lists_slides.html#practice-creating-lists",
+    "href": "slides/part3_lists_slides.html#practice-creating-lists",
+    "title": "Part 3: Lists",
+    "section": "Practice: Creating Lists",
+    "text": "Practice: Creating Lists\nExercise 1 (with Gemini): Ask Gemini to “write Python code that creates a list of three colors and prints it”\nExercise 2 (on your own): Type my_list = [10, 20, 30] then print(my_list) and run it."
+  },
+  {
     "objectID": "slides/part3_lists_slides.html#concatenating-lists",
     "href": "slides/part3_lists_slides.html#concatenating-lists",
     "title": "Part 3: Lists",
     "section": "Concatenating Lists",
     "text": "Concatenating Lists\nLists can be combined using the + operator:\n\nlist1 = [1, 2, 3]\nlist2 = [4, 5, 6]\n\ncombined = list1 + list2\nprint(combined)\n\n# Direct concatenation\nresult = [\"a\", \"b\"] + [\"c\", \"d\"]\nprint(result)\n\n[1, 2, 3, 4, 5, 6]\n['a', 'b', 'c', 'd']"
+  },
+  {
+    "objectID": "slides/part3_lists_slides.html#practice-concatenating-lists",
+    "href": "slides/part3_lists_slides.html#practice-concatenating-lists",
+    "title": "Part 3: Lists",
+    "section": "Practice: Concatenating Lists",
+    "text": "Practice: Concatenating Lists\nExercise 1 (with Gemini): Ask Gemini to “write Python code that concatenates [1, 2, 3] and [4, 5, 6]”\nExercise 2 (on your own): Type print([10, 20] + [30, 40]) and run it."
   },
   {
     "objectID": "slides/part3_lists_slides.html#list-methods",
@@ -518,11 +784,25 @@
     "text": "Methods that Operate In Place\nImportant difference from string methods:\nMost list methods modify the list directly instead of returning a new list.\n\nmy_list = [3, 1, 4, 1, 5]\nprint(\"Original:\", my_list)\n\nmy_list.append(9)\nprint(\"After append:\", my_list)\n\nmy_list.sort()\nprint(\"After sort:\", my_list)\n\nOriginal: [3, 1, 4, 1, 5]\nAfter append: [3, 1, 4, 1, 5, 9]\nAfter sort: [1, 1, 3, 4, 5, 9]\n\n\nNote: Methods like .append() and .sort() return None, not a new list!"
   },
   {
+    "objectID": "slides/part3_lists_slides.html#practice-list-methods",
+    "href": "slides/part3_lists_slides.html#practice-list-methods",
+    "title": "Part 3: Lists",
+    "section": "Practice: List Methods",
+    "text": "Practice: List Methods\nExercise 1 (with Gemini): Ask Gemini to “write Python code that creates a list [5, 2, 8] and sorts it”\nExercise 2 (on your own): Type nums = [1, 2, 3] then nums.append(4) then print(nums) and run it."
+  },
+  {
     "objectID": "slides/part3_lists_slides.html#more-list-methods",
     "href": "slides/part3_lists_slides.html#more-list-methods",
     "title": "Part 3: Lists",
     "section": "More List Methods",
     "text": "More List Methods\n\ncolors = [\"red\", \"blue\", \"green\", \"blue\", \"yellow\"]\n\n# Insert at position\ncolors.insert(1, \"purple\")\nprint(\"After insert:\", colors)\n\n# Count occurrences\nprint(\"Count of 'blue':\", colors.count(\"blue\"))\n\n# Remove first occurrence\ncolors.remove(\"blue\")\nprint(\"After remove:\", colors)\n\n# Pop last item\nlast = colors.pop()\nprint(\"Popped:\", last)\nprint(\"Remaining:\", colors)\n\nAfter insert: ['red', 'purple', 'blue', 'green', 'blue', 'yellow']\nCount of 'blue': 2\nAfter remove: ['red', 'purple', 'green', 'blue', 'yellow']\nPopped: yellow\nRemaining: ['red', 'purple', 'green', 'blue']"
+  },
+  {
+    "objectID": "slides/part3_lists_slides.html#practice-more-methods",
+    "href": "slides/part3_lists_slides.html#practice-more-methods",
+    "title": "Part 3: Lists",
+    "section": "Practice: More Methods",
+    "text": "Practice: More Methods\nExercise 1 (with Gemini): Ask Gemini to “write Python code that removes the first ‘apple’ from a list of fruits”\nExercise 2 (on your own): Type items = [1, 2, 3] then print(items.pop()) and run it."
   },
   {
     "objectID": "slides/part3_lists_slides.html#indexing",
@@ -532,6 +812,13 @@
     "text": "Indexing\nAccess individual elements using square brackets with an index:\n\ncolors = [\"red\", \"green\", \"blue\", \"yellow\", \"purple\"]\n\nprint(\"First element [0]:\", colors[0])\nprint(\"Third element [2]:\", colors[2])\nprint(\"Last element [-1]:\", colors[-1])\nprint(\"Second to last [-2]:\", colors[-2])\n\nFirst element [0]: red\nThird element [2]: blue\nLast element [-1]: purple\nSecond to last [-2]: yellow\n\n\nNegative indices count from the end: -1 is last, -2 is second to last, etc."
   },
   {
+    "objectID": "slides/part3_lists_slides.html#practice-indexing",
+    "href": "slides/part3_lists_slides.html#practice-indexing",
+    "title": "Part 3: Lists",
+    "section": "Practice: Indexing",
+    "text": "Practice: Indexing\nExercise 1 (with Gemini): Ask Gemini to “write Python code that gets the last element from a list using negative indexing”\nExercise 2 (on your own): Type nums = [10, 20, 30, 40] then print(nums[0]) and run it."
+  },
+  {
     "objectID": "slides/part3_lists_slides.html#slicing",
     "href": "slides/part3_lists_slides.html#slicing",
     "title": "Part 3: Lists",
@@ -539,11 +826,25 @@
     "text": "Slicing\nExtract a portion of a list using slicing [start:end]:\n\ncolors = [\"red\", \"green\", \"blue\", \"yellow\", \"purple\", \"orange\"]\n\nprint(\"First three [0:3]:\", colors[0:3])\nprint(\"Elements 2-4 [2:5]:\", colors[2:5])\nprint(\"First three [:3]:\", colors[:3])\nprint(\"From index 3 [3:]:\", colors[3:])\n\nFirst three [0:3]: ['red', 'green', 'blue']\nElements 2-4 [2:5]: ['blue', 'yellow', 'purple']\nFirst three [:3]: ['red', 'green', 'blue']\nFrom index 3 [3:]: ['yellow', 'purple', 'orange']\n\n\nNote: [start:end] includes start but excludes end"
   },
   {
+    "objectID": "slides/part3_lists_slides.html#practice-slicing",
+    "href": "slides/part3_lists_slides.html#practice-slicing",
+    "title": "Part 3: Lists",
+    "section": "Practice: Slicing",
+    "text": "Practice: Slicing\nExercise 1 (with Gemini): Ask Gemini to “write Python code that gets the first three elements from a list using slicing”\nExercise 2 (on your own): Type letters = ['a', 'b', 'c', 'd', 'e'] then print(letters[1:4]) and run it."
+  },
+  {
     "objectID": "slides/part3_lists_slides.html#list-unpacking",
     "href": "slides/part3_lists_slides.html#list-unpacking",
     "title": "Part 3: Lists",
     "section": "List Unpacking",
     "text": "List Unpacking\nExtract all elements and assign to variables in one step:\n\nmy_list = [10, 20, 30]\n\n# Unpack into three variables\nx, y, z = my_list\nprint(f\"x={x}, y={y}, z={z}\")\n\n# Must match number of elements\nfruits = [\"apple\", \"banana\"]\nfirst, second = fruits\nprint(f\"First: {first}, Second: {second}\")\n\nx=10, y=20, z=30\nFirst: apple, Second: banana\n\n\nImportant: Number of variables must match number of list elements!"
+  },
+  {
+    "objectID": "slides/part3_lists_slides.html#practice-list-unpacking",
+    "href": "slides/part3_lists_slides.html#practice-list-unpacking",
+    "title": "Part 3: Lists",
+    "section": "Practice: List Unpacking",
+    "text": "Practice: List Unpacking\nExercise 1 (with Gemini): Ask Gemini to “write Python code that unpacks a list of two numbers into variables x and y”\nExercise 2 (on your own): Type a, b, c = [1, 2, 3] then print(a, b, c) and run it."
   },
   {
     "objectID": "slides/part3_lists_slides.html#summary",
@@ -574,11 +875,25 @@
     "text": "Running Code: Assignment Statements\nType the following in a cell. Then hit the Play/Run button at the left side of the cell to execute it.\n\nx = 10\nprint(x)\n\n10\n\n\nThe statement x=10 assigns the value 10 to the variable x. The statement print(x) prints the value of x to the screen."
   },
   {
+    "objectID": "slides/part1_colab_slides.html#practice-variables",
+    "href": "slides/part1_colab_slides.html#practice-variables",
+    "title": "Part 1: Google Colab",
+    "section": "Practice: Variables",
+    "text": "Practice: Variables\nExercise 1 (with Gemini): Ask Gemini to “write Python code that creates a variable named age with value 25 and prints it”\nExercise 2 (on your own): Type y = 100 then print(y) and run it."
+  },
+  {
     "objectID": "slides/part1_colab_slides.html#running-more-code",
     "href": "slides/part1_colab_slides.html#running-more-code",
     "title": "Part 1: Google Colab",
     "section": "Running More Code",
     "text": "Running More Code\nAdd a new code cell and type:\n\ny = 2 * x\nprint(y)\n\n20\n\n\n\nSpaces around the = and * are optional.\nNow we have two variables in our Python session. They are independent.\nIf we change x, it will not affect y.\n\n\nx = 0\nprint(y)\n\n20"
+  },
+  {
+    "objectID": "slides/part1_colab_slides.html#practice-operations",
+    "href": "slides/part1_colab_slides.html#practice-operations",
+    "title": "Part 1: Google Colab",
+    "section": "Practice: Operations",
+    "text": "Practice: Operations\nExercise 1 (with Gemini): Ask Gemini to “write Python code that creates a variable z equal to 5 times 3 and prints it”\nExercise 2 (on your own): Type a = 10 + 20 then print(a) and run it."
   },
   {
     "objectID": "slides/part1_colab_slides.html#saving-and-opening-notebooks",
@@ -637,6 +952,13 @@
     "text": "Error Messages\nEveryone makes errors. We need to learn to read error messages to find the line of code with the error and to get information about the error.\n\nx = 1\ny = 4\nz = y/(1-x)\n\n\n---------------------------------------------------------------------------\nZeroDivisionError                         Traceback (most recent call last)\nCell In[4], line 3\n      1 x = 1\n      2 y = 4\n----&gt; 3 z = y/(1-x)\n\nZeroDivisionError: division by zero\n\n\n\nIf an error message isn’t clear, ask the chatbot to explain it and how to fix the error."
   },
   {
+    "objectID": "slides/part1_colab_slides.html#practice-error-messages",
+    "href": "slides/part1_colab_slides.html#practice-error-messages",
+    "title": "Part 1: Google Colab",
+    "section": "Practice: Error Messages",
+    "text": "Practice: Error Messages\nExercise 1 (with Gemini): Ask Gemini to “explain what ZeroDivisionError means and how to avoid it”\nExercise 2 (on your own): Type print(10 / 2) and run it (this works correctly)."
+  },
+  {
     "objectID": "index.html#introduction-to-python",
     "href": "index.html#introduction-to-python",
     "title": "Python Workshop",
@@ -658,11 +980,25 @@
     "text": "Object Types\nWe have already encountered three types of Python objects:\n\nintegers (ints) - whole numbers like 10, -5, 0\nstrings - text enclosed in quotes like \"hello\" or 'world'\nfunctions - actions we can perform, like the print function\n\nWe can tell the type of any object with the type function.\n\nprint(type(10))\nprint(type(\"abc\"))\nprint(type(print))\n\n&lt;class 'int'&gt;\n&lt;class 'str'&gt;\n&lt;class 'builtin_function_or_method'&gt;"
   },
   {
+    "objectID": "slides/part2_objects_slides.html#practice-object-types",
+    "href": "slides/part2_objects_slides.html#practice-object-types",
+    "title": "Part 2: Objects",
+    "section": "Practice: Object Types",
+    "text": "Practice: Object Types\nExercise 1 (with Gemini): Ask Gemini to “write Python code that prints the type of the number 3.14”\nExercise 2 (on your own): Type print(type(100)) in a code cell and run it."
+  },
+  {
     "objectID": "slides/part2_objects_slides.html#floats",
     "href": "slides/part2_objects_slides.html#floats",
     "title": "Part 2: Objects",
     "section": "Floats",
     "text": "Floats\nNumbers with decimal points are a different type called floating point objects, or floats.\nThey require more space in memory to store than integers.\n\nx = 10.0\nprint(type(x))\n\n&lt;class 'float'&gt;"
+  },
+  {
+    "objectID": "slides/part2_objects_slides.html#practice-floats",
+    "href": "slides/part2_objects_slides.html#practice-floats",
+    "title": "Part 2: Objects",
+    "section": "Practice: Floats",
+    "text": "Practice: Floats\nExercise 1 (with Gemini): Ask Gemini to “write Python code that creates a variable with a decimal number and prints its type”\nExercise 2 (on your own): Type print(5.0 + 3.0) and run it."
   },
   {
     "objectID": "slides/part2_objects_slides.html#mathematical-operations",
@@ -672,11 +1008,25 @@
     "text": "Mathematical Operations\nStandard mathematical operations work on ints and floats:\n\naddition (+)\nsubtraction (-)\nmultiplication (*)\nexponentiation (**) - note: this is ** in Python, not ^ like in Excel\n\n\nprint(\"2 * 10.0 =\", 2*10.0)\nprint(\"3**2 =\", 3**2)\n\n2 * 10.0 = 20.0\n3**2 = 9"
   },
   {
+    "objectID": "slides/part2_objects_slides.html#practice-math-operations",
+    "href": "slides/part2_objects_slides.html#practice-math-operations",
+    "title": "Part 2: Objects",
+    "section": "Practice: Math Operations",
+    "text": "Practice: Math Operations\nExercise 1 (with Gemini): Ask Gemini to “write Python code that calculates 5 to the power of 3”\nExercise 2 (on your own): Type print(8 * 7) and run it."
+  },
+  {
     "objectID": "slides/part2_objects_slides.html#division-operations",
     "href": "slides/part2_objects_slides.html#division-operations",
     "title": "Part 2: Objects",
     "section": "Division Operations",
     "text": "Division Operations\nPython has three types of division operators:\n\ndivision (/) - returns a float\nfloor division (//) - returns the largest integer ≤ result\nmodulo (%) - returns the remainder\n\n\nprint(\"10 / 3 =\", 10 / 3)\nprint(\"10 // 3 =\", 10 // 3)\nprint(\"10 % 3 =\", 10 % 3)\n\n10 / 3 = 3.3333333333333335\n10 // 3 = 3\n10 % 3 = 1"
+  },
+  {
+    "objectID": "slides/part2_objects_slides.html#practice-division",
+    "href": "slides/part2_objects_slides.html#practice-division",
+    "title": "Part 2: Objects",
+    "section": "Practice: Division",
+    "text": "Practice: Division\nExercise 1 (with Gemini): Ask Gemini to “write Python code that shows the remainder when 17 is divided by 5”\nExercise 2 (on your own): Type print(20 // 6) and run it. What is the result?"
   },
   {
     "objectID": "slides/part2_objects_slides.html#strings",
@@ -686,11 +1036,25 @@
     "text": "Strings\nStrings are sequences of characters enclosed in quotes.\nYou can use single or double quotes - just be consistent at the beginning and end.\n\nprint(\"this is a string\")\nprint('this is a string too')\n\nthis is a string\nthis is a string too\n\n\nWe can concatenate (paste) strings together with +:\n\n\"abc\" + 'xyz'\n\n'abcxyz'"
   },
   {
+    "objectID": "slides/part2_objects_slides.html#practice-strings",
+    "href": "slides/part2_objects_slides.html#practice-strings",
+    "title": "Part 2: Objects",
+    "section": "Practice: Strings",
+    "text": "Practice: Strings\nExercise 1 (with Gemini): Ask Gemini to “write Python code that concatenates ‘Hello’ and ‘World’ with a space between them”\nExercise 2 (on your own): Type print(\"Python\" + \"!\") and run it."
+  },
+  {
     "objectID": "slides/part2_objects_slides.html#booleans",
     "href": "slides/part2_objects_slides.html#booleans",
     "title": "Part 2: Objects",
     "section": "Booleans",
     "text": "Booleans\nBooleans represent True or False values.\nBasic comparison operators:\n\n&gt; (greater than)\n&lt; (less than)\n&gt;= (greater than or equal to)\n&lt;= (less than or equal to)\n== (is equal to)\n\nImportant: Use two equals signs (==) for comparison. A single = is for assignment.\n\nprint(10 &gt; 5)\nprint(3 == 3)\n\nTrue\nTrue"
+  },
+  {
+    "objectID": "slides/part2_objects_slides.html#practice-booleans",
+    "href": "slides/part2_objects_slides.html#practice-booleans",
+    "title": "Part 2: Objects",
+    "section": "Practice: Booleans",
+    "text": "Practice: Booleans\nExercise 1 (with Gemini): Ask Gemini to “write Python code that checks if 15 is greater than or equal to 10”\nExercise 2 (on your own): Type print(7 &lt; 5) and run it. Is the result True or False?"
   },
   {
     "objectID": "slides/part2_objects_slides.html#logical-operators",
@@ -700,11 +1064,25 @@
     "text": "Logical Operators\nWe can combine booleans with logical operators:\n\nand - A and B is True only if both are True\nor - A or B is True if either (or both) is True\n\n\nA = True\nB = False\nprint(\"A and B:\", A and B)\nprint(\"A or B:\", A or B)\n\nA and B: False\nA or B: True"
   },
   {
+    "objectID": "slides/part2_objects_slides.html#practice-logical-operators",
+    "href": "slides/part2_objects_slides.html#practice-logical-operators",
+    "title": "Part 2: Objects",
+    "section": "Practice: Logical Operators",
+    "text": "Practice: Logical Operators\nExercise 1 (with Gemini): Ask Gemini to “write Python code that uses ‘and’ to check if a number is between 10 and 20”\nExercise 2 (on your own): Type print(True or False) and run it."
+  },
+  {
     "objectID": "slides/part2_objects_slides.html#type-conversions",
     "href": "slides/part2_objects_slides.html#type-conversions",
     "title": "Part 2: Objects",
     "section": "Type Conversions",
     "text": "Type Conversions\nPython provides functions to convert between types:\n\nint() - converts to integer (truncates, doesn’t round)\nfloat() - converts to floating point\nstr() - converts to string\n\n\nprint(\"int(10.7) =\", int(10.7))\nprint(\"float(5) =\", float(5))\nprint(\"str(42) =\", str(42))\n\nint(10.7) = 10\nfloat(5) = 5.0\nstr(42) = 42"
+  },
+  {
+    "objectID": "slides/part2_objects_slides.html#practice-type-conversions",
+    "href": "slides/part2_objects_slides.html#practice-type-conversions",
+    "title": "Part 2: Objects",
+    "section": "Practice: Type Conversions",
+    "text": "Practice: Type Conversions\nExercise 1 (with Gemini): Ask Gemini to “write Python code that converts the string ‘100’ to an integer”\nExercise 2 (on your own): Type print(str(999)) and run it."
   },
   {
     "objectID": "slides/part2_objects_slides.html#attributes-and-methods",
@@ -721,11 +1099,25 @@
     "text": "String Methods\nUseful string methods:\n\n.upper() - converts to uppercase\n.lower() - converts to lowercase\n.strip() - removes whitespace from ends\n.replace(old, new) - replaces text\n\n\nticker = 'tsla'\nprint(ticker.upper())\n\ntext = \"  hello  \"\nprint(text.strip())\n\nprint(\"hello\".replace(\"l\", \"x\"))\n\nTSLA\nhello\nhexxo"
   },
   {
+    "objectID": "slides/part2_objects_slides.html#practice-string-methods",
+    "href": "slides/part2_objects_slides.html#practice-string-methods",
+    "title": "Part 2: Objects",
+    "section": "Practice: String Methods",
+    "text": "Practice: String Methods\nExercise 1 (with Gemini): Ask Gemini to “write Python code that converts ‘python programming’ to uppercase”\nExercise 2 (on your own): Type print(\"hello\".replace(\"h\", \"j\")) and run it."
+  },
+  {
     "objectID": "slides/part2_objects_slides.html#f-strings",
     "href": "slides/part2_objects_slides.html#f-strings",
     "title": "Part 2: Objects",
     "section": "f-strings",
-    "text": "f-strings\nf-strings (formatted strings) let us insert variables into strings.\nSyntax: f\"text {variable} more text\"\n\nage = 25\nstatement = f'Alice is {age} years old.'\nprint(statement)\n\nAlice is 25 years old.\n\n\nMuch easier than concatenating with + and str()!"
+    "text": "f-strings\nf-strings (formatted strings) let us insert variables into strings.\nSyntax: f\"text {variable} more text\"\n\nage = 25\nstatement = f'Alice is {age} years old.'\nprint(statement)\n\nAlice is 25 years old."
+  },
+  {
+    "objectID": "slides/part2_objects_slides.html#practice-f-strings",
+    "href": "slides/part2_objects_slides.html#practice-f-strings",
+    "title": "Part 2: Objects",
+    "section": "Practice: f-strings",
+    "text": "Practice: f-strings\nExercise 1 (with Gemini): Ask Gemini to “write Python code using an f-string to print ‘My name is Bob and I am 30 years old’”\nExercise 2 (on your own): Type name = \"Sam\" then print(f\"Hello, {name}!\") and run it."
   },
   {
     "objectID": "slides/part2_objects_slides.html#formatting-in-f-strings",
@@ -733,6 +1125,13 @@
     "title": "Part 2: Objects",
     "section": "Formatting in f-strings",
     "text": "Formatting in f-strings\nWe can format numbers in f-strings:\n\n.2f - floating point with 2 decimal places\n.0% - convert decimal to percentage\n:, - add commas to large numbers\n\n\npi = 3.14159\nprint(f'pi to two decimals: {pi:.2f}')\n\nx = 0.25\nprint(f'as percentage: {x:.0%}')\n\ny = 1000000\nprint(f'with commas: {y:,}')\n\npi to two decimals: 3.14\nas percentage: 25%\nwith commas: 1,000,000"
+  },
+  {
+    "objectID": "slides/part2_objects_slides.html#practice-formatting",
+    "href": "slides/part2_objects_slides.html#practice-formatting",
+    "title": "Part 2: Objects",
+    "section": "Practice: Formatting",
+    "text": "Practice: Formatting\nExercise 1 (with Gemini): Ask Gemini to “write Python code that formats the number 0.75 as a percentage”\nExercise 2 (on your own): Type num = 1234567 then print(f'{num:,}') and run it."
   },
   {
     "objectID": "slides/part2_objects_slides.html#summary",
@@ -749,11 +1148,25 @@
     "text": "Dictionaries\nDictionaries store data as key-value pairs.\nCreated with curly braces {}:\n\ncar = {\n    \"brand\": \"Toyota\",\n    \"model\": \"Camry\",\n    \"year\": 2020,\n    \"color\": \"blue\"\n}\n\nprint(car)\n\n{'brand': 'Toyota', 'model': 'Camry', 'year': 2020, 'color': 'blue'}\n\n\nThink of it like a real dictionary: the key is the word, the value is the definition."
   },
   {
+    "objectID": "slides/part4_dictionaries_slides.html#practice-creating-dictionaries",
+    "href": "slides/part4_dictionaries_slides.html#practice-creating-dictionaries",
+    "title": "Part 4: Dictionaries",
+    "section": "Practice: Creating Dictionaries",
+    "text": "Practice: Creating Dictionaries\nExercise 1 (with Gemini): Ask Gemini to “write Python code that creates a dictionary with keys ‘name’, ‘age’, and ‘city’ and prints it”\nExercise 2 (on your own): Type person = {\"name\": \"Alice\", \"age\": 30} then print(person) and run it."
+  },
+  {
     "objectID": "slides/part4_dictionaries_slides.html#accessing-dictionary-values",
     "href": "slides/part4_dictionaries_slides.html#accessing-dictionary-values",
     "title": "Part 4: Dictionaries",
     "section": "Accessing Dictionary Values",
     "text": "Accessing Dictionary Values\nAccess values using keys in square brackets:\n\nprint(\"Brand:\", car[\"brand\"])\nprint(\"Year:\", car[\"year\"])\n\n# Check if a key exists\nprint(\"Has 'model':\", \"model\" in car)\nprint(\"Has 'price':\", \"price\" in car)\n\nBrand: Toyota\nYear: 2020\nHas 'model': True\nHas 'price': False\n\n\nUnlike lists (indexed by position), dictionaries use meaningful keys like \"brand\" or \"year\"."
+  },
+  {
+    "objectID": "slides/part4_dictionaries_slides.html#practice-accessing-values",
+    "href": "slides/part4_dictionaries_slides.html#practice-accessing-values",
+    "title": "Part 4: Dictionaries",
+    "section": "Practice: Accessing Values",
+    "text": "Practice: Accessing Values\nExercise 1 (with Gemini): Ask Gemini to “write Python code that accesses the ‘model’ value from a car dictionary”\nExercise 2 (on your own): Type student = {\"name\": \"Bob\", \"grade\": 85} then print(student[\"name\"]) and run it."
   },
   {
     "objectID": "slides/part4_dictionaries_slides.html#dictionary-methods",
@@ -763,6 +1176,13 @@
     "text": "Dictionary Methods\nUseful methods to work with dictionaries:\n\nprint(\"All keys:\", list(car.keys()))\nprint(\"All values:\", list(car.values()))\nprint(\"All items:\", list(car.items()))\n\nAll keys: ['brand', 'model', 'year', 'color']\nAll values: ['Toyota', 'Camry', 2020, 'blue']\nAll items: [('brand', 'Toyota'), ('model', 'Camry'), ('year', 2020), ('color', 'blue')]\n\n\n\n.keys() - returns all keys\n.values() - returns all values\n.items() - returns key-value pairs as tuples"
   },
   {
+    "objectID": "slides/part4_dictionaries_slides.html#practice-dictionary-methods",
+    "href": "slides/part4_dictionaries_slides.html#practice-dictionary-methods",
+    "title": "Part 4: Dictionaries",
+    "section": "Practice: Dictionary Methods",
+    "text": "Practice: Dictionary Methods\nExercise 1 (with Gemini): Ask Gemini to “write Python code that prints all keys from a dictionary”\nExercise 2 (on your own): Type d = {\"a\": 1, \"b\": 2} then print(list(d.values())) and run it."
+  },
+  {
     "objectID": "slides/part4_dictionaries_slides.html#adding-and-modifying",
     "href": "slides/part4_dictionaries_slides.html#adding-and-modifying",
     "title": "Part 4: Dictionaries",
@@ -770,11 +1190,25 @@
     "text": "Adding and Modifying\nAdd new key-value pairs or modify existing ones with assignment:\n\n# Add a new key-value pair\ncar[\"price\"] = 25000\nprint(\"After adding price:\", car)\n\n# Modify existing value\ncar[\"year\"] = 2021\nprint(\"After updating year:\", car)\n\nAfter adding price: {'brand': 'Toyota', 'model': 'Camry', 'year': 2020, 'color': 'blue', 'price': 25000}\nAfter updating year: {'brand': 'Toyota', 'model': 'Camry', 'year': 2021, 'color': 'blue', 'price': 25000}\n\n\nKey point: If key exists → update value. If key doesn’t exist → create new pair."
   },
   {
+    "objectID": "slides/part4_dictionaries_slides.html#practice-adding-and-modifying",
+    "href": "slides/part4_dictionaries_slides.html#practice-adding-and-modifying",
+    "title": "Part 4: Dictionaries",
+    "section": "Practice: Adding and Modifying",
+    "text": "Practice: Adding and Modifying\nExercise 1 (with Gemini): Ask Gemini to “write Python code that adds a new key ‘color’ to a car dictionary”\nExercise 2 (on your own): Type book = {\"title\": \"Python\"} then book[\"author\"] = \"Smith\" then print(book) and run it."
+  },
+  {
     "objectID": "slides/part4_dictionaries_slides.html#formatting-long-dictionaries",
     "href": "slides/part4_dictionaries_slides.html#formatting-long-dictionaries",
     "title": "Part 4: Dictionaries",
     "section": "Formatting Long Dictionaries",
     "text": "Formatting Long Dictionaries\nFor readability, break dictionaries across multiple lines:\n\ninventory = {\n    \"apples\": 50,\n    \"bananas\": 30,\n    \"oranges\": 25,\n    \"grapes\": 40\n}\n\nprint(inventory)\n\n{'apples': 50, 'bananas': 30, 'oranges': 25, 'grapes': 40}\n\n\nRule: Can break anywhere except before a comma."
+  },
+  {
+    "objectID": "slides/part4_dictionaries_slides.html#practice-formatting",
+    "href": "slides/part4_dictionaries_slides.html#practice-formatting",
+    "title": "Part 4: Dictionaries",
+    "section": "Practice: Formatting",
+    "text": "Practice: Formatting\nExercise 1 (with Gemini): Ask Gemini to “write Python code that creates a multi-line dictionary with 4 items”\nExercise 2 (on your own): Create a dictionary on multiple lines for practice (no specific code required)."
   },
   {
     "objectID": "slides/part4_dictionaries_slides.html#lists-vs.-dictionaries",
@@ -791,11 +1225,25 @@
     "text": "Lists vs. Dictionaries Examples\nUse a list when you have a sequence:\n\ntest_scores = [85, 92, 78, 95]\nprint(\"First score:\", test_scores[0])\n\nFirst score: 85\n\n\nUse a dictionary when you need named lookups:\n\nstudent = {\"name\": \"Alice\", \"age\": 20, \"gpa\": 3.8}\nprint(\"Student name:\", student[\"name\"])\n\nStudent name: Alice"
   },
   {
+    "objectID": "slides/part4_dictionaries_slides.html#practice-lists-vs-dictionaries",
+    "href": "slides/part4_dictionaries_slides.html#practice-lists-vs-dictionaries",
+    "title": "Part 4: Dictionaries",
+    "section": "Practice: Lists vs Dictionaries",
+    "text": "Practice: Lists vs Dictionaries\nExercise 1 (with Gemini): Ask Gemini to “explain when to use a list versus a dictionary in Python”\nExercise 2 (on your own): Type scores = [85, 92, 78] then print(scores[0]) and run it."
+  },
+  {
     "objectID": "slides/part4_dictionaries_slides.html#the-len-function",
     "href": "slides/part4_dictionaries_slides.html#the-len-function",
     "title": "Part 4: Dictionaries",
     "section": "The len Function",
     "text": "The len Function\nlen() returns the length of strings, lists, and dictionaries:\n\nmy_list = [1, 2, 3, 4, 5]\nmy_dict = {\"a\": 1, \"b\": 2, \"c\": 3}\nmy_string = \"hello\"\n\nprint(\"List length:\", len(my_list))\nprint(\"Dict length:\", len(my_dict))  # counts key-value pairs\nprint(\"String length:\", len(my_string))\n\nList length: 5\nDict length: 3\nString length: 5\n\n\nFor dictionaries, len() returns the number of key-value pairs."
+  },
+  {
+    "objectID": "slides/part4_dictionaries_slides.html#practice-len-function",
+    "href": "slides/part4_dictionaries_slides.html#practice-len-function",
+    "title": "Part 4: Dictionaries",
+    "section": "Practice: len() Function",
+    "text": "Practice: len() Function\nExercise 1 (with Gemini): Ask Gemini to “write Python code that finds the length of a dictionary”\nExercise 2 (on your own): Type items = [1, 2, 3, 4, 5] then print(len(items)) and run it."
   },
   {
     "objectID": "slides/part4_dictionaries_slides.html#summary",
@@ -819,11 +1267,25 @@
     "text": "Built-in Functions Examples\n\nnumbers = [-5, 3, -1, 8, 2]\n\nprint(\"Max:\", max(numbers))\nprint(\"Min:\", min(numbers))\nprint(\"Sum:\", sum(numbers))\nprint(\"Absolute value of -5:\", abs(-5))\nprint(\"Round 3.14159 to 2 decimals:\", round(3.14159, 2))\n\nMax: 8\nMin: -5\nSum: 7\nAbsolute value of -5: 5\nRound 3.14159 to 2 decimals: 3.14"
   },
   {
+    "objectID": "slides/part6_functions_slides.html#practice-built-in-functions",
+    "href": "slides/part6_functions_slides.html#practice-built-in-functions",
+    "title": "Part 6: Functions",
+    "section": "Practice: Built-in Functions",
+    "text": "Practice: Built-in Functions\nExercise 1 (with Gemini): Ask Gemini to “write Python code that finds the maximum of a list of numbers”\nExercise 2 (on your own): Type print(abs(-10)) and run it."
+  },
+  {
     "objectID": "slides/part6_functions_slides.html#sequence-functions",
     "href": "slides/part6_functions_slides.html#sequence-functions",
     "title": "Part 6: Functions",
     "section": "Sequence Functions",
     "text": "Sequence Functions\n\nfruits = [\"banana\", \"apple\", \"cherry\"]\nscores = [85, 92, 78]\n\nprint(\"Sorted:\", sorted(fruits))\nprint(\"Length:\", len(fruits))\n\n# Zip combines sequences\nfor fruit, score in zip(fruits, scores):\n    print(f\"{fruit}: {score}\")\n\nSorted: ['apple', 'banana', 'cherry']\nLength: 3\nbanana: 85\napple: 92\ncherry: 78"
+  },
+  {
+    "objectID": "slides/part6_functions_slides.html#practice-sequence-functions",
+    "href": "slides/part6_functions_slides.html#practice-sequence-functions",
+    "title": "Part 6: Functions",
+    "section": "Practice: Sequence Functions",
+    "text": "Practice: Sequence Functions\nExercise 1 (with Gemini): Ask Gemini to “write Python code that sorts a list of names alphabetically”\nExercise 2 (on your own): Type print(sorted([3, 1, 4, 1, 5])) and run it."
   },
   {
     "objectID": "slides/part6_functions_slides.html#enumerate",
@@ -833,6 +1295,13 @@
     "text": "Enumerate\nenumerate() adds index numbers to items:\n\nfruits = [\"apple\", \"banana\", \"cherry\"]\n\nfor index, fruit in enumerate(fruits):\n    print(f\"{index}: {fruit}\")\n\n# Start at 1 instead of 0\nfor num, fruit in enumerate(fruits, start=1):\n    print(f\"#{num}: {fruit}\")\n\n0: apple\n1: banana\n2: cherry\n#1: apple\n#2: banana\n#3: cherry"
   },
   {
+    "objectID": "slides/part6_functions_slides.html#practice-enumerate",
+    "href": "slides/part6_functions_slides.html#practice-enumerate",
+    "title": "Part 6: Functions",
+    "section": "Practice: Enumerate",
+    "text": "Practice: Enumerate\nExercise 1 (with Gemini): Ask Gemini to “write Python code that uses enumerate to print index and value for a list”\nExercise 2 (on your own): Type for i, x in enumerate(['a', 'b']): print(i, x) and run it."
+  },
+  {
     "objectID": "slides/part6_functions_slides.html#creating-custom-functions",
     "href": "slides/part6_functions_slides.html#creating-custom-functions",
     "title": "Part 6: Functions",
@@ -840,11 +1309,25 @@
     "text": "Creating Custom Functions\nDefine your own functions with def:\n\ndef add_numbers(a, b):\n    \"\"\"Add two numbers together.\"\"\"\n    return a + b\n\nresult = add_numbers(5, 3)\nprint(f\"5 + 3 = {result}\")\n\n5 + 3 = 8\n\n\nComponents: - def keyword - Function name (lowercase_with_underscores) - Parameters in parentheses - Docstring (optional) - Indented function body - return statement (optional)"
   },
   {
+    "objectID": "slides/part6_functions_slides.html#practice-creating-functions",
+    "href": "slides/part6_functions_slides.html#practice-creating-functions",
+    "title": "Part 6: Functions",
+    "section": "Practice: Creating Functions",
+    "text": "Practice: Creating Functions\nExercise 1 (with Gemini): Ask Gemini to “write Python code that creates a function to multiply two numbers”\nExercise 2 (on your own): Type def greet(): print(\"Hi\") then greet() and run it."
+  },
+  {
     "objectID": "slides/part6_functions_slides.html#functions-examples",
     "href": "slides/part6_functions_slides.html#functions-examples",
     "title": "Part 6: Functions",
     "section": "Functions Examples",
     "text": "Functions Examples\n\ndef greet_person(name):\n    \"\"\"Print a greeting.\"\"\"\n    print(f\"Hello, {name}!\")\n\ngreet_person(\"Alice\")\n\ndef classify_temperature(temp):\n    \"\"\"Classify temperature as cold, moderate, or hot.\"\"\"\n    if temp &lt; 70:\n        return \"cold\"\n    elif temp &lt; 85:\n        return \"moderate\"\n    else:\n        return \"hot\"\n\nprint(classify_temperature(75))\n\nHello, Alice!\nmoderate"
+  },
+  {
+    "objectID": "slides/part6_functions_slides.html#practice-function-examples",
+    "href": "slides/part6_functions_slides.html#practice-function-examples",
+    "title": "Part 6: Functions",
+    "section": "Practice: Function Examples",
+    "text": "Practice: Function Examples\nExercise 1 (with Gemini): Ask Gemini to “write Python code that creates a function to check if a number is even”\nExercise 2 (on your own): Type def double(x): return x * 2 then print(double(5)) and run it."
   },
   {
     "objectID": "slides/part6_functions_slides.html#variable-scope",
@@ -861,11 +1344,25 @@
     "text": "Returning Multiple Values\nFunctions can return multiple values as a tuple:\n\ndef get_name_parts():\n    return \"John\", \"Smith\"\n\n# Unpack into variables\nfirst, last = get_name_parts()\nprint(f\"First: {first}, Last: {last}\")\n\n# Or receive as tuple\nname = get_name_parts()\nprint(f\"Tuple: {name}\")\n\nFirst: John, Last: Smith\nTuple: ('John', 'Smith')"
   },
   {
+    "objectID": "slides/part6_functions_slides.html#practice-multiple-returns",
+    "href": "slides/part6_functions_slides.html#practice-multiple-returns",
+    "title": "Part 6: Functions",
+    "section": "Practice: Multiple Returns",
+    "text": "Practice: Multiple Returns\nExercise 1 (with Gemini): Ask Gemini to “write Python code that creates a function returning two values and unpacks them”\nExercise 2 (on your own): Type def nums(): return 1, 2 then a, b = nums() then print(a, b) and run it."
+  },
+  {
     "objectID": "slides/part6_functions_slides.html#multiple-return-example",
     "href": "slides/part6_functions_slides.html#multiple-return-example",
     "title": "Part 6: Functions",
     "section": "Multiple Return Example",
     "text": "Multiple Return Example\n\ndef rectangle_properties(length, width):\n    \"\"\"Calculate area and perimeter of a rectangle.\"\"\"\n    area = length * width\n    perimeter = 2 * (length + width)\n    return area, perimeter\n\narea, perimeter = rectangle_properties(5, 3)\nprint(f\"Area: {area}\")\nprint(f\"Perimeter: {perimeter}\")\n\nArea: 15\nPerimeter: 16"
+  },
+  {
+    "objectID": "slides/part6_functions_slides.html#practice-multiple-return-example",
+    "href": "slides/part6_functions_slides.html#practice-multiple-return-example",
+    "title": "Part 6: Functions",
+    "section": "Practice: Multiple Return Example",
+    "text": "Practice: Multiple Return Example\nExercise 1 (with Gemini): Ask Gemini to “write Python code that creates a function to calculate circle area and circumference”\nExercise 2 (on your own): Type def calc(): return 10, 20 then x, y = calc() then print(x + y) and run it."
   },
   {
     "objectID": "slides/part6_functions_slides.html#default-values",
@@ -875,11 +1372,25 @@
     "text": "Default Values\nParameters can have default values making them optional:\n\ndef greet(name, greeting=\"Hello\"):\n    \"\"\"Greet someone with customizable greeting.\"\"\"\n    return f\"{greeting}, {name}!\"\n\n# Use default greeting\nprint(greet(\"Alice\"))\n\n# Provide custom greeting\nprint(greet(\"Bob\", \"Hi\"))\nprint(greet(\"Carol\", greeting=\"Hey\"))\n\nHello, Alice!\nHi, Bob!\nHey, Carol!\n\n\nBest practice: Required parameters first, optional ones last."
   },
   {
+    "objectID": "slides/part6_functions_slides.html#practice-default-values",
+    "href": "slides/part6_functions_slides.html#practice-default-values",
+    "title": "Part 6: Functions",
+    "section": "Practice: Default Values",
+    "text": "Practice: Default Values\nExercise 1 (with Gemini): Ask Gemini to “write Python code that creates a function with a default parameter”\nExercise 2 (on your own): Type def say(msg=\"Hi\"): print(msg) then say() and say(\"Hello\") and run it."
+  },
+  {
     "objectID": "slides/part6_functions_slides.html#named-arguments",
     "href": "slides/part6_functions_slides.html#named-arguments",
     "title": "Part 6: Functions",
     "section": "Named Arguments",
     "text": "Named Arguments\nCall functions with named arguments for clarity:\n\ndef power(x, y=2):\n    \"\"\"Calculate x raised to the power y.\"\"\"\n    return x ** y\n\n# Positional arguments\nprint(power(5, 3))\n\n# Named arguments\nprint(power(x=5, y=3))\nprint(power(y=3, x=5))  # Order doesn't matter!\n\n# Mixed\nprint(power(5, y=3))\n\n125\n125\n125\n125"
+  },
+  {
+    "objectID": "slides/part6_functions_slides.html#practice-named-arguments",
+    "href": "slides/part6_functions_slides.html#practice-named-arguments",
+    "title": "Part 6: Functions",
+    "section": "Practice: Named Arguments",
+    "text": "Practice: Named Arguments\nExercise 1 (with Gemini): Ask Gemini to “write Python code that calls a function using named arguments”\nExercise 2 (on your own): Type def add(a, b): return a + b then print(add(b=5, a=3)) and run it."
   },
   {
     "objectID": "slides/part6_functions_slides.html#the-help-function",
@@ -910,6 +1421,13 @@
     "text": "Creating a DataFrame\nCreate DataFrames from dictionaries, where keys become column names:\n\ndata = {\n    'Name': ['Alice', 'Bob', 'Charlie', 'Diana'],\n    'Age': [25, 30, 35, 28],\n    'City': ['New York', 'London', 'Tokyo', 'Paris'],\n    'Salary': [70000, 80000, 90000, 75000]\n}\n\ndf = pd.DataFrame(data)\nprint(df)\nprint(f\"\\nShape: {df.shape}\")  # (rows, columns)\n\n      Name  Age      City  Salary\n0    Alice   25  New York   70000\n1      Bob   30    London   80000\n2  Charlie   35     Tokyo   90000\n3    Diana   28     Paris   75000\n\nShape: (4, 4)"
   },
   {
+    "objectID": "slides/part8_pandas_intro_slides.html#practice-creating-dataframes",
+    "href": "slides/part8_pandas_intro_slides.html#practice-creating-dataframes",
+    "title": "Part 8: Intro to Pandas",
+    "section": "Practice: Creating DataFrames",
+    "text": "Practice: Creating DataFrames\nExercise 1 (with Gemini): Ask Gemini to “create a DataFrame with three columns: ‘product’, ‘price’, and ‘quantity’ with at least 3 products”\nExercise 2 (on your own): Type data = {'a': [1, 2, 3], 'b': [4, 5, 6]} then df = pd.DataFrame(data) then print(df) and run it."
+  },
+  {
     "objectID": "slides/part8_pandas_intro_slides.html#understanding-series",
     "href": "slides/part8_pandas_intro_slides.html#understanding-series",
     "title": "Part 8: Intro to Pandas",
@@ -929,6 +1447,13 @@
     "title": "Part 8: Intro to Pandas",
     "section": "Series Summary Statistics",
     "text": "Series Summary Statistics\nSeries have built-in methods for common statistics:\n\nprint(f\"Average price: ${products.mean():.2f}\")\nprint(f\"Most expensive: ${products.max()}\")\nprint(f\"Cheapest: ${products.min()}\")\nprint(f\"Standard deviation: ${products.std():.2f}\")\n\nAverage price: $352.49\nMost expensive: $999.99\nCheapest: $29.99\nStandard deviation: $447.32"
+  },
+  {
+    "objectID": "slides/part8_pandas_intro_slides.html#practice-series-operations",
+    "href": "slides/part8_pandas_intro_slides.html#practice-series-operations",
+    "title": "Part 8: Intro to Pandas",
+    "section": "Practice: Series Operations",
+    "text": "Practice: Series Operations\nExercise 1 (with Gemini): Ask Gemini to “create a Series with 5 numbers and calculate the mean and standard deviation”\nExercise 2 (on your own): Type s = pd.Series([10, 20, 30, 40]) then print(s.mean()) and run it."
   },
   {
     "objectID": "slides/part8_pandas_intro_slides.html#creating-a-larger-dataset",
@@ -952,6 +1477,13 @@
     "text": "Selecting Columns\nSelect one or more columns from a DataFrame:\n\n# Single column (returns Series)\nsalaries = df['Salary']\nprint(f\"Salaries - type: {type(salaries)}\")\nprint(salaries.head())\n\n# Multiple columns (returns DataFrame)\nsubset = df[['Name', 'Salary', 'Department']]\nprint(f\"\\nSubset shape: {subset.shape}\")\nprint(subset.head(3))\n\nSalaries - type: &lt;class 'pandas.core.series.Series'&gt;\n0    70000\n1    65000\n2    80000\n3    60000\n4    72000\nName: Salary, dtype: int64\n\nSubset shape: (8, 3)\n      Name  Salary   Department\n0    Alice   70000  Engineering\n1      Bob   65000    Marketing\n2  Charlie   80000  Engineering"
   },
   {
+    "objectID": "slides/part8_pandas_intro_slides.html#practice-selecting-columns",
+    "href": "slides/part8_pandas_intro_slides.html#practice-selecting-columns",
+    "title": "Part 8: Intro to Pandas",
+    "section": "Practice: Selecting Columns",
+    "text": "Practice: Selecting Columns\nExercise 1 (with Gemini): Ask Gemini to “select the ‘Name’ and ‘Age’ columns from a DataFrame”\nExercise 2 (on your own): Type df['Name'] and run it to select a single column."
+  },
+  {
     "objectID": "slides/part8_pandas_intro_slides.html#selecting-rows",
     "href": "slides/part8_pandas_intro_slides.html#selecting-rows",
     "title": "Part 8: Intro to Pandas",
@@ -966,11 +1498,25 @@
     "text": "Filtering Data\nFilter rows based on conditions using boolean indexing:\n\n# Filter for high earners\nhigh_earners = df[df['Salary'] &gt; 70000]\nprint(f\"People earning &gt;$70,000: {len(high_earners)}\")\nprint(high_earners)\n\n# Multiple conditions with & (and) or | (or)\neng_high = df[(df['Salary'] &gt; 70000) & (df['Department'] == 'Engineering')]\nprint(f\"\\nEngineering high earners:\")\nprint(eng_high[['Name', 'Salary', 'Department']])\n\nPeople earning &gt;$70,000: 4\n      Name  Age   Department  Salary  Years  Education\n2  Charlie   35  Engineering   80000      8         18\n4      Eve   32    Marketing   72000      6         14\n5    Frank   45  Engineering   90000     12         20\n7    Henry   38    Marketing   75000      9         16\n\nEngineering high earners:\n      Name  Salary   Department\n2  Charlie   80000  Engineering\n5    Frank   90000  Engineering"
   },
   {
+    "objectID": "slides/part8_pandas_intro_slides.html#practice-filtering-data",
+    "href": "slides/part8_pandas_intro_slides.html#practice-filtering-data",
+    "title": "Part 8: Intro to Pandas",
+    "section": "Practice: Filtering Data",
+    "text": "Practice: Filtering Data\nExercise 1 (with Gemini): Ask Gemini to “filter a DataFrame to show only rows where Age is greater than 30”\nExercise 2 (on your own): Type df[df['Salary'] &gt; 65000] and run it to filter rows."
+  },
+  {
     "objectID": "slides/part8_pandas_intro_slides.html#adding-and-modifying-columns",
     "href": "slides/part8_pandas_intro_slides.html#adding-and-modifying-columns",
     "title": "Part 8: Intro to Pandas",
     "section": "Adding and Modifying Columns",
     "text": "Adding and Modifying Columns\nCreate new columns or modify existing ones:\n\n# Create new calculated column (10% bonus)\ndf['Bonus'] = df['Salary'] * 0.10\n\nprint(df[['Name', 'Salary', 'Bonus']].head())\n\n# Create experience category\ndf['Experience'] = pd.cut(\n    df['Years'],\n    bins=[0, 5, 10, 20],\n    labels=['Junior', 'Mid-level', 'Senior']\n)\n\nprint(f\"\\nExperience levels:\")\nprint(df['Experience'].value_counts())\n\n      Name  Salary   Bonus\n0    Alice   70000  7000.0\n1      Bob   65000  6500.0\n2  Charlie   80000  8000.0\n3    Diana   60000  6000.0\n4      Eve   72000  7200.0\n\nExperience levels:\nExperience\nJunior       4\nMid-level    3\nSenior       1\nName: count, dtype: int64"
+  },
+  {
+    "objectID": "slides/part8_pandas_intro_slides.html#practice-adding-columns",
+    "href": "slides/part8_pandas_intro_slides.html#practice-adding-columns",
+    "title": "Part 8: Intro to Pandas",
+    "section": "Practice: Adding Columns",
+    "text": "Practice: Adding Columns\nExercise 1 (with Gemini): Ask Gemini to “add a new column to a DataFrame that calculates 15% tax on a Salary column”\nExercise 2 (on your own): Type df['Double_Salary'] = df['Salary'] * 2 then print(df[['Name', 'Salary', 'Double_Salary']].head()) and run it."
   },
   {
     "objectID": "slides/part8_pandas_intro_slides.html#working-with-indexes",
@@ -1008,6 +1554,13 @@
     "text": "Basic Line Plot\n\n# Create sample data\nmonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']\nsales = [20000, 25000, 30000, 28000, 35000, 40000]\n\n# Create a simple line plot\nplt.figure(figsize=(10, 6))\nplt.plot(months, sales)\nplt.title('Monthly Sales')\nplt.xlabel('Month')\nplt.ylabel('Sales ($)')\nplt.show()"
   },
   {
+    "objectID": "slides/part10_visualization_intro_slides.html#practice-line-plots",
+    "href": "slides/part10_visualization_intro_slides.html#practice-line-plots",
+    "title": "Part 10: Intro to Visualization",
+    "section": "Practice: Line Plots",
+    "text": "Practice: Line Plots\nExercise 1 (with Gemini): Ask Gemini to “create a line plot showing temperature over 7 days”\nExercise 2 (on your own): Type plt.plot([1, 2, 3], [10, 20, 15]) then plt.show() and run it."
+  },
+  {
     "objectID": "slides/part10_visualization_intro_slides.html#bar-charts",
     "href": "slides/part10_visualization_intro_slides.html#bar-charts",
     "title": "Part 10: Intro to Visualization",
@@ -1015,11 +1568,25 @@
     "text": "Bar Charts\n\n# Bar charts are great for comparing categories\ndepartments = ['Sales', 'Engineering', 'Marketing', 'HR']\nemployees = [25, 40, 15, 8]\n\nplt.figure(figsize=(10, 6))\nplt.bar(departments, employees, color=['skyblue', 'lightgreen', 'coral', 'gold'])\nplt.title('Employees by Department')\nplt.xlabel('Department')\nplt.ylabel('Number of Employees')\nplt.show()"
   },
   {
+    "objectID": "slides/part10_visualization_intro_slides.html#practice-bar-charts",
+    "href": "slides/part10_visualization_intro_slides.html#practice-bar-charts",
+    "title": "Part 10: Intro to Visualization",
+    "section": "Practice: Bar Charts",
+    "text": "Practice: Bar Charts\nExercise 1 (with Gemini): Ask Gemini to “create a bar chart showing sales for 4 different products”\nExercise 2 (on your own): Type plt.bar(['A', 'B', 'C'], [10, 20, 15]) then plt.show() and run it."
+  },
+  {
     "objectID": "slides/part10_visualization_intro_slides.html#scatter-plots",
     "href": "slides/part10_visualization_intro_slides.html#scatter-plots",
     "title": "Part 10: Intro to Visualization",
     "section": "Scatter Plots",
     "text": "Scatter Plots\n\n# Scatter plots show relationships between two variables\nexperience = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\nsalary = [35000, 38000, 42000, 46000, 50000, 55000, 60000, 65000, 70000, 75000]\n\nplt.figure(figsize=(10, 6))\nplt.scatter(experience, salary, color='purple', alpha=0.7, s=100)\nplt.title('Salary vs Years of Experience')\nplt.xlabel('Years of Experience')\nplt.ylabel('Salary ($)')\nplt.show()"
+  },
+  {
+    "objectID": "slides/part10_visualization_intro_slides.html#practice-scatter-plots",
+    "href": "slides/part10_visualization_intro_slides.html#practice-scatter-plots",
+    "title": "Part 10: Intro to Visualization",
+    "section": "Practice: Scatter Plots",
+    "text": "Practice: Scatter Plots\nExercise 1 (with Gemini): Ask Gemini to “create a scatter plot showing the relationship between study hours and test scores”\nExercise 2 (on your own): Type plt.scatter([1, 2, 3, 4], [5, 7, 6, 8]) then plt.show() and run it."
   },
   {
     "objectID": "slides/part10_visualization_intro_slides.html#histograms",
@@ -1041,6 +1608,13 @@
     "title": "Part 10: Intro to Visualization",
     "section": "Object-Oriented Example",
     "text": "Object-Oriented Example\n\n# Create sample data\ndata = {\n    'Quarter': ['Q1', 'Q2', 'Q3', 'Q4'],\n    'Revenue': [150000, 180000, 210000, 190000],\n    'Profit': [30000, 40000, 50000, 40000]\n}\ndf = pd.DataFrame(data)\n\n# Create subplots\nfig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4))\n\nax1.bar(df['Quarter'], df['Revenue'], color='steelblue')\nax1.set_title('Revenue by Quarter')\nax1.set_ylabel('Revenue ($)')\n\nax2.plot(df['Quarter'], df['Profit'], marker='o', color='green')\nax2.set_title('Profit Trend')\nax2.set_ylabel('Profit ($)')\n\nplt.tight_layout()\nplt.show()"
+  },
+  {
+    "objectID": "slides/part10_visualization_intro_slides.html#practice-object-oriented-plotting",
+    "href": "slides/part10_visualization_intro_slides.html#practice-object-oriented-plotting",
+    "title": "Part 10: Intro to Visualization",
+    "section": "Practice: Object-Oriented Plotting",
+    "text": "Practice: Object-Oriented Plotting\nExercise 1 (with Gemini): Ask Gemini to “create a figure with 2 subplots side by side using the object-oriented style”\nExercise 2 (on your own): Type fig, ax = plt.subplots() then ax.plot([1, 2, 3]) then plt.show() and run it."
   },
   {
     "objectID": "slides/part10_visualization_intro_slides.html#styling-with-seaborn-themes",
@@ -1169,6 +1743,13 @@
     "text": "Creating a Plotly Box Plot\n\nfig = px.box(wages,\n            x='Education_Level',\n            y='wage',\n            title='Wage Distribution by Gender and Race',\n            labels={'Gender_Race': 'Demographic Group',\n                   'wage': 'Hourly Wage ($)',\n                   'Education_Level': ''},\n            template='plotly_white',\n            color='Gender_Race')\n\nfig.update_layout(\n    height=400,\n    xaxis_tickangle=-45,\n)\nfig.show()"
   },
   {
+    "objectID": "slides/part12_visualization_plotly_slides.html#practice-plotly-visualizations",
+    "href": "slides/part12_visualization_plotly_slides.html#practice-plotly-visualizations",
+    "title": "Part 12: Plotly",
+    "section": "Practice: Plotly Visualizations",
+    "text": "Practice: Plotly Visualizations\nExercise 1 (with Gemini): Ask Gemini to “create an interactive Plotly box plot comparing values across different categories”\nExercise 2 (on your own): Type import plotly.express as px then fig = px.scatter(x=[1, 2, 3], y=[4, 5, 6]) then fig.show() and run it."
+  },
+  {
     "objectID": "slides/part12_visualization_plotly_slides.html#saving-to-html",
     "href": "slides/part12_visualization_plotly_slides.html#saving-to-html",
     "title": "Part 12: Plotly",
@@ -1195,6 +1776,13 @@
     "title": "Part 14: Goal Seek",
     "section": "Simple Example: Quadratic Equation",
     "text": "Simple Example: Quadratic Equation\nFind the values of x that make x² - 5x + 6 = 0\nWe know from algebra (factoring or quadratic formula) that there are two solutions: x = 2 and x = 3.\n\n# STEP 1: Define a function that is zero at the value we want to find\ndef function_to_find_zero(x):\n    return x**2 - 5*x + 6\n\n# STEP 2: Find solution(s). Vary initial values to look for multiple solutions.\ninitial_value1 = 0\nsolution1 = fsolve(function_to_find_zero, initial_value1)\ninitial_value2 = 5\nsolution2 = fsolve(function_to_find_zero, initial_value2)\n\nprint(f\"Starting near 0: solution = {solution1}\")\nprint(f\"Starting near 5: solution = {solution2}\")\n\nStarting near 0: solution = [2.]\nStarting near 5: solution = [3.]"
+  },
+  {
+    "objectID": "slides/part14_goal_seek_slides.html#practice-using-fsolve",
+    "href": "slides/part14_goal_seek_slides.html#practice-using-fsolve",
+    "title": "Part 14: Goal Seek",
+    "section": "Practice: Using fsolve",
+    "text": "Practice: Using fsolve\nExercise 1 (with Gemini): Ask Gemini to “use fsolve to find the value of x where x^2 - 9 = 0”\nExercise 2 (on your own): Type from scipy.optimize import fsolve then fsolve(lambda x: x - 5, 0) and run it to find where x - 5 = 0."
   },
   {
     "objectID": "slides/part14_goal_seek_slides.html#verify-the-solutions",
@@ -1251,6 +1839,13 @@
     "title": "Part 14: Goal Seek",
     "section": "Minimize Example",
     "text": "Minimize Example\nFind the value of x that minimizes f(x) = x² - 4x + 7\n\ndef function_to_minimize(x):\n    return x**2 - 4*x + 7\n\ninitial_guess = 0\nresult = minimize(function_to_minimize, initial_guess)\n\nprint(f'Was the minimization successful? {result.success}')\nprint(f'What is the minimizing value of x? {result.x}')\nprint(f'What is the value of the function at the minimum? {result.fun}')\n\nWas the minimization successful? True\nWhat is the minimizing value of x? [2.00000002]\nWhat is the value of the function at the minimum? 3.0"
+  },
+  {
+    "objectID": "slides/part14_goal_seek_slides.html#practice-minimize",
+    "href": "slides/part14_goal_seek_slides.html#practice-minimize",
+    "title": "Part 14: Goal Seek",
+    "section": "Practice: Minimize",
+    "text": "Practice: Minimize\nExercise 1 (with Gemini): Ask Gemini to “use scipy.optimize.minimize to find the minimum of the function f(x) = x^2 + 3x + 2”\nExercise 2 (on your own): Type from scipy.optimize import minimize then result = minimize(lambda x: x**2, 5) then print(result.x) and run it."
   },
   {
     "objectID": "slides/part14_goal_seek_slides.html#maximization-via-minimization",

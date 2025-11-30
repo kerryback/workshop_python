@@ -214,7 +214,7 @@ Kerry Back, Rice University
 </section>
 <section id="setup" class="slide level2">
 <h2>Setup</h2>
-<div id="28921c4d" class="cell" data-execution_count="1">
+<div id="b1f01b37" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-2"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -222,7 +222,7 @@ Kerry Back, Rice University
 </section>
 <section id="basic-line-plot" class="slide level2">
 <h2>Basic Line Plot</h2>
-<div id="88d31df9" class="cell" data-execution_count="2">
+<div id="0767cda2" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># Create sample data</span></span>
 <span id="cb2-2"><a></a>months <span class="op">=</span> [<span class="st">'Jan'</span>, <span class="st">'Feb'</span>, <span class="st">'Mar'</span>, <span class="st">'Apr'</span>, <span class="st">'May'</span>, <span class="st">'Jun'</span>]</span>
 <span id="cb2-3"><a></a>sales <span class="op">=</span> [<span class="dv">20000</span>, <span class="dv">25000</span>, <span class="dv">30000</span>, <span class="dv">28000</span>, <span class="dv">35000</span>, <span class="dv">40000</span>]</span>
@@ -243,9 +243,14 @@ Kerry Back, Rice University
 </div>
 </div>
 </section>
+<section id="practice-line-plots" class="slide level2">
+<h2>Practice: Line Plots</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “create a line plot showing temperature over 7 days”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>plt.plot([1, 2, 3], [10, 20, 15])</code> then <code>plt.show()</code> and run it.</p>
+</section>
 <section id="bar-charts" class="slide level2">
 <h2>Bar Charts</h2>
-<div id="9b66db93" class="cell" data-execution_count="3">
+<div id="b69f1b1f" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co"># Bar charts are great for comparing categories</span></span>
 <span id="cb3-2"><a></a>departments <span class="op">=</span> [<span class="st">'Sales'</span>, <span class="st">'Engineering'</span>, <span class="st">'Marketing'</span>, <span class="st">'HR'</span>]</span>
 <span id="cb3-3"><a></a>employees <span class="op">=</span> [<span class="dv">25</span>, <span class="dv">40</span>, <span class="dv">15</span>, <span class="dv">8</span>]</span>
@@ -265,9 +270,14 @@ Kerry Back, Rice University
 </div>
 </div>
 </section>
+<section id="practice-bar-charts" class="slide level2">
+<h2>Practice: Bar Charts</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “create a bar chart showing sales for 4 different products”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>plt.bar(['A', 'B', 'C'], [10, 20, 15])</code> then <code>plt.show()</code> and run it.</p>
+</section>
 <section id="scatter-plots" class="slide level2">
 <h2>Scatter Plots</h2>
-<div id="f05da94d" class="cell" data-execution_count="4">
+<div id="bdfe7fce" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="co"># Scatter plots show relationships between two variables</span></span>
 <span id="cb4-2"><a></a>experience <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>]</span>
 <span id="cb4-3"><a></a>salary <span class="op">=</span> [<span class="dv">35000</span>, <span class="dv">38000</span>, <span class="dv">42000</span>, <span class="dv">46000</span>, <span class="dv">50000</span>, <span class="dv">55000</span>, <span class="dv">60000</span>, <span class="dv">65000</span>, <span class="dv">70000</span>, <span class="dv">75000</span>]</span>
@@ -287,9 +297,14 @@ Kerry Back, Rice University
 </div>
 </div>
 </section>
+<section id="practice-scatter-plots" class="slide level2">
+<h2>Practice: Scatter Plots</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “create a scatter plot showing the relationship between study hours and test scores”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>plt.scatter([1, 2, 3, 4], [5, 7, 6, 8])</code> then <code>plt.show()</code> and run it.</p>
+</section>
 <section id="histograms" class="slide level2">
 <h2>Histograms</h2>
-<div id="49853e67" class="cell" data-execution_count="5">
+<div id="21196c13" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="co"># Histograms show the distribution of a single variable</span></span>
 <span id="cb5-2"><a></a>np.random.seed(<span class="dv">42</span>)</span>
 <span id="cb5-3"><a></a>test_scores <span class="op">=</span> np.random.normal(<span class="dv">78</span>, <span class="dv">12</span>, <span class="dv">100</span>)</span>
@@ -327,7 +342,7 @@ Kerry Back, Rice University
 </section>
 <section id="object-oriented-example" class="slide level2">
 <h2>Object-Oriented Example</h2>
-<div id="f558270c" class="cell" data-execution_count="6">
+<div id="3a6d4a82" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="co"># Create sample data</span></span>
 <span id="cb6-2"><a></a>data <span class="op">=</span> {</span>
 <span id="cb6-3"><a></a>    <span class="st">'Quarter'</span>: [<span class="st">'Q1'</span>, <span class="st">'Q2'</span>, <span class="st">'Q3'</span>, <span class="st">'Q4'</span>],</span>
@@ -358,9 +373,14 @@ Kerry Back, Rice University
 </div>
 </div>
 </section>
+<section id="practice-object-oriented-plotting" class="slide level2">
+<h2>Practice: Object-Oriented Plotting</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “create a figure with 2 subplots side by side using the object-oriented style”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>fig, ax = plt.subplots()</code> then <code>ax.plot([1, 2, 3])</code> then <code>plt.show()</code> and run it.</p>
+</section>
 <section id="styling-with-seaborn-themes" class="slide level2">
 <h2>Styling with Seaborn Themes</h2>
-<div id="08536adf" class="cell" data-execution_count="7">
+<div id="57d6967c" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb7-2"><a></a></span>
 <span id="cb7-3"><a></a><span class="co"># Create sample data</span></span>
@@ -374,7 +394,7 @@ Kerry Back, Rice University
 </section>
 <section id="whitegrid-theme" class="slide level2">
 <h2>Whitegrid Theme</h2>
-<div id="627c9705" class="cell" data-execution_count="8">
+<div id="6d19bc6a" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>sns.set_theme(style<span class="op">=</span><span class="st">"whitegrid"</span>)</span>
 <span id="cb8-2"><a></a></span>
 <span id="cb8-3"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
@@ -396,7 +416,7 @@ Kerry Back, Rice University
 </section>
 <section id="darkgrid-theme" class="slide level2">
 <h2>Darkgrid Theme</h2>
-<div id="1b72f541" class="cell" data-execution_count="9">
+<div id="ff00a735" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a>sns.set_theme(style<span class="op">=</span><span class="st">"darkgrid"</span>)</span>
 <span id="cb9-2"><a></a></span>
 <span id="cb9-3"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
@@ -418,7 +438,7 @@ Kerry Back, Rice University
 </section>
 <section id="custom-matplotlib-styling" class="slide level2">
 <h2>Custom Matplotlib Styling</h2>
-<div id="739fafbb" class="cell" data-execution_count="10">
+<div id="78137e7d" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>plt.rcdefaults()</span>
 <span id="cb10-2"><a></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
 <span id="cb10-3"><a></a></span>
@@ -446,7 +466,7 @@ Kerry Back, Rice University
 </section>
 <section id="setting-global-font-sizes" class="slide level2">
 <h2>Setting Global Font Sizes</h2>
-<div id="0c710633" class="cell" data-execution_count="11">
+<div id="cb288c5f" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>plt.rc(<span class="st">'font'</span>, size<span class="op">=</span><span class="dv">14</span>)</span>
 <span id="cb11-2"><a></a>plt.rc(<span class="st">'axes'</span>, titlesize<span class="op">=</span><span class="dv">18</span>)</span>
 <span id="cb11-3"><a></a>plt.rc(<span class="st">'axes'</span>, labelsize<span class="op">=</span><span class="dv">16</span>)</span>
@@ -476,7 +496,7 @@ Kerry Back, Rice University
 </section>
 <section id="time-series-data" class="slide level2">
 <h2>Time Series Data</h2>
-<div id="86d740d6" class="cell" data-execution_count="12">
+<div id="86a3e81e" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
 <span id="cb12-2"><a></a><span class="im">import</span> matplotlib.dates <span class="im">as</span> mdates</span>
 <span id="cb12-3"><a></a></span>
@@ -498,7 +518,7 @@ Kerry Back, Rice University
 </section>
 <section id="time-series-visualization" class="slide level2">
 <h2>Time Series Visualization</h2>
-<div id="145d2c16" class="cell" data-execution_count="13">
+<div id="aaf17120" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">6</span>))</span>
 <span id="cb13-2"><a></a></span>
 <span id="cb13-3"><a></a>ax.plot(stock_data[<span class="st">'date'</span>], stock_data[<span class="st">'price'</span>], alpha<span class="op">=</span><span class="fl">0.7</span>, linewidth<span class="op">=</span><span class="dv">1</span>,</span>

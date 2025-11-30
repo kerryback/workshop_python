@@ -42,6 +42,12 @@ fruits = ["apple", "banana", "cherry"]
 mixed = [1, "hello", 3.14, True]
 ```
 
+## Practice: Creating Lists
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that creates a list of three colors and prints it"
+
+**Exercise 2 (on your own):** Type `my_list = [10, 20, 30]` then `print(my_list)` and run it.
+
 ## Concatenating Lists
 
 Lists can be combined using the **`+` operator**:
@@ -57,6 +63,12 @@ print(combined)
 result = ["a", "b"] + ["c", "d"]
 print(result)
 ```
+
+## Practice: Concatenating Lists
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that concatenates [1, 2, 3] and [4, 5, 6]"
+
+**Exercise 2 (on your own):** Type `print([10, 20] + [30, 40])` and run it.
 
 ## List Methods
 
@@ -89,6 +101,12 @@ print("After sort:", my_list)
 
 **Note:** Methods like `.append()` and `.sort()` return `None`, not a new list!
 
+## Practice: List Methods
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that creates a list [5, 2, 8] and sorts it"
+
+**Exercise 2 (on your own):** Type `nums = [1, 2, 3]` then `nums.append(4)` then `print(nums)` and run it.
+
 ## More List Methods
 
 ```{python}
@@ -111,6 +129,12 @@ print("Popped:", last)
 print("Remaining:", colors)
 ```
 
+## Practice: More Methods
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that removes the first 'apple' from a list of fruits"
+
+**Exercise 2 (on your own):** Type `items = [1, 2, 3]` then `print(items.pop())` and run it.
+
 ## Indexing
 
 Access individual elements using **square brackets** with an index:
@@ -126,6 +150,12 @@ print("Second to last [-2]:", colors[-2])
 
 **Negative indices** count from the end: `-1` is last, `-2` is second to last, etc.
 
+## Practice: Indexing
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that gets the last element from a list using negative indexing"
+
+**Exercise 2 (on your own):** Type `nums = [10, 20, 30, 40]` then `print(nums[0])` and run it.
+
 ## Slicing
 
 Extract a portion of a list using **slicing** `[start:end]`:
@@ -140,6 +170,12 @@ print("From index 3 [3:]:", colors[3:])
 ```
 
 **Note:** `[start:end]` includes `start` but excludes `end`
+
+## Practice: Slicing
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that gets the first three elements from a list using slicing"
+
+**Exercise 2 (on your own):** Type `letters = ['a', 'b', 'c', 'd', 'e']` then `print(letters[1:4])` and run it.
 
 ## List Unpacking
 
@@ -159,6 +195,12 @@ print(f"First: {first}, Second: {second}")
 ```
 
 **Important:** Number of variables must match number of list elements!
+
+## Practice: List Unpacking
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that unpacks a list of two numbers into variables x and y"
+
+**Exercise 2 (on your own):** Type `a, b, c = [1, 2, 3]` then `print(a, b, c)` and run it.
 
 ## Summary
 

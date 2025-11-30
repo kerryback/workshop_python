@@ -43,6 +43,12 @@ print(result)
 
 Use the function directly without a prefix.
 
+## Practice: Importing Functions
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that imports the sqrt function from math and uses it"
+
+**Exercise 2 (on your own):** Type `from math import pi` then `print(pi)` and run it.
+
 ## Importing Entire Libraries
 
 Import the whole library and access its contents:
@@ -58,6 +64,12 @@ print(f"Cosine of 0: {math.cos(0)}")
 
 Use `library.function()` syntax.
 
+## Practice: Importing Libraries
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that imports the math library and calculates the square root of 16"
+
+**Exercise 2 (on your own):** Type `import math` then `print(math.sqrt(25))` and run it.
+
 ## Using Aliases
 
 Abbreviate library names with **`as`**:
@@ -70,6 +82,12 @@ print(result)
 ```
 
 Especially useful for libraries with long names!
+
+## Practice: Using Aliases
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that imports math as m and uses it to calculate pi times 2"
+
+**Exercise 2 (on your own):** Type `import math as m` then `print(m.pi)` and run it.
 
 ## Standard Alias Conventions
 
@@ -106,6 +124,12 @@ z = sqrt(25)
 
 print(f"All equal: {x == y == z}")
 ```
+
+## Practice: Import Patterns
+
+**Exercise 1 (with Gemini):** Ask Gemini to "explain the difference between 'import math' and 'from math import sqrt'"
+
+**Exercise 2 (on your own):** Type `import math` then `from math import pi` then `print(math.sqrt(9), pi)` and run it.
 
 ## Installing Libraries with pip
 
@@ -159,6 +183,12 @@ next_week = today + timedelta(weeks=1)
 print(f"Today: {today}")
 print(f"Next week: {next_week}")
 ```
+
+## Practice: Multiple Libraries
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that imports and uses both math and datetime libraries"
+
+**Exercise 2 (on your own):** Type `import math` then `from datetime import date` then `print(math.pi, date.today())` and run it.
 
 ## Summary
 

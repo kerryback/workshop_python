@@ -1067,7 +1067,7 @@ Kerry Back, Rice University
 <h2>Lists</h2>
 <p><strong>Lists</strong> are ordered collections of items that can be of any type.</p>
 <p><strong>Key features:</strong> - Created with <strong>square brackets</strong> <code>[]</code>, items separated by commas - <strong>Zero-based indexing</strong> (first element is at index 0) - Can contain mixed data types - Are <strong>mutable</strong> (can be changed after creation)</p>
-<div id="14d7b61c" class="cell" data-execution_count="1">
+<div id="8c822a1c" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># List of numbers</span></span>
 <span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
 <span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a></span>
@@ -1078,10 +1078,15 @@ Kerry Back, Rice University
 <span id="cb1-8"><a aria-hidden="true" tabindex="-1"></a>mixed <span class="op">=</span> [<span class="dv">1</span>, <span class="st">&quot;hello&quot;</span>, <span class="fl">3.14</span>, <span class="va">True</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
+<section id="practice-creating-lists" class="slide level2">
+<h2>Practice: Creating Lists</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that creates a list of three colors and prints it”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>my_list = [10, 20, 30]</code> then <code>print(my_list)</code> and run it.</p>
+</section>
 <section id="concatenating-lists" class="slide level2">
 <h2>Concatenating Lists</h2>
 <p>Lists can be combined using the <strong><code>+</code> operator</strong>:</p>
-<div id="b2112793" class="cell" data-execution_count="2">
+<div id="64798323" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a>list1 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
 <span id="cb2-2"><a aria-hidden="true" tabindex="-1"></a>list2 <span class="op">=</span> [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]</span>
 <span id="cb2-3"><a aria-hidden="true" tabindex="-1"></a></span>
@@ -1096,6 +1101,11 @@ Kerry Back, Rice University
 [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;]</code></pre>
 </div>
 </div>
+</section>
+<section id="practice-concatenating-lists" class="slide level2">
+<h2>Practice: Concatenating Lists</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that concatenates [1, 2, 3] and [4, 5, 6]”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>print([10, 20] + [30, 40])</code> and run it.</p>
 </section>
 <section id="list-methods" class="slide level2">
 <h2>List Methods</h2>
@@ -1114,7 +1124,7 @@ Kerry Back, Rice University
 <h2>Methods that Operate In Place</h2>
 <p><strong>Important difference from string methods:</strong></p>
 <p>Most list methods <strong>modify the list directly</strong> instead of returning a new list.</p>
-<div id="6b73ec5f" class="cell" data-execution_count="3">
+<div id="072b2b49" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a>my_list <span class="op">=</span> [<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">5</span>]</span>
 <span id="cb4-2"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Original:&quot;</span>, my_list)</span>
 <span id="cb4-3"><a aria-hidden="true" tabindex="-1"></a></span>
@@ -1131,9 +1141,14 @@ After sort: [1, 1, 3, 4, 5, 9]</code></pre>
 </div>
 <p><strong>Note:</strong> Methods like <code>.append()</code> and <code>.sort()</code> return <code>None</code>, not a new list!</p>
 </section>
+<section id="practice-list-methods" class="slide level2">
+<h2>Practice: List Methods</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that creates a list [5, 2, 8] and sorts it”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>nums = [1, 2, 3]</code> then <code>nums.append(4)</code> then <code>print(nums)</code> and run it.</p>
+</section>
 <section id="more-list-methods" class="slide level2">
 <h2>More List Methods</h2>
-<div id="46da5299" class="cell" data-execution_count="4">
+<div id="fde019db" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> [<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;yellow&quot;</span>]</span>
 <span id="cb6-2"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Insert at position</span></span>
@@ -1160,10 +1175,15 @@ Remaining: [&#39;red&#39;, &#39;purple&#39;, &#39;green&#39;, &#39;blue&#39;]</c
 </div>
 </div>
 </section>
+<section id="practice-more-methods" class="slide level2">
+<h2>Practice: More Methods</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that removes the first ‘apple’ from a list of fruits”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>items = [1, 2, 3]</code> then <code>print(items.pop())</code> and run it.</p>
+</section>
 <section id="indexing" class="slide level2">
 <h2>Indexing</h2>
 <p>Access individual elements using <strong>square brackets</strong> with an index:</p>
-<div id="c42a7912" class="cell" data-execution_count="5">
+<div id="4164ad93" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> [<span class="st">&quot;red&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;purple&quot;</span>]</span>
 <span id="cb8-2"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;First element [0]:&quot;</span>, colors[<span class="dv">0</span>])</span>
@@ -1179,10 +1199,15 @@ Second to last [-2]: yellow</code></pre>
 </div>
 <p><strong>Negative indices</strong> count from the end: <code>-1</code> is last, <code>-2</code> is second to last, etc.</p>
 </section>
+<section id="practice-indexing" class="slide level2">
+<h2>Practice: Indexing</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that gets the last element from a list using negative indexing”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>nums = [10, 20, 30, 40]</code> then <code>print(nums[0])</code> and run it.</p>
+</section>
 <section id="slicing" class="slide level2">
 <h2>Slicing</h2>
 <p>Extract a portion of a list using <strong>slicing</strong> <code>[start:end]</code>:</p>
-<div id="e5a40d4e" class="cell" data-execution_count="6">
+<div id="67eded6b" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> [<span class="st">&quot;red&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;purple&quot;</span>, <span class="st">&quot;orange&quot;</span>]</span>
 <span id="cb10-2"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;First three [0:3]:&quot;</span>, colors[<span class="dv">0</span>:<span class="dv">3</span>])</span>
@@ -1198,10 +1223,15 @@ From index 3 [3:]: [&#39;yellow&#39;, &#39;purple&#39;, &#39;orange&#39;]</code>
 </div>
 <p><strong>Note:</strong> <code>[start:end]</code> includes <code>start</code> but excludes <code>end</code></p>
 </section>
+<section id="practice-slicing" class="slide level2">
+<h2>Practice: Slicing</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that gets the first three elements from a list using slicing”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>letters = [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;]</code> then <code>print(letters[1:4])</code> and run it.</p>
+</section>
 <section id="list-unpacking" class="slide level2">
 <h2>List Unpacking</h2>
 <p>Extract all elements and assign to variables in one step:</p>
-<div id="e9da4c83" class="cell" data-execution_count="7">
+<div id="2172fb53" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a>my_list <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>]</span>
 <span id="cb12-2"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Unpack into three variables</span></span>
@@ -1218,6 +1248,11 @@ First: apple, Second: banana</code></pre>
 </div>
 </div>
 <p><strong>Important:</strong> Number of variables must match number of list elements!</p>
+</section>
+<section id="practice-list-unpacking" class="slide level2">
+<h2>Practice: List Unpacking</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that unpacks a list of two numbers into variables x and y”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>a, b, c = [1, 2, 3]</code> then <code>print(a, b, c)</code> and run it.</p>
 </section>
 <section id="summary" class="slide level2">
 <h2>Summary</h2>

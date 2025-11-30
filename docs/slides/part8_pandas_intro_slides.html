@@ -1078,14 +1078,14 @@ Kerry Back, Rice University
 <li>Powerful tools for filtering, grouping, and transforming data</li>
 <li>Integrates seamlessly with other data science libraries</li>
 </ul>
-<div id="c3c231cb" class="cell" data-execution_count="1">
+<div id="dce658a3" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="creating-a-dataframe" class="slide level2">
 <h2>Creating a DataFrame</h2>
 <p>Create DataFrames from dictionaries, where keys become column names:</p>
-<div id="a6d08a4c" class="cell" data-execution_count="2">
+<div id="ebb3b3e6" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
 <span id="cb2-2"><a aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Name&#39;</span>: [<span class="st">&#39;Alice&#39;</span>, <span class="st">&#39;Bob&#39;</span>, <span class="st">&#39;Charlie&#39;</span>, <span class="st">&#39;Diana&#39;</span>],</span>
 <span id="cb2-3"><a aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Age&#39;</span>: [<span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">35</span>, <span class="dv">28</span>],</span>
@@ -1107,10 +1107,15 @@ Shape: (4, 4)</code></pre>
 </div>
 </div>
 </section>
+<section id="practice-creating-dataframes" class="slide level2">
+<h2>Practice: Creating DataFrames</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “create a DataFrame with three columns: ‘product’, ‘price’, and ‘quantity’ with at least 3 products”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>data = {&#39;a&#39;: [1, 2, 3], &#39;b&#39;: [4, 5, 6]}</code> then <code>df = pd.DataFrame(data)</code> then <code>print(df)</code> and run it.</p>
+</section>
 <section id="understanding-series" class="slide level2">
 <h2>Understanding Series</h2>
 <p>A <strong>Series</strong> is a one-dimensional labeled array - essentially one column of data.</p>
-<div id="171b1863" class="cell" data-execution_count="3">
+<div id="f18bb85e" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Create a Series with custom index</span></span>
 <span id="cb4-2"><a aria-hidden="true" tabindex="-1"></a>products <span class="op">=</span> pd.Series(</span>
 <span id="cb4-3"><a aria-hidden="true" tabindex="-1"></a>    [<span class="fl">29.99</span>, <span class="fl">999.99</span>, <span class="fl">79.99</span>, <span class="fl">299.99</span>],</span>
@@ -1133,7 +1138,7 @@ Type: &lt;class &#39;pandas.core.series.Series&#39;&gt;</code></pre>
 <section id="accessing-series-elements" class="slide level2">
 <h2>Accessing Series Elements</h2>
 <p>Series support both <strong>label-based</strong> and <strong>position-based</strong> indexing:</p>
-<div id="e3468cb5" class="cell" data-execution_count="4">
+<div id="c0971aaa" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Label-based indexing</span></span>
 <span id="cb6-2"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;By label - Laptop:&quot;</span>, products[<span class="st">&#39;Laptop&#39;</span>])</span>
 <span id="cb6-3"><a aria-hidden="true" tabindex="-1"></a></span>
@@ -1160,7 +1165,7 @@ dtype: float64</code></pre>
 <section id="series-summary-statistics" class="slide level2">
 <h2>Series Summary Statistics</h2>
 <p>Series have built-in methods for common statistics:</p>
-<div id="0b8368a6" class="cell" data-execution_count="5">
+<div id="6500d85b" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Average price: $</span><span class="sc">{</span>products<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss">&quot;</span>)</span>
 <span id="cb8-2"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Most expensive: $</span><span class="sc">{</span>products<span class="sc">.</span><span class="bu">max</span>()<span class="sc">}</span><span class="ss">&quot;</span>)</span>
 <span id="cb8-3"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Cheapest: $</span><span class="sc">{</span>products<span class="sc">.</span><span class="bu">min</span>()<span class="sc">}</span><span class="ss">&quot;</span>)</span>
@@ -1173,10 +1178,15 @@ Standard deviation: $447.32</code></pre>
 </div>
 </div>
 </section>
+<section id="practice-series-operations" class="slide level2">
+<h2>Practice: Series Operations</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “create a Series with 5 numbers and calculate the mean and standard deviation”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>s = pd.Series([10, 20, 30, 40])</code> then <code>print(s.mean())</code> and run it.</p>
+</section>
 <section id="creating-a-larger-dataset" class="slide level2">
 <h2>Creating a Larger Dataset</h2>
 <p>Let’s create a more realistic dataset with employee information:</p>
-<div id="96788e04" class="cell" data-execution_count="6">
+<div id="c2946e1d" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Create a larger DataFrame for analysis</span></span>
 <span id="cb10-2"><a aria-hidden="true" tabindex="-1"></a>employees_data <span class="op">=</span> {</span>
 <span id="cb10-3"><a aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Name&#39;</span>: [<span class="st">&#39;Alice&#39;</span>, <span class="st">&#39;Bob&#39;</span>, <span class="st">&#39;Charlie&#39;</span>, <span class="st">&#39;Diana&#39;</span>, <span class="st">&#39;Eve&#39;</span>, <span class="st">&#39;Frank&#39;</span>, <span class="st">&#39;Grace&#39;</span>, <span class="st">&#39;Henry&#39;</span>],</span>
@@ -1272,7 +1282,7 @@ text-align: right;
 <section id="dataframe-attributes" class="slide level2">
 <h2>DataFrame Attributes</h2>
 <p>Essential attributes to understand your data:</p>
-<div id="ca940964" class="cell" data-execution_count="7">
+<div id="98d4c626" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Shape: </span><span class="sc">{</span>df<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">&quot;</span>)</span>
 <span id="cb11-2"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Column names: </span><span class="sc">{</span><span class="bu">list</span>(df.columns[:<span class="dv">5</span>])<span class="sc">}</span><span class="ss">...&quot;</span>)  <span class="co"># First 5</span></span>
 <span id="cb11-3"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;</span><span class="ch">\n</span><span class="ss">First 3 rows:&quot;</span>)</span>
@@ -1299,7 +1309,7 @@ First 3 rows:
 <section id="selecting-columns" class="slide level2">
 <h2>Selecting Columns</h2>
 <p>Select one or more columns from a DataFrame:</p>
-<div id="46dcec3c" class="cell" data-execution_count="8">
+<div id="07138457" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Single column (returns Series)</span></span>
 <span id="cb13-2"><a aria-hidden="true" tabindex="-1"></a>salaries <span class="op">=</span> df[<span class="st">&#39;Salary&#39;</span>]</span>
 <span id="cb13-3"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Salaries - type: </span><span class="sc">{</span><span class="bu">type</span>(salaries)<span class="sc">}</span><span class="ss">&quot;</span>)</span>
@@ -1326,10 +1336,15 @@ Subset shape: (8, 3)
 </div>
 </div>
 </section>
+<section id="practice-selecting-columns" class="slide level2">
+<h2>Practice: Selecting Columns</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “select the ‘Name’ and ‘Age’ columns from a DataFrame”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>df[&#39;Name&#39;]</code> and run it to select a single column.</p>
+</section>
 <section id="selecting-rows" class="slide level2">
 <h2>Selecting Rows</h2>
 <p>Use <code>.loc</code> for label-based or <code>.iloc</code> for position-based row selection:</p>
-<div id="4687cd50" class="cell" data-execution_count="9">
+<div id="d87e78b1" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># First row</span></span>
 <span id="cb15-2"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;First row:&quot;</span>)</span>
 <span id="cb15-3"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.iloc[<span class="dv">0</span>])</span>
@@ -1358,7 +1373,7 @@ First 3 rows:
 <section id="filtering-data" class="slide level2">
 <h2>Filtering Data</h2>
 <p>Filter rows based on conditions using boolean indexing:</p>
-<div id="b4a12794" class="cell" data-execution_count="10">
+<div id="c94559d6" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Filter for high earners</span></span>
 <span id="cb17-2"><a aria-hidden="true" tabindex="-1"></a>high_earners <span class="op">=</span> df[df[<span class="st">&#39;Salary&#39;</span>] <span class="op">&gt;</span> <span class="dv">70000</span>]</span>
 <span id="cb17-3"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;People earning &gt;$70,000: </span><span class="sc">{</span><span class="bu">len</span>(high_earners)<span class="sc">}</span><span class="ss">&quot;</span>)</span>
@@ -1383,10 +1398,15 @@ Engineering high earners:
 </div>
 </div>
 </section>
+<section id="practice-filtering-data" class="slide level2">
+<h2>Practice: Filtering Data</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “filter a DataFrame to show only rows where Age is greater than 30”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>df[df[&#39;Salary&#39;] &gt; 65000]</code> and run it to filter rows.</p>
+</section>
 <section id="adding-and-modifying-columns" class="slide level2">
 <h2>Adding and Modifying Columns</h2>
 <p>Create new columns or modify existing ones:</p>
-<div id="19bee541" class="cell" data-execution_count="11">
+<div id="3c66a896" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Create new calculated column (10% bonus)</span></span>
 <span id="cb19-2"><a aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;Bonus&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;Salary&#39;</span>] <span class="op">*</span> <span class="fl">0.10</span></span>
 <span id="cb19-3"><a aria-hidden="true" tabindex="-1"></a></span>
@@ -1418,10 +1438,15 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 </section>
+<section id="practice-adding-columns" class="slide level2">
+<h2>Practice: Adding Columns</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “add a new column to a DataFrame that calculates 15% tax on a Salary column”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>df[&#39;Double_Salary&#39;] = df[&#39;Salary&#39;] * 2</code> then <code>print(df[[&#39;Name&#39;, &#39;Salary&#39;, &#39;Double_Salary&#39;]].head())</code> and run it.</p>
+</section>
 <section id="working-with-indexes" class="slide level2">
 <h2>Working with Indexes</h2>
 <p>The <strong>index</strong> provides row labels (default is 0, 1, 2, …):</p>
-<div id="f28b41e3" class="cell" data-execution_count="12">
+<div id="d0a0c872" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Create small example</span></span>
 <span id="cb21-2"><a aria-hidden="true" tabindex="-1"></a>employees <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb21-3"><a aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Name&#39;</span>: [<span class="st">&#39;Alice&#39;</span>, <span class="st">&#39;Bob&#39;</span>, <span class="st">&#39;Charlie&#39;</span>],</span>

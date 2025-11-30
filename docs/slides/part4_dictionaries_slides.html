@@ -1067,7 +1067,7 @@ Kerry Back, Rice University
 <h2>Dictionaries</h2>
 <p><strong>Dictionaries</strong> store data as <strong>key-value pairs</strong>.</p>
 <p>Created with <strong>curly braces</strong> <code>{}</code>:</p>
-<div id="35a3b87b" class="cell" data-execution_count="1">
+<div id="b17a3385" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a>car <span class="op">=</span> {</span>
 <span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;brand&quot;</span>: <span class="st">&quot;Toyota&quot;</span>,</span>
 <span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;model&quot;</span>: <span class="st">&quot;Camry&quot;</span>,</span>
@@ -1082,10 +1082,15 @@ Kerry Back, Rice University
 </div>
 <p>Think of it like a real dictionary: the <strong>key</strong> is the word, the <strong>value</strong> is the definition.</p>
 </section>
+<section id="practice-creating-dictionaries" class="slide level2">
+<h2>Practice: Creating Dictionaries</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that creates a dictionary with keys ‘name’, ‘age’, and ‘city’ and prints it”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>person = {&quot;name&quot;: &quot;Alice&quot;, &quot;age&quot;: 30}</code> then <code>print(person)</code> and run it.</p>
+</section>
 <section id="accessing-dictionary-values" class="slide level2">
 <h2>Accessing Dictionary Values</h2>
 <p>Access values using <strong>keys</strong> in square brackets:</p>
-<div id="99a49e6f" class="cell" data-execution_count="2">
+<div id="56cd54fb" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Brand:&quot;</span>, car[<span class="st">&quot;brand&quot;</span>])</span>
 <span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Year:&quot;</span>, car[<span class="st">&quot;year&quot;</span>])</span>
 <span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a></span>
@@ -1101,10 +1106,15 @@ Has &#39;price&#39;: False</code></pre>
 </div>
 <p>Unlike lists (indexed by position), dictionaries use <strong>meaningful keys</strong> like <code>&quot;brand&quot;</code> or <code>&quot;year&quot;</code>.</p>
 </section>
+<section id="practice-accessing-values" class="slide level2">
+<h2>Practice: Accessing Values</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that accesses the ‘model’ value from a car dictionary”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>student = {&quot;name&quot;: &quot;Bob&quot;, &quot;grade&quot;: 85}</code> then <code>print(student[&quot;name&quot;])</code> and run it.</p>
+</section>
 <section id="dictionary-methods" class="slide level2">
 <h2>Dictionary Methods</h2>
 <p>Useful methods to work with dictionaries:</p>
-<div id="b0cf9882" class="cell" data-execution_count="3">
+<div id="2e431d93" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;All keys:&quot;</span>, <span class="bu">list</span>(car.keys()))</span>
 <span id="cb5-2"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;All values:&quot;</span>, <span class="bu">list</span>(car.values()))</span>
 <span id="cb5-3"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;All items:&quot;</span>, <span class="bu">list</span>(car.items()))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1120,10 +1130,15 @@ All items: [(&#39;brand&#39;, &#39;Toyota&#39;), (&#39;model&#39;, &#39;Camry&#3
 <li><strong><code>.items()</code></strong> - returns key-value pairs as tuples</li>
 </ul>
 </section>
+<section id="practice-dictionary-methods" class="slide level2">
+<h2>Practice: Dictionary Methods</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that prints all keys from a dictionary”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>d = {&quot;a&quot;: 1, &quot;b&quot;: 2}</code> then <code>print(list(d.values()))</code> and run it.</p>
+</section>
 <section id="adding-and-modifying" class="slide level2">
 <h2>Adding and Modifying</h2>
 <p>Add new key-value pairs or modify existing ones with assignment:</p>
-<div id="a1d28460" class="cell" data-execution_count="4">
+<div id="3af4afd9" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Add a new key-value pair</span></span>
 <span id="cb7-2"><a aria-hidden="true" tabindex="-1"></a>car[<span class="st">&quot;price&quot;</span>] <span class="op">=</span> <span class="dv">25000</span></span>
 <span id="cb7-3"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;After adding price:&quot;</span>, car)</span>
@@ -1138,10 +1153,15 @@ After updating year: {&#39;brand&#39;: &#39;Toyota&#39;, &#39;model&#39;: &#39;C
 </div>
 <p><strong>Key point:</strong> If key exists → update value. If key doesn’t exist → create new pair.</p>
 </section>
+<section id="practice-adding-and-modifying" class="slide level2">
+<h2>Practice: Adding and Modifying</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that adds a new key ‘color’ to a car dictionary”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>book = {&quot;title&quot;: &quot;Python&quot;}</code> then <code>book[&quot;author&quot;] = &quot;Smith&quot;</code> then <code>print(book)</code> and run it.</p>
+</section>
 <section id="formatting-long-dictionaries" class="slide level2">
 <h2>Formatting Long Dictionaries</h2>
 <p>For readability, break dictionaries across multiple lines:</p>
-<div id="06b11fc3" class="cell" data-execution_count="5">
+<div id="be41bda7" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a>inventory <span class="op">=</span> {</span>
 <span id="cb9-2"><a aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;apples&quot;</span>: <span class="dv">50</span>,</span>
 <span id="cb9-3"><a aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;bananas&quot;</span>: <span class="dv">30</span>,</span>
@@ -1155,6 +1175,11 @@ After updating year: {&#39;brand&#39;: &#39;Toyota&#39;, &#39;model&#39;: &#39;C
 </div>
 </div>
 <p><strong>Rule:</strong> Can break anywhere <strong>except before a comma</strong>.</p>
+</section>
+<section id="practice-formatting" class="slide level2">
+<h2>Practice: Formatting</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that creates a multi-line dictionary with 4 items”</p>
+<p><strong>Exercise 2 (on your own):</strong> Create a dictionary on multiple lines for practice (no specific code required).</p>
 </section>
 <section id="lists-vs.-dictionaries" class="slide level2">
 <h2>Lists vs. Dictionaries</h2>
@@ -1198,7 +1223,7 @@ After updating year: {&#39;brand&#39;: &#39;Toyota&#39;, &#39;model&#39;: &#39;C
 <section id="lists-vs.-dictionaries-examples" class="slide level2">
 <h2>Lists vs. Dictionaries Examples</h2>
 <p><strong>Use a list</strong> when you have a sequence:</p>
-<div id="1dc235e8" class="cell" data-execution_count="6">
+<div id="f3e13ed8" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a>test_scores <span class="op">=</span> [<span class="dv">85</span>, <span class="dv">92</span>, <span class="dv">78</span>, <span class="dv">95</span>]</span>
 <span id="cb11-2"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;First score:&quot;</span>, test_scores[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1206,7 +1231,7 @@ After updating year: {&#39;brand&#39;: &#39;Toyota&#39;, &#39;model&#39;: &#39;C
 </div>
 </div>
 <p><strong>Use a dictionary</strong> when you need named lookups:</p>
-<div id="996559de" class="cell" data-execution_count="7">
+<div id="b6683462" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">&quot;name&quot;</span>: <span class="st">&quot;Alice&quot;</span>, <span class="st">&quot;age&quot;</span>: <span class="dv">20</span>, <span class="st">&quot;gpa&quot;</span>: <span class="fl">3.8</span>}</span>
 <span id="cb13-2"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Student name:&quot;</span>, student[<span class="st">&quot;name&quot;</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1214,10 +1239,15 @@ After updating year: {&#39;brand&#39;: &#39;Toyota&#39;, &#39;model&#39;: &#39;C
 </div>
 </div>
 </section>
+<section id="practice-lists-vs-dictionaries" class="slide level2">
+<h2>Practice: Lists vs Dictionaries</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “explain when to use a list versus a dictionary in Python”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>scores = [85, 92, 78]</code> then <code>print(scores[0])</code> and run it.</p>
+</section>
 <section id="the-len-function" class="slide level2">
 <h2>The <code>len</code> Function</h2>
 <p><strong><code>len()</code></strong> returns the length of strings, lists, and dictionaries:</p>
-<div id="43a6be3f" class="cell" data-execution_count="8">
+<div id="27bcbadf" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a>my_list <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
 <span id="cb15-2"><a aria-hidden="true" tabindex="-1"></a>my_dict <span class="op">=</span> {<span class="st">&quot;a&quot;</span>: <span class="dv">1</span>, <span class="st">&quot;b&quot;</span>: <span class="dv">2</span>, <span class="st">&quot;c&quot;</span>: <span class="dv">3</span>}</span>
 <span id="cb15-3"><a aria-hidden="true" tabindex="-1"></a>my_string <span class="op">=</span> <span class="st">&quot;hello&quot;</span></span>
@@ -1232,6 +1262,11 @@ String length: 5</code></pre>
 </div>
 </div>
 <p>For dictionaries, <code>len()</code> returns the number of key-value pairs.</p>
+</section>
+<section id="practice-len-function" class="slide level2">
+<h2>Practice: len() Function</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that finds the length of a dictionary”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>items = [1, 2, 3, 4, 5]</code> then <code>print(len(items))</code> and run it.</p>
 </section>
 <section id="summary" class="slide level2">
 <h2>Summary</h2>

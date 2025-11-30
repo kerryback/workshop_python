@@ -1072,7 +1072,7 @@ Kerry Back, Rice University
 <li><strong>functions</strong> - actions we can perform, like the <code>print</code> function</li>
 </ul>
 <p>We can tell the type of any object with the <code>type</code> function.</p>
-<div id="65ac9577" class="cell" data-execution_count="1">
+<div id="060db23d" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="dv">10</span>))</span>
 <span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="st">&quot;abc&quot;</span>))</span>
 <span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="bu">print</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1083,17 +1083,27 @@ Kerry Back, Rice University
 </div>
 </div>
 </section>
+<section id="practice-object-types" class="slide level2">
+<h2>Practice: Object Types</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that prints the type of the number 3.14”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>print(type(100))</code> in a code cell and run it.</p>
+</section>
 <section id="floats" class="slide level2">
 <h2>Floats</h2>
 <p>Numbers with decimal points are a different type called <strong>floating point</strong> objects, or <strong>floats</strong>.</p>
 <p>They require more space in memory to store than integers.</p>
-<div id="ddb00c54" class="cell" data-execution_count="2">
+<div id="dcfe217f" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">10.0</span></span>
 <span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class &#39;float&#39;&gt;</code></pre>
 </div>
 </div>
+</section>
+<section id="practice-floats" class="slide level2">
+<h2>Practice: Floats</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that creates a variable with a decimal number and prints its type”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>print(5.0 + 3.0)</code> and run it.</p>
 </section>
 <section id="mathematical-operations" class="slide level2">
 <h2>Mathematical Operations</h2>
@@ -1104,7 +1114,7 @@ Kerry Back, Rice University
 <li><strong>multiplication</strong> (<code>*</code>)</li>
 <li><strong>exponentiation</strong> (<code>**</code>) - note: this is <code>**</code> in Python, not <code>^</code> like in Excel</li>
 </ul>
-<div id="2af04001" class="cell" data-execution_count="3">
+<div id="1390b3c9" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;2 * 10.0 =&quot;</span>, <span class="dv">2</span><span class="op">*</span><span class="fl">10.0</span>)</span>
 <span id="cb5-2"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;3**2 =&quot;</span>, <span class="dv">3</span><span class="op">**</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1112,6 +1122,11 @@ Kerry Back, Rice University
 3**2 = 9</code></pre>
 </div>
 </div>
+</section>
+<section id="practice-math-operations" class="slide level2">
+<h2>Practice: Math Operations</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that calculates 5 to the power of 3”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>print(8 * 7)</code> and run it.</p>
 </section>
 <section id="division-operations" class="slide level2">
 <h2>Division Operations</h2>
@@ -1121,7 +1136,7 @@ Kerry Back, Rice University
 <li><strong>floor division</strong> (<code>//</code>) - returns the largest integer ≤ result</li>
 <li><strong>modulo</strong> (<code>%</code>) - returns the remainder</li>
 </ul>
-<div id="990740dc" class="cell" data-execution_count="4">
+<div id="9e4d9ccc" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;10 / 3 =&quot;</span>, <span class="dv">10</span> <span class="op">/</span> <span class="dv">3</span>)</span>
 <span id="cb7-2"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;10 // 3 =&quot;</span>, <span class="dv">10</span> <span class="op">//</span> <span class="dv">3</span>)</span>
 <span id="cb7-3"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;10 % 3 =&quot;</span>, <span class="dv">10</span> <span class="op">%</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1132,11 +1147,16 @@ Kerry Back, Rice University
 </div>
 </div>
 </section>
+<section id="practice-division" class="slide level2">
+<h2>Practice: Division</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that shows the remainder when 17 is divided by 5”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>print(20 // 6)</code> and run it. What is the result?</p>
+</section>
 <section id="strings" class="slide level2">
 <h2>Strings</h2>
 <p><strong>Strings</strong> are sequences of characters enclosed in quotes.</p>
 <p>You can use <strong>single</strong> or <strong>double</strong> quotes - just be consistent at the beginning and end.</p>
-<div id="3e849a11" class="cell" data-execution_count="5">
+<div id="87b344be" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;this is a string&quot;</span>)</span>
 <span id="cb9-2"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;this is a string too&#39;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1145,12 +1165,17 @@ this is a string too</code></pre>
 </div>
 </div>
 <p>We can concatenate (paste) strings together with <code>+</code>:</p>
-<div id="b72512b5" class="cell" data-execution_count="6">
+<div id="c7e3d012" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a><span class="co">&quot;abc&quot;</span> <span class="op">+</span> <span class="st">&#39;xyz&#39;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>&#39;abcxyz&#39;</code></pre>
 </div>
 </div>
+</section>
+<section id="practice-strings" class="slide level2">
+<h2>Practice: Strings</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that concatenates ‘Hello’ and ‘World’ with a space between them”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>print(&quot;Python&quot; + &quot;!&quot;)</code> and run it.</p>
 </section>
 <section id="booleans" class="slide level2">
 <h2>Booleans</h2>
@@ -1164,7 +1189,7 @@ this is a string too</code></pre>
 <li><code>==</code> (is equal to)</li>
 </ul>
 <p><strong>Important:</strong> Use <strong>two equals signs</strong> (<code>==</code>) for comparison. A single <code>=</code> is for assignment.</p>
-<div id="9ede2d1d" class="cell" data-execution_count="7">
+<div id="f4983614" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">10</span> <span class="op">&gt;</span> <span class="dv">5</span>)</span>
 <span id="cb13-2"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">3</span> <span class="op">==</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1173,6 +1198,11 @@ True</code></pre>
 </div>
 </div>
 </section>
+<section id="practice-booleans" class="slide level2">
+<h2>Practice: Booleans</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that checks if 15 is greater than or equal to 10”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>print(7 &lt; 5)</code> and run it. Is the result True or False?</p>
+</section>
 <section id="logical-operators" class="slide level2">
 <h2>Logical Operators</h2>
 <p>We can combine booleans with <strong>logical operators</strong>:</p>
@@ -1180,7 +1210,7 @@ True</code></pre>
 <li><strong><code>and</code></strong> - <code>A and B</code> is <code>True</code> only if both are <code>True</code></li>
 <li><strong><code>or</code></strong> - <code>A or B</code> is <code>True</code> if either (or both) is <code>True</code></li>
 </ul>
-<div id="1f735d18" class="cell" data-execution_count="8">
+<div id="20dee985" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> <span class="va">True</span></span>
 <span id="cb15-2"><a aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> <span class="va">False</span></span>
 <span id="cb15-3"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;A and B:&quot;</span>, A <span class="kw">and</span> B)</span>
@@ -1191,6 +1221,11 @@ A or B: True</code></pre>
 </div>
 </div>
 </section>
+<section id="practice-logical-operators" class="slide level2">
+<h2>Practice: Logical Operators</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that uses ‘and’ to check if a number is between 10 and 20”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>print(True or False)</code> and run it.</p>
+</section>
 <section id="type-conversions" class="slide level2">
 <h2>Type Conversions</h2>
 <p>Python provides functions to convert between types:</p>
@@ -1199,7 +1234,7 @@ A or B: True</code></pre>
 <li><strong><code>float()</code></strong> - converts to floating point</li>
 <li><strong><code>str()</code></strong> - converts to string</li>
 </ul>
-<div id="1ffa4559" class="cell" data-execution_count="9">
+<div id="f02b320e" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;int(10.7) =&quot;</span>, <span class="bu">int</span>(<span class="fl">10.7</span>))</span>
 <span id="cb17-2"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;float(5) =&quot;</span>, <span class="bu">float</span>(<span class="dv">5</span>))</span>
 <span id="cb17-3"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;str(42) =&quot;</span>, <span class="bu">str</span>(<span class="dv">42</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1209,6 +1244,11 @@ float(5) = 5.0
 str(42) = 42</code></pre>
 </div>
 </div>
+</section>
+<section id="practice-type-conversions" class="slide level2">
+<h2>Practice: Type Conversions</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that converts the string ‘100’ to an integer”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>print(str(999))</code> and run it.</p>
 </section>
 <section id="attributes-and-methods" class="slide level2">
 <h2>Attributes and Methods</h2>
@@ -1231,7 +1271,7 @@ str(42) = 42</code></pre>
 <li><strong><code>.strip()</code></strong> - removes whitespace from ends</li>
 <li><strong><code>.replace(old, new)</code></strong> - replaces text</li>
 </ul>
-<div id="18e12126" class="cell" data-execution_count="10">
+<div id="34e1e531" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a>ticker <span class="op">=</span> <span class="st">&#39;tsla&#39;</span></span>
 <span id="cb20-2"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ticker.upper())</span>
 <span id="cb20-3"><a aria-hidden="true" tabindex="-1"></a></span>
@@ -1246,11 +1286,16 @@ hexxo</code></pre>
 </div>
 </div>
 </section>
+<section id="practice-string-methods" class="slide level2">
+<h2>Practice: String Methods</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that converts ‘python programming’ to uppercase”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>print(&quot;hello&quot;.replace(&quot;h&quot;, &quot;j&quot;))</code> and run it.</p>
+</section>
 <section id="f-strings" class="slide level2">
 <h2>f-strings</h2>
 <p><strong>f-strings</strong> (formatted strings) let us insert variables into strings.</p>
 <p>Syntax: <code>f&quot;text {variable} more text&quot;</code></p>
-<div id="51262847" class="cell" data-execution_count="11">
+<div id="13056210" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a aria-hidden="true" tabindex="-1"></a>age <span class="op">=</span> <span class="dv">25</span></span>
 <span id="cb22-2"><a aria-hidden="true" tabindex="-1"></a>statement <span class="op">=</span> <span class="ss">f&#39;Alice is </span><span class="sc">{</span>age<span class="sc">}</span><span class="ss"> years old.&#39;</span></span>
 <span id="cb22-3"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(statement)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1258,7 +1303,11 @@ hexxo</code></pre>
 <pre><code>Alice is 25 years old.</code></pre>
 </div>
 </div>
-<p>Much easier than concatenating with <code>+</code> and <code>str()</code>!</p>
+</section>
+<section id="practice-f-strings" class="slide level2">
+<h2>Practice: f-strings</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code using an f-string to print ‘My name is Bob and I am 30 years old’”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>name = &quot;Sam&quot;</code> then <code>print(f&quot;Hello, {name}!&quot;)</code> and run it.</p>
 </section>
 <section id="formatting-in-f-strings" class="slide level2">
 <h2>Formatting in f-strings</h2>
@@ -1268,7 +1317,7 @@ hexxo</code></pre>
 <li><code>.0%</code> - convert decimal to percentage</li>
 <li><code>:,</code> - add commas to large numbers</li>
 </ul>
-<div id="7a308481" class="cell" data-execution_count="12">
+<div id="62ab5070" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a aria-hidden="true" tabindex="-1"></a>pi <span class="op">=</span> <span class="fl">3.14159</span></span>
 <span id="cb24-2"><a aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&#39;pi to two decimals: </span><span class="sc">{</span>pi<span class="sc">:.2f}</span><span class="ss">&#39;</span>)</span>
 <span id="cb24-3"><a aria-hidden="true" tabindex="-1"></a></span>
@@ -1283,6 +1332,11 @@ as percentage: 25%
 with commas: 1,000,000</code></pre>
 </div>
 </div>
+</section>
+<section id="practice-formatting" class="slide level2">
+<h2>Practice: Formatting</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “write Python code that formats the number 0.75 as a percentage”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>num = 1234567</code> then <code>print(f&#39;{num:,}&#39;)</code> and run it.</p>
 </section>
 <section id="summary" class="slide level2">
 <h2>Summary</h2>

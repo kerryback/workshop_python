@@ -216,7 +216,7 @@ Kerry Back, Rice University
 </section>
 <section id="import-libraries" class="slide level2">
 <h2>Import Libraries</h2>
-<div id="a59ee891" class="cell" data-execution_count="1">
+<div id="b6e95013" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -230,7 +230,7 @@ Kerry Back, Rice University
 <h2>Simple Example: Quadratic Equation</h2>
 <p>Find the values of x that make x² - 5x + 6 = 0</p>
 <p>We know from algebra (factoring or quadratic formula) that there are two solutions: x = 2 and x = 3.</p>
-<div id="e025d5e6" class="cell" data-execution_count="2">
+<div id="1b55f258" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># STEP 1: Define a function that is zero at the value we want to find</span></span>
 <span id="cb2-2"><a></a><span class="kw">def</span> function_to_find_zero(x):</span>
 <span id="cb2-3"><a></a>    <span class="cf">return</span> x<span class="op">**</span><span class="dv">2</span> <span class="op">-</span> <span class="dv">5</span><span class="op">*</span>x <span class="op">+</span> <span class="dv">6</span></span>
@@ -249,9 +249,14 @@ Starting near 5: solution = [3.]</code></pre>
 </div>
 </div>
 </section>
+<section id="practice-using-fsolve" class="slide level2">
+<h2>Practice: Using fsolve</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “use fsolve to find the value of x where x^2 - 9 = 0”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>from scipy.optimize import fsolve</code> then <code>fsolve(lambda x: x - 5, 0)</code> and run it to find where x - 5 = 0.</p>
+</section>
 <section id="verify-the-solutions" class="slide level2">
 <h2>Verify the Solutions</h2>
-<div id="795aab16" class="cell" data-execution_count="3">
+<div id="5d52ea55" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="bu">print</span>(<span class="ss">f"2**2 - 5*2 + 6 = </span><span class="sc">{</span>function_to_find_zero(<span class="dv">2</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb4-2"><a></a><span class="bu">print</span>(<span class="ss">f"3**2 - 5*3 + 6 = </span><span class="sc">{</span>function_to_find_zero(<span class="dv">3</span>)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -278,7 +283,7 @@ Starting near 5: solution = [3.]</code></pre>
 </section>
 <section id="npv-calculation-function" class="slide level2">
 <h2>NPV Calculation Function</h2>
-<div id="ef1263b5" class="cell" data-execution_count="4">
+<div id="51c646c6" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="co"># Project assumptions</span></span>
 <span id="cb6-2"><a></a>initial_capex <span class="op">=</span> <span class="dv">100000</span></span>
 <span id="cb6-3"><a></a>project_life <span class="op">=</span> <span class="dv">5</span></span>
@@ -293,7 +298,7 @@ Starting near 5: solution = [3.]</code></pre>
 </section>
 <section id="npv-calculation-function-continued" class="slide level2">
 <h2>NPV Calculation Function (continued)</h2>
-<div id="990fb4c3" class="cell" data-execution_count="5">
+<div id="9a902fb0" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="kw">def</span> calculate_npv(annual_qty):</span>
 <span id="cb7-2"><a></a>    <span class="co">"""Calculate NPV for a given annual sales quantity"""</span></span>
 <span id="cb7-3"><a></a>    cash_flows <span class="op">=</span> [<span class="op">-</span>initial_capex]  <span class="co"># Year 0: Initial investment</span></span>
@@ -335,7 +340,7 @@ Starting near 5: solution = [3.]</code></pre>
 </section>
 <section id="test-npv-function" class="slide level2">
 <h2>Test NPV Function</h2>
-<div id="dfd50983" class="cell" data-execution_count="6">
+<div id="8297f32e" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="co"># Demonstrate NPV calculation with example quantity</span></span>
 <span id="cb8-2"><a></a>example_qty <span class="op">=</span> <span class="dv">5000</span></span>
 <span id="cb8-3"><a></a>example_npv <span class="op">=</span> calculate_npv(example_qty)</span>
@@ -347,7 +352,7 @@ Starting near 5: solution = [3.]</code></pre>
 </section>
 <section id="find-break-even-volume" class="slide level2">
 <h2>Find Break-Even Volume</h2>
-<div id="5be9f258" class="cell" data-execution_count="7">
+<div id="55e61114" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="co"># We want to set NPV = 0, so we can use calculate_npv as function_to_find_zero</span></span>
 <span id="cb10-2"><a></a>initial_guess <span class="op">=</span> <span class="dv">4000</span></span>
 <span id="cb10-3"><a></a>breakeven_qty <span class="op">=</span> fsolve(calculate_npv, initial_guess)[<span class="dv">0</span>]</span>
@@ -375,7 +380,7 @@ NPV at break-even volume: $0.00</code></pre>
 <section id="minimize-example" class="slide level2">
 <h2>Minimize Example</h2>
 <p>Find the value of x that minimizes f(x) = x² - 4x + 7</p>
-<div id="1e68cec4" class="cell" data-execution_count="8">
+<div id="d3297e9a" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="kw">def</span> function_to_minimize(x):</span>
 <span id="cb12-2"><a></a>    <span class="cf">return</span> x<span class="op">**</span><span class="dv">2</span> <span class="op">-</span> <span class="dv">4</span><span class="op">*</span>x <span class="op">+</span> <span class="dv">7</span></span>
 <span id="cb12-3"><a></a></span>
@@ -391,6 +396,11 @@ What is the minimizing value of x? [2.00000002]
 What is the value of the function at the minimum? 3.0</code></pre>
 </div>
 </div>
+</section>
+<section id="practice-minimize" class="slide level2">
+<h2>Practice: Minimize</h2>
+<p><strong>Exercise 1 (with Gemini):</strong> Ask Gemini to “use scipy.optimize.minimize to find the minimum of the function f(x) = x^2 + 3x + 2”</p>
+<p><strong>Exercise 2 (on your own):</strong> Type <code>from scipy.optimize import minimize</code> then <code>result = minimize(lambda x: x**2, 5)</code> then <code>print(result.x)</code> and run it.</p>
 </section>
 <section id="maximization-via-minimization" class="slide level2">
 <h2>Maximization via Minimization</h2>

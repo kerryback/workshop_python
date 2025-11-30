@@ -42,6 +42,12 @@ print(f"Score: {score}, Grade: {grade}")
 
 **Key points:** Use comparison operators (`==`, `!=`, `<`, `>`, `<=`, `>=`) and indentation is crucial!
 
+## Practice: If-Elif-Else
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that checks if a temperature is hot, warm, or cold"
+
+**Exercise 2 (on your own):** Type `x = 15` then `if x > 10: print("big")` and run it.
+
 ## Logical Operators
 
 Combine conditions with **logical operators**:
@@ -60,6 +66,12 @@ else:
     print("Cannot drive")
 ```
 
+## Practice: Logical Operators
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that checks if a number is between 10 and 20 using 'and'"
+
+**Exercise 2 (on your own):** Type `print(True and False)` and run it.
+
 ## Membership Testing
 
 Check if an item is **in** a collection:
@@ -75,6 +87,12 @@ else:
 ```
 
 Works with strings, lists, dictionaries, and more!
+
+## Practice: Membership Testing
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that checks if 'apple' is in a list of fruits"
+
+**Exercise 2 (on your own):** Type `print("x" in "example")` and run it.
 
 ## Float Precision Warning
 
@@ -92,6 +110,12 @@ print(f"0.1 + 0.2 == 0.3: {result == 0.3}")
 if round(0.1 + 0.2, 1) == round(0.3, 1):
     print("Equal when rounded!")
 ```
+
+## Practice: Float Precision
+
+**Exercise 1 (with Gemini):** Ask Gemini to "explain why 0.1 + 0.2 doesn't equal 0.3 in Python"
+
+**Exercise 2 (on your own):** Type `print(round(3.14159, 2))` and run it.
 
 ## Ternary Operator (Compact If-Else)
 
@@ -111,6 +135,12 @@ print(abs_value)
 
 Syntax: `value_if_true if condition else value_if_false`
 
+## Practice: Ternary Operator
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that uses a ternary operator to find the maximum of two numbers"
+
+**Exercise 2 (on your own):** Type `x = 10` then `result = "big" if x > 5 else "small"` then `print(result)` and run it.
+
 ## For Loops with range()
 
 **`range()`** generates sequences of numbers:
@@ -127,6 +157,12 @@ for i in range(1, 11):
 print(f"Sum: {total}")
 ```
 
+## Practice: For Loops
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that uses a for loop to print numbers 1 to 5"
+
+**Exercise 2 (on your own):** Type `for i in range(3): print(i)` and run it.
+
 ## Looping Through Lists
 
 Use **for loops** to iterate over lists:
@@ -141,6 +177,12 @@ for fruit in fruits:
 for i, fruit in enumerate(fruits):
     print(f"{i}: {fruit}")
 ```
+
+## Practice: Looping Through Lists
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that loops through a list of colors and prints each one"
+
+**Exercise 2 (on your own):** Type `for x in [1, 2, 3]: print(x * 2)` and run it.
 
 ## While Loops
 
@@ -159,6 +201,12 @@ print(f"2^{power} = {result}")
 ```
 
 **Warning:** Make sure the condition eventually becomes False to avoid infinite loops!
+
+## Practice: While Loops
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that uses a while loop to count from 1 to 5"
+
+**Exercise 2 (on your own):** Type `x = 0` then `while x < 3: print(x); x += 1` and run it.
 
 ## Try/Except Error Handling
 
@@ -179,6 +227,12 @@ except ZeroDivisionError:
     result = None
 ```
 
+## Practice: Try/Except
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that uses try/except to handle division by zero"
+
+**Exercise 2 (on your own):** Type `try: print(10/2)` then `except: print("error")` and run it.
+
 ## Common Exception Types
 
 Useful exception types to catch:
@@ -196,6 +250,12 @@ try:
 except ValueError:
     print("Invalid number format!")
 ```
+
+## Practice: Exception Types
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that catches a ValueError when converting a string to int"
+
+**Exercise 2 (on your own):** Type `try: int("hello")` then `except ValueError: print("Not a number")` and run it.
 
 ## List Comprehensions
 
@@ -215,6 +275,12 @@ print(squares)
 
 Syntax: `[expression for item in iterable]`
 
+## Practice: List Comprehensions
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that uses a list comprehension to create cubes of 1 to 5"
+
+**Exercise 2 (on your own):** Type `nums = [x * 2 for x in range(3)]` then `print(nums)` and run it.
+
 ## List Comprehensions with Conditions
 
 Add conditions to filter items:
@@ -231,6 +297,12 @@ print(upper_words)
 ```
 
 Syntax: `[expression for item in iterable if condition]`
+
+## Practice: Comprehensions with Conditions
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that uses a list comprehension to get only odd numbers from 1 to 10"
+
+**Exercise 2 (on your own):** Type `evens = [x for x in range(10) if x % 2 == 0]` then `print(evens)` and run it.
 
 ## Dictionary Comprehensions
 
@@ -250,6 +322,12 @@ print(my_dict)
 ```
 
 Syntax: `{key_expr: value_expr for item in iterable}`
+
+## Practice: Dictionary Comprehensions
+
+**Exercise 1 (with Gemini):** Ask Gemini to "write Python code that uses a dictionary comprehension to create squares for numbers 1-5"
+
+**Exercise 2 (on your own):** Type `d = {x: x*2 for x in range(3)}` then `print(d)` and run it.
 
 ## Summary
 
