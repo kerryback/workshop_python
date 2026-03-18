@@ -3,21 +3,7 @@ project:
   output-dir: docs
   render:
     - index.qmd
-    - slides/part1_colab_slides.qmd
-    - slides/part2_objects_slides.qmd
-    - slides/part3_lists_slides.qmd
-    - slides/part4_dictionaries_slides.qmd
-    - slides/part5_flow_control_slides.qmd
-    - slides/part6_functions_slides.qmd
-    - slides/part7_libraries_slides.qmd
-    - slides/part8_pandas_intro_slides.qmd
-    - slides/part9_pandas_more_slides.qmd
-    - slides/part10_visualization_intro_slides.qmd
-    - slides/part11_visualization_more_slides.qmd
-    - slides/part12_visualization_plotly_slides.qmd
-    - slides/part13_simulation_slides.qmd
-    - slides/part14_goal_seek_slides.qmd
-    - slides/part15_neural_networks_slides.qmd
+    - slides/python-overview.qmd
   resources:
     - CNAME
     - .nojekyll

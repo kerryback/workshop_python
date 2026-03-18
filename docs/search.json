@@ -1,1857 +1,247 @@
 [
   {
-    "objectID": "slides/part15_neural_networks_slides.html#overview",
-    "href": "slides/part15_neural_networks_slides.html#overview",
-    "title": "Part 15: Neural Networks",
-    "section": "Overview",
-    "text": "Overview\nNeural networks are powerful machine learning models inspired by how neurons work in the brain. They learn to recognize patterns by adjusting internal parameters (weights and biases).\nKey Concepts:\n\nNeurons: mathematical functions that transform inputs\nLayers: groups of neurons (input, hidden, output)\nActivation functions: non-linear transformations (sigmoid, ReLU)\nTraining: optimizing weights/biases to minimize prediction error"
+    "objectID": "slides/python-overview.html#ai-writes-the-code.-you-read-it.",
+    "href": "slides/python-overview.html#ai-writes-the-code.-you-read-it.",
+    "title": "Python for MBA Students",
+    "section": "AI Writes the Code. You Read It.",
+    "text": "AI Writes the Code. You Read It.\n\n\nThe new reality\n\nGitHub Copilot, ChatGPT, Claude generate working Python in seconds\nYou describe what you want — AI writes the code\nThis is already how many analysts and managers work\n\n\n\nWhat this session gives you\n\nRecognize what Python code is doing\nUnderstand the output well enough to judge whether it’s right\nKnow enough vocabulary to ask AI better questions\nFollow along when a colleague walks through code\n\n\n\n\nGoal today: Build enough vocabulary to read and understand Python — not to write it from memory."
   },
   {
-    "objectID": "slides/part15_neural_networks_slides.html#import-libraries",
-    "href": "slides/part15_neural_networks_slides.html#import-libraries",
-    "title": "Part 15: Neural Networks",
-    "section": "Import Libraries",
-    "text": "Import Libraries\n\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nfrom sklearn.datasets import load_digits\nimport warnings\nwarnings.filterwarnings('ignore')\n\nnp.random.seed(42)"
+    "objectID": "slides/python-overview.html#heres-what-python-looks-like",
+    "href": "slides/python-overview.html#heres-what-python-looks-like",
+    "title": "Python for MBA Students",
+    "section": "Here’s What Python Looks Like",
+    "text": "Here’s What Python Looks Like\n# profit_margins.py\n\nproducts = [\"Widget\", \"Gadget\", \"Doohickey\"]\nrevenues = [120_000,  85_000,  200_000]\ncosts    = [ 80_000,  60_000,  140_000]\n\nfor i in range(len(products)):\n    margin = (revenues[i] - costs[i]) / revenues[i]\n    print(f\"{products[i]}: {margin:.1%} margin\")\n\nRunning this prints the profit margin for each product. By the end of this session you’ll be able to name every pattern in that code."
   },
   {
-    "objectID": "slides/part15_neural_networks_slides.html#example-task-digit-classification",
-    "href": "slides/part15_neural_networks_slides.html#example-task-digit-classification",
-    "title": "Part 15: Neural Networks",
-    "section": "Example Task: Digit Classification",
-    "text": "Example Task: Digit Classification\nClassify hand-written numbers (digits 0 through 9).\nThe original handwritten digits were pixelated into 64 pixels (8 x 8). Each observation consists of 65 numbers: the true digit and the darkness values of each of the 64 pixels. Darkness values range from 0 (white) to 16 (black)."
+    "objectID": "slides/python-overview.html#how-python-runs",
+    "href": "slides/python-overview.html#how-python-runs",
+    "title": "Python for MBA Students",
+    "section": "How Python Runs",
+    "text": "How Python Runs\n\n\n\n\n\n\nflowchart LR\n    P[\"Python Code\"] --&gt;|\"interpreted\"| M[\"Python VM&lt;br/&gt;(bytecode)\"]\n    P --&gt;|\"calls\"| C[\"C / Fortran&lt;br/&gt;Libraries\"]\n    C --&gt;|\"precompiled\"| M\n\n\n\n\n\n\n\n\nTwo paths to execution\n\nInterpreted: Python compiles your code to bytecode, which the Python runtime executes — flexible, but slower than native code\nPrecompiled: Libraries like pandas and NumPy are written in C/Fortran, compiled to machine code ahead of time — called by Python, runs at near-native speed"
   },
   {
-    "objectID": "slides/part15_neural_networks_slides.html#load-and-explore-the-digits-dataset",
-    "href": "slides/part15_neural_networks_slides.html#load-and-explore-the-digits-dataset",
-    "title": "Part 15: Neural Networks",
-    "section": "Load and Explore the Digits Dataset",
-    "text": "Load and Explore the Digits Dataset\n\n# Load the digits dataset\ndigits = load_digits()\nX = digits.data  # 8x8 images flattened to 64 features\ny = digits.target  # Digit labels 0-9\n\nprint(f\"Digits Dataset:\")\nprint(f\"  Total samples: {X.shape[0]:,}\")\nprint(f\"  Features per sample: {X.shape[1]} (8×8 pixels)\")\nprint(f\"  Classes: {len(np.unique(y))} (digits 0-9)\")\nprint(f\"  Feature range: [{X.min():.1f}, {X.max():.1f}]\")\n\nDigits Dataset:\n  Total samples: 1,797\n  Features per sample: 64 (8×8 pixels)\n  Classes: 10 (digits 0-9)\n  Feature range: [0.0, 16.0]"
+    "objectID": "slides/python-overview.html#scripts-and-notebooks",
+    "href": "slides/python-overview.html#scripts-and-notebooks",
+    "title": "Python for MBA Students",
+    "section": "Scripts and Notebooks",
+    "text": "Scripts and Notebooks\n\n\nScript — a .py file, runs top to bottom\n# profit_margins.py\nproducts = [\"Widget\", \"Gadget\", \"Doohickey\"]\nrevenues = [120_000,  85_000,  200_000]\ncosts    = [ 80_000,  60_000,  140_000]\n\nfor i in range(len(products)):\n    margin = (revenues[i] - costs[i]) / revenues[i]\n    print(f\"{products[i]}: {margin:.1%} margin\")\nRun from terminal: python profit_margins.py\n\n\nNotebook — cells you run one at a time\nCell 1:\nproducts = [\"Widget\", \"Gadget\", \"Doohickey\"]\nrevenues = [120_000,  85_000,  200_000]\ncosts    = [ 80_000,  60_000,  140_000]\nCell 2:\nfor i in range(len(products)):\n    margin = (revenues[i] - costs[i]) / revenues[i]\n    print(f\"{products[i]}: {margin:.1%} margin\")\n\n\n\nSame code — different containers. Notebooks let you run one piece at a time and inspect the result. We’ll use Google Colab (a free notebook environment) today."
   },
   {
-    "objectID": "slides/part15_neural_networks_slides.html#practice-loading-data",
-    "href": "slides/part15_neural_networks_slides.html#practice-loading-data",
-    "title": "Part 15: Neural Networks",
-    "section": "Practice: Loading Data",
-    "text": "Practice: Loading Data\nExercise 1 (with Gemini): Ask Gemini to “load the digits dataset from sklearn and print its shape”\nExercise 2 (on your own): Type from sklearn.datasets import load_digits then digits = load_digits() then print(digits.data.shape) and run it."
+    "objectID": "slides/python-overview.html#google-colab",
+    "href": "slides/python-overview.html#google-colab",
+    "title": "Python for MBA Students",
+    "section": "Google Colab",
+    "text": "Google Colab\n\nYour notebook environment today\n\nFree, runs in your browser — nothing to install\nGo to colab.research.google.com\nOpen the companion notebook (link on course page)\nShift + Enter — run a cell and move to the next\nCtrl + Enter — run a cell and stay on it\n\n\n\nWe’ll use Colab in the second half of the session. For now, follow along on the slides."
   },
   {
-    "objectID": "slides/part15_neural_networks_slides.html#visualize-sample-digits",
-    "href": "slides/part15_neural_networks_slides.html#visualize-sample-digits",
-    "title": "Part 15: Neural Networks",
-    "section": "Visualize Sample Digits",
-    "text": "Visualize Sample Digits\n\nfig, axes = plt.subplots(2, 10, figsize=(15, 4))\n\nfor digit in range(10):\n    idx = np.where(y == digit)[0][0]\n    axes[0, digit].imshow(X[idx].reshape(8, 8), cmap='gray_r')\n    axes[0, digit].axis('off')\n\n    idx2 = np.where(y == digit)[0][1]\n    axes[1, digit].imshow(X[idx2].reshape(8, 8), cmap='gray_r')\n    axes[1, digit].axis('off')\n\nplt.suptitle('Two Examples Each of 0-9', fontsize=20, y=1.02)\nplt.tight_layout()\nplt.show()"
+    "objectID": "slides/python-overview.html#libraries",
+    "href": "slides/python-overview.html#libraries",
+    "title": "Python for MBA Students",
+    "section": "Libraries",
+    "text": "Libraries"
   },
   {
-    "objectID": "slides/part15_neural_networks_slides.html#understanding-neural-networks-simple-example",
-    "href": "slides/part15_neural_networks_slides.html#understanding-neural-networks-simple-example",
-    "title": "Part 15: Neural Networks",
-    "section": "Understanding Neural Networks: Simple Example",
-    "text": "Understanding Neural Networks: Simple Example\nGenerate customer data to predict purchase behavior:\n\nInput 1 (x1): Customer age (normalized)\nInput 2 (x2): Customer income (normalized)\nTarget: 1 if customer purchases, 0 if not\n\nRule: customers usually purchase when age + income &gt;= 0 (with noise)"
+    "objectID": "slides/python-overview.html#what-is-a-library",
+    "href": "slides/python-overview.html#what-is-a-library",
+    "title": "Python for MBA Students",
+    "section": "What Is a Library?",
+    "text": "What Is a Library?\nA library is a collection of pre-built code you can import and use.\n\nKey libraries for business\n\n\n\nLibrary\nWhat it does\n\n\n\n\npandas\nData tables — read, clean, reshape, summarize\n\n\nnumpy\nFast math on arrays of numbers\n\n\nmatplotlib\nCharts and plots\n\n\nseaborn\nStatistical visualization\n\n\n\n\n\nHundreds more exist — for machine learning (scikit-learn), optimization (scipy), web APIs, and more. import pandas as pd means: load pandas and call it pd for short."
   },
   {
-    "objectID": "slides/part15_neural_networks_slides.html#generate-customer-data",
-    "href": "slides/part15_neural_networks_slides.html#generate-customer-data",
-    "title": "Part 15: Neural Networks",
-    "section": "Generate Customer Data",
-    "text": "Generate Customer Data\n\nnp.random.seed(42)\nn_customers = 200\n\nx1_age = np.random.uniform(-2, 2, n_customers)\nx2_income = np.random.uniform(-2, 2, n_customers)\n\nnoise = np.random.normal(0, 1, n_customers)\ntrue_score = x1_age + x2_income + noise\ny_purchase = (true_score &gt;= 0).astype(int)\n\ncustomer_data = pd.DataFrame({\n    'age_normalized': x1_age,\n    'income_normalized': x2_income,\n    'purchase': y_purchase\n})\n\nprint(\"Customer Data Sample:\")\nprint(customer_data.head())\n\nCustomer Data Sample:\n   age_normalized  income_normalized  purchase\n0       -0.501840           0.568127         1\n1        1.802857          -1.663440         1\n2        0.927976          -1.353485         1\n3        0.394634           1.594217         1\n4       -1.375925           0.425716         0"
+    "objectID": "slides/python-overview.html#reading-a-csv-file",
+    "href": "slides/python-overview.html#reading-a-csv-file",
+    "title": "Python for MBA Students",
+    "section": "Reading a CSV File",
+    "text": "Reading a CSV File\nimport pandas as pd\n\ndf = pd.read_csv(\"sales.csv\")\ndf.head()\n   region      product   revenue   units\n0    East      Widget    42000      210\n1    West      Gadget    31500      180\n2   North      Widget    28000      140\n3    East     Doohickey  19500       95\n4   South      Gadget    22000      125\n\ndf is a DataFrame — think of it as a spreadsheet in Python. df.head() shows the first 5 rows."
   },
   {
-    "objectID": "slides/part15_neural_networks_slides.html#practice-generating-data",
-    "href": "slides/part15_neural_networks_slides.html#practice-generating-data",
-    "title": "Part 15: Neural Networks",
-    "section": "Practice: Generating Data",
-    "text": "Practice: Generating Data\nExercise 1 (with Gemini): Ask Gemini to “generate random data with numpy and create a pandas DataFrame”\nExercise 2 (on your own): Type x = np.random.uniform(0, 1, 10) then print(x) and run it."
+    "objectID": "slides/python-overview.html#method-chaining",
+    "href": "slides/python-overview.html#method-chaining",
+    "title": "Python for MBA Students",
+    "section": "Method Chaining",
+    "text": "Method Chaining\nOne line that groups, sums, and plots:\ndf.groupby(\"region\")[\"revenue\"].sum().plot(kind=\"bar\", title=\"Revenue by Region\")\n\nReading left to right\n\n\n\nStep\nCode\nReturns\n\n\n\n\n1\ndf.groupby(\"region\")\ngrouped data object\n\n\n2\n[\"revenue\"]\nrevenue values per group\n\n\n3\n.sum()\ntotal revenue per region\n\n\n4\n.plot(kind=\"bar\")\nbar chart\n\n\n\n\n\nEach method returns an object; the next method acts on that object. Under the hood, pandas runs these operations as precompiled C code — which is why it handles millions of rows without slowing down. This is the precompiled path from the earlier diagram."
   },
   {
-    "objectID": "slides/part15_neural_networks_slides.html#visualize-purchase-behavior",
-    "href": "slides/part15_neural_networks_slides.html#visualize-purchase-behavior",
-    "title": "Part 15: Neural Networks",
-    "section": "Visualize Purchase Behavior",
-    "text": "Visualize Purchase Behavior\n\nplt.figure(figsize=(10, 8))\ncolors = ['red', 'blue']\nlabels = ['No Purchase', 'Purchase']\n\nfor i in [0, 1]:\n    mask = y_purchase == i\n    plt.scatter(x1_age[mask], x2_income[mask], c=colors[i], alpha=0.6,\n               label=labels[i], s=50)\n\nx_line = np.linspace(-2, 2, 100)\ny_line = -x_line\nplt.plot(x_line, y_line, 'k--', linewidth=2,\n         label='Decision Boundary (age + income = 0)')\n\nplt.xlabel('Age (normalized)')\nplt.ylabel('Income (normalized)')\nplt.title('Customer Purchase Behavior')\nplt.legend()\nplt.grid(True, alpha=0.3)\nplt.show()"
+    "objectID": "slides/python-overview.html#break",
+    "href": "slides/python-overview.html#break",
+    "title": "Python for MBA Students",
+    "section": "Break",
+    "text": "Break"
   },
   {
-    "objectID": "slides/part15_neural_networks_slides.html#how-neurons-work",
-    "href": "slides/part15_neural_networks_slides.html#how-neurons-work",
-    "title": "Part 15: Neural Networks",
-    "section": "How Neurons Work",
-    "text": "How Neurons Work\nA neuron calculates a linear function then applies activation:\nLinear Calculation: z = b + w1×x1 + w2×x2\n\nb = bias (intercept)\nw1, w2 = weights\n\nActivation Functions:\n\nSigmoid: h = 1/(1 + e^(-z)) outputs values in (0,1)\nReLU: h = max(0, z) outputs values &gt;= 0\n\nThe parameters (b, w1, w2) are learned from data during training."
+    "objectID": "slides/python-overview.html#the-6-patterns",
+    "href": "slides/python-overview.html#the-6-patterns",
+    "title": "Python for MBA Students",
+    "section": "The 6 Patterns",
+    "text": "The 6 Patterns"
   },
   {
-    "objectID": "slides/part15_neural_networks_slides.html#network-structure",
-    "href": "slides/part15_neural_networks_slides.html#network-structure",
-    "title": "Part 15: Neural Networks",
-    "section": "Network Structure",
-    "text": "Network Structure\nOur simple network:\n\nInput layer: 2 inputs (x1, x2)\nHidden layer: 3 neurons with sigmoid activation\nOutput layer: 1 neuron with sigmoid activation\n\nParameters:\n\nHidden layer: 3 biases + 3×2 weights = 9 parameters\nOutput layer: 1 bias + 1×3 weights = 4 parameters\nTotal: 13 parameters to optimize"
+    "objectID": "slides/python-overview.html#almost-all-python-is-built-from-6-patterns",
+    "href": "slides/python-overview.html#almost-all-python-is-built-from-6-patterns",
+    "title": "Python for MBA Students",
+    "section": "Almost All Python Is Built From 6 Patterns",
+    "text": "Almost All Python Is Built From 6 Patterns\n\n\n\n#\nPattern\nOne-liner example\n\n\n\n\n1\nObjects & Types\n42 · 3.14 · \"hello\" · True\n\n\n2\nVariables\nprice = 182.50\n\n\n3\nCollections\n[\"AAPL\", \"GOOGL\"] · {\"ticker\": \"AAPL\"}\n\n\n4\nConditionals\nif revenue &gt; target: ...\n\n\n5\nLoops\nfor company in portfolio: ...\n\n\n6\nFunctions & Methods\nlen(items) · text.upper()\n\n\n\n\nYou’ll also encounter\n\nList comprehensions — a compact loop on one line: [x * 2 for x in prices] — this is Pattern 5 written in shorthand\ntry / except — error handling: try: ... except: ... — guards code that might fail (bad data, missing file)"
   },
   {
-    "objectID": "slides/part15_neural_networks_slides.html#define-sigmoid-function",
-    "href": "slides/part15_neural_networks_slides.html#define-sigmoid-function",
-    "title": "Part 15: Neural Networks",
-    "section": "Define Sigmoid Function",
-    "text": "Define Sigmoid Function\n\ndef sigmoid(z):\n    \"\"\"Sigmoid activation function: converts any real number to (0,1)\"\"\"\n    z = np.clip(z, -500, 500)  # Prevent overflow\n    return 1 / (1 + np.exp(-z))"
+    "objectID": "slides/python-overview.html#how-to-spot-each-pattern",
+    "href": "slides/python-overview.html#how-to-spot-each-pattern",
+    "title": "Python for MBA Students",
+    "section": "How to Spot Each Pattern",
+    "text": "How to Spot Each Pattern\n\n\n\n\n\n\n\nPattern\nWhat to look for\n\n\n\n\nObjects & Types\nLiteral values: 42, 3.14, \"text\", True / False\n\n\nVariables\nname = value — a single = sign\n\n\nCollections\n[...] = list (ordered) · {key: value, ...} = dictionary\n\n\nConditionals\nif / elif / else followed by : and an indented block\n\n\nLoops\nfor ... in ...: or while ...: followed by an indented block\n\n\nFunctions & Methods\nname(...) = function · object.method(...) = method\n\n\nList comprehension\n[expr for item in collection] — compact loop inside brackets\n\n\ntry / except\ntry: + indented block, then except: + error handler"
   },
   {
-    "objectID": "slides/part15_neural_networks_slides.html#practice-sigmoid-function",
-    "href": "slides/part15_neural_networks_slides.html#practice-sigmoid-function",
-    "title": "Part 15: Neural Networks",
-    "section": "Practice: Sigmoid Function",
-    "text": "Practice: Sigmoid Function\nExercise 1 (with Gemini): Ask Gemini to “write a Python function that implements the sigmoid activation function”\nExercise 2 (on your own): Type def sigmoid(z): return 1 / (1 + np.exp(-z)) then print(sigmoid(0)) and run it."
+    "objectID": "slides/python-overview.html#pattern-spotting",
+    "href": "slides/python-overview.html#pattern-spotting",
+    "title": "Python for MBA Students",
+    "section": "Pattern Spotting",
+    "text": "Pattern Spotting"
   },
   {
-    "objectID": "slides/part15_neural_networks_slides.html#example-forward-propagation",
-    "href": "slides/part15_neural_networks_slides.html#example-forward-propagation",
-    "title": "Part 15: Neural Networks",
-    "section": "Example: Forward Propagation",
-    "text": "Example: Forward Propagation\n\n# Network parameters (example values)\nW1 = np.array([[0.5, 0.3], [-0.4, 0.6], [0.2, -0.3]])\nb1 = np.array([0.1, -0.2, 0.3])\nW2 = np.array([[0.7], [-0.5], [0.8]])\nb2 = np.array([0.2])\n\n# Example input\nx_input = np.array([1.2, -0.8])\n\n# Hidden layer calculation\nz1 = W1 @ x_input + b1\nh = sigmoid(z1)\n\n# Output layer calculation\nz2 = W2.T @ h + b2\ny_hat = sigmoid(z2)[0]\n\nprint(f\"Input: x1={x_input[0]}, x2={x_input[1]}\")\nprint(f\"Hidden: h1={h[0]:.3f}, h2={h[1]:.3f}, h3={h[2]:.3f}\")\nprint(f\"Output: y_hat={y_hat:.3f} ({y_hat:.1%} probability)\")\nprint(f\"Prediction: {'Purchase' if y_hat &gt;= 0.5 else 'No Purchase'}\")\n\nInput: x1=1.2, x2=-0.8\nHidden: h1=0.613, h2=0.239, h3=0.686\nOutput: y_hat=0.742 (74.2% probability)\nPrediction: Purchase"
+    "objectID": "slides/python-overview.html#example-1",
+    "href": "slides/python-overview.html#example-1",
+    "title": "Python for MBA Students",
+    "section": "Example 1",
+    "text": "Example 1\n\n\nrevenue = 383_285_000_000\ncosts   = 223_546_000_000\nprofit  = revenue - costs\nmargin  = profit / revenue\n\nif margin &gt; 0.25:\n    print(f\"High margin: {margin:.1%}\")\nelse:\n    print(f\"Lower margin: {margin:.1%}\")\n\n\nPatterns\n\n② Variables — lines 1–4, each name = value\n① Objects & Types — large integers; 0.25 is a float\n④ Conditional — if / else with indented blocks\n⑥ Functions — print(...) called twice"
   },
   {
-    "objectID": "slides/part15_neural_networks_slides.html#practice-forward-propagation",
-    "href": "slides/part15_neural_networks_slides.html#practice-forward-propagation",
-    "title": "Part 15: Neural Networks",
-    "section": "Practice: Forward Propagation",
-    "text": "Practice: Forward Propagation\nExercise 1 (with Gemini): Ask Gemini to “explain how forward propagation works in a neural network with one hidden layer”\nExercise 2 (on your own): Type z = np.array([0.5, -0.3]) @ np.array([1.2, 0.8]) then print(z) and run it to practice matrix multiplication."
+    "objectID": "slides/python-overview.html#example-2",
+    "href": "slides/python-overview.html#example-2",
+    "title": "Python for MBA Students",
+    "section": "Example 2",
+    "text": "Example 2\n\n\ntickers = [\"AAPL\", \"GOOGL\", \"MSFT\"]\nprices  = [182.50, 141.80, 378.90]\nshares  = [100, 50, 75]\n\ntotal = 0\nfor i in range(len(tickers)):\n    value = prices[i] * shares[i]\n    total += value\n    print(f\"{tickers[i]}: ${value:,.0f}\")\n\n\nPatterns\n\n③ Collections — three lists [...]\n② Variables — total, value, i\n⑤ Loop — for i in range(...):\n⑥ Functions — len(...), range(...), print(...)\n⑤ Accumulator — total += value inside loop"
   },
   {
-    "objectID": "slides/part15_neural_networks_slides.html#summary",
-    "href": "slides/part15_neural_networks_slides.html#summary",
-    "title": "Part 15: Neural Networks",
+    "objectID": "slides/python-overview.html#example-3",
+    "href": "slides/python-overview.html#example-3",
+    "title": "Python for MBA Students",
+    "section": "Example 3",
+    "text": "Example 3\n\n\nportfolio = [\n    {\"ticker\": \"AAPL\", \"shares\": 100, \"price\": 182.50},\n    {\"ticker\": \"MSFT\", \"shares\":  75, \"price\": 378.90},\n    {\"ticker\": \"GOOGL\",\"shares\":  50, \"price\": 141.80},\n]\n\nvalues = [h[\"shares\"] * h[\"price\"] for h in portfolio]\ntotal  = sum(values)\nprint(f\"Portfolio value: ${total:,.2f}\")\n\n\nPatterns\n\n③ Collections — list of dictionaries [{...}, ...]\nList comprehension — compact for loop in brackets\n② Variables — values, total\n⑥ Functions — sum(...), print(...)\n① Objects — strings and floats as dict values"
+  },
+  {
+    "objectID": "slides/python-overview.html#example-4",
+    "href": "slides/python-overview.html#example-4",
+    "title": "Python for MBA Students",
+    "section": "Example 4",
+    "text": "Example 4\n\n\ndef assess_margin(revenue, costs):\n    margin = (revenue - costs) / revenue\n    if margin &gt; 0.30:\n        return \"strong\"\n    elif margin &gt; 0.15:\n        return \"adequate\"\n    else:\n        return \"weak\"\n\nrating = assess_margin(500_000, 320_000)\nprint(f\"Margin rating: {rating}\")\n\n\nPatterns\n\n⑥ Function def — def keyword, parameters, return\n② Variables — margin, rating\n① Objects — floats 0.30, 0.15; strings\n④ Conditional — if / elif / else inside the function\n⑥ Function call — assess_margin(500_000, 320_000)"
+  },
+  {
+    "objectID": "slides/python-overview.html#example-5",
+    "href": "slides/python-overview.html#example-5",
+    "title": "Python for MBA Students",
+    "section": "Example 5",
+    "text": "Example 5\n\n\ncompanies = [\"apple inc.\", \"microsoft corp.\", \"alphabet inc.\"]\nsuffixes  = [\"inc.\", \"corp.\", \"ltd.\"]\n\nfor company in companies:\n    clean = company.title()\n    has_suffix = any(s in company for s in suffixes)\n    if has_suffix:\n        print(f\"  {clean}  ✓\")\n    else:\n        print(f\"  {clean}\")\n\n\nPatterns\n\n③ Collections — two lists\n⑤ Loop — for company in companies:\n② Variables — clean, has_suffix\n⑥ Method — .title() on a string object\n④ Conditional — if has_suffix:\n⑥ Functions — any(...), print(...)"
+  },
+  {
+    "objectID": "slides/python-overview.html#example-6",
+    "href": "slides/python-overview.html#example-6",
+    "title": "Python for MBA Students",
+    "section": "Example 6",
+    "text": "Example 6\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"sales.csv\")\n\ntech    = df[df[\"sector\"] == \"Technology\"]\nsummary = tech.groupby(\"region\")[\"revenue\"].sum()\ntop     = summary.idxmax()\n\nprint(f\"Top tech region: {top}\")\nprint(f\"Revenue: ${summary[top]:,.0f}\")\n\n\nPatterns\n\nLibrary — import pandas as pd\n② Variables — df, tech, summary, top\n④ Conditional filter — df[df[\"sector\"] == \"Technology\"]\n⑥ Method chain — .groupby(...)[...].sum()\n⑥ Methods — .idxmax(), .read_csv()\n⑥ Functions — print(...)"
+  },
+  {
+    "objectID": "slides/python-overview.html#break-1",
+    "href": "slides/python-overview.html#break-1",
+    "title": "Python for MBA Students",
+    "section": "Break",
+    "text": "Break"
+  },
+  {
+    "objectID": "slides/python-overview.html#colab-gemini",
+    "href": "slides/python-overview.html#colab-gemini",
+    "title": "Python for MBA Students",
+    "section": "Colab + Gemini",
+    "text": "Colab + Gemini"
+  },
+  {
+    "objectID": "slides/python-overview.html#using-gemini-in-colab",
+    "href": "slides/python-overview.html#using-gemini-in-colab",
+    "title": "Python for MBA Students",
+    "section": "Using Gemini in Colab",
+    "text": "Using Gemini in Colab\n\nHow to get code from Gemini\n\nOpen the companion notebook in Google Colab\nClick the Gemini sparkle icon (top right) — or use a new code cell\nType your prompt describing what you want Python to do\nGemini generates code — click Insert to add it to a cell\nRun the cell with Shift + Enter\n\n\n\nFor each prompt on the following slides: type it into Gemini, run the code, then use the “How to Spot Each Pattern” table to identify what’s in the result."
+  },
+  {
+    "objectID": "slides/python-overview.html#prompt-1-investment-growth",
+    "href": "slides/python-overview.html#prompt-1-investment-growth",
+    "title": "Python for MBA Students",
+    "section": "Prompt 1: Investment Growth",
+    "text": "Prompt 1: Investment Growth\n\nType this into Gemini\n“Write a Python function that calculates the future value of an investment given a starting amount, annual return rate, and number of years. Then call the function to show how $10,000 grows at 7% over 10, 20, and 30 years. Print the results in a formatted table.”\n\nAfter Gemini generates the code, look for:\n\nA def block — the function definition (Pattern ⑥)\n** — exponentiation for compounding math (Pattern ①)\nA loop to call the function for each time horizon (Pattern ⑤)\nprint() with f-string formatting (Pattern ⑥)"
+  },
+  {
+    "objectID": "slides/python-overview.html#prompt-2-sales-summary",
+    "href": "slides/python-overview.html#prompt-2-sales-summary",
+    "title": "Python for MBA Students",
+    "section": "Prompt 2: Sales Summary",
+    "text": "Prompt 2: Sales Summary\n\nType this into Gemini\n“Write Python code that defines a list of 12 monthly sales figures. Calculate the best month, worst month, and monthly average. Also count how many months exceeded the average. Print a formatted summary report.”\n\nAfter Gemini generates the code, look for:\n\nA list of numbers (Pattern ③)\nBuilt-in functions: max(), min(), sum(), len() (Pattern ⑥)\nA loop or list comprehension to count months above average (Pattern ⑤)\nA conditional inside the loop (Pattern ④)"
+  },
+  {
+    "objectID": "slides/python-overview.html#prompt-3-employee-filter",
+    "href": "slides/python-overview.html#prompt-3-employee-filter",
+    "title": "Python for MBA Students",
+    "section": "Prompt 3: Employee Filter",
+    "text": "Prompt 3: Employee Filter\n\nType this into Gemini\n“Write Python code with a list of 6 employees. Each employee should have a name, department, and salary. Loop through the list and print the name and salary of anyone earning more than $80,000. At the end, print how many employees qualified.”\n\nAfter Gemini generates the code, look for:\n\nA list of dictionaries — one dict per employee (Pattern ③)\nA for loop iterating over the list (Pattern ⑤)\nA conditional if checking the salary (Pattern ④)\nAn accumulator counting the matches (Pattern ⑤)"
+  },
+  {
+    "objectID": "slides/python-overview.html#prompt-4-company-rankings",
+    "href": "slides/python-overview.html#prompt-4-company-rankings",
+    "title": "Python for MBA Students",
+    "section": "Prompt 4: Company Rankings",
+    "text": "Prompt 4: Company Rankings\n\nType this into Gemini\n“Write Python code with a list of 4 large companies, each with a name, annual revenue, and annual costs. Write a function to calculate profit margin. Sort the companies from highest to lowest margin and print a numbered ranking with each company’s margin formatted as a percentage.”\n\nAfter Gemini generates the code, look for:\n\nA list of dictionaries (Pattern ③)\nA def function with a return statement (Pattern ⑥)\nA sort — look for sorted() or .sort() with a key= argument (Pattern ⑥)\nA loop with enumerate() for the numbering (Pattern ⑤)"
+  },
+  {
+    "objectID": "slides/python-overview.html#prompt-5-pandas-analysis-all-6-patterns",
+    "href": "slides/python-overview.html#prompt-5-pandas-analysis-all-6-patterns",
+    "title": "Python for MBA Students",
+    "section": "Prompt 5: Pandas Analysis — All 6 Patterns",
+    "text": "Prompt 5: Pandas Analysis — All 6 Patterns\n\nType this into Gemini\n“Write Python code using pandas that creates a DataFrame with columns for region, product, revenue, and units (at least 8 rows of made-up data). Then calculate total revenue and average revenue per unit for each region. Show the results sorted by total revenue, highest first.”\n\nThis is the synthesis prompt. In roughly 15 lines, you should find all 6 patterns:\nimport pandas as pd          # library import\ndata = {...}                 # ③ dictionary → collection\ndf = pd.DataFrame(data)      # ⑥ function call\ndf.groupby(...).agg(...).sort_values(...)  # ⑥ method chain\nCan you name the pattern for every line Gemini produces?"
+  },
+  {
+    "objectID": "slides/python-overview.html#working-with-data",
+    "href": "slides/python-overview.html#working-with-data",
+    "title": "Python for MBA Students",
+    "section": "Working with Data",
+    "text": "Working with Data"
+  },
+  {
+    "objectID": "slides/python-overview.html#pandas-analysis-in-one-pipeline",
+    "href": "slides/python-overview.html#pandas-analysis-in-one-pipeline",
+    "title": "Python for MBA Students",
+    "section": "pandas — Analysis in One Pipeline",
+    "text": "pandas — Analysis in One Pipeline\nA complete analysis in a single method chain:\nimport pandas as pd\n\ndf = pd.read_csv(\"sales.csv\")\n\n(df\n    .query(\"revenue &gt; 10_000\")              # filter rows\n    .groupby(\"region\")[\"revenue\"]           # group by region\n    .sum()                                  # aggregate\n    .sort_values(ascending=False)           # sort high to low\n    .plot(kind=\"bar\", title=\"Revenue by Region\")   # chart\n)\n\nEvery step is Pattern ⑥ — Methods: each returns an object, and the next method acts on it. This is the method chaining pattern you’ll see throughout AI-generated pandas code."
+  },
+  {
+    "objectID": "slides/python-overview.html#pandas-more-capabilities",
+    "href": "slides/python-overview.html#pandas-more-capabilities",
+    "title": "Python for MBA Students",
+    "section": "pandas — More Capabilities",
+    "text": "pandas — More Capabilities\nA taste of what else pandas can do:\n# Combine two tables on a shared key (like VLOOKUP)\ndf = pd.merge(prices, company_info, on=\"ticker\")\n\n# Reshape: rows → columns (like a pivot table)\ndf.pivot_table(values=\"revenue\", index=\"quarter\", columns=\"region\")\n\n# Find missing data\ndf.isnull().sum()\n\n# Summary statistics in one call\ndf.describe()\n\nEach of these is a method call (Pattern ⑥). When AI generates code for data tasks, it will use pandas. Recognizing the method-chain pattern tells you what each line is doing — even if you don’t know the specific method name."
+  },
+  {
+    "objectID": "slides/python-overview.html#visualization",
+    "href": "slides/python-overview.html#visualization",
+    "title": "Python for MBA Students",
+    "section": "Visualization",
+    "text": "Visualization\nThe same method-chaining pattern — different kind=:\n# Distribution of one variable\ndf[\"revenue\"].plot(kind=\"hist\", bins=20)\n\n# Comparison across categories\ndf.groupby(\"region\")[\"revenue\"].sum().plot(kind=\"bar\")\n\n# Relationship between two variables\ndf.plot(kind=\"scatter\", x=\"units\", y=\"revenue\")\n\n# Trend over time\ndf.set_index(\"date\")[\"revenue\"].plot(kind=\"line\")\n\nDifferent charts, same pattern: build a series or DataFrame, call .plot(kind=...). When you see a visualization in AI-generated code, look for this pattern — then look at what kind= is set to."
+  },
+  {
+    "objectID": "slides/python-overview.html#back-to-the-beginning",
+    "href": "slides/python-overview.html#back-to-the-beginning",
+    "title": "Python for MBA Students",
+    "section": "Back to the Beginning",
+    "text": "Back to the Beginning\nproducts = [\"Widget\", \"Gadget\", \"Doohickey\"]   # ③ List — a collection\nrevenues = [120_000,  85_000,  200_000]          # ③ List — a collection\ncosts    = [ 80_000,  60_000,  140_000]          # ③ List — a collection\n\nfor i in range(len(products)):                   # ⑤ Loop + ⑥ Functions\n    margin = (revenues[i] - costs[i]) / revenues[i]  # ② Variables + ① Math\n    print(f\"{products[i]}: {margin:.1%} margin\")     # ⑥ Function + f-string\n\nThis is the same code from slide 2. Every line is one of the 6 patterns. You now have the vocabulary to read it — and to read the code AI generates for you."
+  },
+  {
+    "objectID": "slides/python-overview.html#summary",
+    "href": "slides/python-overview.html#summary",
+    "title": "Python for MBA Students",
     "section": "Summary",
-    "text": "Summary\nNeural Networks:\n\nTransform inputs through layers of neurons\nEach neuron applies weights, bias, and activation\nParameters are optimized during training\nCan learn complex patterns in data\n\nNext Steps:\n\nUse scikit-learn MLPClassifier for real applications\nExperiment with network architectures\nTry different activation functions\nTune hyperparameters (learning rate, layers, neurons)"
+    "text": "Summary\n\n\nHow Python works\n\nNear-English instructions\nScripts run top-to-bottom\nNotebooks run cell-by-cell\nLibraries call precompiled C code\n\n\n\nThe 6 patterns\n\nObjects & types\nVariables\nCollections\nConditionals\nLoops\nFunctions & methods\n\n\n\nYour workflow\n\nDescribe what you want in English\nAI generates the Python\nYou read it, understand it, run it\nAsk AI to explain any line you’re unsure about\n\n\n\n\nYou don’t need to memorize syntax. You need to recognize patterns — and now you can."
   },
   {
-    "objectID": "slides/part13_simulation_slides.html#overview",
-    "href": "slides/part13_simulation_slides.html#overview",
-    "title": "Part 13: Simulation",
-    "section": "Overview",
-    "text": "Overview\n\nNumpy arrays and operations\nRandom number generation\nRolling dice and flipping coins\nMonte Carlo simulation\nBusiness applications"
-  },
-  {
-    "objectID": "slides/part13_simulation_slides.html#creating-numpy-arrays",
-    "href": "slides/part13_simulation_slides.html#creating-numpy-arrays",
-    "title": "Part 13: Simulation",
-    "section": "Creating Numpy Arrays",
-    "text": "Creating Numpy Arrays\n\nimport numpy as np\n\n# create a 1-dimensional array\narr_1d = np.array([1.1, 1.4, 2.6])\nprint('1-Dimensional Array:', arr_1d)\n\n# create a 2-dimensional array\narr_2d = np.array([\n    [1.1, 1.4, 2.6],\n    [-3.2, 5.603, 4]\n])\nprint('\\n2-Dimensional Array:')\nprint(arr_2d)\n\n1-Dimensional Array: [1.1 1.4 2.6]\n\n2-Dimensional Array:\n[[ 1.1    1.4    2.6  ]\n [-3.2    5.603  4.   ]]"
-  },
-  {
-    "objectID": "slides/part13_simulation_slides.html#practice-creating-arrays",
-    "href": "slides/part13_simulation_slides.html#practice-creating-arrays",
-    "title": "Part 13: Simulation",
-    "section": "Practice: Creating Arrays",
-    "text": "Practice: Creating Arrays\nExercise 1 (with Gemini): Ask Gemini to “create a 2D numpy array with 3 rows and 4 columns”\nExercise 2 (on your own): Type import numpy as np then arr = np.array([1, 2, 3]) then print(arr) and run it."
-  },
-  {
-    "objectID": "slides/part13_simulation_slides.html#slicing-arrays",
-    "href": "slides/part13_simulation_slides.html#slicing-arrays",
-    "title": "Part 13: Simulation",
-    "section": "Slicing Arrays",
-    "text": "Slicing Arrays\n\n# slice a 1-dimensional array (like slicing a list)\nprint('Extract a single element:', arr_1d[1])\nprint('Extract a range:', arr_1d[:2])\n\n# slice a 2-dimensional array - index is [row, column]\nprint('\\nExtract element from 2d array:', arr_2d[0, 1])\nprint('Extract range from 2d array:')\nprint(arr_2d[:, :2])\n\nExtract a single element: 1.4\nExtract a range: [1.1 1.4]\n\nExtract element from 2d array: 1.4\nExtract range from 2d array:\n[[ 1.1    1.4  ]\n [-3.2    5.603]]"
-  },
-  {
-    "objectID": "slides/part13_simulation_slides.html#practice-slicing-arrays",
-    "href": "slides/part13_simulation_slides.html#practice-slicing-arrays",
-    "title": "Part 13: Simulation",
-    "section": "Practice: Slicing Arrays",
-    "text": "Practice: Slicing Arrays\nExercise 1 (with Gemini): Ask Gemini to “extract the first row from a 2D numpy array”\nExercise 2 (on your own): Type arr = np.array([[1, 2], [3, 4]]) then print(arr[0, 1]) and run it."
-  },
-  {
-    "objectID": "slides/part13_simulation_slides.html#array-operations",
-    "href": "slides/part13_simulation_slides.html#array-operations",
-    "title": "Part 13: Simulation",
-    "section": "Array Operations",
-    "text": "Array Operations\n\n# array addition (sum element by element)\narr_1d_second = np.array([7, 4.3, 1.1])\nprint('Sum of arrays:', arr_1d + arr_1d_second)\n\n# array multiplication (multiply element by element)\nprint('Product of arrays:', arr_1d * arr_1d_second)\n\n# broadcasting: multiply by scalar\nprint('\\nBroadcast (multiply by 2):')\nprint(2 * arr_2d)\n\nSum of arrays: [8.1 5.7 3.7]\nProduct of arrays: [7.7  6.02 2.86]\n\nBroadcast (multiply by 2):\n[[ 2.2    2.8    5.2  ]\n [-6.4   11.206  8.   ]]"
-  },
-  {
-    "objectID": "slides/part13_simulation_slides.html#practice-array-operations",
-    "href": "slides/part13_simulation_slides.html#practice-array-operations",
-    "title": "Part 13: Simulation",
-    "section": "Practice: Array Operations",
-    "text": "Practice: Array Operations\nExercise 1 (with Gemini): Ask Gemini to “create two numpy arrays and add them together element-wise”\nExercise 2 (on your own): Type import numpy as np then arr = np.array([1, 2, 3]) then print(arr * 2) and run it."
-  },
-  {
-    "objectID": "slides/part13_simulation_slides.html#array-methods",
-    "href": "slides/part13_simulation_slides.html#array-methods",
-    "title": "Part 13: Simulation",
-    "section": "Array Methods",
-    "text": "Array Methods\n\n# sum method\nprint('Array:', arr_1d)\nprint('Sum:', arr_1d.sum())\n\n# standard deviation method\nprint('\\nStandard deviation:', arr_1d.std())\n\n# other useful methods: mean(), min(), max()\nprint('Mean:', arr_1d.mean())\n\nArray: [1.1 1.4 2.6]\nSum: 5.1\n\nStandard deviation: 0.6480740698407861\nMean: 1.7"
-  },
-  {
-    "objectID": "slides/part13_simulation_slides.html#practice-array-methods",
-    "href": "slides/part13_simulation_slides.html#practice-array-methods",
-    "title": "Part 13: Simulation",
-    "section": "Practice: Array Methods",
-    "text": "Practice: Array Methods\nExercise 1 (with Gemini): Ask Gemini to “calculate the sum and mean of a numpy array”\nExercise 2 (on your own): Type arr = np.array([10, 20, 30]) then print(arr.max()) and run it."
-  },
-  {
-    "objectID": "slides/part13_simulation_slides.html#random-number-generation",
-    "href": "slides/part13_simulation_slides.html#random-number-generation",
-    "title": "Part 13: Simulation",
-    "section": "Random Number Generation",
-    "text": "Random Number Generation\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\n# Set random seed for reproducible results\nnp.random.seed(42)\n\n# Roll a six-sided die 1000 times\nnum_rolls = 1000\ndice_rolls = np.random.randint(1, 7, num_rolls)\n\nprint(f\"First 10 rolls: {dice_rolls[:10]}\")\nprint(f\"Average: {dice_rolls.mean():.2f} (expected: 3.5)\")\n\nFirst 10 rolls: [4 5 3 5 5 2 3 3 3 5]\nAverage: 3.46 (expected: 3.5)"
-  },
-  {
-    "objectID": "slides/part13_simulation_slides.html#practice-random-dice-rolls",
-    "href": "slides/part13_simulation_slides.html#practice-random-dice-rolls",
-    "title": "Part 13: Simulation",
-    "section": "Practice: Random Dice Rolls",
-    "text": "Practice: Random Dice Rolls\nExercise 1 (with Gemini): Ask Gemini to “simulate rolling two dice 100 times and calculate the average sum”\nExercise 2 (on your own): Type np.random.randint(1, 7, 10) and run it to simulate 10 dice rolls."
-  },
-  {
-    "objectID": "slides/part13_simulation_slides.html#visualizing-dice-rolls",
-    "href": "slides/part13_simulation_slides.html#visualizing-dice-rolls",
-    "title": "Part 13: Simulation",
-    "section": "Visualizing Dice Rolls",
-    "text": "Visualizing Dice Rolls\n\nplt.figure(figsize=(10, 4))\n\nplt.subplot(1, 2, 1)\nplt.hist(dice_rolls, bins=range(1, 8), alpha=0.7,\n         color='skyblue', edgecolor='black')\nplt.title('Distribution of Dice Rolls')\nplt.xlabel('Dice Value')\nplt.ylabel('Frequency')\nplt.xticks(range(1, 7))\n\nplt.subplot(1, 2, 2)\nrunning_average = np.cumsum(dice_rolls) / np.arange(1, num_rolls + 1)\nplt.plot(running_average, color='red', linewidth=2)\nplt.axhline(y=3.5, color='blue', linestyle='--',\n            label='Expected (3.5)')\nplt.title('Running Average')\nplt.xlabel('Number of Rolls')\nplt.ylabel('Average Value')\nplt.legend()\nplt.tight_layout()"
-  },
-  {
-    "objectID": "slides/part13_simulation_slides.html#normal-distributions",
-    "href": "slides/part13_simulation_slides.html#normal-distributions",
-    "title": "Part 13: Simulation",
-    "section": "Normal Distributions",
-    "text": "Normal Distributions\n\n# Monte Carlo simulation: monthly sales forecast\n\nbase_monthly_sales = 25000\nmonthly_variation = 0.20  # 20% variation\n\n# Seasonal factors for each month\nseasonal_factors = [\n    0.9, 0.9, 1.0, 1.0, 1.1, 1.1,  # Jan-Jun\n    1.0, 1.0, 1.0, 1.1, 1.2, 1.3   # Jul-Dec\n]\n\ndef simulate_one_year():\n    monthly_sales = []\n    for month in range(12):\n        expected_sales = base_monthly_sales * seasonal_factors[month]\n        actual_sales = np.random.normal(expected_sales,\n                                       expected_sales * monthly_variation)\n        actual_sales = max(actual_sales, 0)\n        monthly_sales.append(actual_sales)\n    return monthly_sales"
-  },
-  {
-    "objectID": "slides/part13_simulation_slides.html#monte-carlo-simulation",
-    "href": "slides/part13_simulation_slides.html#monte-carlo-simulation",
-    "title": "Part 13: Simulation",
-    "section": "Monte Carlo Simulation",
-    "text": "Monte Carlo Simulation\n\n# Simulate 1,000 possible years\nnum_simulations = 1000\nall_annual_totals = []\n\nfor sim in range(num_simulations):\n    year_sales = simulate_one_year()\n    all_annual_totals.append(sum(year_sales))\n\nall_annual_totals = np.array(all_annual_totals)\n\nprint(f\"Average annual sales: ${all_annual_totals.mean():,.0f}\")\nprint(f\"Minimum: ${all_annual_totals.min():,.0f}\")\nprint(f\"Maximum: ${all_annual_totals.max():,.0f}\")\nprint(f\"10th percentile: ${np.percentile(all_annual_totals, 10):,.0f}\")\nprint(f\"90th percentile: ${np.percentile(all_annual_totals, 90):,.0f}\")\n\nAverage annual sales: $314,614\nMinimum: $256,747\nMaximum: $373,673\n10th percentile: $292,487\n90th percentile: $336,429"
-  },
-  {
-    "objectID": "slides/part13_simulation_slides.html#practice-monte-carlo-simulation",
-    "href": "slides/part13_simulation_slides.html#practice-monte-carlo-simulation",
-    "title": "Part 13: Simulation",
-    "section": "Practice: Monte Carlo Simulation",
-    "text": "Practice: Monte Carlo Simulation\nExercise 1 (with Gemini): Ask Gemini to “run a Monte Carlo simulation to estimate the probability of getting heads at least 6 times in 10 coin flips”\nExercise 2 (on your own): Type results = [np.random.randint(0, 2, 10).sum() for _ in range(1000)] then print(np.mean(results)) and run it."
-  },
-  {
-    "objectID": "slides/part13_simulation_slides.html#visualizing-results",
-    "href": "slides/part13_simulation_slides.html#visualizing-results",
-    "title": "Part 13: Simulation",
-    "section": "Visualizing Results",
-    "text": "Visualizing Results\n\nplt.figure(figsize=(12, 4))\n\nplt.subplot(1, 2, 1)\nplt.hist(all_annual_totals, bins=50, alpha=0.7,\n         color='lightblue', edgecolor='black')\nplt.axvline(all_annual_totals.mean(), color='red',\n            linestyle='--', label=f'Mean: ${all_annual_totals.mean():,.0f}')\nplt.title('Distribution of Annual Sales')\nplt.xlabel('Annual Sales ($)')\nplt.ylabel('Frequency')\nplt.legend()\n\nplt.subplot(1, 2, 2)\nmonth_names = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',\n               'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']\nexample_year = simulate_one_year()\nplt.bar(month_names, example_year, color='lightgreen', alpha=0.7)\nplt.title('One Example Year')\nplt.xlabel('Month')\nplt.ylabel('Sales ($)')\nplt.xticks(rotation=45)\nplt.tight_layout()"
-  },
-  {
-    "objectID": "slides/part13_simulation_slides.html#probability-analysis",
-    "href": "slides/part13_simulation_slides.html#probability-analysis",
-    "title": "Part 13: Simulation",
-    "section": "Probability Analysis",
-    "text": "Probability Analysis\n\n# Business question: What's the probability of meeting target?\ntarget_sales = 300000\nprob_meeting_target = np.mean(all_annual_totals &gt;= target_sales) * 100\n\nprint(f\"Probability of meeting ${target_sales:,} target: {prob_meeting_target:.1f}%\")\n\n# Show different targets\nfor target in [280000, 300000, 320000]:\n    prob = np.mean(all_annual_totals &gt;= target) * 100\n    print(f\"Target ${target:,}: {prob:.1f}% probability\")\n\nProbability of meeting $300,000 target: 79.8%\nTarget $280,000: 97.2% probability\nTarget $300,000: 79.8% probability\nTarget $320,000: 37.0% probability"
-  },
-  {
-    "objectID": "slides/part13_simulation_slides.html#summary",
-    "href": "slides/part13_simulation_slides.html#summary",
-    "title": "Part 13: Simulation",
-    "section": "Summary",
-    "text": "Summary\n\nNumpy arrays: Efficient numerical operations\nRandom numbers: np.random.randint(), np.random.normal()\nMonte Carlo: Simulate many scenarios to understand distributions\nApplications: Risk analysis, forecasting, decision making\nKey insight: Run thousands of simulations to estimate probabilities"
-  },
-  {
-    "objectID": "slides/part11_visualization_more_slides.html#overview",
-    "href": "slides/part11_visualization_more_slides.html#overview",
-    "title": "Part 11: More Visualization",
-    "section": "Overview",
-    "text": "Overview\n\nPairplots for exploring relationships\nVisualizing effects of explanatory variables on a target variable\nChoosing the right plot type\nBest practices for interpretable visualizations"
-  },
-  {
-    "objectID": "slides/part11_visualization_more_slides.html#seaborn-pairplot",
-    "href": "slides/part11_visualization_more_slides.html#seaborn-pairplot",
-    "title": "Part 11: More Visualization",
-    "section": "Seaborn Pairplot",
-    "text": "Seaborn Pairplot\nA pairplot creates a matrix of scatter plots showing relationships between all numeric variables.\n```{python}\nimport pandas as pd\nimport seaborn as sns\nimport matplotlib.pyplot as plt\n\nurl = 'https://faculty.utrgv.edu/diego.escobari/teaching/Datasets/WAGE1.xls'\nwages = pd.read_excel(url, header=None)\ncolumns = ['wage', 'educ', 'exper', 'tenure', 'nonwhite', 'female',\n           'married', 'numdep', 'smsa', 'northcen', 'south', 'west',\n           'construc', 'ndurman', 'trcommpu', 'trade', 'services',\n           'profserv', 'profocc', 'clerocc', 'servocc', 'lwage',\n           'expersq', 'tenursq']\nwages.columns = columns\n\n# Pairplot with corner=True shows only lower triangle\nsns.pairplot(wages[['wage', 'educ', 'exper', 'tenure']], corner=True)\nplt.show()\n```"
-  },
-  {
-    "objectID": "slides/part11_visualization_more_slides.html#understanding-relationships",
-    "href": "slides/part11_visualization_more_slides.html#understanding-relationships",
-    "title": "Part 11: More Visualization",
-    "section": "Understanding Relationships",
-    "text": "Understanding Relationships\nGoal: Visually explore what determines wages\n\nWhich factors most strongly influence wages?\nHow do different variables interact to affect wages?\nAre there patterns or outliers to investigate?\n\nTerminology: - Target variable: wage (numeric) - Explanatory variables: education, experience, gender, etc. (numeric or categorical)"
-  },
-  {
-    "objectID": "slides/part11_visualization_more_slides.html#single-numeric-explanatory-variable",
-    "href": "slides/part11_visualization_more_slides.html#single-numeric-explanatory-variable",
-    "title": "Part 11: More Visualization",
-    "section": "Single Numeric Explanatory Variable",
-    "text": "Single Numeric Explanatory Variable\nScatter plot: Shows relationship and correlation\n```{python}\nplt.figure(figsize=(8, 5))\nsns.scatterplot(data=wages, x='educ', y='wage', alpha=0.5)\nplt.xlabel('Years of Education')\nplt.ylabel('Hourly Wage ($)')\nplt.title('Wage vs Education')\nplt.show()\n```\nRegression plot: Adds trend line to see direction and strength\n```{python}\nplt.figure(figsize=(8, 5))\nsns.regplot(data=wages, x='educ', y='wage', scatter_kws={'alpha':0.5})\nplt.xlabel('Years of Education')\nplt.ylabel('Hourly Wage ($)')\nplt.title('Wage vs Education with Trend Line')\nplt.show()\n```"
-  },
-  {
-    "objectID": "slides/part11_visualization_more_slides.html#practice-regression-plots",
-    "href": "slides/part11_visualization_more_slides.html#practice-regression-plots",
-    "title": "Part 11: More Visualization",
-    "section": "Practice: Regression Plots",
-    "text": "Practice: Regression Plots\nExercise 1 (with Gemini): Ask Gemini to “create a regression plot showing the relationship between two numeric variables”\nExercise 2 (on your own): Type sns.regplot(x=[1, 2, 3, 4], y=[2, 4, 3, 5]) then plt.show() and run it."
-  },
-  {
-    "objectID": "slides/part11_visualization_more_slides.html#single-categorical-explanatory-variable",
-    "href": "slides/part11_visualization_more_slides.html#single-categorical-explanatory-variable",
-    "title": "Part 11: More Visualization",
-    "section": "Single Categorical Explanatory Variable",
-    "text": "Single Categorical Explanatory Variable\nBox plot: Shows distribution of wages within each category (preferred)\n```{python}\n# Create categorical variable\nwages['Gender'] = wages['female'].map({0: 'Male', 1: 'Female'})\n\nplt.figure(figsize=(8, 5))\nsns.boxplot(data=wages, x='Gender', y='wage')\nplt.ylabel('Hourly Wage ($)')\nplt.title('Wage Distribution by Gender')\nplt.show()\n```\nAlternatives: Strip plot, violin plot, or bar plot with error bars"
-  },
-  {
-    "objectID": "slides/part11_visualization_more_slides.html#practice-box-plots",
-    "href": "slides/part11_visualization_more_slides.html#practice-box-plots",
-    "title": "Part 11: More Visualization",
-    "section": "Practice: Box Plots",
-    "text": "Practice: Box Plots\nExercise 1 (with Gemini): Ask Gemini to “create a box plot comparing test scores across different classes”\nExercise 2 (on your own): Type sns.boxplot(x=['A', 'A', 'B', 'B'], y=[10, 12, 15, 17]) then plt.show() and run it."
-  },
-  {
-    "objectID": "slides/part11_visualization_more_slides.html#multiple-categorical-variables",
-    "href": "slides/part11_visualization_more_slides.html#multiple-categorical-variables",
-    "title": "Part 11: More Visualization",
-    "section": "Multiple Categorical Variables",
-    "text": "Multiple Categorical Variables\nGrouped box plots: Use hue for a second categorical variable\n```{python}\nwages['Marital_Status'] = wages['married'].map({0: 'Not Married', 1: 'Married'})\n\nplt.figure(figsize=(10, 6))\nsns.boxplot(data=wages, x='Gender', y='wage', hue='Marital_Status')\nplt.ylabel('Hourly Wage ($)')\nplt.title('Wage by Gender and Marital Status')\nplt.show()\n```\nHeatmap: Matrix showing mean wage for each combination\n```{python}\npivot_data = wages.pivot_table(values='wage',\n                               index='Gender',\n                               columns='Marital_Status')\nplt.figure(figsize=(8, 5))\nsns.heatmap(pivot_data, annot=True, fmt='.2f', cmap='YlOrRd')\nplt.title('Mean Wage by Gender and Marital Status')\nplt.show()\n```"
-  },
-  {
-    "objectID": "slides/part11_visualization_more_slides.html#practice-heatmaps",
-    "href": "slides/part11_visualization_more_slides.html#practice-heatmaps",
-    "title": "Part 11: More Visualization",
-    "section": "Practice: Heatmaps",
-    "text": "Practice: Heatmaps\nExercise 1 (with Gemini): Ask Gemini to “create a heatmap showing average values for different category combinations”\nExercise 2 (on your own): Type sns.heatmap([[1, 2], [3, 4]], annot=True) then plt.show() and run it."
-  },
-  {
-    "objectID": "slides/part11_visualization_more_slides.html#numeric-categorical-variables",
-    "href": "slides/part11_visualization_more_slides.html#numeric-categorical-variables",
-    "title": "Part 11: More Visualization",
-    "section": "Numeric + Categorical Variables",
-    "text": "Numeric + Categorical Variables\nScatter plot with hue: Distinguish categories by color\n```{python}\nplt.figure(figsize=(10, 6))\nsns.scatterplot(data=wages, x='educ', y='wage', hue='Gender', alpha=0.6)\nplt.xlabel('Years of Education')\nplt.ylabel('Hourly Wage ($)')\nplt.title('Wage vs Education by Gender')\nplt.show()\n```\nAlternative: Faceted scatter plots for clearer visualization with multiple categorical variables"
-  },
-  {
-    "objectID": "slides/part11_visualization_more_slides.html#key-recommendations",
-    "href": "slides/part11_visualization_more_slides.html#key-recommendations",
-    "title": "Part 11: More Visualization",
-    "section": "Key Recommendations",
-    "text": "Key Recommendations\nRecommended Seaborn Functions: - sns.boxplot() - Best for categorical variables - sns.scatterplot() - Best for numeric variables - sns.regplot() - Adds trend line to scatter plots - sns.heatmap() - Good for two categorical variables - Use hue, size, style parameters to add additional variables\nMake it interpretable: - Always label axes clearly (“Annual Wage ($)”, not just “wage”) - Use meaningful titles - Order categories logically (Low → High, not alphabetical) - Consider log scale if values span wide ranges"
-  },
-  {
-    "objectID": "slides/part11_visualization_more_slides.html#best-practices",
-    "href": "slides/part11_visualization_more_slides.html#best-practices",
-    "title": "Part 11: More Visualization",
-    "section": "Best Practices",
-    "text": "Best Practices\nHandle overlapping points: - Use transparency (alpha parameter) - Bin continuous variables (x_bins in regplot)\nLook for patterns: - Non-linear relationships (curved scatter plots) - Outliers (unusual wage values) - Interactions (effect of one variable depends on another)\nChoose the right plot: - Start with box plots for categorical variables (most informative) - Use scatter plots for numeric relationships - Add regression lines to show trends - Add hue/size/style to show effects of additional variables"
-  },
-  {
-    "objectID": "slides/part9_pandas_more_slides.html#sorting-data",
-    "href": "slides/part9_pandas_more_slides.html#sorting-data",
-    "title": "Part 9: More Pandas",
-    "section": "Sorting Data",
-    "text": "Sorting Data\n\nimport pandas as pd\n\nemployees = pd.DataFrame({\n    'name': ['Alice', 'Bob', 'Charlie', 'Diana', 'Eve'],\n    'department': ['Sales', 'Engineering', 'Sales', 'Marketing', 'Engineering'],\n    'salary': [50000, 80000, 55000, 60000, 85000]\n})\n\n# Sort by salary (descending)\nprint(employees.sort_values('salary', ascending=False))\n\n      name   department  salary\n4      Eve  Engineering   85000\n1      Bob  Engineering   80000\n3    Diana    Marketing   60000\n2  Charlie        Sales   55000\n0    Alice        Sales   50000"
-  },
-  {
-    "objectID": "slides/part9_pandas_more_slides.html#practice-sorting-data",
-    "href": "slides/part9_pandas_more_slides.html#practice-sorting-data",
-    "title": "Part 9: More Pandas",
-    "section": "Practice: Sorting Data",
-    "text": "Practice: Sorting Data\nExercise 1 (with Gemini): Ask Gemini to “sort a DataFrame by the ‘name’ column in alphabetical order”\nExercise 2 (on your own): Type employees.sort_values('salary') and run it to sort by salary ascending."
-  },
-  {
-    "objectID": "slides/part9_pandas_more_slides.html#grouping-and-aggregation",
-    "href": "slides/part9_pandas_more_slides.html#grouping-and-aggregation",
-    "title": "Part 9: More Pandas",
-    "section": "Grouping and Aggregation",
-    "text": "Grouping and Aggregation\nGroup data by categories and compute statistics:\n\n# Average salary by department\ndept_avg = employees.groupby('department')['salary'].mean()\nprint(dept_avg)\n\ndepartment\nEngineering    82500.0\nMarketing      60000.0\nSales          52500.0\nName: salary, dtype: float64\n\n\nCommon aggregation functions: mean(), median(), min(), max(), std(), count()"
-  },
-  {
-    "objectID": "slides/part9_pandas_more_slides.html#practice-grouping-data",
-    "href": "slides/part9_pandas_more_slides.html#practice-grouping-data",
-    "title": "Part 9: More Pandas",
-    "section": "Practice: Grouping Data",
-    "text": "Practice: Grouping Data\nExercise 1 (with Gemini): Ask Gemini to “group a DataFrame by department and calculate the maximum salary in each department”\nExercise 2 (on your own): Type employees.groupby('department')['salary'].count() and run it to count employees per department."
-  },
-  {
-    "objectID": "slides/part9_pandas_more_slides.html#pivot-tables",
-    "href": "slides/part9_pandas_more_slides.html#pivot-tables",
-    "title": "Part 9: More Pandas",
-    "section": "Pivot Tables",
-    "text": "Pivot Tables\nReshape data to summarize by multiple dimensions:\n\nimport random\nrandom.seed(42)\n\nsales = pd.DataFrame({\n    'product': ['Widget A', 'Widget B', 'Widget C'] * 6,\n    'region': ['North'] * 9 + ['South'] * 9,\n    'revenue': [random.randint(100, 500) for _ in range(18)]\n})\n\npivot = sales.pivot_table(values='revenue',\n                          index='product',\n                          columns='region',\n                          aggfunc='sum')\nprint(pivot)\n\nregion    North  South\nproduct               \nWidget A   1120    847\nWidget B    568    706\nWidget C    814    996"
-  },
-  {
-    "objectID": "slides/part9_pandas_more_slides.html#handling-missing-data",
-    "href": "slides/part9_pandas_more_slides.html#handling-missing-data",
-    "title": "Part 9: More Pandas",
-    "section": "Handling Missing Data",
-    "text": "Handling Missing Data\n\nimport numpy as np\n\ndata = pd.DataFrame({\n    'product': ['Widget A', 'Widget B', None, 'Widget C'],\n    'price': [10.5, None, 15.0, 12.75],\n    'quantity': [100, 200, 150, None]\n})\n\nprint(\"Missing values per column:\")\nprint(data.isnull().sum())\n\nMissing values per column:\nproduct     1\nprice       1\nquantity    1\ndtype: int64"
-  },
-  {
-    "objectID": "slides/part9_pandas_more_slides.html#filling-missing-values",
-    "href": "slides/part9_pandas_more_slides.html#filling-missing-values",
-    "title": "Part 9: More Pandas",
-    "section": "Filling Missing Values",
-    "text": "Filling Missing Values\n\n# Fill missing values\nfilled = data.copy()\nfilled['product'] = filled['product'].fillna('Unknown')\nfilled['price'] = filled['price'].fillna(data['price'].mean())\nfilled['quantity'] = filled['quantity'].fillna(0)\n\nprint(filled)\n\n    product  price  quantity\n0  Widget A  10.50     100.0\n1  Widget B  12.75     200.0\n2   Unknown  15.00     150.0\n3  Widget C  12.75       0.0"
-  },
-  {
-    "objectID": "slides/part9_pandas_more_slides.html#practice-handling-missing-data",
-    "href": "slides/part9_pandas_more_slides.html#practice-handling-missing-data",
-    "title": "Part 9: More Pandas",
-    "section": "Practice: Handling Missing Data",
-    "text": "Practice: Handling Missing Data\nExercise 1 (with Gemini): Ask Gemini to “check for missing values in a DataFrame and fill them with the column mean”\nExercise 2 (on your own): Type data.isnull().sum() and run it to count missing values per column."
-  },
-  {
-    "objectID": "slides/part9_pandas_more_slides.html#merging-dataframes",
-    "href": "slides/part9_pandas_more_slides.html#merging-dataframes",
-    "title": "Part 9: More Pandas",
-    "section": "Merging DataFrames",
-    "text": "Merging DataFrames\nCombine data from multiple sources:\n\nemployees_info = pd.DataFrame({\n    'id': [101, 102, 103],\n    'name': ['Alice', 'Bob', 'Charlie']\n})\n\nsalaries = pd.DataFrame({\n    'id': [101, 102, 104],\n    'salary': [50000, 80000, 60000]\n})\n\n# Inner merge - only matching records\ninner = pd.merge(employees_info, salaries, on='id')\nprint(\"Inner merge:\")\nprint(inner)\n\nInner merge:\n    id   name  salary\n0  101  Alice   50000\n1  102    Bob   80000"
-  },
-  {
-    "objectID": "slides/part9_pandas_more_slides.html#types-of-merges",
-    "href": "slides/part9_pandas_more_slides.html#types-of-merges",
-    "title": "Part 9: More Pandas",
-    "section": "Types of Merges",
-    "text": "Types of Merges\n\nInner: Only matching records from both DataFrames\nLeft: All records from left, matching from right\nRight: All records from right, matching from left\nOuter: All records from both DataFrames\n\n\n# Left merge - all employees\nleft = pd.merge(employees_info, salaries, on='id', how='left')\nprint(\"Left merge:\")\nprint(left)\n\nLeft merge:\n    id     name   salary\n0  101    Alice  50000.0\n1  102      Bob  80000.0\n2  103  Charlie      NaN"
-  },
-  {
-    "objectID": "slides/part9_pandas_more_slides.html#practice-merging-dataframes",
-    "href": "slides/part9_pandas_more_slides.html#practice-merging-dataframes",
-    "title": "Part 9: More Pandas",
-    "section": "Practice: Merging DataFrames",
-    "text": "Practice: Merging DataFrames\nExercise 1 (with Gemini): Ask Gemini to “merge two DataFrames on a common ‘id’ column using an inner join”\nExercise 2 (on your own): Type pd.merge(employees_info, salaries, on='id') and run it to perform an inner merge."
-  },
-  {
-    "objectID": "slides/part9_pandas_more_slides.html#concatenating-dataframes",
-    "href": "slides/part9_pandas_more_slides.html#concatenating-dataframes",
-    "title": "Part 9: More Pandas",
-    "section": "Concatenating DataFrames",
-    "text": "Concatenating DataFrames\nCombine data from the same structure:\n\nq1 = pd.DataFrame({\n    'product': ['Widget A', 'Widget B'],\n    'sales': [100, 150]\n})\n\nq2 = pd.DataFrame({\n    'product': ['Widget A', 'Widget B'],\n    'sales': [120, 140]\n})\n\nall_sales = pd.concat([q1, q2])\nprint(all_sales)\n\n    product  sales\n0  Widget A    100\n1  Widget B    150\n0  Widget A    120\n1  Widget B    140"
-  },
-  {
-    "objectID": "slides/part9_pandas_more_slides.html#reading-and-writing-files",
-    "href": "slides/part9_pandas_more_slides.html#reading-and-writing-files",
-    "title": "Part 9: More Pandas",
-    "section": "Reading and Writing Files",
-    "text": "Reading and Writing Files\n\n# Read Excel file\ndf = pd.read_excel('data.xlsx')\n\n# Read CSV file\ndf = pd.read_csv('data.csv')\n\n# Write to Excel\ndf.to_excel('output.xlsx', index=False)\n\n# Write to CSV\ndf.to_csv('output.csv', index=False)\n\nCommon formats: Excel (.xlsx), CSV (.csv), JSON (.json)"
-  },
-  {
-    "objectID": "slides/part9_pandas_more_slides.html#string-processing",
-    "href": "slides/part9_pandas_more_slides.html#string-processing",
-    "title": "Part 9: More Pandas",
-    "section": "String Processing",
-    "text": "String Processing\nClean and transform text data:\n\ncustomer_data = pd.DataFrame({\n    'name': ['  John Smith  ', 'JANE DOE', 'bob jones'],\n    'email': ['john@email.com', 'JANE@GMAIL.COM', 'bob@yahoo.com']\n})\n\n# Clean names\ncustomer_data['name_clean'] = customer_data['name'].str.strip().str.title()\n\n# Lowercase emails\ncustomer_data['email_clean'] = customer_data['email'].str.lower()\n\nprint(customer_data[['name', 'name_clean', 'email_clean']])\n\n             name  name_clean     email_clean\n0    John Smith    John Smith  john@email.com\n1        JANE DOE    Jane Doe  jane@gmail.com\n2       bob jones   Bob Jones   bob@yahoo.com"
-  },
-  {
-    "objectID": "slides/part9_pandas_more_slides.html#common-string-methods",
-    "href": "slides/part9_pandas_more_slides.html#common-string-methods",
-    "title": "Part 9: More Pandas",
-    "section": "Common String Methods",
-    "text": "Common String Methods\nUseful .str methods:\n\n.str.lower(), .str.upper() - Change case\n.str.strip() - Remove whitespace\n.str.contains() - Check for substring\n.str.split() - Split strings\n.str.replace() - Replace text\n\n\n# Extract email domain\ncustomer_data['domain'] = customer_data['email_clean'].str.split('@').str[1]\nprint(customer_data[['email_clean', 'domain']])\n\n      email_clean     domain\n0  john@email.com  email.com\n1  jane@gmail.com  gmail.com\n2   bob@yahoo.com  yahoo.com"
-  },
-  {
-    "objectID": "slides/part9_pandas_more_slides.html#practice-string-processing",
-    "href": "slides/part9_pandas_more_slides.html#practice-string-processing",
-    "title": "Part 9: More Pandas",
-    "section": "Practice: String Processing",
-    "text": "Practice: String Processing\nExercise 1 (with Gemini): Ask Gemini to “convert a column of names to lowercase and remove leading/trailing spaces”\nExercise 2 (on your own): Type customer_data['name'].str.upper() and run it to convert names to uppercase."
-  },
-  {
-    "objectID": "slides/part9_pandas_more_slides.html#summary",
-    "href": "slides/part9_pandas_more_slides.html#summary",
-    "title": "Part 9: More Pandas",
-    "section": "Summary",
-    "text": "Summary\nKey Operations:\n\nSort: sort_values()\nGroup: groupby() with aggregation functions\nPivot: pivot_table() for multi-dimensional summaries\nMissing Data: isnull(), fillna(), dropna()\nMerge: pd.merge() with different join types\nConcatenate: pd.concat() for stacking data\nString Operations: .str accessor for text processing\n\nThese tools form the foundation of data cleaning and analysis!"
-  },
-  {
-    "objectID": "slides/part7_libraries_slides.html#why-libraries",
-    "href": "slides/part7_libraries_slides.html#why-libraries",
-    "title": "Part 7: Libraries",
-    "section": "Why Libraries?",
-    "text": "Why Libraries?\nPython’s power comes from its libraries - collections of pre-written code for specific tasks.\n\nBuilt-in libraries: math, datetime, random\nThird-party libraries: pandas, numpy, matplotlib\n\nLibraries save time and provide tested, optimized solutions to common problems."
-  },
-  {
-    "objectID": "slides/part7_libraries_slides.html#importing-from-libraries",
-    "href": "slides/part7_libraries_slides.html#importing-from-libraries",
-    "title": "Part 7: Libraries",
-    "section": "Importing from Libraries",
-    "text": "Importing from Libraries\nImport specific functions from a library:\n\nfrom math import sqrt\n\nresult = sqrt(9)\nprint(result)\n\n3.0\n\n\nUse the function directly without a prefix."
-  },
-  {
-    "objectID": "slides/part7_libraries_slides.html#practice-importing-functions",
-    "href": "slides/part7_libraries_slides.html#practice-importing-functions",
-    "title": "Part 7: Libraries",
-    "section": "Practice: Importing Functions",
-    "text": "Practice: Importing Functions\nExercise 1 (with Gemini): Ask Gemini to “write Python code that imports the sqrt function from math and uses it”\nExercise 2 (on your own): Type from math import pi then print(pi) and run it."
-  },
-  {
-    "objectID": "slides/part7_libraries_slides.html#importing-entire-libraries",
-    "href": "slides/part7_libraries_slides.html#importing-entire-libraries",
-    "title": "Part 7: Libraries",
-    "section": "Importing Entire Libraries",
-    "text": "Importing Entire Libraries\nImport the whole library and access its contents:\n\nimport math\n\nresult = math.sqrt(9)\nprint(f\"Square root: {result}\")\nprint(f\"Pi: {math.pi}\")\nprint(f\"Cosine of 0: {math.cos(0)}\")\n\nSquare root: 3.0\nPi: 3.141592653589793\nCosine of 0: 1.0\n\n\nUse library.function() syntax."
-  },
-  {
-    "objectID": "slides/part7_libraries_slides.html#practice-importing-libraries",
-    "href": "slides/part7_libraries_slides.html#practice-importing-libraries",
-    "title": "Part 7: Libraries",
-    "section": "Practice: Importing Libraries",
-    "text": "Practice: Importing Libraries\nExercise 1 (with Gemini): Ask Gemini to “write Python code that imports the math library and calculates the square root of 16”\nExercise 2 (on your own): Type import math then print(math.sqrt(25)) and run it."
-  },
-  {
-    "objectID": "slides/part7_libraries_slides.html#using-aliases",
-    "href": "slides/part7_libraries_slides.html#using-aliases",
-    "title": "Part 7: Libraries",
-    "section": "Using Aliases",
-    "text": "Using Aliases\nAbbreviate library names with as:\n\nimport math as m\n\nresult = m.sqrt(16)\nprint(result)\n\n4.0\n\n\nEspecially useful for libraries with long names!"
-  },
-  {
-    "objectID": "slides/part7_libraries_slides.html#practice-using-aliases",
-    "href": "slides/part7_libraries_slides.html#practice-using-aliases",
-    "title": "Part 7: Libraries",
-    "section": "Practice: Using Aliases",
-    "text": "Practice: Using Aliases\nExercise 1 (with Gemini): Ask Gemini to “write Python code that imports math as m and uses it to calculate pi times 2”\nExercise 2 (on your own): Type import math as m then print(m.pi) and run it."
-  },
-  {
-    "objectID": "slides/part7_libraries_slides.html#standard-alias-conventions",
-    "href": "slides/part7_libraries_slides.html#standard-alias-conventions",
-    "title": "Part 7: Libraries",
-    "section": "Standard Alias Conventions",
-    "text": "Standard Alias Conventions\nThese conventions are universally used:\nimport pandas as pd              # Data manipulation\nimport numpy as np               # Numerical arrays\nimport matplotlib.pyplot as plt  # Plotting\nimport seaborn as sns            # Statistical plotting\nimport statsmodels.api as sm     # Statistics\nImportant: AI tools like Gemini understand these conventions!\nIf you ask about pd.DataFrame, it knows you mean pandas."
-  },
-  {
-    "objectID": "slides/part7_libraries_slides.html#import-patterns-comparison",
-    "href": "slides/part7_libraries_slides.html#import-patterns-comparison",
-    "title": "Part 7: Libraries",
-    "section": "Import Patterns Comparison",
-    "text": "Import Patterns Comparison\nThree common patterns:\n\n# 1. Import entire module\nimport math\nx = math.sqrt(25)\n\n# 2. Import with alias\nimport math as m\ny = m.sqrt(25)\n\n# 3. Import specific functions\nfrom math import sqrt\nz = sqrt(25)\n\nprint(f\"All equal: {x == y == z}\")\n\nAll equal: True"
-  },
-  {
-    "objectID": "slides/part7_libraries_slides.html#practice-import-patterns",
-    "href": "slides/part7_libraries_slides.html#practice-import-patterns",
-    "title": "Part 7: Libraries",
-    "section": "Practice: Import Patterns",
-    "text": "Practice: Import Patterns\nExercise 1 (with Gemini): Ask Gemini to “explain the difference between ‘import math’ and ‘from math import sqrt’”\nExercise 2 (on your own): Type import math then from math import pi then print(math.sqrt(9), pi) and run it."
-  },
-  {
-    "objectID": "slides/part7_libraries_slides.html#installing-libraries-with-pip",
-    "href": "slides/part7_libraries_slides.html#installing-libraries-with-pip",
-    "title": "Part 7: Libraries",
-    "section": "Installing Libraries with pip",
-    "text": "Installing Libraries with pip\nUse pip to install third-party libraries:\n# Install a library\n!pip install yfinance\n\n# Install specific version\n!pip install yfinance==0.2.50\n\n# Upgrade to latest\n!pip install --upgrade yfinance\n\n# Check installed packages\n!pip list\nNote: In Colab, use !pip. In a terminal, use pip without !."
-  },
-  {
-    "objectID": "slides/part7_libraries_slides.html#common-libraries-youll-use",
-    "href": "slides/part7_libraries_slides.html#common-libraries-youll-use",
-    "title": "Part 7: Libraries",
-    "section": "Common Libraries You’ll Use",
-    "text": "Common Libraries You’ll Use\nData Science: - pandas - data manipulation - numpy - numerical computing - scipy - scientific computing\nVisualization: - matplotlib - basic plotting - seaborn - statistical plots - plotly - interactive plots\nFinance: - yfinance - stock data - pandas-datareader - financial data"
-  },
-  {
-    "objectID": "slides/part7_libraries_slides.html#example-using-multiple-libraries",
-    "href": "slides/part7_libraries_slides.html#example-using-multiple-libraries",
-    "title": "Part 7: Libraries",
-    "section": "Example: Using Multiple Libraries",
-    "text": "Example: Using Multiple Libraries\n\nimport math\nfrom datetime import date, timedelta\n\n# Use math\ncircle_area = math.pi * (5 ** 2)\nprint(f\"Circle area: {circle_area:.2f}\")\n\n# Use datetime\ntoday = date.today()\nnext_week = today + timedelta(weeks=1)\nprint(f\"Today: {today}\")\nprint(f\"Next week: {next_week}\")\n\nCircle area: 78.54\nToday: 2025-11-30\nNext week: 2025-12-07"
-  },
-  {
-    "objectID": "slides/part7_libraries_slides.html#practice-multiple-libraries",
-    "href": "slides/part7_libraries_slides.html#practice-multiple-libraries",
-    "title": "Part 7: Libraries",
-    "section": "Practice: Multiple Libraries",
-    "text": "Practice: Multiple Libraries\nExercise 1 (with Gemini): Ask Gemini to “write Python code that imports and uses both math and datetime libraries”\nExercise 2 (on your own): Type import math then from datetime import date then print(math.pi, date.today()) and run it."
-  },
-  {
-    "objectID": "slides/part7_libraries_slides.html#summary",
-    "href": "slides/part7_libraries_slides.html#summary",
-    "title": "Part 7: Libraries",
-    "section": "Summary",
-    "text": "Summary\n\nLibraries extend Python with specialized functionality\nImport entire libraries: import math\nImport specific functions: from math import sqrt\nAliases abbreviate names: import pandas as pd\nStandard conventions: pd, np, plt, sns, sm\npip installs third-party libraries\nLibraries make Python powerful for data science, finance, and more!\n\nNext: We’ll use pandas for data manipulation!"
-  },
-  {
-    "objectID": "slides/part5_flow_control_slides.html#if-elif-else-statements",
-    "href": "slides/part5_flow_control_slides.html#if-elif-else-statements",
-    "title": "Part 5: Flow Control",
-    "section": "If-Elif-Else Statements",
-    "text": "If-Elif-Else Statements\nConditional statements let your program make decisions:\n\nscore = 85\n\nif score &gt;= 90:\n    grade = \"A\"\nelif score &gt;= 80:\n    grade = \"B\"\nelif score &gt;= 70:\n    grade = \"C\"\nelse:\n    grade = \"F\"\n\nprint(f\"Score: {score}, Grade: {grade}\")\n\nScore: 85, Grade: B\n\n\nKey points: Use comparison operators (==, !=, &lt;, &gt;, &lt;=, &gt;=) and indentation is crucial!"
-  },
-  {
-    "objectID": "slides/part5_flow_control_slides.html#practice-if-elif-else",
-    "href": "slides/part5_flow_control_slides.html#practice-if-elif-else",
-    "title": "Part 5: Flow Control",
-    "section": "Practice: If-Elif-Else",
-    "text": "Practice: If-Elif-Else\nExercise 1 (with Gemini): Ask Gemini to “write Python code that checks if a temperature is hot, warm, or cold”\nExercise 2 (on your own): Type x = 15 then if x &gt; 10: print(\"big\") and run it."
-  },
-  {
-    "objectID": "slides/part5_flow_control_slides.html#logical-operators",
-    "href": "slides/part5_flow_control_slides.html#logical-operators",
-    "title": "Part 5: Flow Control",
-    "section": "Logical Operators",
-    "text": "Logical Operators\nCombine conditions with logical operators:\n\nand - True if both conditions are True\nor - True if at least one is True\nnot - True if condition is False\n\n\nage = 25\nhas_license = True\n\nif age &gt;= 18 and has_license:\n    print(\"You can drive!\")\nelse:\n    print(\"Cannot drive\")\n\nYou can drive!"
-  },
-  {
-    "objectID": "slides/part5_flow_control_slides.html#practice-logical-operators",
-    "href": "slides/part5_flow_control_slides.html#practice-logical-operators",
-    "title": "Part 5: Flow Control",
-    "section": "Practice: Logical Operators",
-    "text": "Practice: Logical Operators\nExercise 1 (with Gemini): Ask Gemini to “write Python code that checks if a number is between 10 and 20 using ‘and’”\nExercise 2 (on your own): Type print(True and False) and run it."
-  },
-  {
-    "objectID": "slides/part5_flow_control_slides.html#membership-testing",
-    "href": "slides/part5_flow_control_slides.html#membership-testing",
-    "title": "Part 5: Flow Control",
-    "section": "Membership Testing",
-    "text": "Membership Testing\nCheck if an item is in a collection:\n\nvowels = \"aeiou\"\nletter = \"a\"\n\nif letter in vowels:\n    print(f\"{letter} is a vowel\")\nelse:\n    print(f\"{letter} is a consonant\")\n\na is a vowel\n\n\nWorks with strings, lists, dictionaries, and more!"
-  },
-  {
-    "objectID": "slides/part5_flow_control_slides.html#practice-membership-testing",
-    "href": "slides/part5_flow_control_slides.html#practice-membership-testing",
-    "title": "Part 5: Flow Control",
-    "section": "Practice: Membership Testing",
-    "text": "Practice: Membership Testing\nExercise 1 (with Gemini): Ask Gemini to “write Python code that checks if ‘apple’ is in a list of fruits”\nExercise 2 (on your own): Type print(\"x\" in \"example\") and run it."
-  },
-  {
-    "objectID": "slides/part5_flow_control_slides.html#float-precision-warning",
-    "href": "slides/part5_flow_control_slides.html#float-precision-warning",
-    "title": "Part 5: Flow Control",
-    "section": "Float Precision Warning",
-    "text": "Float Precision Warning\nProblem: Floating-point arithmetic can have precision errors:\n\nresult = 0.1 + 0.2\nprint(f\"0.1 + 0.2 = {result}\")\nprint(f\"0.1 + 0.2 == 0.3: {result == 0.3}\")\n\n0.1 + 0.2 = 0.30000000000000004\n0.1 + 0.2 == 0.3: False\n\n\nSolution: Use round() for comparisons:\n\nif round(0.1 + 0.2, 1) == round(0.3, 1):\n    print(\"Equal when rounded!\")\n\nEqual when rounded!"
-  },
-  {
-    "objectID": "slides/part5_flow_control_slides.html#practice-float-precision",
-    "href": "slides/part5_flow_control_slides.html#practice-float-precision",
-    "title": "Part 5: Flow Control",
-    "section": "Practice: Float Precision",
-    "text": "Practice: Float Precision\nExercise 1 (with Gemini): Ask Gemini to “explain why 0.1 + 0.2 doesn’t equal 0.3 in Python”\nExercise 2 (on your own): Type print(round(3.14159, 2)) and run it."
-  },
-  {
-    "objectID": "slides/part5_flow_control_slides.html#ternary-operator-compact-if-else",
-    "href": "slides/part5_flow_control_slides.html#ternary-operator-compact-if-else",
-    "title": "Part 5: Flow Control",
-    "section": "Ternary Operator (Compact If-Else)",
-    "text": "Ternary Operator (Compact If-Else)\nWrite simple if-else in one line:\n\nnumber = -15\nabs_value = number if number &gt;= 0 else -number\nprint(abs_value)\n\n# Equivalent to:\n# if number &gt;= 0:\n#     abs_value = number\n# else:\n#     abs_value = -number\n\n15\n\n\nSyntax: value_if_true if condition else value_if_false"
-  },
-  {
-    "objectID": "slides/part5_flow_control_slides.html#practice-ternary-operator",
-    "href": "slides/part5_flow_control_slides.html#practice-ternary-operator",
-    "title": "Part 5: Flow Control",
-    "section": "Practice: Ternary Operator",
-    "text": "Practice: Ternary Operator\nExercise 1 (with Gemini): Ask Gemini to “write Python code that uses a ternary operator to find the maximum of two numbers”\nExercise 2 (on your own): Type x = 10 then result = \"big\" if x &gt; 5 else \"small\" then print(result) and run it."
-  },
-  {
-    "objectID": "slides/part5_flow_control_slides.html#for-loops-with-range",
-    "href": "slides/part5_flow_control_slides.html#for-loops-with-range",
-    "title": "Part 5: Flow Control",
-    "section": "For Loops with range()",
-    "text": "For Loops with range()\nrange() generates sequences of numbers:\n\nrange(n) → 0 to n-1\nrange(start, stop) → start to stop-1\nrange(start, stop, step) → with custom increment\n\n\n# Calculate sum of 1 to 10\ntotal = 0\nfor i in range(1, 11):\n    total += i\nprint(f\"Sum: {total}\")\n\nSum: 55"
-  },
-  {
-    "objectID": "slides/part5_flow_control_slides.html#practice-for-loops",
-    "href": "slides/part5_flow_control_slides.html#practice-for-loops",
-    "title": "Part 5: Flow Control",
-    "section": "Practice: For Loops",
-    "text": "Practice: For Loops\nExercise 1 (with Gemini): Ask Gemini to “write Python code that uses a for loop to print numbers 1 to 5”\nExercise 2 (on your own): Type for i in range(3): print(i) and run it."
-  },
-  {
-    "objectID": "slides/part5_flow_control_slides.html#looping-through-lists",
-    "href": "slides/part5_flow_control_slides.html#looping-through-lists",
-    "title": "Part 5: Flow Control",
-    "section": "Looping Through Lists",
-    "text": "Looping Through Lists\nUse for loops to iterate over lists:\n\nfruits = [\"apple\", \"banana\", \"cherry\"]\n\nfor fruit in fruits:\n    print(fruit)\n\n# With indices using enumerate\nfor i, fruit in enumerate(fruits):\n    print(f\"{i}: {fruit}\")\n\napple\nbanana\ncherry\n0: apple\n1: banana\n2: cherry"
-  },
-  {
-    "objectID": "slides/part5_flow_control_slides.html#practice-looping-through-lists",
-    "href": "slides/part5_flow_control_slides.html#practice-looping-through-lists",
-    "title": "Part 5: Flow Control",
-    "section": "Practice: Looping Through Lists",
-    "text": "Practice: Looping Through Lists\nExercise 1 (with Gemini): Ask Gemini to “write Python code that loops through a list of colors and prints each one”\nExercise 2 (on your own): Type for x in [1, 2, 3]: print(x * 2) and run it."
-  },
-  {
-    "objectID": "slides/part5_flow_control_slides.html#while-loops",
-    "href": "slides/part5_flow_control_slides.html#while-loops",
-    "title": "Part 5: Flow Control",
-    "section": "While Loops",
-    "text": "While Loops\nWhile loops repeat while a condition is True:\n\n# Find first power of 2 &gt; 1000\npower = 0\nresult = 1\n\nwhile result &lt;= 1000:\n    power += 1\n    result = 2 ** power\n\nprint(f\"2^{power} = {result}\")\n\n2^10 = 1024\n\n\nWarning: Make sure the condition eventually becomes False to avoid infinite loops!"
-  },
-  {
-    "objectID": "slides/part5_flow_control_slides.html#practice-while-loops",
-    "href": "slides/part5_flow_control_slides.html#practice-while-loops",
-    "title": "Part 5: Flow Control",
-    "section": "Practice: While Loops",
-    "text": "Practice: While Loops\nExercise 1 (with Gemini): Ask Gemini to “write Python code that uses a while loop to count from 1 to 5”\nExercise 2 (on your own): Type x = 0 then while x &lt; 3: print(x); x += 1 and run it."
-  },
-  {
-    "objectID": "slides/part5_flow_control_slides.html#tryexcept-error-handling",
-    "href": "slides/part5_flow_control_slides.html#tryexcept-error-handling",
-    "title": "Part 5: Flow Control",
-    "section": "Try/Except Error Handling",
-    "text": "Try/Except Error Handling\nHandle errors gracefully instead of crashing:\n\n# Without error handling - crashes\nresult = 10 / 0\n\n\n---------------------------------------------------------------------------\nZeroDivisionError                         Traceback (most recent call last)\nCell In[10], line 2\n      1 # Without error handling - crashes\n----&gt; 2 result = 10 / 0\n\nZeroDivisionError: division by zero\n\n\n\n\n# With error handling - graceful\ntry:\n    result = 10 / 0\nexcept ZeroDivisionError:\n    print(\"Cannot divide by zero!\")\n    result = None\n\nCannot divide by zero!"
-  },
-  {
-    "objectID": "slides/part5_flow_control_slides.html#practice-tryexcept",
-    "href": "slides/part5_flow_control_slides.html#practice-tryexcept",
-    "title": "Part 5: Flow Control",
-    "section": "Practice: Try/Except",
-    "text": "Practice: Try/Except\nExercise 1 (with Gemini): Ask Gemini to “write Python code that uses try/except to handle division by zero”\nExercise 2 (on your own): Type try: print(10/2) then except: print(\"error\") and run it."
-  },
-  {
-    "objectID": "slides/part5_flow_control_slides.html#common-exception-types",
-    "href": "slides/part5_flow_control_slides.html#common-exception-types",
-    "title": "Part 5: Flow Control",
-    "section": "Common Exception Types",
-    "text": "Common Exception Types\nUseful exception types to catch:\n\nValueError - invalid value (e.g., int(\"abc\"))\nZeroDivisionError - division by zero\nIndexError - list index out of range\nKeyError - dictionary key not found\nFileNotFoundError - file doesn’t exist\nTypeError - wrong data type\n\n\ntry:\n    int(\"not a number\")\nexcept ValueError:\n    print(\"Invalid number format!\")\n\nInvalid number format!"
-  },
-  {
-    "objectID": "slides/part5_flow_control_slides.html#practice-exception-types",
-    "href": "slides/part5_flow_control_slides.html#practice-exception-types",
-    "title": "Part 5: Flow Control",
-    "section": "Practice: Exception Types",
-    "text": "Practice: Exception Types\nExercise 1 (with Gemini): Ask Gemini to “write Python code that catches a ValueError when converting a string to int”\nExercise 2 (on your own): Type try: int(\"hello\") then except ValueError: print(\"Not a number\") and run it."
-  },
-  {
-    "objectID": "slides/part5_flow_control_slides.html#list-comprehensions",
-    "href": "slides/part5_flow_control_slides.html#list-comprehensions",
-    "title": "Part 5: Flow Control",
-    "section": "List Comprehensions",
-    "text": "List Comprehensions\nCreate lists in a compact, readable way:\n\n# Traditional approach\nsquares = []\nfor i in range(1, 6):\n    squares.append(i ** 2)\nprint(squares)\n\n# List comprehension\nsquares = [i**2 for i in range(1, 6)]\nprint(squares)\n\n[1, 4, 9, 16, 25]\n[1, 4, 9, 16, 25]\n\n\nSyntax: [expression for item in iterable]"
-  },
-  {
-    "objectID": "slides/part5_flow_control_slides.html#practice-list-comprehensions",
-    "href": "slides/part5_flow_control_slides.html#practice-list-comprehensions",
-    "title": "Part 5: Flow Control",
-    "section": "Practice: List Comprehensions",
-    "text": "Practice: List Comprehensions\nExercise 1 (with Gemini): Ask Gemini to “write Python code that uses a list comprehension to create cubes of 1 to 5”\nExercise 2 (on your own): Type nums = [x * 2 for x in range(3)] then print(nums) and run it."
-  },
-  {
-    "objectID": "slides/part5_flow_control_slides.html#list-comprehensions-with-conditions",
-    "href": "slides/part5_flow_control_slides.html#list-comprehensions-with-conditions",
-    "title": "Part 5: Flow Control",
-    "section": "List Comprehensions with Conditions",
-    "text": "List Comprehensions with Conditions\nAdd conditions to filter items:\n\n# Only even squares\neven_squares = [i**2 for i in range(1, 11) if i % 2 == 0]\nprint(even_squares)\n\n# Transform strings\nwords = [\"hello\", \"world\", \"python\"]\nupper_words = [w.upper() for w in words]\nprint(upper_words)\n\n[4, 16, 36, 64, 100]\n['HELLO', 'WORLD', 'PYTHON']\n\n\nSyntax: [expression for item in iterable if condition]"
-  },
-  {
-    "objectID": "slides/part5_flow_control_slides.html#practice-comprehensions-with-conditions",
-    "href": "slides/part5_flow_control_slides.html#practice-comprehensions-with-conditions",
-    "title": "Part 5: Flow Control",
-    "section": "Practice: Comprehensions with Conditions",
-    "text": "Practice: Comprehensions with Conditions\nExercise 1 (with Gemini): Ask Gemini to “write Python code that uses a list comprehension to get only odd numbers from 1 to 10”\nExercise 2 (on your own): Type evens = [x for x in range(10) if x % 2 == 0] then print(evens) and run it."
-  },
-  {
-    "objectID": "slides/part5_flow_control_slides.html#dictionary-comprehensions",
-    "href": "slides/part5_flow_control_slides.html#dictionary-comprehensions",
-    "title": "Part 5: Flow Control",
-    "section": "Dictionary Comprehensions",
-    "text": "Dictionary Comprehensions\nCreate dictionaries compactly:\n\n# Map words to their lengths\nwords = [\"cat\", \"dog\", \"elephant\", \"bird\"]\nword_lengths = {word: len(word) for word in words}\nprint(word_lengths)\n\n# Create from two lists\nkeys = [\"a\", \"b\", \"c\"]\nvalues = [1, 2, 3]\nmy_dict = {k: v for k, v in zip(keys, values)}\nprint(my_dict)\n\n{'cat': 3, 'dog': 3, 'elephant': 8, 'bird': 4}\n{'a': 1, 'b': 2, 'c': 3}\n\n\nSyntax: {key_expr: value_expr for item in iterable}"
-  },
-  {
-    "objectID": "slides/part5_flow_control_slides.html#practice-dictionary-comprehensions",
-    "href": "slides/part5_flow_control_slides.html#practice-dictionary-comprehensions",
-    "title": "Part 5: Flow Control",
-    "section": "Practice: Dictionary Comprehensions",
-    "text": "Practice: Dictionary Comprehensions\nExercise 1 (with Gemini): Ask Gemini to “write Python code that uses a dictionary comprehension to create squares for numbers 1-5”\nExercise 2 (on your own): Type d = {x: x*2 for x in range(3)} then print(d) and run it."
-  },
-  {
-    "objectID": "slides/part5_flow_control_slides.html#summary",
-    "href": "slides/part5_flow_control_slides.html#summary",
-    "title": "Part 5: Flow Control",
-    "section": "Summary",
-    "text": "Summary\n\nIf-elif-else for decisions with comparison and logical operators\nTernary operator for compact if-else: x if condition else y\nFor loops iterate over sequences; use range() for numbers\nWhile loops repeat while condition is True\nTry/except handles errors gracefully\nList/dict comprehensions create collections compactly\n\nFlow control is essential for writing programs that make decisions and repeat tasks!"
-  },
-  {
-    "objectID": "slides/part3_lists_slides.html#lists",
-    "href": "slides/part3_lists_slides.html#lists",
-    "title": "Part 3: Lists",
-    "section": "Lists",
-    "text": "Lists\nLists are ordered collections of items that can be of any type.\nKey features: - Created with square brackets [], items separated by commas - Zero-based indexing (first element is at index 0) - Can contain mixed data types - Are mutable (can be changed after creation)\n\n# List of numbers\nnumbers = [1, 2, 3, 4, 5]\n\n# List of strings\nfruits = [\"apple\", \"banana\", \"cherry\"]\n\n# Mixed types\nmixed = [1, \"hello\", 3.14, True]"
-  },
-  {
-    "objectID": "slides/part3_lists_slides.html#practice-creating-lists",
-    "href": "slides/part3_lists_slides.html#practice-creating-lists",
-    "title": "Part 3: Lists",
-    "section": "Practice: Creating Lists",
-    "text": "Practice: Creating Lists\nExercise 1 (with Gemini): Ask Gemini to “write Python code that creates a list of three colors and prints it”\nExercise 2 (on your own): Type my_list = [10, 20, 30] then print(my_list) and run it."
-  },
-  {
-    "objectID": "slides/part3_lists_slides.html#concatenating-lists",
-    "href": "slides/part3_lists_slides.html#concatenating-lists",
-    "title": "Part 3: Lists",
-    "section": "Concatenating Lists",
-    "text": "Concatenating Lists\nLists can be combined using the + operator:\n\nlist1 = [1, 2, 3]\nlist2 = [4, 5, 6]\n\ncombined = list1 + list2\nprint(combined)\n\n# Direct concatenation\nresult = [\"a\", \"b\"] + [\"c\", \"d\"]\nprint(result)\n\n[1, 2, 3, 4, 5, 6]\n['a', 'b', 'c', 'd']"
-  },
-  {
-    "objectID": "slides/part3_lists_slides.html#practice-concatenating-lists",
-    "href": "slides/part3_lists_slides.html#practice-concatenating-lists",
-    "title": "Part 3: Lists",
-    "section": "Practice: Concatenating Lists",
-    "text": "Practice: Concatenating Lists\nExercise 1 (with Gemini): Ask Gemini to “write Python code that concatenates [1, 2, 3] and [4, 5, 6]”\nExercise 2 (on your own): Type print([10, 20] + [30, 40]) and run it."
-  },
-  {
-    "objectID": "slides/part3_lists_slides.html#list-methods",
-    "href": "slides/part3_lists_slides.html#list-methods",
-    "title": "Part 3: Lists",
-    "section": "List Methods",
-    "text": "List Methods\nLists have useful methods to modify or query them:\n\n.append(item) - adds item to the end\n.insert(index, item) - inserts item at position\n.remove(item) - removes first occurrence\n.pop() - removes and returns last item\n.count(item) - counts occurrences\n.sort() - sorts in place\n.reverse() - reverses order"
-  },
-  {
-    "objectID": "slides/part3_lists_slides.html#methods-that-operate-in-place",
-    "href": "slides/part3_lists_slides.html#methods-that-operate-in-place",
-    "title": "Part 3: Lists",
-    "section": "Methods that Operate In Place",
-    "text": "Methods that Operate In Place\nImportant difference from string methods:\nMost list methods modify the list directly instead of returning a new list.\n\nmy_list = [3, 1, 4, 1, 5]\nprint(\"Original:\", my_list)\n\nmy_list.append(9)\nprint(\"After append:\", my_list)\n\nmy_list.sort()\nprint(\"After sort:\", my_list)\n\nOriginal: [3, 1, 4, 1, 5]\nAfter append: [3, 1, 4, 1, 5, 9]\nAfter sort: [1, 1, 3, 4, 5, 9]\n\n\nNote: Methods like .append() and .sort() return None, not a new list!"
-  },
-  {
-    "objectID": "slides/part3_lists_slides.html#practice-list-methods",
-    "href": "slides/part3_lists_slides.html#practice-list-methods",
-    "title": "Part 3: Lists",
-    "section": "Practice: List Methods",
-    "text": "Practice: List Methods\nExercise 1 (with Gemini): Ask Gemini to “write Python code that creates a list [5, 2, 8] and sorts it”\nExercise 2 (on your own): Type nums = [1, 2, 3] then nums.append(4) then print(nums) and run it."
-  },
-  {
-    "objectID": "slides/part3_lists_slides.html#more-list-methods",
-    "href": "slides/part3_lists_slides.html#more-list-methods",
-    "title": "Part 3: Lists",
-    "section": "More List Methods",
-    "text": "More List Methods\n\ncolors = [\"red\", \"blue\", \"green\", \"blue\", \"yellow\"]\n\n# Insert at position\ncolors.insert(1, \"purple\")\nprint(\"After insert:\", colors)\n\n# Count occurrences\nprint(\"Count of 'blue':\", colors.count(\"blue\"))\n\n# Remove first occurrence\ncolors.remove(\"blue\")\nprint(\"After remove:\", colors)\n\n# Pop last item\nlast = colors.pop()\nprint(\"Popped:\", last)\nprint(\"Remaining:\", colors)\n\nAfter insert: ['red', 'purple', 'blue', 'green', 'blue', 'yellow']\nCount of 'blue': 2\nAfter remove: ['red', 'purple', 'green', 'blue', 'yellow']\nPopped: yellow\nRemaining: ['red', 'purple', 'green', 'blue']"
-  },
-  {
-    "objectID": "slides/part3_lists_slides.html#practice-more-methods",
-    "href": "slides/part3_lists_slides.html#practice-more-methods",
-    "title": "Part 3: Lists",
-    "section": "Practice: More Methods",
-    "text": "Practice: More Methods\nExercise 1 (with Gemini): Ask Gemini to “write Python code that removes the first ‘apple’ from a list of fruits”\nExercise 2 (on your own): Type items = [1, 2, 3] then print(items.pop()) and run it."
-  },
-  {
-    "objectID": "slides/part3_lists_slides.html#indexing",
-    "href": "slides/part3_lists_slides.html#indexing",
-    "title": "Part 3: Lists",
-    "section": "Indexing",
-    "text": "Indexing\nAccess individual elements using square brackets with an index:\n\ncolors = [\"red\", \"green\", \"blue\", \"yellow\", \"purple\"]\n\nprint(\"First element [0]:\", colors[0])\nprint(\"Third element [2]:\", colors[2])\nprint(\"Last element [-1]:\", colors[-1])\nprint(\"Second to last [-2]:\", colors[-2])\n\nFirst element [0]: red\nThird element [2]: blue\nLast element [-1]: purple\nSecond to last [-2]: yellow\n\n\nNegative indices count from the end: -1 is last, -2 is second to last, etc."
-  },
-  {
-    "objectID": "slides/part3_lists_slides.html#practice-indexing",
-    "href": "slides/part3_lists_slides.html#practice-indexing",
-    "title": "Part 3: Lists",
-    "section": "Practice: Indexing",
-    "text": "Practice: Indexing\nExercise 1 (with Gemini): Ask Gemini to “write Python code that gets the last element from a list using negative indexing”\nExercise 2 (on your own): Type nums = [10, 20, 30, 40] then print(nums[0]) and run it."
-  },
-  {
-    "objectID": "slides/part3_lists_slides.html#slicing",
-    "href": "slides/part3_lists_slides.html#slicing",
-    "title": "Part 3: Lists",
-    "section": "Slicing",
-    "text": "Slicing\nExtract a portion of a list using slicing [start:end]:\n\ncolors = [\"red\", \"green\", \"blue\", \"yellow\", \"purple\", \"orange\"]\n\nprint(\"First three [0:3]:\", colors[0:3])\nprint(\"Elements 2-4 [2:5]:\", colors[2:5])\nprint(\"First three [:3]:\", colors[:3])\nprint(\"From index 3 [3:]:\", colors[3:])\n\nFirst three [0:3]: ['red', 'green', 'blue']\nElements 2-4 [2:5]: ['blue', 'yellow', 'purple']\nFirst three [:3]: ['red', 'green', 'blue']\nFrom index 3 [3:]: ['yellow', 'purple', 'orange']\n\n\nNote: [start:end] includes start but excludes end"
-  },
-  {
-    "objectID": "slides/part3_lists_slides.html#practice-slicing",
-    "href": "slides/part3_lists_slides.html#practice-slicing",
-    "title": "Part 3: Lists",
-    "section": "Practice: Slicing",
-    "text": "Practice: Slicing\nExercise 1 (with Gemini): Ask Gemini to “write Python code that gets the first three elements from a list using slicing”\nExercise 2 (on your own): Type letters = ['a', 'b', 'c', 'd', 'e'] then print(letters[1:4]) and run it."
-  },
-  {
-    "objectID": "slides/part3_lists_slides.html#list-unpacking",
-    "href": "slides/part3_lists_slides.html#list-unpacking",
-    "title": "Part 3: Lists",
-    "section": "List Unpacking",
-    "text": "List Unpacking\nExtract all elements and assign to variables in one step:\n\nmy_list = [10, 20, 30]\n\n# Unpack into three variables\nx, y, z = my_list\nprint(f\"x={x}, y={y}, z={z}\")\n\n# Must match number of elements\nfruits = [\"apple\", \"banana\"]\nfirst, second = fruits\nprint(f\"First: {first}, Second: {second}\")\n\nx=10, y=20, z=30\nFirst: apple, Second: banana\n\n\nImportant: Number of variables must match number of list elements!"
-  },
-  {
-    "objectID": "slides/part3_lists_slides.html#practice-list-unpacking",
-    "href": "slides/part3_lists_slides.html#practice-list-unpacking",
-    "title": "Part 3: Lists",
-    "section": "Practice: List Unpacking",
-    "text": "Practice: List Unpacking\nExercise 1 (with Gemini): Ask Gemini to “write Python code that unpacks a list of two numbers into variables x and y”\nExercise 2 (on your own): Type a, b, c = [1, 2, 3] then print(a, b, c) and run it."
-  },
-  {
-    "objectID": "slides/part3_lists_slides.html#summary",
-    "href": "slides/part3_lists_slides.html#summary",
-    "title": "Part 3: Lists",
-    "section": "Summary",
-    "text": "Summary\n\nLists are ordered, mutable collections created with []\nConcatenate with + operator\nMethods like .append(), .sort(), .remove() modify lists in place\nIndexing with [i] - use negative indices to count from end\nSlicing with [start:end] to get sublists\nUnpacking assigns all elements to variables at once\n\nLists are fundamental to Python - you’ll use them constantly!"
-  },
-  {
-    "objectID": "slides/part1_colab_slides.html#open-colab",
-    "href": "slides/part1_colab_slides.html#open-colab",
-    "title": "Part 1: Google Colab",
-    "section": "Open Colab",
-    "text": "Open Colab\nOpen https://colab.research.google.com.\nSelect New Notebook."
-  },
-  {
-    "objectID": "slides/part1_colab_slides.html#what-are-notebooks",
-    "href": "slides/part1_colab_slides.html#what-are-notebooks",
-    "title": "Part 1: Google Colab",
-    "section": "What are Notebooks?",
-    "text": "What are Notebooks?\n\nThe Colab interface is a Jupyter notebook.\nA notebook is a collection of cells.\nCells contain either explanatory text or executable code and its output.\nYou can add new cells by using the + CODE and + TEXT buttons in the toolbar or the buttons that show when you hover between cells."
-  },
-  {
-    "objectID": "slides/part1_colab_slides.html#running-code-assignment-statements",
-    "href": "slides/part1_colab_slides.html#running-code-assignment-statements",
-    "title": "Part 1: Google Colab",
-    "section": "Running Code: Assignment Statements",
-    "text": "Running Code: Assignment Statements\nType the following in a cell. Then hit the Play/Run button at the left side of the cell to execute it.\n\nx = 10\nprint(x)\n\n10\n\n\nThe statement x=10 assigns the value 10 to the variable x. The statement print(x) prints the value of x to the screen."
-  },
-  {
-    "objectID": "slides/part1_colab_slides.html#practice-variables",
-    "href": "slides/part1_colab_slides.html#practice-variables",
-    "title": "Part 1: Google Colab",
-    "section": "Practice: Variables",
-    "text": "Practice: Variables\nExercise 1 (with Gemini): Ask Gemini to “write Python code that creates a variable named age with value 25 and prints it”\nExercise 2 (on your own): Type y = 100 then print(y) and run it."
-  },
-  {
-    "objectID": "slides/part1_colab_slides.html#running-more-code",
-    "href": "slides/part1_colab_slides.html#running-more-code",
-    "title": "Part 1: Google Colab",
-    "section": "Running More Code",
-    "text": "Running More Code\nAdd a new code cell and type:\n\ny = 2 * x\nprint(y)\n\n20\n\n\n\nSpaces around the = and * are optional.\nNow we have two variables in our Python session. They are independent.\nIf we change x, it will not affect y.\n\n\nx = 0\nprint(y)\n\n20"
-  },
-  {
-    "objectID": "slides/part1_colab_slides.html#practice-operations",
-    "href": "slides/part1_colab_slides.html#practice-operations",
-    "title": "Part 1: Google Colab",
-    "section": "Practice: Operations",
-    "text": "Practice: Operations\nExercise 1 (with Gemini): Ask Gemini to “write Python code that creates a variable z equal to 5 times 3 and prints it”\nExercise 2 (on your own): Type a = 10 + 20 then print(a) and run it."
-  },
-  {
-    "objectID": "slides/part1_colab_slides.html#saving-and-opening-notebooks",
-    "href": "slides/part1_colab_slides.html#saving-and-opening-notebooks",
-    "title": "Part 1: Google Colab",
-    "section": "Saving and Opening Notebooks",
-    "text": "Saving and Opening Notebooks\n\nNotebooks are portable. They can be saved and used in many other environments.\nSave your notebook to your Google drive and then close it.\nOpen it again from Google drive.\nOpen a code cell, type print(x) and run the cell.\nYou will get an error message that x is not defined."
-  },
-  {
-    "objectID": "slides/part1_colab_slides.html#notebooks-vs-spreadsheets",
-    "href": "slides/part1_colab_slides.html#notebooks-vs-spreadsheets",
-    "title": "Part 1: Google Colab",
-    "section": "Notebooks vs Spreadsheets",
-    "text": "Notebooks vs Spreadsheets\n\nNotebooks are similar to spreadsheets in some ways but differ in others.\nAssigning the value 10 to x and defining y as 2*x is similar to having the value 10 in cell A1 in a spreadsheet and putting =2*A1 in cell B1.\nThe cell names in a spreadsheet are similar to variable names in Python."
-  },
-  {
-    "objectID": "slides/part1_colab_slides.html#key-difference-execution-order",
-    "href": "slides/part1_colab_slides.html#key-difference-execution-order",
-    "title": "Part 1: Google Colab",
-    "section": "Key Difference: Execution Order",
-    "text": "Key Difference: Execution Order\n\nAn important difference: all formulas in a spreadsheet become active when we open it, but nothing is activated when we open a notebook.\nWhen we open a notebook, we are just getting an image of a text file rendered by our browser.\nPython has not yet done anything. It doesn’t know any variables and it doesn’t know any formulas."
-  },
-  {
-    "objectID": "slides/part1_colab_slides.html#execution-order-matters",
-    "href": "slides/part1_colab_slides.html#execution-order-matters",
-    "title": "Part 1: Google Colab",
-    "section": "Execution Order Matters",
-    "text": "Execution Order Matters\n\nPython becomes active when we execute a code cell. Only the executed code cells are meaningful.\nCode cells are meaningful in the order they are executed, not in the order in which they appear in the notebook.\nThis is important to keep in mind when moving around in a notebook.\n\nTip: If it becomes confusing, use Runtime/Restart Session to clear Python, then use Runtime/Run Before to run all cells before a selected cell."
-  },
-  {
-    "objectID": "slides/part1_colab_slides.html#text-cells",
-    "href": "slides/part1_colab_slides.html#text-cells",
-    "title": "Part 1: Google Colab",
-    "section": "Text Cells",
-    "text": "Text Cells\nThis is a text cell. You can double-click to edit this cell. Text cells use markdown syntax.\nTo learn more, see the markdown cheat sheet."
-  },
-  {
-    "objectID": "slides/part1_colab_slides.html#gemini-within-cell-code-generation",
-    "href": "slides/part1_colab_slides.html#gemini-within-cell-code-generation",
-    "title": "Part 1: Google Colab",
-    "section": "Gemini: Within-Cell Code Generation",
-    "text": "Gemini: Within-Cell Code Generation\nCreate a new code cell. If you choose generate with AI, a prompt window will appear within the cell.\nTell Gemini what you want, and it will write code for it.\nExample: Tell Gemini you want to calculate the sum of the first 100 integers. Click the play button after Gemini writes the code, and the cell will execute."
-  },
-  {
-    "objectID": "slides/part1_colab_slides.html#gemini-chatbot",
-    "href": "slides/part1_colab_slides.html#gemini-chatbot",
-    "title": "Part 1: Google Colab",
-    "section": "Gemini: Chatbot",
-    "text": "Gemini: Chatbot\nIf you want advice instead of code or in addition to code, click the Gemini at the top right of the Colab window to open a chatbot.\nIf you ask the chatbot to do something, it will add code cells to the notebook and generate code for you."
-  },
-  {
-    "objectID": "slides/part1_colab_slides.html#error-messages",
-    "href": "slides/part1_colab_slides.html#error-messages",
-    "title": "Part 1: Google Colab",
-    "section": "Error Messages",
-    "text": "Error Messages\nEveryone makes errors. We need to learn to read error messages to find the line of code with the error and to get information about the error.\n\nx = 1\ny = 4\nz = y/(1-x)\n\n\n---------------------------------------------------------------------------\nZeroDivisionError                         Traceback (most recent call last)\nCell In[4], line 3\n      1 x = 1\n      2 y = 4\n----&gt; 3 z = y/(1-x)\n\nZeroDivisionError: division by zero\n\n\n\nIf an error message isn’t clear, ask the chatbot to explain it and how to fix the error."
-  },
-  {
-    "objectID": "slides/part1_colab_slides.html#practice-error-messages",
-    "href": "slides/part1_colab_slides.html#practice-error-messages",
-    "title": "Part 1: Google Colab",
-    "section": "Practice: Error Messages",
-    "text": "Practice: Error Messages\nExercise 1 (with Gemini): Ask Gemini to “explain what ZeroDivisionError means and how to avoid it”\nExercise 2 (on your own): Type print(10 / 2) and run it (this works correctly)."
-  },
-  {
-    "objectID": "index.html#introduction-to-python",
-    "href": "index.html#introduction-to-python",
+    "objectID": "index.html#python-for-mba-students",
+    "href": "index.html#python-for-mba-students",
     "title": "Python Workshop",
-    "section": "Introduction to Python",
-    "text": "Introduction to Python\nThis workshop includes both slide decks for presentation and Jupyter notebooks for hands-on practice with Google Colab and Gemini. The notebooks include example code and self-grading exercises.\n\n\n\nSlide Decks\n\nPart 1: Colab\nPart 2: Objects\nPart 3: Lists\nPart 4: Dictionaries\nPart 5: Flow Control\nPart 6: Functions\nPart 7: Libraries\nPart 8: Intro to Pandas\nPart 9: More Pandas\nPart 10: Intro to Visualization\nPart 11: More Visualization\nPart 12: Plotly\nPart 13: Simulation\nPart 14: Goal Seek\nPart 15: Neural Networks\n\n\n\n\nHands-On Exercises\nWorkshop Exercise Notebook\nThis single notebook contains ~35 self-graded exercises organized by workshop parts (1-15). Each exercise:\n\nReinforces concepts from the slides\nIncludes self-grading code with feedback\nHas Gemini hints for harder problems\nCan be completed during workshop sessions\n\nFeatures: - ✓ Aligned with slide content - ✓ Minimal explanations (slides teach, notebook practices) - ✓ Progressive difficulty - ✓ Works standalone in Google Colab"
-  },
-  {
-    "objectID": "index.html#additional-resources",
-    "href": "index.html#additional-resources",
-    "title": "Python Workshop",
-    "section": "Additional Resources",
-    "text": "Additional Resources\nHere are some additional online resources for learning Python.\n\nQuick References\n\nPython Tutor - Visualize code execution step-by-step\nPython Cheat Sheet - Concise syntax reference\nReal Python’s Python Tricks - Short, digestible articles\nPython Graph Gallery - Simple plotting examples with matplotlib\n\n\n\nOnline Practice Platforms\n\nHackerRank Python Domain - Basic problems like “Hello World”, simple math, string manipulation\nCodewars 8 kyu Python Problems - Easiest level problems\nCodewars 7 kyu Python Problems - Slightly more challenging\nLeetCode Easy Python Problems - Filter by Python and “Easy” difficulty\n\n\n\nGreat Books\n\nPython for Data Analysis (3rd Edition) by Wes McKinney - The definitive guide to data manipulation with Python, pandas, and NumPy\nAutomate the Boring Stuff with Python - Practical programming for total beginners\n\n\n\nMore Notebooks for Learning Python\n\nLearn to Code Python\n101 Exercises\nPython Programming Exercises (100+ exercises)\n100 Days of Python Course\n100+ Python Programming Exercises Extended\nLearn Python 3 Interactive Notebooks\nTiny Python Projects\nPractical Python Programming Course\nA Gallery of Interesting Jupyter Notebooks - Curated collection of educational notebooks"
-  },
-  {
-    "objectID": "slides/part2_objects_slides.html#object-types",
-    "href": "slides/part2_objects_slides.html#object-types",
-    "title": "Part 2: Objects",
-    "section": "Object Types",
-    "text": "Object Types\nWe have already encountered three types of Python objects:\n\nintegers (ints) - whole numbers like 10, -5, 0\nstrings - text enclosed in quotes like \"hello\" or 'world'\nfunctions - actions we can perform, like the print function\n\nWe can tell the type of any object with the type function.\n\nprint(type(10))\nprint(type(\"abc\"))\nprint(type(print))\n\n&lt;class 'int'&gt;\n&lt;class 'str'&gt;\n&lt;class 'builtin_function_or_method'&gt;"
-  },
-  {
-    "objectID": "slides/part2_objects_slides.html#practice-object-types",
-    "href": "slides/part2_objects_slides.html#practice-object-types",
-    "title": "Part 2: Objects",
-    "section": "Practice: Object Types",
-    "text": "Practice: Object Types\nExercise 1 (with Gemini): Ask Gemini to “write Python code that prints the type of the number 3.14”\nExercise 2 (on your own): Type print(type(100)) in a code cell and run it."
-  },
-  {
-    "objectID": "slides/part2_objects_slides.html#floats",
-    "href": "slides/part2_objects_slides.html#floats",
-    "title": "Part 2: Objects",
-    "section": "Floats",
-    "text": "Floats\nNumbers with decimal points are a different type called floating point objects, or floats.\nThey require more space in memory to store than integers.\n\nx = 10.0\nprint(type(x))\n\n&lt;class 'float'&gt;"
-  },
-  {
-    "objectID": "slides/part2_objects_slides.html#practice-floats",
-    "href": "slides/part2_objects_slides.html#practice-floats",
-    "title": "Part 2: Objects",
-    "section": "Practice: Floats",
-    "text": "Practice: Floats\nExercise 1 (with Gemini): Ask Gemini to “write Python code that creates a variable with a decimal number and prints its type”\nExercise 2 (on your own): Type print(5.0 + 3.0) and run it."
-  },
-  {
-    "objectID": "slides/part2_objects_slides.html#mathematical-operations",
-    "href": "slides/part2_objects_slides.html#mathematical-operations",
-    "title": "Part 2: Objects",
-    "section": "Mathematical Operations",
-    "text": "Mathematical Operations\nStandard mathematical operations work on ints and floats:\n\naddition (+)\nsubtraction (-)\nmultiplication (*)\nexponentiation (**) - note: this is ** in Python, not ^ like in Excel\n\n\nprint(\"2 * 10.0 =\", 2*10.0)\nprint(\"3**2 =\", 3**2)\n\n2 * 10.0 = 20.0\n3**2 = 9"
-  },
-  {
-    "objectID": "slides/part2_objects_slides.html#practice-math-operations",
-    "href": "slides/part2_objects_slides.html#practice-math-operations",
-    "title": "Part 2: Objects",
-    "section": "Practice: Math Operations",
-    "text": "Practice: Math Operations\nExercise 1 (with Gemini): Ask Gemini to “write Python code that calculates 5 to the power of 3”\nExercise 2 (on your own): Type print(8 * 7) and run it."
-  },
-  {
-    "objectID": "slides/part2_objects_slides.html#division-operations",
-    "href": "slides/part2_objects_slides.html#division-operations",
-    "title": "Part 2: Objects",
-    "section": "Division Operations",
-    "text": "Division Operations\nPython has three types of division operators:\n\ndivision (/) - returns a float\nfloor division (//) - returns the largest integer ≤ result\nmodulo (%) - returns the remainder\n\n\nprint(\"10 / 3 =\", 10 / 3)\nprint(\"10 // 3 =\", 10 // 3)\nprint(\"10 % 3 =\", 10 % 3)\n\n10 / 3 = 3.3333333333333335\n10 // 3 = 3\n10 % 3 = 1"
-  },
-  {
-    "objectID": "slides/part2_objects_slides.html#practice-division",
-    "href": "slides/part2_objects_slides.html#practice-division",
-    "title": "Part 2: Objects",
-    "section": "Practice: Division",
-    "text": "Practice: Division\nExercise 1 (with Gemini): Ask Gemini to “write Python code that shows the remainder when 17 is divided by 5”\nExercise 2 (on your own): Type print(20 // 6) and run it. What is the result?"
-  },
-  {
-    "objectID": "slides/part2_objects_slides.html#strings",
-    "href": "slides/part2_objects_slides.html#strings",
-    "title": "Part 2: Objects",
-    "section": "Strings",
-    "text": "Strings\nStrings are sequences of characters enclosed in quotes.\nYou can use single or double quotes - just be consistent at the beginning and end.\n\nprint(\"this is a string\")\nprint('this is a string too')\n\nthis is a string\nthis is a string too\n\n\nWe can concatenate (paste) strings together with +:\n\n\"abc\" + 'xyz'\n\n'abcxyz'"
-  },
-  {
-    "objectID": "slides/part2_objects_slides.html#practice-strings",
-    "href": "slides/part2_objects_slides.html#practice-strings",
-    "title": "Part 2: Objects",
-    "section": "Practice: Strings",
-    "text": "Practice: Strings\nExercise 1 (with Gemini): Ask Gemini to “write Python code that concatenates ‘Hello’ and ‘World’ with a space between them”\nExercise 2 (on your own): Type print(\"Python\" + \"!\") and run it."
-  },
-  {
-    "objectID": "slides/part2_objects_slides.html#booleans",
-    "href": "slides/part2_objects_slides.html#booleans",
-    "title": "Part 2: Objects",
-    "section": "Booleans",
-    "text": "Booleans\nBooleans represent True or False values.\nBasic comparison operators:\n\n&gt; (greater than)\n&lt; (less than)\n&gt;= (greater than or equal to)\n&lt;= (less than or equal to)\n== (is equal to)\n\nImportant: Use two equals signs (==) for comparison. A single = is for assignment.\n\nprint(10 &gt; 5)\nprint(3 == 3)\n\nTrue\nTrue"
-  },
-  {
-    "objectID": "slides/part2_objects_slides.html#practice-booleans",
-    "href": "slides/part2_objects_slides.html#practice-booleans",
-    "title": "Part 2: Objects",
-    "section": "Practice: Booleans",
-    "text": "Practice: Booleans\nExercise 1 (with Gemini): Ask Gemini to “write Python code that checks if 15 is greater than or equal to 10”\nExercise 2 (on your own): Type print(7 &lt; 5) and run it. Is the result True or False?"
-  },
-  {
-    "objectID": "slides/part2_objects_slides.html#logical-operators",
-    "href": "slides/part2_objects_slides.html#logical-operators",
-    "title": "Part 2: Objects",
-    "section": "Logical Operators",
-    "text": "Logical Operators\nWe can combine booleans with logical operators:\n\nand - A and B is True only if both are True\nor - A or B is True if either (or both) is True\n\n\nA = True\nB = False\nprint(\"A and B:\", A and B)\nprint(\"A or B:\", A or B)\n\nA and B: False\nA or B: True"
-  },
-  {
-    "objectID": "slides/part2_objects_slides.html#practice-logical-operators",
-    "href": "slides/part2_objects_slides.html#practice-logical-operators",
-    "title": "Part 2: Objects",
-    "section": "Practice: Logical Operators",
-    "text": "Practice: Logical Operators\nExercise 1 (with Gemini): Ask Gemini to “write Python code that uses ‘and’ to check if a number is between 10 and 20”\nExercise 2 (on your own): Type print(True or False) and run it."
-  },
-  {
-    "objectID": "slides/part2_objects_slides.html#type-conversions",
-    "href": "slides/part2_objects_slides.html#type-conversions",
-    "title": "Part 2: Objects",
-    "section": "Type Conversions",
-    "text": "Type Conversions\nPython provides functions to convert between types:\n\nint() - converts to integer (truncates, doesn’t round)\nfloat() - converts to floating point\nstr() - converts to string\n\n\nprint(\"int(10.7) =\", int(10.7))\nprint(\"float(5) =\", float(5))\nprint(\"str(42) =\", str(42))\n\nint(10.7) = 10\nfloat(5) = 5.0\nstr(42) = 42"
-  },
-  {
-    "objectID": "slides/part2_objects_slides.html#practice-type-conversions",
-    "href": "slides/part2_objects_slides.html#practice-type-conversions",
-    "title": "Part 2: Objects",
-    "section": "Practice: Type Conversions",
-    "text": "Practice: Type Conversions\nExercise 1 (with Gemini): Ask Gemini to “write Python code that converts the string ‘100’ to an integer”\nExercise 2 (on your own): Type print(str(999)) and run it."
-  },
-  {
-    "objectID": "slides/part2_objects_slides.html#attributes-and-methods",
-    "href": "slides/part2_objects_slides.html#attributes-and-methods",
-    "title": "Part 2: Objects",
-    "section": "Attributes and Methods",
-    "text": "Attributes and Methods\nPython objects have attributes and methods:\n\nAn attribute is a value or property of an object\nA method is a function that belongs to an object\n\nAccess them using a period (.) after the object:\nobject.attribute\nobject.method()\nStrings have many useful methods!"
-  },
-  {
-    "objectID": "slides/part2_objects_slides.html#string-methods",
-    "href": "slides/part2_objects_slides.html#string-methods",
-    "title": "Part 2: Objects",
-    "section": "String Methods",
-    "text": "String Methods\nUseful string methods:\n\n.upper() - converts to uppercase\n.lower() - converts to lowercase\n.strip() - removes whitespace from ends\n.replace(old, new) - replaces text\n\n\nticker = 'tsla'\nprint(ticker.upper())\n\ntext = \"  hello  \"\nprint(text.strip())\n\nprint(\"hello\".replace(\"l\", \"x\"))\n\nTSLA\nhello\nhexxo"
-  },
-  {
-    "objectID": "slides/part2_objects_slides.html#practice-string-methods",
-    "href": "slides/part2_objects_slides.html#practice-string-methods",
-    "title": "Part 2: Objects",
-    "section": "Practice: String Methods",
-    "text": "Practice: String Methods\nExercise 1 (with Gemini): Ask Gemini to “write Python code that converts ‘python programming’ to uppercase”\nExercise 2 (on your own): Type print(\"hello\".replace(\"h\", \"j\")) and run it."
-  },
-  {
-    "objectID": "slides/part2_objects_slides.html#f-strings",
-    "href": "slides/part2_objects_slides.html#f-strings",
-    "title": "Part 2: Objects",
-    "section": "f-strings",
-    "text": "f-strings\nf-strings (formatted strings) let us insert variables into strings.\nSyntax: f\"text {variable} more text\"\n\nage = 25\nstatement = f'Alice is {age} years old.'\nprint(statement)\n\nAlice is 25 years old."
-  },
-  {
-    "objectID": "slides/part2_objects_slides.html#practice-f-strings",
-    "href": "slides/part2_objects_slides.html#practice-f-strings",
-    "title": "Part 2: Objects",
-    "section": "Practice: f-strings",
-    "text": "Practice: f-strings\nExercise 1 (with Gemini): Ask Gemini to “write Python code using an f-string to print ‘My name is Bob and I am 30 years old’”\nExercise 2 (on your own): Type name = \"Sam\" then print(f\"Hello, {name}!\") and run it."
-  },
-  {
-    "objectID": "slides/part2_objects_slides.html#formatting-in-f-strings",
-    "href": "slides/part2_objects_slides.html#formatting-in-f-strings",
-    "title": "Part 2: Objects",
-    "section": "Formatting in f-strings",
-    "text": "Formatting in f-strings\nWe can format numbers in f-strings:\n\n.2f - floating point with 2 decimal places\n.0% - convert decimal to percentage\n:, - add commas to large numbers\n\n\npi = 3.14159\nprint(f'pi to two decimals: {pi:.2f}')\n\nx = 0.25\nprint(f'as percentage: {x:.0%}')\n\ny = 1000000\nprint(f'with commas: {y:,}')\n\npi to two decimals: 3.14\nas percentage: 25%\nwith commas: 1,000,000"
-  },
-  {
-    "objectID": "slides/part2_objects_slides.html#practice-formatting",
-    "href": "slides/part2_objects_slides.html#practice-formatting",
-    "title": "Part 2: Objects",
-    "section": "Practice: Formatting",
-    "text": "Practice: Formatting\nExercise 1 (with Gemini): Ask Gemini to “write Python code that formats the number 0.75 as a percentage”\nExercise 2 (on your own): Type num = 1234567 then print(f'{num:,}') and run it."
-  },
-  {
-    "objectID": "slides/part2_objects_slides.html#summary",
-    "href": "slides/part2_objects_slides.html#summary",
-    "title": "Part 2: Objects",
-    "section": "Summary",
-    "text": "Summary\n\nPython has different object types: int, float, str, bool, function\nObjects are like containers that store data\nAttributes are features of the data\nMethods are functions that operate on the data\nUse . notation to access attributes and methods\nf-strings make it easy to format output\n\nNext up: Lists and more complex data structures!"
-  },
-  {
-    "objectID": "slides/part4_dictionaries_slides.html#dictionaries",
-    "href": "slides/part4_dictionaries_slides.html#dictionaries",
-    "title": "Part 4: Dictionaries",
-    "section": "Dictionaries",
-    "text": "Dictionaries\nDictionaries store data as key-value pairs.\nCreated with curly braces {}:\n\ncar = {\n    \"brand\": \"Toyota\",\n    \"model\": \"Camry\",\n    \"year\": 2020,\n    \"color\": \"blue\"\n}\n\nprint(car)\n\n{'brand': 'Toyota', 'model': 'Camry', 'year': 2020, 'color': 'blue'}\n\n\nThink of it like a real dictionary: the key is the word, the value is the definition."
-  },
-  {
-    "objectID": "slides/part4_dictionaries_slides.html#practice-creating-dictionaries",
-    "href": "slides/part4_dictionaries_slides.html#practice-creating-dictionaries",
-    "title": "Part 4: Dictionaries",
-    "section": "Practice: Creating Dictionaries",
-    "text": "Practice: Creating Dictionaries\nExercise 1 (with Gemini): Ask Gemini to “write Python code that creates a dictionary with keys ‘name’, ‘age’, and ‘city’ and prints it”\nExercise 2 (on your own): Type person = {\"name\": \"Alice\", \"age\": 30} then print(person) and run it."
-  },
-  {
-    "objectID": "slides/part4_dictionaries_slides.html#accessing-dictionary-values",
-    "href": "slides/part4_dictionaries_slides.html#accessing-dictionary-values",
-    "title": "Part 4: Dictionaries",
-    "section": "Accessing Dictionary Values",
-    "text": "Accessing Dictionary Values\nAccess values using keys in square brackets:\n\nprint(\"Brand:\", car[\"brand\"])\nprint(\"Year:\", car[\"year\"])\n\n# Check if a key exists\nprint(\"Has 'model':\", \"model\" in car)\nprint(\"Has 'price':\", \"price\" in car)\n\nBrand: Toyota\nYear: 2020\nHas 'model': True\nHas 'price': False\n\n\nUnlike lists (indexed by position), dictionaries use meaningful keys like \"brand\" or \"year\"."
-  },
-  {
-    "objectID": "slides/part4_dictionaries_slides.html#practice-accessing-values",
-    "href": "slides/part4_dictionaries_slides.html#practice-accessing-values",
-    "title": "Part 4: Dictionaries",
-    "section": "Practice: Accessing Values",
-    "text": "Practice: Accessing Values\nExercise 1 (with Gemini): Ask Gemini to “write Python code that accesses the ‘model’ value from a car dictionary”\nExercise 2 (on your own): Type student = {\"name\": \"Bob\", \"grade\": 85} then print(student[\"name\"]) and run it."
-  },
-  {
-    "objectID": "slides/part4_dictionaries_slides.html#dictionary-methods",
-    "href": "slides/part4_dictionaries_slides.html#dictionary-methods",
-    "title": "Part 4: Dictionaries",
-    "section": "Dictionary Methods",
-    "text": "Dictionary Methods\nUseful methods to work with dictionaries:\n\nprint(\"All keys:\", list(car.keys()))\nprint(\"All values:\", list(car.values()))\nprint(\"All items:\", list(car.items()))\n\nAll keys: ['brand', 'model', 'year', 'color']\nAll values: ['Toyota', 'Camry', 2020, 'blue']\nAll items: [('brand', 'Toyota'), ('model', 'Camry'), ('year', 2020), ('color', 'blue')]\n\n\n\n.keys() - returns all keys\n.values() - returns all values\n.items() - returns key-value pairs as tuples"
-  },
-  {
-    "objectID": "slides/part4_dictionaries_slides.html#practice-dictionary-methods",
-    "href": "slides/part4_dictionaries_slides.html#practice-dictionary-methods",
-    "title": "Part 4: Dictionaries",
-    "section": "Practice: Dictionary Methods",
-    "text": "Practice: Dictionary Methods\nExercise 1 (with Gemini): Ask Gemini to “write Python code that prints all keys from a dictionary”\nExercise 2 (on your own): Type d = {\"a\": 1, \"b\": 2} then print(list(d.values())) and run it."
-  },
-  {
-    "objectID": "slides/part4_dictionaries_slides.html#adding-and-modifying",
-    "href": "slides/part4_dictionaries_slides.html#adding-and-modifying",
-    "title": "Part 4: Dictionaries",
-    "section": "Adding and Modifying",
-    "text": "Adding and Modifying\nAdd new key-value pairs or modify existing ones with assignment:\n\n# Add a new key-value pair\ncar[\"price\"] = 25000\nprint(\"After adding price:\", car)\n\n# Modify existing value\ncar[\"year\"] = 2021\nprint(\"After updating year:\", car)\n\nAfter adding price: {'brand': 'Toyota', 'model': 'Camry', 'year': 2020, 'color': 'blue', 'price': 25000}\nAfter updating year: {'brand': 'Toyota', 'model': 'Camry', 'year': 2021, 'color': 'blue', 'price': 25000}\n\n\nKey point: If key exists → update value. If key doesn’t exist → create new pair."
-  },
-  {
-    "objectID": "slides/part4_dictionaries_slides.html#practice-adding-and-modifying",
-    "href": "slides/part4_dictionaries_slides.html#practice-adding-and-modifying",
-    "title": "Part 4: Dictionaries",
-    "section": "Practice: Adding and Modifying",
-    "text": "Practice: Adding and Modifying\nExercise 1 (with Gemini): Ask Gemini to “write Python code that adds a new key ‘color’ to a car dictionary”\nExercise 2 (on your own): Type book = {\"title\": \"Python\"} then book[\"author\"] = \"Smith\" then print(book) and run it."
-  },
-  {
-    "objectID": "slides/part4_dictionaries_slides.html#formatting-long-dictionaries",
-    "href": "slides/part4_dictionaries_slides.html#formatting-long-dictionaries",
-    "title": "Part 4: Dictionaries",
-    "section": "Formatting Long Dictionaries",
-    "text": "Formatting Long Dictionaries\nFor readability, break dictionaries across multiple lines:\n\ninventory = {\n    \"apples\": 50,\n    \"bananas\": 30,\n    \"oranges\": 25,\n    \"grapes\": 40\n}\n\nprint(inventory)\n\n{'apples': 50, 'bananas': 30, 'oranges': 25, 'grapes': 40}\n\n\nRule: Can break anywhere except before a comma."
-  },
-  {
-    "objectID": "slides/part4_dictionaries_slides.html#practice-formatting",
-    "href": "slides/part4_dictionaries_slides.html#practice-formatting",
-    "title": "Part 4: Dictionaries",
-    "section": "Practice: Formatting",
-    "text": "Practice: Formatting\nExercise 1 (with Gemini): Ask Gemini to “write Python code that creates a multi-line dictionary with 4 items”\nExercise 2 (on your own): Create a dictionary on multiple lines for practice (no specific code required)."
-  },
-  {
-    "objectID": "slides/part4_dictionaries_slides.html#lists-vs.-dictionaries",
-    "href": "slides/part4_dictionaries_slides.html#lists-vs.-dictionaries",
-    "title": "Part 4: Dictionaries",
-    "section": "Lists vs. Dictionaries",
-    "text": "Lists vs. Dictionaries\n\n\n\nFeature\nLists\nDictionaries\n\n\n\n\nStructure\nOrdered sequence\nKey-value pairs\n\n\nAccess\nBy index: list[0]\nBy key: dict[\"key\"]\n\n\nIndexing\nNumeric (0, 1, 2…)\nCustom keys\n\n\nBest For\nSequences, order matters\nLookups by name/ID\n\n\nExamples\nShopping list, scores\nPhone book, inventory"
-  },
-  {
-    "objectID": "slides/part4_dictionaries_slides.html#lists-vs.-dictionaries-examples",
-    "href": "slides/part4_dictionaries_slides.html#lists-vs.-dictionaries-examples",
-    "title": "Part 4: Dictionaries",
-    "section": "Lists vs. Dictionaries Examples",
-    "text": "Lists vs. Dictionaries Examples\nUse a list when you have a sequence:\n\ntest_scores = [85, 92, 78, 95]\nprint(\"First score:\", test_scores[0])\n\nFirst score: 85\n\n\nUse a dictionary when you need named lookups:\n\nstudent = {\"name\": \"Alice\", \"age\": 20, \"gpa\": 3.8}\nprint(\"Student name:\", student[\"name\"])\n\nStudent name: Alice"
-  },
-  {
-    "objectID": "slides/part4_dictionaries_slides.html#practice-lists-vs-dictionaries",
-    "href": "slides/part4_dictionaries_slides.html#practice-lists-vs-dictionaries",
-    "title": "Part 4: Dictionaries",
-    "section": "Practice: Lists vs Dictionaries",
-    "text": "Practice: Lists vs Dictionaries\nExercise 1 (with Gemini): Ask Gemini to “explain when to use a list versus a dictionary in Python”\nExercise 2 (on your own): Type scores = [85, 92, 78] then print(scores[0]) and run it."
-  },
-  {
-    "objectID": "slides/part4_dictionaries_slides.html#the-len-function",
-    "href": "slides/part4_dictionaries_slides.html#the-len-function",
-    "title": "Part 4: Dictionaries",
-    "section": "The len Function",
-    "text": "The len Function\nlen() returns the length of strings, lists, and dictionaries:\n\nmy_list = [1, 2, 3, 4, 5]\nmy_dict = {\"a\": 1, \"b\": 2, \"c\": 3}\nmy_string = \"hello\"\n\nprint(\"List length:\", len(my_list))\nprint(\"Dict length:\", len(my_dict))  # counts key-value pairs\nprint(\"String length:\", len(my_string))\n\nList length: 5\nDict length: 3\nString length: 5\n\n\nFor dictionaries, len() returns the number of key-value pairs."
-  },
-  {
-    "objectID": "slides/part4_dictionaries_slides.html#practice-len-function",
-    "href": "slides/part4_dictionaries_slides.html#practice-len-function",
-    "title": "Part 4: Dictionaries",
-    "section": "Practice: len() Function",
-    "text": "Practice: len() Function\nExercise 1 (with Gemini): Ask Gemini to “write Python code that finds the length of a dictionary”\nExercise 2 (on your own): Type items = [1, 2, 3, 4, 5] then print(len(items)) and run it."
-  },
-  {
-    "objectID": "slides/part4_dictionaries_slides.html#summary",
-    "href": "slides/part4_dictionaries_slides.html#summary",
-    "title": "Part 4: Dictionaries",
-    "section": "Summary",
-    "text": "Summary\n\nDictionaries store key-value pairs using {}\nAccess values by key: dict[\"key\"]\nMethods: .keys(), .values(), .items()\nAdd/modify with assignment: dict[\"new_key\"] = value\nUse lists for sequences, dictionaries for named lookups\nlen() works on strings, lists, and dictionaries\n\nDictionaries are perfect when you need to look up information by name or ID!"
-  },
-  {
-    "objectID": "slides/part6_functions_slides.html#built-in-functions",
-    "href": "slides/part6_functions_slides.html#built-in-functions",
-    "title": "Part 6: Functions",
-    "section": "Built-in Functions",
-    "text": "Built-in Functions\nPython includes many built-in functions you can use immediately:\nMathematical: - abs(x), max(), min(), sum(), round()\nSequence: - len(), sorted(), reversed(), enumerate(), zip()\nType/Conversion: - type(), str(), int(), float(), bool(), isinstance()\nThese are optimized - use them instead of writing your own!"
-  },
-  {
-    "objectID": "slides/part6_functions_slides.html#built-in-functions-examples",
-    "href": "slides/part6_functions_slides.html#built-in-functions-examples",
-    "title": "Part 6: Functions",
-    "section": "Built-in Functions Examples",
-    "text": "Built-in Functions Examples\n\nnumbers = [-5, 3, -1, 8, 2]\n\nprint(\"Max:\", max(numbers))\nprint(\"Min:\", min(numbers))\nprint(\"Sum:\", sum(numbers))\nprint(\"Absolute value of -5:\", abs(-5))\nprint(\"Round 3.14159 to 2 decimals:\", round(3.14159, 2))\n\nMax: 8\nMin: -5\nSum: 7\nAbsolute value of -5: 5\nRound 3.14159 to 2 decimals: 3.14"
-  },
-  {
-    "objectID": "slides/part6_functions_slides.html#practice-built-in-functions",
-    "href": "slides/part6_functions_slides.html#practice-built-in-functions",
-    "title": "Part 6: Functions",
-    "section": "Practice: Built-in Functions",
-    "text": "Practice: Built-in Functions\nExercise 1 (with Gemini): Ask Gemini to “write Python code that finds the maximum of a list of numbers”\nExercise 2 (on your own): Type print(abs(-10)) and run it."
-  },
-  {
-    "objectID": "slides/part6_functions_slides.html#sequence-functions",
-    "href": "slides/part6_functions_slides.html#sequence-functions",
-    "title": "Part 6: Functions",
-    "section": "Sequence Functions",
-    "text": "Sequence Functions\n\nfruits = [\"banana\", \"apple\", \"cherry\"]\nscores = [85, 92, 78]\n\nprint(\"Sorted:\", sorted(fruits))\nprint(\"Length:\", len(fruits))\n\n# Zip combines sequences\nfor fruit, score in zip(fruits, scores):\n    print(f\"{fruit}: {score}\")\n\nSorted: ['apple', 'banana', 'cherry']\nLength: 3\nbanana: 85\napple: 92\ncherry: 78"
-  },
-  {
-    "objectID": "slides/part6_functions_slides.html#practice-sequence-functions",
-    "href": "slides/part6_functions_slides.html#practice-sequence-functions",
-    "title": "Part 6: Functions",
-    "section": "Practice: Sequence Functions",
-    "text": "Practice: Sequence Functions\nExercise 1 (with Gemini): Ask Gemini to “write Python code that sorts a list of names alphabetically”\nExercise 2 (on your own): Type print(sorted([3, 1, 4, 1, 5])) and run it."
-  },
-  {
-    "objectID": "slides/part6_functions_slides.html#enumerate",
-    "href": "slides/part6_functions_slides.html#enumerate",
-    "title": "Part 6: Functions",
-    "section": "Enumerate",
-    "text": "Enumerate\nenumerate() adds index numbers to items:\n\nfruits = [\"apple\", \"banana\", \"cherry\"]\n\nfor index, fruit in enumerate(fruits):\n    print(f\"{index}: {fruit}\")\n\n# Start at 1 instead of 0\nfor num, fruit in enumerate(fruits, start=1):\n    print(f\"#{num}: {fruit}\")\n\n0: apple\n1: banana\n2: cherry\n#1: apple\n#2: banana\n#3: cherry"
-  },
-  {
-    "objectID": "slides/part6_functions_slides.html#practice-enumerate",
-    "href": "slides/part6_functions_slides.html#practice-enumerate",
-    "title": "Part 6: Functions",
-    "section": "Practice: Enumerate",
-    "text": "Practice: Enumerate\nExercise 1 (with Gemini): Ask Gemini to “write Python code that uses enumerate to print index and value for a list”\nExercise 2 (on your own): Type for i, x in enumerate(['a', 'b']): print(i, x) and run it."
-  },
-  {
-    "objectID": "slides/part6_functions_slides.html#creating-custom-functions",
-    "href": "slides/part6_functions_slides.html#creating-custom-functions",
-    "title": "Part 6: Functions",
-    "section": "Creating Custom Functions",
-    "text": "Creating Custom Functions\nDefine your own functions with def:\n\ndef add_numbers(a, b):\n    \"\"\"Add two numbers together.\"\"\"\n    return a + b\n\nresult = add_numbers(5, 3)\nprint(f\"5 + 3 = {result}\")\n\n5 + 3 = 8\n\n\nComponents: - def keyword - Function name (lowercase_with_underscores) - Parameters in parentheses - Docstring (optional) - Indented function body - return statement (optional)"
-  },
-  {
-    "objectID": "slides/part6_functions_slides.html#practice-creating-functions",
-    "href": "slides/part6_functions_slides.html#practice-creating-functions",
-    "title": "Part 6: Functions",
-    "section": "Practice: Creating Functions",
-    "text": "Practice: Creating Functions\nExercise 1 (with Gemini): Ask Gemini to “write Python code that creates a function to multiply two numbers”\nExercise 2 (on your own): Type def greet(): print(\"Hi\") then greet() and run it."
-  },
-  {
-    "objectID": "slides/part6_functions_slides.html#functions-examples",
-    "href": "slides/part6_functions_slides.html#functions-examples",
-    "title": "Part 6: Functions",
-    "section": "Functions Examples",
-    "text": "Functions Examples\n\ndef greet_person(name):\n    \"\"\"Print a greeting.\"\"\"\n    print(f\"Hello, {name}!\")\n\ngreet_person(\"Alice\")\n\ndef classify_temperature(temp):\n    \"\"\"Classify temperature as cold, moderate, or hot.\"\"\"\n    if temp &lt; 70:\n        return \"cold\"\n    elif temp &lt; 85:\n        return \"moderate\"\n    else:\n        return \"hot\"\n\nprint(classify_temperature(75))\n\nHello, Alice!\nmoderate"
-  },
-  {
-    "objectID": "slides/part6_functions_slides.html#practice-function-examples",
-    "href": "slides/part6_functions_slides.html#practice-function-examples",
-    "title": "Part 6: Functions",
-    "section": "Practice: Function Examples",
-    "text": "Practice: Function Examples\nExercise 1 (with Gemini): Ask Gemini to “write Python code that creates a function to check if a number is even”\nExercise 2 (on your own): Type def double(x): return x * 2 then print(double(5)) and run it."
-  },
-  {
-    "objectID": "slides/part6_functions_slides.html#variable-scope",
-    "href": "slides/part6_functions_slides.html#variable-scope",
-    "title": "Part 6: Functions",
-    "section": "Variable Scope",
-    "text": "Variable Scope\nVariables created inside functions are local - they only exist within the function:\n\ndef my_function(x):\n    local_var = x * 2\n    return local_var\n\nresult = my_function(5)\nprint(\"Result:\", result)\n\n# This causes an error - local_var doesn't exist outside the function\nprint(local_var)\n\nResult: 10\n\n\n\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\nCell In[6], line 9\n      6 print(\"Result:\", result)\n      8 # This causes an error - local_var doesn't exist outside the function\n----&gt; 9 print(local_var)\n\nNameError: name 'local_var' is not defined"
-  },
-  {
-    "objectID": "slides/part6_functions_slides.html#returning-multiple-values",
-    "href": "slides/part6_functions_slides.html#returning-multiple-values",
-    "title": "Part 6: Functions",
-    "section": "Returning Multiple Values",
-    "text": "Returning Multiple Values\nFunctions can return multiple values as a tuple:\n\ndef get_name_parts():\n    return \"John\", \"Smith\"\n\n# Unpack into variables\nfirst, last = get_name_parts()\nprint(f\"First: {first}, Last: {last}\")\n\n# Or receive as tuple\nname = get_name_parts()\nprint(f\"Tuple: {name}\")\n\nFirst: John, Last: Smith\nTuple: ('John', 'Smith')"
-  },
-  {
-    "objectID": "slides/part6_functions_slides.html#practice-multiple-returns",
-    "href": "slides/part6_functions_slides.html#practice-multiple-returns",
-    "title": "Part 6: Functions",
-    "section": "Practice: Multiple Returns",
-    "text": "Practice: Multiple Returns\nExercise 1 (with Gemini): Ask Gemini to “write Python code that creates a function returning two values and unpacks them”\nExercise 2 (on your own): Type def nums(): return 1, 2 then a, b = nums() then print(a, b) and run it."
-  },
-  {
-    "objectID": "slides/part6_functions_slides.html#multiple-return-example",
-    "href": "slides/part6_functions_slides.html#multiple-return-example",
-    "title": "Part 6: Functions",
-    "section": "Multiple Return Example",
-    "text": "Multiple Return Example\n\ndef rectangle_properties(length, width):\n    \"\"\"Calculate area and perimeter of a rectangle.\"\"\"\n    area = length * width\n    perimeter = 2 * (length + width)\n    return area, perimeter\n\narea, perimeter = rectangle_properties(5, 3)\nprint(f\"Area: {area}\")\nprint(f\"Perimeter: {perimeter}\")\n\nArea: 15\nPerimeter: 16"
-  },
-  {
-    "objectID": "slides/part6_functions_slides.html#practice-multiple-return-example",
-    "href": "slides/part6_functions_slides.html#practice-multiple-return-example",
-    "title": "Part 6: Functions",
-    "section": "Practice: Multiple Return Example",
-    "text": "Practice: Multiple Return Example\nExercise 1 (with Gemini): Ask Gemini to “write Python code that creates a function to calculate circle area and circumference”\nExercise 2 (on your own): Type def calc(): return 10, 20 then x, y = calc() then print(x + y) and run it."
-  },
-  {
-    "objectID": "slides/part6_functions_slides.html#default-values",
-    "href": "slides/part6_functions_slides.html#default-values",
-    "title": "Part 6: Functions",
-    "section": "Default Values",
-    "text": "Default Values\nParameters can have default values making them optional:\n\ndef greet(name, greeting=\"Hello\"):\n    \"\"\"Greet someone with customizable greeting.\"\"\"\n    return f\"{greeting}, {name}!\"\n\n# Use default greeting\nprint(greet(\"Alice\"))\n\n# Provide custom greeting\nprint(greet(\"Bob\", \"Hi\"))\nprint(greet(\"Carol\", greeting=\"Hey\"))\n\nHello, Alice!\nHi, Bob!\nHey, Carol!\n\n\nBest practice: Required parameters first, optional ones last."
-  },
-  {
-    "objectID": "slides/part6_functions_slides.html#practice-default-values",
-    "href": "slides/part6_functions_slides.html#practice-default-values",
-    "title": "Part 6: Functions",
-    "section": "Practice: Default Values",
-    "text": "Practice: Default Values\nExercise 1 (with Gemini): Ask Gemini to “write Python code that creates a function with a default parameter”\nExercise 2 (on your own): Type def say(msg=\"Hi\"): print(msg) then say() and say(\"Hello\") and run it."
-  },
-  {
-    "objectID": "slides/part6_functions_slides.html#named-arguments",
-    "href": "slides/part6_functions_slides.html#named-arguments",
-    "title": "Part 6: Functions",
-    "section": "Named Arguments",
-    "text": "Named Arguments\nCall functions with named arguments for clarity:\n\ndef power(x, y=2):\n    \"\"\"Calculate x raised to the power y.\"\"\"\n    return x ** y\n\n# Positional arguments\nprint(power(5, 3))\n\n# Named arguments\nprint(power(x=5, y=3))\nprint(power(y=3, x=5))  # Order doesn't matter!\n\n# Mixed\nprint(power(5, y=3))\n\n125\n125\n125\n125"
-  },
-  {
-    "objectID": "slides/part6_functions_slides.html#practice-named-arguments",
-    "href": "slides/part6_functions_slides.html#practice-named-arguments",
-    "title": "Part 6: Functions",
-    "section": "Practice: Named Arguments",
-    "text": "Practice: Named Arguments\nExercise 1 (with Gemini): Ask Gemini to “write Python code that calls a function using named arguments”\nExercise 2 (on your own): Type def add(a, b): return a + b then print(add(b=5, a=3)) and run it."
-  },
-  {
-    "objectID": "slides/part6_functions_slides.html#the-help-function",
-    "href": "slides/part6_functions_slides.html#the-help-function",
-    "title": "Part 6: Functions",
-    "section": "The help() Function",
-    "text": "The help() Function\nUse help() to see function documentation:\n\nhelp(round)\n\nHelp on built-in function round in module builtins:\n\nround(number, ndigits=None)\n    Round a number to a given precision in decimal digits.\n\n    The return value is an integer if ndigits is omitted or None.  Otherwise\n    the return value has the same type as the number.  ndigits may be negative.\n\n\n\nAlso works with methods:\n\nhelp(str.replace)\n\nHelp on method_descriptor:\n\nreplace(self, old, new, /, count=-1) unbound builtins.str method\n    Return a copy with all occurrences of substring old replaced by new.\n\n      count\n        Maximum number of occurrences to replace.\n        -1 (the default value) means replace all occurrences.\n\n    If the optional argument count is given, only the first count occurrences are\n    replaced."
-  },
-  {
-    "objectID": "slides/part6_functions_slides.html#summary",
-    "href": "slides/part6_functions_slides.html#summary",
-    "title": "Part 6: Functions",
-    "section": "Summary",
-    "text": "Summary\n\nBuilt-in functions: max(), min(), sum(), len(), sorted(), enumerate(), zip(), etc.\nCustom functions: Define with def, use descriptive names\nVariable scope: Local variables only exist within functions\nMultiple returns: Return tuples and unpack: a, b = func()\nDefault values: Make parameters optional\nNamed arguments: Call functions with param=value for clarity\nhelp(): Get function documentation\n\nFunctions make code reusable, organized, and maintainable!"
-  },
-  {
-    "objectID": "slides/part8_pandas_intro_slides.html#what-is-pandas",
-    "href": "slides/part8_pandas_intro_slides.html#what-is-pandas",
-    "title": "Part 8: Intro to Pandas",
-    "section": "What is Pandas?",
-    "text": "What is Pandas?\nPandas is Python’s primary library for data analysis and manipulation.\nKey features:\n\nWorks with tabular data (like Excel spreadsheets)\nTwo main structures: Series (1D) and DataFrame (2D)\nPowerful tools for filtering, grouping, and transforming data\nIntegrates seamlessly with other data science libraries\n\n\nimport pandas as pd"
-  },
-  {
-    "objectID": "slides/part8_pandas_intro_slides.html#creating-a-dataframe",
-    "href": "slides/part8_pandas_intro_slides.html#creating-a-dataframe",
-    "title": "Part 8: Intro to Pandas",
-    "section": "Creating a DataFrame",
-    "text": "Creating a DataFrame\nCreate DataFrames from dictionaries, where keys become column names:\n\ndata = {\n    'Name': ['Alice', 'Bob', 'Charlie', 'Diana'],\n    'Age': [25, 30, 35, 28],\n    'City': ['New York', 'London', 'Tokyo', 'Paris'],\n    'Salary': [70000, 80000, 90000, 75000]\n}\n\ndf = pd.DataFrame(data)\nprint(df)\nprint(f\"\\nShape: {df.shape}\")  # (rows, columns)\n\n      Name  Age      City  Salary\n0    Alice   25  New York   70000\n1      Bob   30    London   80000\n2  Charlie   35     Tokyo   90000\n3    Diana   28     Paris   75000\n\nShape: (4, 4)"
-  },
-  {
-    "objectID": "slides/part8_pandas_intro_slides.html#practice-creating-dataframes",
-    "href": "slides/part8_pandas_intro_slides.html#practice-creating-dataframes",
-    "title": "Part 8: Intro to Pandas",
-    "section": "Practice: Creating DataFrames",
-    "text": "Practice: Creating DataFrames\nExercise 1 (with Gemini): Ask Gemini to “create a DataFrame with three columns: ‘product’, ‘price’, and ‘quantity’ with at least 3 products”\nExercise 2 (on your own): Type data = {'a': [1, 2, 3], 'b': [4, 5, 6]} then df = pd.DataFrame(data) then print(df) and run it."
-  },
-  {
-    "objectID": "slides/part8_pandas_intro_slides.html#understanding-series",
-    "href": "slides/part8_pandas_intro_slides.html#understanding-series",
-    "title": "Part 8: Intro to Pandas",
-    "section": "Understanding Series",
-    "text": "Understanding Series\nA Series is a one-dimensional labeled array - essentially one column of data.\n\n# Create a Series with custom index\nproducts = pd.Series(\n    [29.99, 999.99, 79.99, 299.99],\n    index=['Mouse', 'Laptop', 'Keyboard', 'Monitor']\n)\nprint(products)\nprint(f\"\\nType: {type(products)}\")\n\nMouse        29.99\nLaptop      999.99\nKeyboard     79.99\nMonitor     299.99\ndtype: float64\n\nType: &lt;class 'pandas.core.series.Series'&gt;\n\n\nKey point: Each DataFrame column is a Series!"
-  },
-  {
-    "objectID": "slides/part8_pandas_intro_slides.html#accessing-series-elements",
-    "href": "slides/part8_pandas_intro_slides.html#accessing-series-elements",
-    "title": "Part 8: Intro to Pandas",
-    "section": "Accessing Series Elements",
-    "text": "Accessing Series Elements\nSeries support both label-based and position-based indexing:\n\n# Label-based indexing\nprint(\"By label - Laptop:\", products['Laptop'])\n\n# Position-based with .iloc (like lists)\nprint(\"By position - first item:\", products.iloc[0])\nprint(\"Last item:\", products.iloc[-1])\n\n# Multiple elements\nprint(\"\\nFirst 3 items:\")\nprint(products.iloc[:3])\n\nBy label - Laptop: 999.99\nBy position - first item: 29.99\nLast item: 299.99\n\nFirst 3 items:\nMouse        29.99\nLaptop      999.99\nKeyboard     79.99\ndtype: float64"
-  },
-  {
-    "objectID": "slides/part8_pandas_intro_slides.html#series-summary-statistics",
-    "href": "slides/part8_pandas_intro_slides.html#series-summary-statistics",
-    "title": "Part 8: Intro to Pandas",
-    "section": "Series Summary Statistics",
-    "text": "Series Summary Statistics\nSeries have built-in methods for common statistics:\n\nprint(f\"Average price: ${products.mean():.2f}\")\nprint(f\"Most expensive: ${products.max()}\")\nprint(f\"Cheapest: ${products.min()}\")\nprint(f\"Standard deviation: ${products.std():.2f}\")\n\nAverage price: $352.49\nMost expensive: $999.99\nCheapest: $29.99\nStandard deviation: $447.32"
-  },
-  {
-    "objectID": "slides/part8_pandas_intro_slides.html#practice-series-operations",
-    "href": "slides/part8_pandas_intro_slides.html#practice-series-operations",
-    "title": "Part 8: Intro to Pandas",
-    "section": "Practice: Series Operations",
-    "text": "Practice: Series Operations\nExercise 1 (with Gemini): Ask Gemini to “create a Series with 5 numbers and calculate the mean and standard deviation”\nExercise 2 (on your own): Type s = pd.Series([10, 20, 30, 40]) then print(s.mean()) and run it."
-  },
-  {
-    "objectID": "slides/part8_pandas_intro_slides.html#creating-a-larger-dataset",
-    "href": "slides/part8_pandas_intro_slides.html#creating-a-larger-dataset",
-    "title": "Part 8: Intro to Pandas",
-    "section": "Creating a Larger Dataset",
-    "text": "Creating a Larger Dataset\nLet’s create a more realistic dataset with employee information:\n\n# Create a larger DataFrame for analysis\nemployees_data = {\n    'Name': ['Alice', 'Bob', 'Charlie', 'Diana', 'Eve', 'Frank', 'Grace', 'Henry'],\n    'Age': [25, 30, 35, 28, 32, 45, 29, 38],\n    'Department': ['Engineering', 'Marketing', 'Engineering', 'HR',\n                   'Marketing', 'Engineering', 'HR', 'Marketing'],\n    'Salary': [70000, 65000, 80000, 60000, 72000, 90000, 62000, 75000],\n    'Years': [2, 5, 8, 3, 6, 12, 4, 9],\n    'Education': [16, 14, 18, 16, 14, 20, 16, 16]\n}\n\ndf = pd.DataFrame(employees_data)\ndf.head()\n\n\n\n\n\n\n\n\nName\nAge\nDepartment\nSalary\nYears\nEducation\n\n\n\n\n0\nAlice\n25\nEngineering\n70000\n2\n16\n\n\n1\nBob\n30\nMarketing\n65000\n5\n14\n\n\n2\nCharlie\n35\nEngineering\n80000\n8\n18\n\n\n3\nDiana\n28\nHR\n60000\n3\n16\n\n\n4\nEve\n32\nMarketing\n72000\n6\n14"
-  },
-  {
-    "objectID": "slides/part8_pandas_intro_slides.html#dataframe-attributes",
-    "href": "slides/part8_pandas_intro_slides.html#dataframe-attributes",
-    "title": "Part 8: Intro to Pandas",
-    "section": "DataFrame Attributes",
-    "text": "DataFrame Attributes\nEssential attributes to understand your data:\n\nprint(f\"Shape: {df.shape}\")\nprint(f\"Column names: {list(df.columns[:5])}...\")  # First 5\nprint(f\"\\nFirst 3 rows:\")\nprint(df.head(3))\n\nShape: (8, 6)\nColumn names: ['Name', 'Age', 'Department', 'Salary', 'Years']...\n\nFirst 3 rows:\n      Name  Age   Department  Salary  Years  Education\n0    Alice   25  Engineering   70000      2         16\n1      Bob   30    Marketing   65000      5         14\n2  Charlie   35  Engineering   80000      8         18\n\n\nUseful methods:\n\n.head(n) - first n rows\n.tail(n) - last n rows\n.info() - comprehensive overview\n.describe() - statistical summary"
-  },
-  {
-    "objectID": "slides/part8_pandas_intro_slides.html#selecting-columns",
-    "href": "slides/part8_pandas_intro_slides.html#selecting-columns",
-    "title": "Part 8: Intro to Pandas",
-    "section": "Selecting Columns",
-    "text": "Selecting Columns\nSelect one or more columns from a DataFrame:\n\n# Single column (returns Series)\nsalaries = df['Salary']\nprint(f\"Salaries - type: {type(salaries)}\")\nprint(salaries.head())\n\n# Multiple columns (returns DataFrame)\nsubset = df[['Name', 'Salary', 'Department']]\nprint(f\"\\nSubset shape: {subset.shape}\")\nprint(subset.head(3))\n\nSalaries - type: &lt;class 'pandas.core.series.Series'&gt;\n0    70000\n1    65000\n2    80000\n3    60000\n4    72000\nName: Salary, dtype: int64\n\nSubset shape: (8, 3)\n      Name  Salary   Department\n0    Alice   70000  Engineering\n1      Bob   65000    Marketing\n2  Charlie   80000  Engineering"
-  },
-  {
-    "objectID": "slides/part8_pandas_intro_slides.html#practice-selecting-columns",
-    "href": "slides/part8_pandas_intro_slides.html#practice-selecting-columns",
-    "title": "Part 8: Intro to Pandas",
-    "section": "Practice: Selecting Columns",
-    "text": "Practice: Selecting Columns\nExercise 1 (with Gemini): Ask Gemini to “select the ‘Name’ and ‘Age’ columns from a DataFrame”\nExercise 2 (on your own): Type df['Name'] and run it to select a single column."
-  },
-  {
-    "objectID": "slides/part8_pandas_intro_slides.html#selecting-rows",
-    "href": "slides/part8_pandas_intro_slides.html#selecting-rows",
-    "title": "Part 8: Intro to Pandas",
-    "section": "Selecting Rows",
-    "text": "Selecting Rows\nUse .loc for label-based or .iloc for position-based row selection:\n\n# First row\nprint(\"First row:\")\nprint(df.iloc[0])\n\n# Multiple rows by position\nprint(\"\\nFirst 3 rows:\")\nprint(df.iloc[0:3])\n\nFirst row:\nName                Alice\nAge                    25\nDepartment    Engineering\nSalary              70000\nYears                   2\nEducation              16\nName: 0, dtype: object\n\nFirst 3 rows:\n      Name  Age   Department  Salary  Years  Education\n0    Alice   25  Engineering   70000      2         16\n1      Bob   30    Marketing   65000      5         14\n2  Charlie   35  Engineering   80000      8         18"
-  },
-  {
-    "objectID": "slides/part8_pandas_intro_slides.html#filtering-data",
-    "href": "slides/part8_pandas_intro_slides.html#filtering-data",
-    "title": "Part 8: Intro to Pandas",
-    "section": "Filtering Data",
-    "text": "Filtering Data\nFilter rows based on conditions using boolean indexing:\n\n# Filter for high earners\nhigh_earners = df[df['Salary'] &gt; 70000]\nprint(f\"People earning &gt;$70,000: {len(high_earners)}\")\nprint(high_earners)\n\n# Multiple conditions with & (and) or | (or)\neng_high = df[(df['Salary'] &gt; 70000) & (df['Department'] == 'Engineering')]\nprint(f\"\\nEngineering high earners:\")\nprint(eng_high[['Name', 'Salary', 'Department']])\n\nPeople earning &gt;$70,000: 4\n      Name  Age   Department  Salary  Years  Education\n2  Charlie   35  Engineering   80000      8         18\n4      Eve   32    Marketing   72000      6         14\n5    Frank   45  Engineering   90000     12         20\n7    Henry   38    Marketing   75000      9         16\n\nEngineering high earners:\n      Name  Salary   Department\n2  Charlie   80000  Engineering\n5    Frank   90000  Engineering"
-  },
-  {
-    "objectID": "slides/part8_pandas_intro_slides.html#practice-filtering-data",
-    "href": "slides/part8_pandas_intro_slides.html#practice-filtering-data",
-    "title": "Part 8: Intro to Pandas",
-    "section": "Practice: Filtering Data",
-    "text": "Practice: Filtering Data\nExercise 1 (with Gemini): Ask Gemini to “filter a DataFrame to show only rows where Age is greater than 30”\nExercise 2 (on your own): Type df[df['Salary'] &gt; 65000] and run it to filter rows."
-  },
-  {
-    "objectID": "slides/part8_pandas_intro_slides.html#adding-and-modifying-columns",
-    "href": "slides/part8_pandas_intro_slides.html#adding-and-modifying-columns",
-    "title": "Part 8: Intro to Pandas",
-    "section": "Adding and Modifying Columns",
-    "text": "Adding and Modifying Columns\nCreate new columns or modify existing ones:\n\n# Create new calculated column (10% bonus)\ndf['Bonus'] = df['Salary'] * 0.10\n\nprint(df[['Name', 'Salary', 'Bonus']].head())\n\n# Create experience category\ndf['Experience'] = pd.cut(\n    df['Years'],\n    bins=[0, 5, 10, 20],\n    labels=['Junior', 'Mid-level', 'Senior']\n)\n\nprint(f\"\\nExperience levels:\")\nprint(df['Experience'].value_counts())\n\n      Name  Salary   Bonus\n0    Alice   70000  7000.0\n1      Bob   65000  6500.0\n2  Charlie   80000  8000.0\n3    Diana   60000  6000.0\n4      Eve   72000  7200.0\n\nExperience levels:\nExperience\nJunior       4\nMid-level    3\nSenior       1\nName: count, dtype: int64"
-  },
-  {
-    "objectID": "slides/part8_pandas_intro_slides.html#practice-adding-columns",
-    "href": "slides/part8_pandas_intro_slides.html#practice-adding-columns",
-    "title": "Part 8: Intro to Pandas",
-    "section": "Practice: Adding Columns",
-    "text": "Practice: Adding Columns\nExercise 1 (with Gemini): Ask Gemini to “add a new column to a DataFrame that calculates 15% tax on a Salary column”\nExercise 2 (on your own): Type df['Double_Salary'] = df['Salary'] * 2 then print(df[['Name', 'Salary', 'Double_Salary']].head()) and run it."
-  },
-  {
-    "objectID": "slides/part8_pandas_intro_slides.html#working-with-indexes",
-    "href": "slides/part8_pandas_intro_slides.html#working-with-indexes",
-    "title": "Part 8: Intro to Pandas",
-    "section": "Working with Indexes",
-    "text": "Working with Indexes\nThe index provides row labels (default is 0, 1, 2, …):\n\n# Create small example\nemployees = pd.DataFrame({\n    'Name': ['Alice', 'Bob', 'Charlie'],\n    'Salary': [70000, 80000, 90000],\n    'Dept': ['Eng', 'Mkt', 'Eng']\n})\n\n# Set Name as index\nindexed = employees.set_index('Name')\nprint(indexed)\n\n# Access by index label\nprint(f\"\\nBob's data:\\n{indexed.loc['Bob']}\")\n\n         Salary Dept\nName                \nAlice     70000  Eng\nBob       80000  Mkt\nCharlie   90000  Eng\n\nBob's data:\nSalary    80000\nDept        Mkt\nName: Bob, dtype: object"
-  },
-  {
-    "objectID": "slides/part8_pandas_intro_slides.html#summary",
-    "href": "slides/part8_pandas_intro_slides.html#summary",
-    "title": "Part 8: Intro to Pandas",
-    "section": "Summary",
-    "text": "Summary\nWhat we learned:\n\nDataFrames are 2D tables, Series are 1D columns\nCreate DataFrames from dictionaries or read from files\nSelect columns with df['col'] or df[['col1', 'col2']]\nSelect rows with .iloc[position] or .loc[label]\nFilter using boolean conditions: df[df['col'] &gt; value]\nAdd columns by assignment: df['new_col'] = values\n\nPandas is essential for data analysis in Python!"
-  },
-  {
-    "objectID": "slides/part10_visualization_intro_slides.html#introduction",
-    "href": "slides/part10_visualization_intro_slides.html#introduction",
-    "title": "Part 10: Intro to Visualization",
-    "section": "Introduction",
-    "text": "Introduction\n\nVisualization is essential for data exploration and communication\nPython’s matplotlib is the foundational plotting library\nWe’ll cover: line plots, bar charts, scatter plots, and customization\nTwo plotting styles: functional and object-oriented"
-  },
-  {
-    "objectID": "slides/part10_visualization_intro_slides.html#setup",
-    "href": "slides/part10_visualization_intro_slides.html#setup",
-    "title": "Part 10: Intro to Visualization",
-    "section": "Setup",
-    "text": "Setup\n\nimport matplotlib.pyplot as plt\nimport pandas as pd\nimport numpy as np"
-  },
-  {
-    "objectID": "slides/part10_visualization_intro_slides.html#basic-line-plot",
-    "href": "slides/part10_visualization_intro_slides.html#basic-line-plot",
-    "title": "Part 10: Intro to Visualization",
-    "section": "Basic Line Plot",
-    "text": "Basic Line Plot\n\n# Create sample data\nmonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']\nsales = [20000, 25000, 30000, 28000, 35000, 40000]\n\n# Create a simple line plot\nplt.figure(figsize=(10, 6))\nplt.plot(months, sales)\nplt.title('Monthly Sales')\nplt.xlabel('Month')\nplt.ylabel('Sales ($)')\nplt.show()"
-  },
-  {
-    "objectID": "slides/part10_visualization_intro_slides.html#practice-line-plots",
-    "href": "slides/part10_visualization_intro_slides.html#practice-line-plots",
-    "title": "Part 10: Intro to Visualization",
-    "section": "Practice: Line Plots",
-    "text": "Practice: Line Plots\nExercise 1 (with Gemini): Ask Gemini to “create a line plot showing temperature over 7 days”\nExercise 2 (on your own): Type plt.plot([1, 2, 3], [10, 20, 15]) then plt.show() and run it."
-  },
-  {
-    "objectID": "slides/part10_visualization_intro_slides.html#bar-charts",
-    "href": "slides/part10_visualization_intro_slides.html#bar-charts",
-    "title": "Part 10: Intro to Visualization",
-    "section": "Bar Charts",
-    "text": "Bar Charts\n\n# Bar charts are great for comparing categories\ndepartments = ['Sales', 'Engineering', 'Marketing', 'HR']\nemployees = [25, 40, 15, 8]\n\nplt.figure(figsize=(10, 6))\nplt.bar(departments, employees, color=['skyblue', 'lightgreen', 'coral', 'gold'])\nplt.title('Employees by Department')\nplt.xlabel('Department')\nplt.ylabel('Number of Employees')\nplt.show()"
-  },
-  {
-    "objectID": "slides/part10_visualization_intro_slides.html#practice-bar-charts",
-    "href": "slides/part10_visualization_intro_slides.html#practice-bar-charts",
-    "title": "Part 10: Intro to Visualization",
-    "section": "Practice: Bar Charts",
-    "text": "Practice: Bar Charts\nExercise 1 (with Gemini): Ask Gemini to “create a bar chart showing sales for 4 different products”\nExercise 2 (on your own): Type plt.bar(['A', 'B', 'C'], [10, 20, 15]) then plt.show() and run it."
-  },
-  {
-    "objectID": "slides/part10_visualization_intro_slides.html#scatter-plots",
-    "href": "slides/part10_visualization_intro_slides.html#scatter-plots",
-    "title": "Part 10: Intro to Visualization",
-    "section": "Scatter Plots",
-    "text": "Scatter Plots\n\n# Scatter plots show relationships between two variables\nexperience = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\nsalary = [35000, 38000, 42000, 46000, 50000, 55000, 60000, 65000, 70000, 75000]\n\nplt.figure(figsize=(10, 6))\nplt.scatter(experience, salary, color='purple', alpha=0.7, s=100)\nplt.title('Salary vs Years of Experience')\nplt.xlabel('Years of Experience')\nplt.ylabel('Salary ($)')\nplt.show()"
-  },
-  {
-    "objectID": "slides/part10_visualization_intro_slides.html#practice-scatter-plots",
-    "href": "slides/part10_visualization_intro_slides.html#practice-scatter-plots",
-    "title": "Part 10: Intro to Visualization",
-    "section": "Practice: Scatter Plots",
-    "text": "Practice: Scatter Plots\nExercise 1 (with Gemini): Ask Gemini to “create a scatter plot showing the relationship between study hours and test scores”\nExercise 2 (on your own): Type plt.scatter([1, 2, 3, 4], [5, 7, 6, 8]) then plt.show() and run it."
-  },
-  {
-    "objectID": "slides/part10_visualization_intro_slides.html#histograms",
-    "href": "slides/part10_visualization_intro_slides.html#histograms",
-    "title": "Part 10: Intro to Visualization",
-    "section": "Histograms",
-    "text": "Histograms\n\n# Histograms show the distribution of a single variable\nnp.random.seed(42)\ntest_scores = np.random.normal(78, 12, 100)\n\nplt.figure(figsize=(10, 6))\nplt.hist(test_scores, bins=15, color='lightblue', edgecolor='black', alpha=0.7)\nplt.title('Distribution of Test Scores')\nplt.xlabel('Test Score')\nplt.ylabel('Number of Students')\nplt.axvline(test_scores.mean(), color='red', linestyle='--', label=f'Mean: {test_scores.mean():.1f}')\nplt.legend()\nplt.show()"
-  },
-  {
-    "objectID": "slides/part10_visualization_intro_slides.html#two-plotting-styles",
-    "href": "slides/part10_visualization_intro_slides.html#two-plotting-styles",
-    "title": "Part 10: Intro to Visualization",
-    "section": "Two Plotting Styles",
-    "text": "Two Plotting Styles\nFunctional Style (using plt functions):\n\nSimple and intuitive: plt.plot(), plt.scatter()\nGood for single plots\n\nObject-Oriented Style (using axes):\n\nUses figure and axes objects: fig, ax = plt.subplots()\nMore control and flexibility\nEssential for multiple subplots"
-  },
-  {
-    "objectID": "slides/part10_visualization_intro_slides.html#object-oriented-example",
-    "href": "slides/part10_visualization_intro_slides.html#object-oriented-example",
-    "title": "Part 10: Intro to Visualization",
-    "section": "Object-Oriented Example",
-    "text": "Object-Oriented Example\n\n# Create sample data\ndata = {\n    'Quarter': ['Q1', 'Q2', 'Q3', 'Q4'],\n    'Revenue': [150000, 180000, 210000, 190000],\n    'Profit': [30000, 40000, 50000, 40000]\n}\ndf = pd.DataFrame(data)\n\n# Create subplots\nfig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4))\n\nax1.bar(df['Quarter'], df['Revenue'], color='steelblue')\nax1.set_title('Revenue by Quarter')\nax1.set_ylabel('Revenue ($)')\n\nax2.plot(df['Quarter'], df['Profit'], marker='o', color='green')\nax2.set_title('Profit Trend')\nax2.set_ylabel('Profit ($)')\n\nplt.tight_layout()\nplt.show()"
-  },
-  {
-    "objectID": "slides/part10_visualization_intro_slides.html#practice-object-oriented-plotting",
-    "href": "slides/part10_visualization_intro_slides.html#practice-object-oriented-plotting",
-    "title": "Part 10: Intro to Visualization",
-    "section": "Practice: Object-Oriented Plotting",
-    "text": "Practice: Object-Oriented Plotting\nExercise 1 (with Gemini): Ask Gemini to “create a figure with 2 subplots side by side using the object-oriented style”\nExercise 2 (on your own): Type fig, ax = plt.subplots() then ax.plot([1, 2, 3]) then plt.show() and run it."
-  },
-  {
-    "objectID": "slides/part10_visualization_intro_slides.html#styling-with-seaborn-themes",
-    "href": "slides/part10_visualization_intro_slides.html#styling-with-seaborn-themes",
-    "title": "Part 10: Intro to Visualization",
-    "section": "Styling with Seaborn Themes",
-    "text": "Styling with Seaborn Themes\n\nimport seaborn as sns\n\n# Create sample data\nnp.random.seed(42)\nperformance_data = pd.DataFrame({\n    'marketing_spend': np.random.exponential(20000, 150),\n    'revenue': np.random.exponential(50000, 150),\n})\nperformance_data['revenue'] = performance_data['revenue'] + performance_data['marketing_spend'] * 1.5"
-  },
-  {
-    "objectID": "slides/part10_visualization_intro_slides.html#whitegrid-theme",
-    "href": "slides/part10_visualization_intro_slides.html#whitegrid-theme",
-    "title": "Part 10: Intro to Visualization",
-    "section": "Whitegrid Theme",
-    "text": "Whitegrid Theme\n\nsns.set_theme(style=\"whitegrid\")\n\nplt.figure(figsize=(10, 6))\nplt.scatter(performance_data['marketing_spend'], performance_data['revenue'],\n           alpha=0.7, s=60, color='steelblue')\nplt.title(\"Whitegrid Theme\", fontsize=16, fontweight='bold')\nplt.xlabel('Marketing Spend ($)')\nplt.ylabel('Revenue ($)')\nplt.tight_layout()\nplt.show()"
-  },
-  {
-    "objectID": "slides/part10_visualization_intro_slides.html#darkgrid-theme",
-    "href": "slides/part10_visualization_intro_slides.html#darkgrid-theme",
-    "title": "Part 10: Intro to Visualization",
-    "section": "Darkgrid Theme",
-    "text": "Darkgrid Theme\n\nsns.set_theme(style=\"darkgrid\")\n\nplt.figure(figsize=(10, 6))\nplt.scatter(performance_data['marketing_spend'], performance_data['revenue'],\n           alpha=0.7, s=60, color='lightcoral')\nplt.title(\"Darkgrid Theme\", fontsize=16, fontweight='bold')\nplt.xlabel('Marketing Spend ($)')\nplt.ylabel('Revenue ($)')\nplt.tight_layout()\nplt.show()"
-  },
-  {
-    "objectID": "slides/part10_visualization_intro_slides.html#custom-matplotlib-styling",
-    "href": "slides/part10_visualization_intro_slides.html#custom-matplotlib-styling",
-    "title": "Part 10: Intro to Visualization",
-    "section": "Custom Matplotlib Styling",
-    "text": "Custom Matplotlib Styling\n\nplt.rcdefaults()\nfig, ax = plt.subplots(figsize=(10, 6))\n\nax.set_facecolor('#f8f9fa')\nfig.patch.set_facecolor('white')\n\nax.scatter(performance_data['marketing_spend'], performance_data['revenue'],\n          alpha=0.7, s=60, color='#2E86C1', edgecolors='white', linewidth=0.5)\n\nax.set_title('Professional Custom Styling', fontsize=16, fontweight='bold', pad=20)\nax.set_xlabel('Marketing Spend ($)', fontsize=12)\nax.set_ylabel('Revenue ($)', fontsize=12)\nax.grid(True, color='white', linewidth=1.5, alpha=0.8)\n\nplt.tight_layout()\nplt.show()"
-  },
-  {
-    "objectID": "slides/part10_visualization_intro_slides.html#setting-global-font-sizes",
-    "href": "slides/part10_visualization_intro_slides.html#setting-global-font-sizes",
-    "title": "Part 10: Intro to Visualization",
-    "section": "Setting Global Font Sizes",
-    "text": "Setting Global Font Sizes\n\nplt.rc('font', size=14)\nplt.rc('axes', titlesize=18)\nplt.rc('axes', labelsize=16)\nplt.rc('xtick', labelsize=12)\nplt.rc('ytick', labelsize=12)\nplt.rc('legend', fontsize=14)\n\n# Example with larger fonts\nmonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']\nsales = [120, 135, 148, 162, 155, 170]\n\nplt.figure(figsize=(10, 6))\nplt.plot(months, sales, marker='o', linewidth=3, color='navy')\nplt.title('Monthly Sales Growth')\nplt.xlabel('Month')\nplt.ylabel('Sales (thousands)')\nplt.grid(True, alpha=0.3)\nplt.show()"
-  },
-  {
-    "objectID": "slides/part10_visualization_intro_slides.html#time-series-data",
-    "href": "slides/part10_visualization_intro_slides.html#time-series-data",
-    "title": "Part 10: Intro to Visualization",
-    "section": "Time Series Data",
-    "text": "Time Series Data\n\nfrom datetime import datetime\nimport matplotlib.dates as mdates\n\n# Create realistic stock data\nnp.random.seed(42)\ndates = pd.date_range('2022-01-01', periods=730, freq='D')\ntrend = np.linspace(100, 150, 730)\nseasonality = 10 * np.sin(2 * np.pi * np.arange(730) / 365.25)\nnoise = np.random.normal(0, 5, 730)\nstock_price = trend + seasonality + noise\n\nstock_data = pd.DataFrame({\n    'date': dates,\n    'price': stock_price\n})\nstock_data['ma_30'] = stock_data['price'].rolling(window=30).mean()\nstock_data['ma_90'] = stock_data['price'].rolling(window=90).mean()"
-  },
-  {
-    "objectID": "slides/part10_visualization_intro_slides.html#time-series-visualization",
-    "href": "slides/part10_visualization_intro_slides.html#time-series-visualization",
-    "title": "Part 10: Intro to Visualization",
-    "section": "Time Series Visualization",
-    "text": "Time Series Visualization\n\nfig, ax = plt.subplots(figsize=(15, 6))\n\nax.plot(stock_data['date'], stock_data['price'], alpha=0.7, linewidth=1,\n        label='Daily Price', color='black')\nax.plot(stock_data['date'], stock_data['ma_30'], linewidth=2,\n        label='30-Day MA', color='blue')\nax.plot(stock_data['date'], stock_data['ma_90'], linewidth=2,\n        label='90-Day MA', color='red')\n\nax.set_title('Stock Price with Moving Averages', fontsize=14, fontweight='bold')\nax.set_ylabel('Price ($)', fontsize=12)\nax.legend()\nax.grid(True, alpha=0.3)\n\nax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))\nax.xaxis.set_major_locator(mdates.MonthLocator(interval=3))\nplt.setp(ax.xaxis.get_majorticklabels(), rotation=45)\n\nplt.tight_layout()\nplt.show()"
-  },
-  {
-    "objectID": "slides/part10_visualization_intro_slides.html#summary",
-    "href": "slides/part10_visualization_intro_slides.html#summary",
-    "title": "Part 10: Intro to Visualization",
-    "section": "Summary",
-    "text": "Summary\n\nMatplotlib provides powerful visualization tools\nTwo styles: functional (plt.plot()) and object-oriented (ax.plot())\nSeaborn themes simplify professional styling\nCustom styling gives fine-grained control\nTime series require special date formatting\nAlways consider: clarity, readability, and purpose"
-  },
-  {
-    "objectID": "slides/part12_visualization_plotly_slides.html#interactive-html-plots",
-    "href": "slides/part12_visualization_plotly_slides.html#interactive-html-plots",
-    "title": "Part 12: Plotly",
-    "section": "Interactive HTML Plots",
-    "text": "Interactive HTML Plots\nPlotly creates interactive visualizations that allow users to zoom, pan, hover for details, and explore data dynamically. This can be powerful for presentations.\nTo create this, we can:\n\nCreate the plotly figure\nUse fig.write_html to write it to an HTML file\nCopy the HTML file into the directory of your presentation\nUse Insert → Links → Link → Browse and select your HTML file to embed a link in the presentation\n\nThis creates a clickable link within your presentation that opens the HTML file in your default browser."
-  },
-  {
-    "objectID": "slides/part12_visualization_plotly_slides.html#examples-of-plotly-features",
-    "href": "slides/part12_visualization_plotly_slides.html#examples-of-plotly-features",
-    "title": "Part 12: Plotly",
-    "section": "Examples of Plotly Features",
-    "text": "Examples of Plotly Features\nHover data: Show details when hovering over data points - great for explaining differences between categories\nHide/Show plot elements: Click on legend items to hide/show elements - useful for building up explanations step by step\nAnimation: Show how data evolves over time with play button controls\nPan/Zoom: All plotly figures include control elements at the top right for panning, zooming, and other interactions"
-  },
-  {
-    "objectID": "slides/part12_visualization_plotly_slides.html#wages-data",
-    "href": "slides/part12_visualization_plotly_slides.html#wages-data",
-    "title": "Part 12: Plotly",
-    "section": "Wages Data",
-    "text": "Wages Data\nWe’ll use the wages data to demonstrate Plotly visualizations.\n\nimport pandas as pd\nimport plotly.express as px\n\nurl = 'https://faculty.utrgv.edu/diego.escobari/teaching/Datasets/WAGE1.xls'\nwages = pd.read_excel(url, header=None)"
-  },
-  {
-    "objectID": "slides/part12_visualization_plotly_slides.html#preparing-the-data-1",
-    "href": "slides/part12_visualization_plotly_slides.html#preparing-the-data-1",
-    "title": "Part 12: Plotly",
-    "section": "Preparing the Data (1)",
-    "text": "Preparing the Data (1)\n\ncolumns = [\n    'wage', 'educ', 'exper',\n    'tenure', 'nonwhite', 'female',\n    'married', 'numdep',\n    'smsa', 'northcen',\n    'south', 'west', 'construc',\n    'ndurman', 'trcommpu', 'trade',\n    'services', 'profserv',\n    'profocc', 'clerocc', 'servocc',\n    'lwage', 'expersq', 'tenursq'\n]\nwages.columns = columns"
-  },
-  {
-    "objectID": "slides/part12_visualization_plotly_slides.html#preparing-the-data-2",
-    "href": "slides/part12_visualization_plotly_slides.html#preparing-the-data-2",
-    "title": "Part 12: Plotly",
-    "section": "Preparing the Data (2)",
-    "text": "Preparing the Data (2)\n\n# Convert binary variables to categorical\nwages['Gender'] = wages['female'].map({0: 'Male', 1: 'Female'})\nwages['Race'] = wages['nonwhite'].map({0: 'White', 1: 'Non-white'})\nwages['Marital_Status'] = wages['married'].map({0: 'Not Married', 1: 'Married'})\nwages['Urban'] = wages['smsa'].map({0: 'Rural', 1: 'Urban'})"
-  },
-  {
-    "objectID": "slides/part12_visualization_plotly_slides.html#preparing-the-data-3",
-    "href": "slides/part12_visualization_plotly_slides.html#preparing-the-data-3",
-    "title": "Part 12: Plotly",
-    "section": "Preparing the Data (3)",
-    "text": "Preparing the Data (3)\n\n# Create region categories\ndef get_region(row):\n    if row['northcen'] == 1:\n        return 'North Central'\n    elif row['south'] == 1:\n        return 'South'\n    elif row['west'] == 1:\n        return 'West'\n    else:\n        return 'Northeast'\n\nwages['Region'] = wages.apply(get_region, axis=1)"
-  },
-  {
-    "objectID": "slides/part12_visualization_plotly_slides.html#preparing-the-data-4",
-    "href": "slides/part12_visualization_plotly_slides.html#preparing-the-data-4",
-    "title": "Part 12: Plotly",
-    "section": "Preparing the Data (4)",
-    "text": "Preparing the Data (4)\n\n# Create industry categories\ndef get_industry(row):\n    if row['construc'] == 1:\n        return 'Construction'\n    elif row['ndurman'] == 1:\n        return 'Non-durable Manufacturing'\n    elif row['trcommpu'] == 1:\n        return 'Transportation/Communications'\n    elif row['trade'] == 1:\n        return 'Trade'\n    elif row['services'] == 1:\n        return 'Services'\n    elif row['profserv'] == 1:\n        return 'Professional Services'\n    else:\n        return 'Other'\n\nwages['Industry'] = wages.apply(get_industry, axis=1)"
-  },
-  {
-    "objectID": "slides/part12_visualization_plotly_slides.html#preparing-the-data-5",
-    "href": "slides/part12_visualization_plotly_slides.html#preparing-the-data-5",
-    "title": "Part 12: Plotly",
-    "section": "Preparing the Data (5)",
-    "text": "Preparing the Data (5)\n\n# Create occupation categories\ndef get_occupation(row):\n    if row['profocc'] == 1:\n        return 'Professional'\n    elif row['clerocc'] == 1:\n        return 'Clerical'\n    elif row['servocc'] == 1:\n        return 'Service'\n    else:\n        return 'Other'\n\nwages['Occupation'] = wages.apply(get_occupation, axis=1)"
-  },
-  {
-    "objectID": "slides/part12_visualization_plotly_slides.html#preparing-the-data-6",
-    "href": "slides/part12_visualization_plotly_slides.html#preparing-the-data-6",
-    "title": "Part 12: Plotly",
-    "section": "Preparing the Data (6)",
-    "text": "Preparing the Data (6)\n\n# Create education and experience categories\nwages['Education_Level'] = pd.cut(wages['educ'],\n                                 bins=[0, 12, 16, 25],\n                                 labels=['High School or Less', 'Some College', 'College Plus'])\n\nwages['Experience_Level'] = pd.cut(wages['exper'],\n                                  bins=[0, 5, 15, 60],\n                                  labels=['Low (0-5)', 'Mid (6-15)', 'High (16+)'])\n\n# Drop unnecessary columns\nwages = wages.drop(columns=wages.columns[4:-9])\n\n# Create combined Gender_Race column\nwages['Gender_Race'] = [\n    x + ' ' + y for x, y in zip(wages['Gender'], wages['Race'])\n]"
-  },
-  {
-    "objectID": "slides/part12_visualization_plotly_slides.html#creating-a-plotly-box-plot",
-    "href": "slides/part12_visualization_plotly_slides.html#creating-a-plotly-box-plot",
-    "title": "Part 12: Plotly",
-    "section": "Creating a Plotly Box Plot",
-    "text": "Creating a Plotly Box Plot\n\nfig = px.box(wages,\n            x='Education_Level',\n            y='wage',\n            title='Wage Distribution by Gender and Race',\n            labels={'Gender_Race': 'Demographic Group',\n                   'wage': 'Hourly Wage ($)',\n                   'Education_Level': ''},\n            template='plotly_white',\n            color='Gender_Race')\n\nfig.update_layout(\n    height=400,\n    xaxis_tickangle=-45,\n)\nfig.show()"
-  },
-  {
-    "objectID": "slides/part12_visualization_plotly_slides.html#practice-plotly-visualizations",
-    "href": "slides/part12_visualization_plotly_slides.html#practice-plotly-visualizations",
-    "title": "Part 12: Plotly",
-    "section": "Practice: Plotly Visualizations",
-    "text": "Practice: Plotly Visualizations\nExercise 1 (with Gemini): Ask Gemini to “create an interactive Plotly box plot comparing values across different categories”\nExercise 2 (on your own): Type import plotly.express as px then fig = px.scatter(x=[1, 2, 3], y=[4, 5, 6]) then fig.show() and run it."
-  },
-  {
-    "objectID": "slides/part12_visualization_plotly_slides.html#saving-to-html",
-    "href": "slides/part12_visualization_plotly_slides.html#saving-to-html",
-    "title": "Part 12: Plotly",
-    "section": "Saving to HTML",
-    "text": "Saving to HTML\nTo save your Plotly figure as an HTML file for use in presentations:\nfig.write_html('wage_distribution.html')\nThis creates an interactive HTML file that can be:\n\nEmbedded in PowerPoint presentations via links\nShared directly with colleagues\nPublished on websites\nOpened in any web browser"
-  },
-  {
-    "objectID": "slides/part14_goal_seek_slides.html#what-is-goal-seek",
-    "href": "slides/part14_goal_seek_slides.html#what-is-goal-seek",
-    "title": "Part 14: Goal Seek",
-    "section": "What is Goal Seek?",
-    "text": "What is Goal Seek?\nExcel’s Goal Seek changes one input cell to achieve a desired value in a formula cell. Python’s fsolve does that, but it can also solve for multiple input values simultaneously.\nPython fsolve:\n\nDefine an equation that equals zero at your target\nfsolve finds the input(s) that makes it zero\n\nfsolve returns a numpy array. The elements of that array are extracted as arr[0], arr[1], etc."
-  },
-  {
-    "objectID": "slides/part14_goal_seek_slides.html#import-libraries",
-    "href": "slides/part14_goal_seek_slides.html#import-libraries",
-    "title": "Part 14: Goal Seek",
-    "section": "Import Libraries",
-    "text": "Import Libraries\n\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nfrom scipy.optimize import minimize, fsolve\nfrom scipy.linalg import solve\nimport warnings\nwarnings.filterwarnings('ignore')"
-  },
-  {
-    "objectID": "slides/part14_goal_seek_slides.html#simple-example-quadratic-equation",
-    "href": "slides/part14_goal_seek_slides.html#simple-example-quadratic-equation",
-    "title": "Part 14: Goal Seek",
-    "section": "Simple Example: Quadratic Equation",
-    "text": "Simple Example: Quadratic Equation\nFind the values of x that make x² - 5x + 6 = 0\nWe know from algebra (factoring or quadratic formula) that there are two solutions: x = 2 and x = 3.\n\n# STEP 1: Define a function that is zero at the value we want to find\ndef function_to_find_zero(x):\n    return x**2 - 5*x + 6\n\n# STEP 2: Find solution(s). Vary initial values to look for multiple solutions.\ninitial_value1 = 0\nsolution1 = fsolve(function_to_find_zero, initial_value1)\ninitial_value2 = 5\nsolution2 = fsolve(function_to_find_zero, initial_value2)\n\nprint(f\"Starting near 0: solution = {solution1}\")\nprint(f\"Starting near 5: solution = {solution2}\")\n\nStarting near 0: solution = [2.]\nStarting near 5: solution = [3.]"
-  },
-  {
-    "objectID": "slides/part14_goal_seek_slides.html#practice-using-fsolve",
-    "href": "slides/part14_goal_seek_slides.html#practice-using-fsolve",
-    "title": "Part 14: Goal Seek",
-    "section": "Practice: Using fsolve",
-    "text": "Practice: Using fsolve\nExercise 1 (with Gemini): Ask Gemini to “use fsolve to find the value of x where x^2 - 9 = 0”\nExercise 2 (on your own): Type from scipy.optimize import fsolve then fsolve(lambda x: x - 5, 0) and run it to find where x - 5 = 0."
-  },
-  {
-    "objectID": "slides/part14_goal_seek_slides.html#verify-the-solutions",
-    "href": "slides/part14_goal_seek_slides.html#verify-the-solutions",
-    "title": "Part 14: Goal Seek",
-    "section": "Verify the Solutions",
-    "text": "Verify the Solutions\n\nprint(f\"2**2 - 5*2 + 6 = {function_to_find_zero(2)}\")\nprint(f\"3**2 - 5*3 + 6 = {function_to_find_zero(3)}\")\n\n2**2 - 5*2 + 6 = 0\n3**2 - 5*3 + 6 = 0"
-  },
-  {
-    "objectID": "slides/part14_goal_seek_slides.html#business-example-npv-break-even-analysis",
-    "href": "slides/part14_goal_seek_slides.html#business-example-npv-break-even-analysis",
-    "title": "Part 14: Goal Seek",
-    "section": "Business Example: NPV Break-Even Analysis",
-    "text": "Business Example: NPV Break-Even Analysis\nWhat annual sales volume gives NPV = 0?\nProject assumptions:\n\nInitial CapEx: $100,000\nProject Life: 5 years\nDiscount Rate: 10%\nUnit Price: $50\nCOGS per Unit: $25\nAnnual SG&A: $5,000\nTax Rate: 30%\nNWC: $9 per unit\nDepreciation: Straight-line"
-  },
-  {
-    "objectID": "slides/part14_goal_seek_slides.html#npv-calculation-function",
-    "href": "slides/part14_goal_seek_slides.html#npv-calculation-function",
-    "title": "Part 14: Goal Seek",
-    "section": "NPV Calculation Function",
-    "text": "NPV Calculation Function\n\n# Project assumptions\ninitial_capex = 100000\nproject_life = 5\ndiscount_rate = 0.10\nunit_price = 50\ncogs_per_unit = 25\nsga_annual = 5000\ntax_rate = 0.30\nnwc_per_unit = 9\nannual_depreciation = initial_capex / project_life"
-  },
-  {
-    "objectID": "slides/part14_goal_seek_slides.html#npv-calculation-function-continued",
-    "href": "slides/part14_goal_seek_slides.html#npv-calculation-function-continued",
-    "title": "Part 14: Goal Seek",
-    "section": "NPV Calculation Function (continued)",
-    "text": "NPV Calculation Function (continued)\n\ndef calculate_npv(annual_qty):\n    \"\"\"Calculate NPV for a given annual sales quantity\"\"\"\n    cash_flows = [-initial_capex]  # Year 0: Initial investment\n    nwc_balances = []\n\n    for year in range(1, project_life + 1):\n        # Annual financial calculations\n        sales = annual_qty * unit_price\n        cogs = annual_qty * cogs_per_unit\n        gross_profit = sales - cogs\n        ebitda = gross_profit - sga_annual\n        ebit = ebitda - annual_depreciation\n        net_income = ebit * (1 - tax_rate)\n\n        # Net Working Capital\n        nwc = annual_qty * nwc_per_unit\n        nwc_balances.append(nwc)\n\n        if year == 1:\n            change_nwc = nwc\n        else:\n            change_nwc = nwc - nwc_balances[year-2]\n\n        # Cash Flow\n        if year &lt; project_life:\n            cash_flow = net_income + annual_depreciation - change_nwc\n        else:\n            cash_flow = net_income + annual_depreciation + nwc\n\n        cash_flows.append(cash_flow)\n\n    # Calculate NPV\n    npv = 0\n    for year, cf in enumerate(cash_flows):\n        npv += cf / (1 + discount_rate)**year\n\n    return npv"
-  },
-  {
-    "objectID": "slides/part14_goal_seek_slides.html#test-npv-function",
-    "href": "slides/part14_goal_seek_slides.html#test-npv-function",
-    "title": "Part 14: Goal Seek",
-    "section": "Test NPV Function",
-    "text": "Test NPV Function\n\n# Demonstrate NPV calculation with example quantity\nexample_qty = 5000\nexample_npv = calculate_npv(example_qty)\nprint(f\"At {example_qty:,} units/year, NPV = ${example_npv:,.0f}\")\n\nAt 5,000 units/year, NPV = $228,203"
-  },
-  {
-    "objectID": "slides/part14_goal_seek_slides.html#find-break-even-volume",
-    "href": "slides/part14_goal_seek_slides.html#find-break-even-volume",
-    "title": "Part 14: Goal Seek",
-    "section": "Find Break-Even Volume",
-    "text": "Find Break-Even Volume\n\n# We want to set NPV = 0, so we can use calculate_npv as function_to_find_zero\ninitial_guess = 4000\nbreakeven_qty = fsolve(calculate_npv, initial_guess)[0]\nprint(f\"Required Annual Sales Volume: {breakeven_qty:,.0f} units\")\n\n# Verify NPV = 0\nverification_npv = calculate_npv(breakeven_qty)\nprint(f\"NPV at break-even volume: ${verification_npv:,.2f}\")\n\nRequired Annual Sales Volume: 1,420 units\nNPV at break-even volume: $0.00"
-  },
-  {
-    "objectID": "slides/part14_goal_seek_slides.html#scipy.optimize.minimize",
-    "href": "slides/part14_goal_seek_slides.html#scipy.optimize.minimize",
-    "title": "Part 14: Goal Seek",
-    "section": "scipy.optimize.minimize",
-    "text": "scipy.optimize.minimize\nWhile fsolve finds where functions equal zero, minimize finds where functions reach their lowest value.\nImportant attributes of the result object:\n\nresult.success: was the minimization successful (True or False)\nresult.x: the value of x that minimizes the function\nresult.fun: the value of the function at the minimum"
-  },
-  {
-    "objectID": "slides/part14_goal_seek_slides.html#minimize-example",
-    "href": "slides/part14_goal_seek_slides.html#minimize-example",
-    "title": "Part 14: Goal Seek",
-    "section": "Minimize Example",
-    "text": "Minimize Example\nFind the value of x that minimizes f(x) = x² - 4x + 7\n\ndef function_to_minimize(x):\n    return x**2 - 4*x + 7\n\ninitial_guess = 0\nresult = minimize(function_to_minimize, initial_guess)\n\nprint(f'Was the minimization successful? {result.success}')\nprint(f'What is the minimizing value of x? {result.x}')\nprint(f'What is the value of the function at the minimum? {result.fun}')\n\nWas the minimization successful? True\nWhat is the minimizing value of x? [2.00000002]\nWhat is the value of the function at the minimum? 3.0"
-  },
-  {
-    "objectID": "slides/part14_goal_seek_slides.html#practice-minimize",
-    "href": "slides/part14_goal_seek_slides.html#practice-minimize",
-    "title": "Part 14: Goal Seek",
-    "section": "Practice: Minimize",
-    "text": "Practice: Minimize\nExercise 1 (with Gemini): Ask Gemini to “use scipy.optimize.minimize to find the minimum of the function f(x) = x^2 + 3x + 2”\nExercise 2 (on your own): Type from scipy.optimize import minimize then result = minimize(lambda x: x**2, 5) then print(result.x) and run it."
-  },
-  {
-    "objectID": "slides/part14_goal_seek_slides.html#maximization-via-minimization",
-    "href": "slides/part14_goal_seek_slides.html#maximization-via-minimization",
-    "title": "Part 14: Goal Seek",
-    "section": "Maximization via Minimization",
-    "text": "Maximization via Minimization\nTo solve a maximize problem, we minimize the negative of the function.\nKey Concept: The x value that minimizes -f(x) is the SAME x value that maximizes f(x)\nExample:\n\nTo maximize profit π(Q) = 80Q - 2Q² - 500\nWe minimize -π(Q) = -80Q + 2Q² + 500"
+    "section": "Python for MBA Students",
+    "text": "Python for MBA Students\nA 3-hour overview of Python fundamentals — designed for MBA students who will use AI to write code but need to understand what Python looks like and how it works.\n\nMaterials\n\nSlide Deck: Python for MBA Students\nCompanion Exercises (Google Colab)\n\n\n\nTopics Covered\n\nBig Picture — how Python runs, scripts vs. notebooks, Google Colab\nLibraries — pandas, NumPy, matplotlib; reading data; method chaining\nThe 6 Patterns — objects & types, variables, collections, conditionals, loops, functions & methods\nPattern Spotting — reading AI-generated code examples\nWorking with Data — pandas pipelines, visualization\n\n\n\nAdditional Resources\n\nPython Tutor — visualize code execution step by step\nPython Cheat Sheet — concise syntax reference\nAutomate the Boring Stuff with Python — free online book\nReal Python — tutorials and articles"
   }
 ]

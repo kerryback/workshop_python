@@ -1,0 +1,728 @@
+---
+title: "Python for MBA Students"
+subtitle: "A Practical Overview"
+author: "Kerry Back, Rice University"
+format:
+  revealjs:
+    theme: [default, revealjs-style.scss]
+    slide-number: c
+    transition: fade
+    navigation-mode: linear
+    width: 1920
+    height: 1080
+    margin: 0.05
+    center: true
+    highlight-style: github
+---
+
+## AI Writes the Code. You Read It.
+
+::: {.two-cards}
+::: {.card .card-dark}
+[The new reality]{.card-title}
+
+- GitHub Copilot, ChatGPT, Claude generate working Python in seconds
+- You describe what you want — AI writes the code
+- This is already how many analysts and managers work
+:::
+
+::: {.card .card-light}
+[What this session gives you]{.card-title}
+
+- Recognize what Python code is doing
+- Understand the output well enough to judge whether it's right
+- Know enough vocabulary to ask AI better questions
+- Follow along when a colleague walks through code
+:::
+:::
+
+::: {.highlight-box}
+**Goal today:** Build enough vocabulary to *read and understand* Python — not to write it from memory.
+:::
+
+---
+
+## Here's What Python Looks Like
+
+```python
+# profit_margins.py
+
+products = ["Widget", "Gadget", "Doohickey"]
+revenues = [120_000,  85_000,  200_000]
+costs    = [ 80_000,  60_000,  140_000]
+
+for i in range(len(products)):
+    margin = (revenues[i] - costs[i]) / revenues[i]
+    print(f"{products[i]}: {margin:.1%} margin")
+```
+
+::: {.highlight-box}
+Running this prints the profit margin for each product. By the end of this session you'll be able to name every pattern in that code.
+:::
+
+---
+
+## How Python Runs
+
+::: {.mermaid-sm}
+```{mermaid}
+flowchart LR
+    P["Python Code"] -->|"interpreted"| M["Python VM<br/>(bytecode)"]
+    P -->|"calls"| C["C / Fortran<br/>Libraries"]
+    C -->|"precompiled"| M
+```
+:::
+
+::: {.info-box}
+[Two paths to execution]{.box-title}
+
+- **Interpreted:** Python compiles your code to bytecode, which the Python runtime executes — flexible, but slower than native code
+- **Precompiled:** Libraries like pandas and NumPy are written in C/Fortran, compiled to machine code *ahead of time* — called by Python, runs at near-native speed
+:::
+
+---
+
+## Scripts and Notebooks
+
+::: {.two-col}
+:::{}
+**Script** — a `.py` file, runs top to bottom
+
+```python
+# profit_margins.py
+products = ["Widget", "Gadget", "Doohickey"]
+revenues = [120_000,  85_000,  200_000]
+costs    = [ 80_000,  60_000,  140_000]
+
+for i in range(len(products)):
+    margin = (revenues[i] - costs[i]) / revenues[i]
+    print(f"{products[i]}: {margin:.1%} margin")
+```
+
+Run from terminal: `python profit_margins.py`
+:::
+
+:::{}
+**Notebook** — cells you run one at a time
+
+**Cell 1:**
+```python
+products = ["Widget", "Gadget", "Doohickey"]
+revenues = [120_000,  85_000,  200_000]
+costs    = [ 80_000,  60_000,  140_000]
+```
+
+**Cell 2:**
+```python
+for i in range(len(products)):
+    margin = (revenues[i] - costs[i]) / revenues[i]
+    print(f"{products[i]}: {margin:.1%} margin")
+```
+:::
+:::
+
+::: {.highlight-box}
+Same code — different containers. Notebooks let you run one piece at a time and inspect the result. We'll use Google Colab (a free notebook environment) today.
+:::
+
+---
+
+## Google Colab
+
+::: {.info-box}
+[Your notebook environment today]{.box-title}
+
+- Free, runs in your browser — nothing to install
+- Go to **colab.research.google.com**
+- Open the companion notebook (link on course page)
+- **Shift + Enter** — run a cell and move to the next
+- **Ctrl + Enter** — run a cell and stay on it
+:::
+
+::: {.highlight-box}
+We'll use Colab in the second half of the session. For now, follow along on the slides.
+:::
+
+---
+
+## Libraries {.section-divider}
+
+---
+
+## What Is a Library?
+
+A **library** is a collection of pre-built code you can import and use.
+
+::: {.info-box}
+[Key libraries for business]{.box-title}
+
+| Library | What it does |
+|---------|-------------|
+| `pandas` | Data tables — read, clean, reshape, summarize |
+| `numpy` | Fast math on arrays of numbers |
+| `matplotlib` | Charts and plots |
+| `seaborn` | Statistical visualization |
+:::
+
+::: {.highlight-box}
+Hundreds more exist — for machine learning (`scikit-learn`), optimization (`scipy`), web APIs, and more. `import pandas as pd` means: *load pandas and call it `pd` for short.*
+:::
+
+---
+
+## Reading a CSV File
+
+```python
+import pandas as pd
+
+df = pd.read_csv("sales.csv")
+df.head()
+```
+
+```
+   region      product   revenue   units
+0    East      Widget    42000      210
+1    West      Gadget    31500      180
+2   North      Widget    28000      140
+3    East     Doohickey  19500       95
+4   South      Gadget    22000      125
+```
+
+::: {.highlight-box}
+`df` is a **DataFrame** — think of it as a spreadsheet in Python. `df.head()` shows the first 5 rows.
+:::
+
+---
+
+## Method Chaining
+
+One line that groups, sums, and plots:
+
+```python
+df.groupby("region")["revenue"].sum().plot(kind="bar", title="Revenue by Region")
+```
+
+::: {.info-box}
+[Reading left to right]{.box-title}
+
+| Step | Code | Returns |
+|------|------|---------|
+| 1 | `df.groupby("region")` | grouped data object |
+| 2 | `["revenue"]` | revenue values per group |
+| 3 | `.sum()` | total revenue per region |
+| 4 | `.plot(kind="bar")` | bar chart |
+:::
+
+::: {.highlight-box}
+**Each method returns an object; the next method acts on that object.** Under the hood, pandas runs these operations as precompiled C code — which is why it handles millions of rows without slowing down. This is the precompiled path from the earlier diagram.
+:::
+
+---
+
+## Break {.section-divider}
+
+---
+
+## The 6 Patterns {.section-divider}
+
+---
+
+## Almost All Python Is Built From 6 Patterns
+
+| # | Pattern | One-liner example |
+|---|---------|-------------------|
+| 1 | **Objects & Types** | `42` · `3.14` · `"hello"` · `True` |
+| 2 | **Variables** | `price = 182.50` |
+| 3 | **Collections** | `["AAPL", "GOOGL"]` · `{"ticker": "AAPL"}` |
+| 4 | **Conditionals** | `if revenue > target: ...` |
+| 5 | **Loops** | `for company in portfolio: ...` |
+| 6 | **Functions & Methods** | `len(items)` · `text.upper()` |
+
+::: {.info-box}
+[You'll also encounter]{.box-title}
+
+- **List comprehensions** — a compact loop on one line: `[x * 2 for x in prices]` — this is Pattern 5 written in shorthand
+- **try / except** — error handling: `try: ... except: ...` — guards code that might fail (bad data, missing file)
+:::
+
+---
+
+## How to Spot Each Pattern
+
+| Pattern | What to look for |
+|---------|-----------------|
+| **Objects & Types** | Literal values: `42`, `3.14`, `"text"`, `True` / `False` |
+| **Variables** | `name = value` — a single `=` sign |
+| **Collections** | `[...]` = list (ordered) · `{key: value, ...}` = dictionary |
+| **Conditionals** | `if` / `elif` / `else` followed by `:` and an indented block |
+| **Loops** | `for ... in ...:` or `while ...:` followed by an indented block |
+| **Functions & Methods** | `name(...)` = function · `object.method(...)` = method |
+| **List comprehension** | `[expr for item in collection]` — compact loop inside brackets |
+| **try / except** | `try:` + indented block, then `except:` + error handler |
+
+---
+
+## Pattern Spotting {.section-divider}
+
+---
+
+## Example 1
+
+::: {.columns}
+::: {.column width="57%"}
+
+```python
+revenue = 383_285_000_000
+costs   = 223_546_000_000
+profit  = revenue - costs
+margin  = profit / revenue
+
+if margin > 0.25:
+    print(f"High margin: {margin:.1%}")
+else:
+    print(f"Lower margin: {margin:.1%}")
+```
+
+:::
+::: {.column width="43%"}
+
+::: {.info-box}
+[Patterns]{.box-title}
+
+- **② Variables** — lines 1–4, each `name = value`
+- **① Objects & Types** — large integers; `0.25` is a float
+- **④ Conditional** — `if / else` with indented blocks
+- **⑥ Functions** — `print(...)` called twice
+:::
+
+:::
+:::
+
+---
+
+## Example 2
+
+::: {.columns}
+::: {.column width="57%"}
+
+```python
+tickers = ["AAPL", "GOOGL", "MSFT"]
+prices  = [182.50, 141.80, 378.90]
+shares  = [100, 50, 75]
+
+total = 0
+for i in range(len(tickers)):
+    value = prices[i] * shares[i]
+    total += value
+    print(f"{tickers[i]}: ${value:,.0f}")
+```
+
+:::
+::: {.column width="43%"}
+
+::: {.info-box}
+[Patterns]{.box-title}
+
+- **③ Collections** — three lists `[...]`
+- **② Variables** — `total`, `value`, `i`
+- **⑤ Loop** — `for i in range(...):`
+- **⑥ Functions** — `len(...)`, `range(...)`, `print(...)`
+- **⑤ Accumulator** — `total += value` inside loop
+:::
+
+:::
+:::
+
+---
+
+## Example 3
+
+::: {.columns}
+::: {.column width="57%"}
+
+```python
+portfolio = [
+    {"ticker": "AAPL", "shares": 100, "price": 182.50},
+    {"ticker": "MSFT", "shares":  75, "price": 378.90},
+    {"ticker": "GOOGL","shares":  50, "price": 141.80},
+]
+
+values = [h["shares"] * h["price"] for h in portfolio]
+total  = sum(values)
+print(f"Portfolio value: ${total:,.2f}")
+```
+
+:::
+::: {.column width="43%"}
+
+::: {.info-box}
+[Patterns]{.box-title}
+
+- **③ Collections** — list of dictionaries `[{...}, ...]`
+- **List comprehension** — compact `for` loop in brackets
+- **② Variables** — `values`, `total`
+- **⑥ Functions** — `sum(...)`, `print(...)`
+- **① Objects** — strings and floats as dict values
+:::
+
+:::
+:::
+
+---
+
+## Example 4
+
+::: {.columns}
+::: {.column width="57%"}
+
+```python
+def assess_margin(revenue, costs):
+    margin = (revenue - costs) / revenue
+    if margin > 0.30:
+        return "strong"
+    elif margin > 0.15:
+        return "adequate"
+    else:
+        return "weak"
+
+rating = assess_margin(500_000, 320_000)
+print(f"Margin rating: {rating}")
+```
+
+:::
+::: {.column width="43%"}
+
+::: {.info-box}
+[Patterns]{.box-title}
+
+- **⑥ Function def** — `def` keyword, parameters, `return`
+- **② Variables** — `margin`, `rating`
+- **① Objects** — floats `0.30`, `0.15`; strings
+- **④ Conditional** — `if / elif / else` inside the function
+- **⑥ Function call** — `assess_margin(500_000, 320_000)`
+:::
+
+:::
+:::
+
+---
+
+## Example 5
+
+::: {.columns}
+::: {.column width="57%"}
+
+```python
+companies = ["apple inc.", "microsoft corp.", "alphabet inc."]
+suffixes  = ["inc.", "corp.", "ltd."]
+
+for company in companies:
+    clean = company.title()
+    has_suffix = any(s in company for s in suffixes)
+    if has_suffix:
+        print(f"  {clean}  ✓")
+    else:
+        print(f"  {clean}")
+```
+
+:::
+::: {.column width="43%"}
+
+::: {.info-box}
+[Patterns]{.box-title}
+
+- **③ Collections** — two lists
+- **⑤ Loop** — `for company in companies:`
+- **② Variables** — `clean`, `has_suffix`
+- **⑥ Method** — `.title()` on a string object
+- **④ Conditional** — `if has_suffix:`
+- **⑥ Functions** — `any(...)`, `print(...)`
+:::
+
+:::
+:::
+
+---
+
+## Example 6
+
+::: {.columns}
+::: {.column width="57%"}
+
+```python
+import pandas as pd
+
+df = pd.read_csv("sales.csv")
+
+tech    = df[df["sector"] == "Technology"]
+summary = tech.groupby("region")["revenue"].sum()
+top     = summary.idxmax()
+
+print(f"Top tech region: {top}")
+print(f"Revenue: ${summary[top]:,.0f}")
+```
+
+:::
+::: {.column width="43%"}
+
+::: {.info-box}
+[Patterns]{.box-title}
+
+- **Library** — `import pandas as pd`
+- **② Variables** — `df`, `tech`, `summary`, `top`
+- **④ Conditional filter** — `df[df["sector"] == "Technology"]`
+- **⑥ Method chain** — `.groupby(...)[...].sum()`
+- **⑥ Methods** — `.idxmax()`, `.read_csv()`
+- **⑥ Functions** — `print(...)`
+:::
+
+:::
+:::
+
+---
+
+## Break {.section-divider}
+
+---
+
+## Colab + Gemini {.section-divider}
+
+---
+
+## Using Gemini in Colab
+
+::: {.info-box}
+[How to get code from Gemini]{.box-title}
+
+1. Open the companion notebook in Google Colab
+2. Click the **Gemini** sparkle icon (top right) — or use a new code cell
+3. Type your prompt describing what you want Python to do
+4. Gemini generates code — click **Insert** to add it to a cell
+5. Run the cell with **Shift + Enter**
+:::
+
+::: {.highlight-box}
+For each prompt on the following slides: type it into Gemini, run the code, then use the "How to Spot Each Pattern" table to identify what's in the result.
+:::
+
+---
+
+## Prompt 1: Investment Growth
+
+::: {.info-box}
+[Type this into Gemini]{.box-title}
+
+*"Write a Python function that calculates the future value of an investment given a starting amount, annual return rate, and number of years. Then call the function to show how $10,000 grows at 7% over 10, 20, and 30 years. Print the results in a formatted table."*
+:::
+
+**After Gemini generates the code, look for:**
+
+- A `def` block — the function definition **(Pattern ⑥)**
+- `**` — exponentiation for compounding math **(Pattern ①)**
+- A loop to call the function for each time horizon **(Pattern ⑤)**
+- `print()` with f-string formatting **(Pattern ⑥)**
+
+---
+
+## Prompt 2: Sales Summary
+
+::: {.info-box}
+[Type this into Gemini]{.box-title}
+
+*"Write Python code that defines a list of 12 monthly sales figures. Calculate the best month, worst month, and monthly average. Also count how many months exceeded the average. Print a formatted summary report."*
+:::
+
+**After Gemini generates the code, look for:**
+
+- A list of numbers **(Pattern ③)**
+- Built-in functions: `max()`, `min()`, `sum()`, `len()` **(Pattern ⑥)**
+- A loop or list comprehension to count months above average **(Pattern ⑤)**
+- A conditional inside the loop **(Pattern ④)**
+
+---
+
+## Prompt 3: Employee Filter
+
+::: {.info-box}
+[Type this into Gemini]{.box-title}
+
+*"Write Python code with a list of 6 employees. Each employee should have a name, department, and salary. Loop through the list and print the name and salary of anyone earning more than $80,000. At the end, print how many employees qualified."*
+:::
+
+**After Gemini generates the code, look for:**
+
+- A list of dictionaries — one dict per employee **(Pattern ③)**
+- A `for` loop iterating over the list **(Pattern ⑤)**
+- A conditional `if` checking the salary **(Pattern ④)**
+- An accumulator counting the matches **(Pattern ⑤)**
+
+---
+
+## Prompt 4: Company Rankings
+
+::: {.info-box}
+[Type this into Gemini]{.box-title}
+
+*"Write Python code with a list of 4 large companies, each with a name, annual revenue, and annual costs. Write a function to calculate profit margin. Sort the companies from highest to lowest margin and print a numbered ranking with each company's margin formatted as a percentage."*
+:::
+
+**After Gemini generates the code, look for:**
+
+- A list of dictionaries **(Pattern ③)**
+- A `def` function with a `return` statement **(Pattern ⑥)**
+- A sort — look for `sorted()` or `.sort()` with a `key=` argument **(Pattern ⑥)**
+- A loop with `enumerate()` for the numbering **(Pattern ⑤)**
+
+---
+
+## Prompt 5: Pandas Analysis — All 6 Patterns
+
+::: {.info-box}
+[Type this into Gemini]{.box-title}
+
+*"Write Python code using pandas that creates a DataFrame with columns for region, product, revenue, and units (at least 8 rows of made-up data). Then calculate total revenue and average revenue per unit for each region. Show the results sorted by total revenue, highest first."*
+:::
+
+**This is the synthesis prompt.** In roughly 15 lines, you should find all 6 patterns:
+
+```python
+import pandas as pd          # library import
+data = {...}                 # ③ dictionary → collection
+df = pd.DataFrame(data)      # ⑥ function call
+df.groupby(...).agg(...).sort_values(...)  # ⑥ method chain
+```
+
+**Can you name the pattern for every line Gemini produces?**
+
+---
+
+## Working with Data {.section-divider}
+
+---
+
+## pandas — Analysis in One Pipeline
+
+A complete analysis in a single method chain:
+
+```python
+import pandas as pd
+
+df = pd.read_csv("sales.csv")
+
+(df
+    .query("revenue > 10_000")              # filter rows
+    .groupby("region")["revenue"]           # group by region
+    .sum()                                  # aggregate
+    .sort_values(ascending=False)           # sort high to low
+    .plot(kind="bar", title="Revenue by Region")   # chart
+)
+```
+
+::: {.highlight-box}
+Every step is **Pattern ⑥ — Methods**: each returns an object, and the next method acts on it. This is the method chaining pattern you'll see throughout AI-generated pandas code.
+:::
+
+---
+
+## pandas — More Capabilities
+
+A taste of what else pandas can do:
+
+```python
+# Combine two tables on a shared key (like VLOOKUP)
+df = pd.merge(prices, company_info, on="ticker")
+
+# Reshape: rows → columns (like a pivot table)
+df.pivot_table(values="revenue", index="quarter", columns="region")
+
+# Find missing data
+df.isnull().sum()
+
+# Summary statistics in one call
+df.describe()
+```
+
+::: {.highlight-box}
+Each of these is a **method call (Pattern ⑥)**. When AI generates code for data tasks, it will use pandas. Recognizing the method-chain pattern tells you what each line is doing — even if you don't know the specific method name.
+:::
+
+---
+
+## Visualization
+
+The same method-chaining pattern — different `kind=`:
+
+```python
+# Distribution of one variable
+df["revenue"].plot(kind="hist", bins=20)
+
+# Comparison across categories
+df.groupby("region")["revenue"].sum().plot(kind="bar")
+
+# Relationship between two variables
+df.plot(kind="scatter", x="units", y="revenue")
+
+# Trend over time
+df.set_index("date")["revenue"].plot(kind="line")
+```
+
+::: {.highlight-box}
+Different charts, same pattern: build a series or DataFrame, call `.plot(kind=...)`. When you see a visualization in AI-generated code, look for this pattern — then look at what `kind=` is set to.
+:::
+
+---
+
+## Back to the Beginning
+
+```python
+products = ["Widget", "Gadget", "Doohickey"]   # ③ List — a collection
+revenues = [120_000,  85_000,  200_000]          # ③ List — a collection
+costs    = [ 80_000,  60_000,  140_000]          # ③ List — a collection
+
+for i in range(len(products)):                   # ⑤ Loop + ⑥ Functions
+    margin = (revenues[i] - costs[i]) / revenues[i]  # ② Variables + ① Math
+    print(f"{products[i]}: {margin:.1%} margin")     # ⑥ Function + f-string
+```
+
+::: {.highlight-box}
+This is the same code from slide 2. Every line is one of the 6 patterns. You now have the vocabulary to read it — and to read the code AI generates for you.
+:::
+
+---
+
+## Summary
+
+::: {.three-cards}
+::: {.card .card-dark}
+[How Python works]{.card-title}
+
+- Near-English instructions
+- Scripts run top-to-bottom
+- Notebooks run cell-by-cell
+- Libraries call precompiled C code
+:::
+
+::: {.card .card-dark}
+[The 6 patterns]{.card-title}
+
+1. Objects & types
+2. Variables
+3. Collections
+4. Conditionals
+5. Loops
+6. Functions & methods
+:::
+
+::: {.card .card-dark}
+[Your workflow]{.card-title}
+
+- Describe what you want in English
+- AI generates the Python
+- You read it, understand it, run it
+- Ask AI to explain any line you're unsure about
+:::
+:::
+
+::: {.highlight-box}
+You don't need to memorize syntax. You need to recognize patterns — and now you can.
+:::
