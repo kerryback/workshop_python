@@ -13,6 +13,7 @@ docs/CNAME
 build/
 develop-eggs/
 dist/
+!docs/**/dist/
 downloads/
 eggs/
 .eggs/
