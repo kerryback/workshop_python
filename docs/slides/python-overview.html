@@ -94,7 +94,7 @@
     code span.vs { color: #f1fa8c; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-26fbf82bddd0eb59aeffb13a61813f9b.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-a81c0e82c1658d577982b98ec0e1890b.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -256,9 +256,9 @@ Kerry Back, Rice University
 <p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart LR
-    P["Python Code"] --&gt;|"interpreted"| M["Python VM&lt;br/&gt;(bytecode)"]
-    P --&gt;|"calls"| C["C / Fortran&lt;br/&gt;Libraries"]
-    C --&gt;|"precompiled"| M
+    P["Your Python Code"] --&gt;|"interpreted"| M["Python Engine&lt;br/&gt;(runs your code)"]
+    P --&gt;|"calls"| C["pandas / NumPy&lt;br/&gt;(pre-built libraries)"]
+    C --&gt;|"already compiled,&lt;br/&gt;runs fast"| M
 </pre>
 </div>
 <p></p></figure><p></p>
@@ -269,8 +269,8 @@ Kerry Back, Rice University
 <div class="info-box">
 <p><span class="box-title">Two paths to execution</span></p>
 <ul>
-<li><strong>Interpreted:</strong> Python compiles your code to bytecode, which the Python runtime executes — flexible, but slower than native code</li>
-<li><strong>Precompiled:</strong> Libraries like pandas and NumPy are written in C/Fortran, compiled to machine code <em>ahead of time</em> — called by Python, runs at near-native speed</li>
+<li><strong>Interpreted:</strong> Python reads your code line by line and runs it — easy to write, slightly slower</li>
+<li><strong>Pre-built libraries:</strong> pandas and NumPy are written in C, compiled ahead of time — called by Python, runs very fast</li>
 </ul>
 </div>
 </section>
@@ -302,23 +302,7 @@ Kerry Back, Rice University
 </div>
 </div>
 <div class="highlight-box">
-<p>Same code — different containers. Notebooks let you run one piece at a time and inspect the result. We’ll use Google Colab (a free notebook environment) today.</p>
-</div>
-</section>
-<section id="google-colab" class="slide level2 center">
-<h2>Google Colab</h2>
-<div class="info-box">
-<p><span class="box-title">Your notebook environment today</span></p>
-<ul>
-<li>Free, runs in your browser — nothing to install</li>
-<li>Go to <strong>colab.research.google.com</strong></li>
-<li>Open the companion notebook (link on course page)</li>
-<li><strong>Shift + Enter</strong> — run a cell and move to the next</li>
-<li><strong>Ctrl + Enter</strong> — run a cell and stay on it</li>
-</ul>
-</div>
-<div class="highlight-box">
-<p>We’ll use Colab in the second half of the session. For now, follow along on the slides.</p>
+<p>Same code — different containers. Notebooks let you run one piece at a time and inspect the result.</p>
 </div>
 </section>
 <section id="libraries" class="slide level2 section-divider center">
@@ -694,13 +678,24 @@ Kerry Back, Rice University
 <section id="colab-gemini" class="slide level2 section-divider center">
 <h2>Colab + Gemini</h2>
 </section>
+<section id="open-the-companion-notebook" class="slide level2 center">
+<h2>Open the Companion Notebook</h2>
+<div class="info-box">
+<p><span class="box-title">Go to this link in your browser</span></p>
+<p><strong><a href="https://colab.research.google.com/github/kerryback/workshop_python/blob/main/python_overview_exercises.ipynb">colab.research.google.com/github/kerryback/workshop_python/blob/main/python_overview_exercises.ipynb</a></strong></p>
+<ul>
+<li>Free, runs in your browser — nothing to install</li>
+<li>The notebook has one section per pattern — <strong>① through ⑥</strong></li>
+<li><strong>Shift + Enter</strong> — run a cell and move to the next</li>
+</ul>
+</div>
+</section>
 <section id="using-gemini-in-colab" class="slide level2 center">
 <h2>Using Gemini in Colab</h2>
 <div class="info-box">
 <p><span class="box-title">How to get code from Gemini</span></p>
 <ol type="1">
-<li>Open the companion notebook in Google Colab</li>
-<li>Click the <strong>Gemini</strong> sparkle icon (top right) — or use a new code cell</li>
+<li>In the notebook, click the <strong>Gemini</strong> sparkle icon (top right) — or open a new code cell</li>
 <li>Type your prompt describing what you want Python to do</li>
 <li>Gemini generates code — click <strong>Insert</strong> to add it to a cell</li>
 <li>Run the cell with <strong>Shift + Enter</strong></li>

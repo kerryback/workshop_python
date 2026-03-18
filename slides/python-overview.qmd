@@ -67,17 +67,17 @@ Running this prints the profit margin for each product. By the end of this sessi
 ::: {.mermaid-sm}
 ```{mermaid}
 flowchart LR
-    P["Python Code"] -->|"interpreted"| M["Python VM<br/>(bytecode)"]
-    P -->|"calls"| C["C / Fortran<br/>Libraries"]
-    C -->|"precompiled"| M
+    P["Your Python Code"] -->|"interpreted"| M["Python Engine<br/>(runs your code)"]
+    P -->|"calls"| C["pandas / NumPy<br/>(pre-built libraries)"]
+    C -->|"already compiled,<br/>runs fast"| M
 ```
 :::
 
 ::: {.info-box}
 [Two paths to execution]{.box-title}
 
-- **Interpreted:** Python compiles your code to bytecode, which the Python runtime executes — flexible, but slower than native code
-- **Precompiled:** Libraries like pandas and NumPy are written in C/Fortran, compiled to machine code *ahead of time* — called by Python, runs at near-native speed
+- **Interpreted:** Python reads your code line by line and runs it — easy to write, slightly slower
+- **Pre-built libraries:** pandas and NumPy are written in C, compiled ahead of time — called by Python, runs very fast
 :::
 
 ---
@@ -122,25 +122,7 @@ for i in range(len(products)):
 :::
 
 ::: {.highlight-box}
-Same code — different containers. Notebooks let you run one piece at a time and inspect the result. We'll use Google Colab (a free notebook environment) today.
-:::
-
----
-
-## Google Colab
-
-::: {.info-box}
-[Your notebook environment today]{.box-title}
-
-- Free, runs in your browser — nothing to install
-- Go to **colab.research.google.com**
-- Open the companion notebook (link on course page)
-- **Shift + Enter** — run a cell and move to the next
-- **Ctrl + Enter** — run a cell and stay on it
-:::
-
-::: {.highlight-box}
-We'll use Colab in the second half of the session. For now, follow along on the slides.
+Same code — different containers. Notebooks let you run one piece at a time and inspect the result.
 :::
 
 ---
@@ -489,16 +471,29 @@ print(f"Revenue: ${summary[top]:,.0f}")
 
 ---
 
+## Open the Companion Notebook
+
+::: {.info-box}
+[Go to this link in your browser]{.box-title}
+
+**[colab.research.google.com/github/kerryback/workshop_python/blob/main/python_overview_exercises.ipynb](https://colab.research.google.com/github/kerryback/workshop_python/blob/main/python_overview_exercises.ipynb)**
+
+- Free, runs in your browser — nothing to install
+- The notebook has one section per pattern — **① through ⑥**
+- **Shift + Enter** — run a cell and move to the next
+:::
+
+---
+
 ## Using Gemini in Colab
 
 ::: {.info-box}
 [How to get code from Gemini]{.box-title}
 
-1. Open the companion notebook in Google Colab
-2. Click the **Gemini** sparkle icon (top right) — or use a new code cell
-3. Type your prompt describing what you want Python to do
-4. Gemini generates code — click **Insert** to add it to a cell
-5. Run the cell with **Shift + Enter**
+1. In the notebook, click the **Gemini** sparkle icon (top right) — or open a new code cell
+2. Type your prompt describing what you want Python to do
+3. Gemini generates code — click **Insert** to add it to a cell
+4. Run the cell with **Shift + Enter**
 :::
 
 ::: {.highlight-box}

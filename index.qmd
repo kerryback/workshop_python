@@ -15,8 +15,8 @@ A 3-hour overview of Python fundamentals — designed for MBA students who will 
 
 ### Materials
 
-- [Slide Deck: Python for MBA Students](slides/python-overview.html)
-- [Companion Exercises (Google Colab)](https://colab.research.google.com/github/kerryback/workshop_python/blob/main/python_overview_exercises.ipynb)
+- [Slide Deck: Python for MBA Students](slides/python-overview.html){target="_blank"}
+- [Companion Exercises (Google Colab)](https://colab.research.google.com/github/kerryback/workshop_python/blob/main/python_overview_exercises.ipynb){target="_blank"}
 
 ### Topics Covered
 

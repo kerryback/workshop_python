@@ -18,21 +18,14 @@
     "href": "slides/python-overview.html#how-python-runs",
     "title": "Python for MBA Students",
     "section": "How Python Runs",
-    "text": "How Python Runs\n\n\n\n\n\n\nflowchart LR\n    P[\"Python Code\"] --&gt;|\"interpreted\"| M[\"Python VM&lt;br/&gt;(bytecode)\"]\n    P --&gt;|\"calls\"| C[\"C / Fortran&lt;br/&gt;Libraries\"]\n    C --&gt;|\"precompiled\"| M\n\n\n\n\n\n\n\n\nTwo paths to execution\n\nInterpreted: Python compiles your code to bytecode, which the Python runtime executes — flexible, but slower than native code\nPrecompiled: Libraries like pandas and NumPy are written in C/Fortran, compiled to machine code ahead of time — called by Python, runs at near-native speed"
+    "text": "How Python Runs\n\n\n\n\n\n\nflowchart LR\n    P[\"Your Python Code\"] --&gt;|\"interpreted\"| M[\"Python Engine&lt;br/&gt;(runs your code)\"]\n    P --&gt;|\"calls\"| C[\"pandas / NumPy&lt;br/&gt;(pre-built libraries)\"]\n    C --&gt;|\"already compiled,&lt;br/&gt;runs fast\"| M\n\n\n\n\n\n\n\n\nTwo paths to execution\n\nInterpreted: Python reads your code line by line and runs it — easy to write, slightly slower\nPre-built libraries: pandas and NumPy are written in C, compiled ahead of time — called by Python, runs very fast"
   },
   {
     "objectID": "slides/python-overview.html#scripts-and-notebooks",
     "href": "slides/python-overview.html#scripts-and-notebooks",
     "title": "Python for MBA Students",
     "section": "Scripts and Notebooks",
-    "text": "Scripts and Notebooks\n\n\nScript — a .py file, runs top to bottom\n# profit_margins.py\nproducts = [\"Widget\", \"Gadget\", \"Doohickey\"]\nrevenues = [120_000,  85_000,  200_000]\ncosts    = [ 80_000,  60_000,  140_000]\n\nfor i in range(len(products)):\n    margin = (revenues[i] - costs[i]) / revenues[i]\n    print(f\"{products[i]}: {margin:.1%} margin\")\nRun from terminal: python profit_margins.py\n\n\nNotebook — cells you run one at a time\nCell 1:\nproducts = [\"Widget\", \"Gadget\", \"Doohickey\"]\nrevenues = [120_000,  85_000,  200_000]\ncosts    = [ 80_000,  60_000,  140_000]\nCell 2:\nfor i in range(len(products)):\n    margin = (revenues[i] - costs[i]) / revenues[i]\n    print(f\"{products[i]}: {margin:.1%} margin\")\n\n\n\nSame code — different containers. Notebooks let you run one piece at a time and inspect the result. We’ll use Google Colab (a free notebook environment) today."
-  },
-  {
-    "objectID": "slides/python-overview.html#google-colab",
-    "href": "slides/python-overview.html#google-colab",
-    "title": "Python for MBA Students",
-    "section": "Google Colab",
-    "text": "Google Colab\n\nYour notebook environment today\n\nFree, runs in your browser — nothing to install\nGo to colab.research.google.com\nOpen the companion notebook (link on course page)\nShift + Enter — run a cell and move to the next\nCtrl + Enter — run a cell and stay on it\n\n\n\nWe’ll use Colab in the second half of the session. For now, follow along on the slides."
+    "text": "Scripts and Notebooks\n\n\nScript — a .py file, runs top to bottom\n# profit_margins.py\nproducts = [\"Widget\", \"Gadget\", \"Doohickey\"]\nrevenues = [120_000,  85_000,  200_000]\ncosts    = [ 80_000,  60_000,  140_000]\n\nfor i in range(len(products)):\n    margin = (revenues[i] - costs[i]) / revenues[i]\n    print(f\"{products[i]}: {margin:.1%} margin\")\nRun from terminal: python profit_margins.py\n\n\nNotebook — cells you run one at a time\nCell 1:\nproducts = [\"Widget\", \"Gadget\", \"Doohickey\"]\nrevenues = [120_000,  85_000,  200_000]\ncosts    = [ 80_000,  60_000,  140_000]\nCell 2:\nfor i in range(len(products)):\n    margin = (revenues[i] - costs[i]) / revenues[i]\n    print(f\"{products[i]}: {margin:.1%} margin\")\n\n\n\nSame code — different containers. Notebooks let you run one piece at a time and inspect the result."
   },
   {
     "objectID": "slides/python-overview.html#libraries",
@@ -154,11 +147,18 @@
     "text": "Colab + Gemini"
   },
   {
+    "objectID": "slides/python-overview.html#open-the-companion-notebook",
+    "href": "slides/python-overview.html#open-the-companion-notebook",
+    "title": "Python for MBA Students",
+    "section": "Open the Companion Notebook",
+    "text": "Open the Companion Notebook\n\nGo to this link in your browser\ncolab.research.google.com/github/kerryback/workshop_python/blob/main/python_overview_exercises.ipynb\n\nFree, runs in your browser — nothing to install\nThe notebook has one section per pattern — ① through ⑥\nShift + Enter — run a cell and move to the next"
+  },
+  {
     "objectID": "slides/python-overview.html#using-gemini-in-colab",
     "href": "slides/python-overview.html#using-gemini-in-colab",
     "title": "Python for MBA Students",
     "section": "Using Gemini in Colab",
-    "text": "Using Gemini in Colab\n\nHow to get code from Gemini\n\nOpen the companion notebook in Google Colab\nClick the Gemini sparkle icon (top right) — or use a new code cell\nType your prompt describing what you want Python to do\nGemini generates code — click Insert to add it to a cell\nRun the cell with Shift + Enter\n\n\n\nFor each prompt on the following slides: type it into Gemini, run the code, then use the “How to Spot Each Pattern” table to identify what’s in the result."
+    "text": "Using Gemini in Colab\n\nHow to get code from Gemini\n\nIn the notebook, click the Gemini sparkle icon (top right) — or open a new code cell\nType your prompt describing what you want Python to do\nGemini generates code — click Insert to add it to a cell\nRun the cell with Shift + Enter\n\n\n\nFor each prompt on the following slides: type it into Gemini, run the code, then use the “How to Spot Each Pattern” table to identify what’s in the result."
   },
   {
     "objectID": "slides/python-overview.html#prompt-1-investment-growth",
