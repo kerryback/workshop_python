@@ -12,7 +12,7 @@ format:
     height: 1080
     margin: 0.05
     center: true
-    highlight-style: github
+    highlight-style: dracula
 ---
 
 ## AI Writes the Code. You Read It.
