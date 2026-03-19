@@ -250,5 +250,12 @@
     "title": "Python for MBA Students",
     "section": "Colab Basics",
     "text": "Colab Basics\n\nThree things you need to know\n\nAdd a code cell — click the + Code button at the top, or hover between cells and click + Code\nRun a cell — press Shift + Enter (runs the cell and moves to the next)\nSee the output — it appears directly below the cell\n\n\n\nThat’s it. Everything else — writing the code, explaining errors, adding new cells — you can ask Gemini."
+  },
+  {
+    "objectID": "slides/python-overview.html#assignment-statements",
+    "href": "slides/python-overview.html#assignment-statements",
+    "title": "Python for MBA Students",
+    "section": "Assignment Statements",
+    "text": "Assignment Statements\nA single = sign stores a value under a name:\nprice = 182.50\ncompany = \"Apple\"\nshares = 100\ntotal = price * shares\n\nHow to read it\nRead price = 182.50 as “price gets 182.50” — not “price equals 182.50.” The right side is computed first, then stored in the name on the left.\n\n\nWhen you see df = pd.read_excel(...) on the next slide, the same thing is happening — the result of pd.read_excel(...) is computed and stored in the name df."
   }
 ]

@@ -391,13 +391,28 @@ Kerry Back, Rice University
 <p>That’s it. Everything else — writing the code, explaining errors, adding new cells — you can ask <strong>Gemini</strong>.</p>
 </div>
 </section>
+<section id="assignment-statements" class="slide level2 center">
+<h2>Assignment Statements</h2>
+<p>A single <code>=</code> sign stores a value under a name:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>price <span class="op">=</span> <span class="fl">182.50</span></span>
+<span id="cb5-2"><a></a>company <span class="op">=</span> <span class="st">"Apple"</span></span>
+<span id="cb5-3"><a></a>shares <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb5-4"><a></a>total <span class="op">=</span> price <span class="op">*</span> shares</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="info-box">
+<p><span class="box-title">How to read it</span></p>
+<p>Read <code>price = 182.50</code> as <strong>“price gets 182.50”</strong> — not “price equals 182.50.” The right side is computed first, then stored in the name on the left.</p>
+</div>
+<div class="highlight-box">
+<p>When you see <code>df = pd.read_excel(...)</code> on the next slide, the same thing is happening — the result of <code>pd.read_excel(...)</code> is computed and stored in the name <code>df</code>.</p>
+</div>
+</section>
 <section id="reading-an-excel-file" class="slide level2 center">
 <h2>Reading an Excel File</h2>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb5-2"><a></a></span>
-<span id="cb5-3"><a></a>df <span class="op">=</span> pd.read_excel(<span class="st">"/content/drive/MyDrive/sales.xlsx"</span>)</span>
-<span id="cb5-4"><a></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="5e24fd8c" class="cell" data-execution_count="1">
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb6-2"><a></a></span>
+<span id="cb6-3"><a></a>df <span class="op">=</span> pd.read_excel(<span class="st">"/content/drive/MyDrive/sales.xlsx"</span>)</span>
+<span id="cb6-4"><a></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e25bc9bb" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div>
 <style scoped="">
@@ -473,7 +488,7 @@ Kerry Back, Rice University
 <section id="method-chaining" class="slide level2 center">
 <h2>Method Chaining</h2>
 <p>One line that groups, sums, and plots:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>df.groupby(<span class="st">"region"</span>)[<span class="st">"revenue"</span>].<span class="bu">sum</span>().plot(kind<span class="op">=</span><span class="st">"bar"</span>, title<span class="op">=</span><span class="st">"Revenue by Region"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>df.groupby(<span class="st">"region"</span>)[<span class="st">"revenue"</span>].<span class="bu">sum</span>().plot(kind<span class="op">=</span><span class="st">"bar"</span>, title<span class="op">=</span><span class="st">"Revenue by Region"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="info-box">
 <p><span class="box-title">Reading left to right</span></p>
 <table class="caption-top">
@@ -625,15 +640,15 @@ Kerry Back, Rice University
 <h2>Example 1</h2>
 <div class="columns">
 <div class="column" style="width:57%;">
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>revenue <span class="op">=</span> <span class="dv">383_285_000_000</span></span>
-<span id="cb7-2"><a></a>costs   <span class="op">=</span> <span class="dv">223_546_000_000</span></span>
-<span id="cb7-3"><a></a>profit  <span class="op">=</span> revenue <span class="op">-</span> costs</span>
-<span id="cb7-4"><a></a>margin  <span class="op">=</span> profit <span class="op">/</span> revenue</span>
-<span id="cb7-5"><a></a></span>
-<span id="cb7-6"><a></a><span class="cf">if</span> margin <span class="op">&gt;</span> <span class="fl">0.25</span>:</span>
-<span id="cb7-7"><a></a>    <span class="bu">print</span>(<span class="ss">f"High margin: </span><span class="sc">{</span>margin<span class="sc">:.1%}</span><span class="ss">"</span>)</span>
-<span id="cb7-8"><a></a><span class="cf">else</span>:</span>
-<span id="cb7-9"><a></a>    <span class="bu">print</span>(<span class="ss">f"Lower margin: </span><span class="sc">{</span>margin<span class="sc">:.1%}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>revenue <span class="op">=</span> <span class="dv">383_285_000_000</span></span>
+<span id="cb8-2"><a></a>costs   <span class="op">=</span> <span class="dv">223_546_000_000</span></span>
+<span id="cb8-3"><a></a>profit  <span class="op">=</span> revenue <span class="op">-</span> costs</span>
+<span id="cb8-4"><a></a>margin  <span class="op">=</span> profit <span class="op">/</span> revenue</span>
+<span id="cb8-5"><a></a></span>
+<span id="cb8-6"><a></a><span class="cf">if</span> margin <span class="op">&gt;</span> <span class="fl">0.25</span>:</span>
+<span id="cb8-7"><a></a>    <span class="bu">print</span>(<span class="ss">f"High margin: </span><span class="sc">{</span>margin<span class="sc">:.1%}</span><span class="ss">"</span>)</span>
+<span id="cb8-8"><a></a><span class="cf">else</span>:</span>
+<span id="cb8-9"><a></a>    <span class="bu">print</span>(<span class="ss">f"Lower margin: </span><span class="sc">{</span>margin<span class="sc">:.1%}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column" style="width:43%;">
 <div class="info-box">
 <p><span class="box-title">Patterns</span></p>
@@ -652,15 +667,15 @@ Kerry Back, Rice University
 <h2>Example 2</h2>
 <div class="columns">
 <div class="column" style="width:57%;">
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>tickers <span class="op">=</span> [<span class="st">"AAPL"</span>, <span class="st">"GOOGL"</span>, <span class="st">"MSFT"</span>]</span>
-<span id="cb8-2"><a></a>prices  <span class="op">=</span> [<span class="fl">182.50</span>, <span class="fl">141.80</span>, <span class="fl">378.90</span>]</span>
-<span id="cb8-3"><a></a>shares  <span class="op">=</span> [<span class="dv">100</span>, <span class="dv">50</span>, <span class="dv">75</span>]</span>
-<span id="cb8-4"><a></a></span>
-<span id="cb8-5"><a></a>total <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb8-6"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(tickers)):</span>
-<span id="cb8-7"><a></a>    value <span class="op">=</span> prices[i] <span class="op">*</span> shares[i]</span>
-<span id="cb8-8"><a></a>    total <span class="op">+=</span> value</span>
-<span id="cb8-9"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>tickers[i]<span class="sc">}</span><span class="ss">: $</span><span class="sc">{</span>value<span class="sc">:,.0f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a>tickers <span class="op">=</span> [<span class="st">"AAPL"</span>, <span class="st">"GOOGL"</span>, <span class="st">"MSFT"</span>]</span>
+<span id="cb9-2"><a></a>prices  <span class="op">=</span> [<span class="fl">182.50</span>, <span class="fl">141.80</span>, <span class="fl">378.90</span>]</span>
+<span id="cb9-3"><a></a>shares  <span class="op">=</span> [<span class="dv">100</span>, <span class="dv">50</span>, <span class="dv">75</span>]</span>
+<span id="cb9-4"><a></a></span>
+<span id="cb9-5"><a></a>total <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb9-6"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(tickers)):</span>
+<span id="cb9-7"><a></a>    value <span class="op">=</span> prices[i] <span class="op">*</span> shares[i]</span>
+<span id="cb9-8"><a></a>    total <span class="op">+=</span> value</span>
+<span id="cb9-9"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>tickers[i]<span class="sc">}</span><span class="ss">: $</span><span class="sc">{</span>value<span class="sc">:,.0f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column" style="width:43%;">
 <div class="info-box">
 <p><span class="box-title">Patterns</span></p>
@@ -680,15 +695,15 @@ Kerry Back, Rice University
 <h2>Example 3</h2>
 <div class="columns">
 <div class="column" style="width:57%;">
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a>portfolio <span class="op">=</span> [</span>
-<span id="cb9-2"><a></a>    {<span class="st">"ticker"</span>: <span class="st">"AAPL"</span>, <span class="st">"shares"</span>: <span class="dv">100</span>, <span class="st">"price"</span>: <span class="fl">182.50</span>},</span>
-<span id="cb9-3"><a></a>    {<span class="st">"ticker"</span>: <span class="st">"MSFT"</span>, <span class="st">"shares"</span>:  <span class="dv">75</span>, <span class="st">"price"</span>: <span class="fl">378.90</span>},</span>
-<span id="cb9-4"><a></a>    {<span class="st">"ticker"</span>: <span class="st">"GOOGL"</span>,<span class="st">"shares"</span>:  <span class="dv">50</span>, <span class="st">"price"</span>: <span class="fl">141.80</span>},</span>
-<span id="cb9-5"><a></a>]</span>
-<span id="cb9-6"><a></a></span>
-<span id="cb9-7"><a></a>values <span class="op">=</span> [h[<span class="st">"shares"</span>] <span class="op">*</span> h[<span class="st">"price"</span>] <span class="cf">for</span> h <span class="kw">in</span> portfolio]</span>
-<span id="cb9-8"><a></a>total  <span class="op">=</span> <span class="bu">sum</span>(values)</span>
-<span id="cb9-9"><a></a><span class="bu">print</span>(<span class="ss">f"Portfolio value: $</span><span class="sc">{</span>total<span class="sc">:,.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>portfolio <span class="op">=</span> [</span>
+<span id="cb10-2"><a></a>    {<span class="st">"ticker"</span>: <span class="st">"AAPL"</span>, <span class="st">"shares"</span>: <span class="dv">100</span>, <span class="st">"price"</span>: <span class="fl">182.50</span>},</span>
+<span id="cb10-3"><a></a>    {<span class="st">"ticker"</span>: <span class="st">"MSFT"</span>, <span class="st">"shares"</span>:  <span class="dv">75</span>, <span class="st">"price"</span>: <span class="fl">378.90</span>},</span>
+<span id="cb10-4"><a></a>    {<span class="st">"ticker"</span>: <span class="st">"GOOGL"</span>,<span class="st">"shares"</span>:  <span class="dv">50</span>, <span class="st">"price"</span>: <span class="fl">141.80</span>},</span>
+<span id="cb10-5"><a></a>]</span>
+<span id="cb10-6"><a></a></span>
+<span id="cb10-7"><a></a>values <span class="op">=</span> [h[<span class="st">"shares"</span>] <span class="op">*</span> h[<span class="st">"price"</span>] <span class="cf">for</span> h <span class="kw">in</span> portfolio]</span>
+<span id="cb10-8"><a></a>total  <span class="op">=</span> <span class="bu">sum</span>(values)</span>
+<span id="cb10-9"><a></a><span class="bu">print</span>(<span class="ss">f"Portfolio value: $</span><span class="sc">{</span>total<span class="sc">:,.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column" style="width:43%;">
 <div class="info-box">
 <p><span class="box-title">Patterns</span></p>
@@ -708,17 +723,17 @@ Kerry Back, Rice University
 <h2>Example 4</h2>
 <div class="columns">
 <div class="column" style="width:57%;">
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="kw">def</span> assess_margin(revenue, costs):</span>
-<span id="cb10-2"><a></a>    margin <span class="op">=</span> (revenue <span class="op">-</span> costs) <span class="op">/</span> revenue</span>
-<span id="cb10-3"><a></a>    <span class="cf">if</span> margin <span class="op">&gt;</span> <span class="fl">0.30</span>:</span>
-<span id="cb10-4"><a></a>        <span class="cf">return</span> <span class="st">"strong"</span></span>
-<span id="cb10-5"><a></a>    <span class="cf">elif</span> margin <span class="op">&gt;</span> <span class="fl">0.15</span>:</span>
-<span id="cb10-6"><a></a>        <span class="cf">return</span> <span class="st">"adequate"</span></span>
-<span id="cb10-7"><a></a>    <span class="cf">else</span>:</span>
-<span id="cb10-8"><a></a>        <span class="cf">return</span> <span class="st">"weak"</span></span>
-<span id="cb10-9"><a></a></span>
-<span id="cb10-10"><a></a>rating <span class="op">=</span> assess_margin(<span class="dv">500_000</span>, <span class="dv">320_000</span>)</span>
-<span id="cb10-11"><a></a><span class="bu">print</span>(<span class="ss">f"Margin rating: </span><span class="sc">{</span>rating<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="kw">def</span> assess_margin(revenue, costs):</span>
+<span id="cb11-2"><a></a>    margin <span class="op">=</span> (revenue <span class="op">-</span> costs) <span class="op">/</span> revenue</span>
+<span id="cb11-3"><a></a>    <span class="cf">if</span> margin <span class="op">&gt;</span> <span class="fl">0.30</span>:</span>
+<span id="cb11-4"><a></a>        <span class="cf">return</span> <span class="st">"strong"</span></span>
+<span id="cb11-5"><a></a>    <span class="cf">elif</span> margin <span class="op">&gt;</span> <span class="fl">0.15</span>:</span>
+<span id="cb11-6"><a></a>        <span class="cf">return</span> <span class="st">"adequate"</span></span>
+<span id="cb11-7"><a></a>    <span class="cf">else</span>:</span>
+<span id="cb11-8"><a></a>        <span class="cf">return</span> <span class="st">"weak"</span></span>
+<span id="cb11-9"><a></a></span>
+<span id="cb11-10"><a></a>rating <span class="op">=</span> assess_margin(<span class="dv">500_000</span>, <span class="dv">320_000</span>)</span>
+<span id="cb11-11"><a></a><span class="bu">print</span>(<span class="ss">f"Margin rating: </span><span class="sc">{</span>rating<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column" style="width:43%;">
 <div class="info-box">
 <p><span class="box-title">Patterns</span></p>
@@ -738,16 +753,16 @@ Kerry Back, Rice University
 <h2>Example 5</h2>
 <div class="columns">
 <div class="column" style="width:57%;">
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>companies <span class="op">=</span> [<span class="st">"apple inc."</span>, <span class="st">"microsoft corp."</span>, <span class="st">"alphabet inc."</span>]</span>
-<span id="cb11-2"><a></a>suffixes  <span class="op">=</span> [<span class="st">"inc."</span>, <span class="st">"corp."</span>, <span class="st">"ltd."</span>]</span>
-<span id="cb11-3"><a></a></span>
-<span id="cb11-4"><a></a><span class="cf">for</span> company <span class="kw">in</span> companies:</span>
-<span id="cb11-5"><a></a>    clean <span class="op">=</span> company.title()</span>
-<span id="cb11-6"><a></a>    has_suffix <span class="op">=</span> <span class="bu">any</span>(s <span class="kw">in</span> company <span class="cf">for</span> s <span class="kw">in</span> suffixes)</span>
-<span id="cb11-7"><a></a>    <span class="cf">if</span> has_suffix:</span>
-<span id="cb11-8"><a></a>        <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>clean<span class="sc">}</span><span class="ss">  ✓"</span>)</span>
-<span id="cb11-9"><a></a>    <span class="cf">else</span>:</span>
-<span id="cb11-10"><a></a>        <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>clean<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>companies <span class="op">=</span> [<span class="st">"apple inc."</span>, <span class="st">"microsoft corp."</span>, <span class="st">"alphabet inc."</span>]</span>
+<span id="cb12-2"><a></a>suffixes  <span class="op">=</span> [<span class="st">"inc."</span>, <span class="st">"corp."</span>, <span class="st">"ltd."</span>]</span>
+<span id="cb12-3"><a></a></span>
+<span id="cb12-4"><a></a><span class="cf">for</span> company <span class="kw">in</span> companies:</span>
+<span id="cb12-5"><a></a>    clean <span class="op">=</span> company.title()</span>
+<span id="cb12-6"><a></a>    has_suffix <span class="op">=</span> <span class="bu">any</span>(s <span class="kw">in</span> company <span class="cf">for</span> s <span class="kw">in</span> suffixes)</span>
+<span id="cb12-7"><a></a>    <span class="cf">if</span> has_suffix:</span>
+<span id="cb12-8"><a></a>        <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>clean<span class="sc">}</span><span class="ss">  ✓"</span>)</span>
+<span id="cb12-9"><a></a>    <span class="cf">else</span>:</span>
+<span id="cb12-10"><a></a>        <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>clean<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column" style="width:43%;">
 <div class="info-box">
 <p><span class="box-title">Patterns</span></p>
@@ -768,16 +783,16 @@ Kerry Back, Rice University
 <h2>Example 6</h2>
 <div class="columns">
 <div class="column" style="width:57%;">
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb12-2"><a></a></span>
-<span id="cb12-3"><a></a>df <span class="op">=</span> pd.read_excel(<span class="st">"sales.xlsx"</span>)</span>
-<span id="cb12-4"><a></a></span>
-<span id="cb12-5"><a></a>tech    <span class="op">=</span> df[df[<span class="st">"sector"</span>] <span class="op">==</span> <span class="st">"Technology"</span>]</span>
-<span id="cb12-6"><a></a>summary <span class="op">=</span> tech.groupby(<span class="st">"region"</span>)[<span class="st">"revenue"</span>].<span class="bu">sum</span>()</span>
-<span id="cb12-7"><a></a>top     <span class="op">=</span> summary.idxmax()</span>
-<span id="cb12-8"><a></a></span>
-<span id="cb12-9"><a></a><span class="bu">print</span>(<span class="ss">f"Top tech region: </span><span class="sc">{</span>top<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb12-10"><a></a><span class="bu">print</span>(<span class="ss">f"Revenue: $</span><span class="sc">{</span>summary[top]<span class="sc">:,.0f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb13-2"><a></a></span>
+<span id="cb13-3"><a></a>df <span class="op">=</span> pd.read_excel(<span class="st">"sales.xlsx"</span>)</span>
+<span id="cb13-4"><a></a></span>
+<span id="cb13-5"><a></a>tech    <span class="op">=</span> df[df[<span class="st">"sector"</span>] <span class="op">==</span> <span class="st">"Technology"</span>]</span>
+<span id="cb13-6"><a></a>summary <span class="op">=</span> tech.groupby(<span class="st">"region"</span>)[<span class="st">"revenue"</span>].<span class="bu">sum</span>()</span>
+<span id="cb13-7"><a></a>top     <span class="op">=</span> summary.idxmax()</span>
+<span id="cb13-8"><a></a></span>
+<span id="cb13-9"><a></a><span class="bu">print</span>(<span class="ss">f"Top tech region: </span><span class="sc">{</span>top<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-10"><a></a><span class="bu">print</span>(<span class="ss">f"Revenue: $</span><span class="sc">{</span>summary[top]<span class="sc">:,.0f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column" style="width:43%;">
 <div class="info-box">
 <p><span class="box-title">Patterns</span></p>
@@ -886,10 +901,10 @@ Kerry Back, Rice University
 <p><em>“Write Python code using pandas that creates a DataFrame with columns for region, product, revenue, and units (at least 8 rows of made-up data). Then calculate total revenue and average revenue per unit for each region. Show the results sorted by total revenue, highest first.”</em></p>
 </div>
 <p><strong>This is the synthesis prompt.</strong> In roughly 15 lines, you should find all 6 patterns:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd          <span class="co"># library import</span></span>
-<span id="cb13-2"><a></a>data <span class="op">=</span> {...}                 <span class="co"># ③ dictionary → collection</span></span>
-<span id="cb13-3"><a></a>df <span class="op">=</span> pd.DataFrame(data)      <span class="co"># ⑥ function call</span></span>
-<span id="cb13-4"><a></a>df.groupby(...).agg(...).sort_values(...)  <span class="co"># ⑥ method chain</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd          <span class="co"># library import</span></span>
+<span id="cb14-2"><a></a>data <span class="op">=</span> {...}                 <span class="co"># ③ dictionary → collection</span></span>
+<span id="cb14-3"><a></a>df <span class="op">=</span> pd.DataFrame(data)      <span class="co"># ⑥ function call</span></span>
+<span id="cb14-4"><a></a>df.groupby(...).agg(...).sort_values(...)  <span class="co"># ⑥ method chain</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Can you name the pattern for every line Gemini produces?</strong></p>
 </section>
 <section id="working-with-data" class="slide level2 section-divider center">
@@ -898,17 +913,17 @@ Kerry Back, Rice University
 <section id="pandas-analysis-in-one-pipeline" class="slide level2 center">
 <h2>pandas — Analysis in One Pipeline</h2>
 <p>A complete analysis in a single method chain:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb14-2"><a></a></span>
-<span id="cb14-3"><a></a>df <span class="op">=</span> pd.read_excel(<span class="st">"sales.xlsx"</span>)</span>
-<span id="cb14-4"><a></a></span>
-<span id="cb14-5"><a></a>(df</span>
-<span id="cb14-6"><a></a>    .query(<span class="st">"revenue &gt; 10_000"</span>)              <span class="co"># filter rows</span></span>
-<span id="cb14-7"><a></a>    .groupby(<span class="st">"region"</span>)[<span class="st">"revenue"</span>]           <span class="co"># group by region</span></span>
-<span id="cb14-8"><a></a>    .<span class="bu">sum</span>()                                  <span class="co"># aggregate</span></span>
-<span id="cb14-9"><a></a>    .sort_values(ascending<span class="op">=</span><span class="va">False</span>)           <span class="co"># sort high to low</span></span>
-<span id="cb14-10"><a></a>    .plot(kind<span class="op">=</span><span class="st">"bar"</span>, title<span class="op">=</span><span class="st">"Revenue by Region"</span>)   <span class="co"># chart</span></span>
-<span id="cb14-11"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb15-2"><a></a></span>
+<span id="cb15-3"><a></a>df <span class="op">=</span> pd.read_excel(<span class="st">"sales.xlsx"</span>)</span>
+<span id="cb15-4"><a></a></span>
+<span id="cb15-5"><a></a>(df</span>
+<span id="cb15-6"><a></a>    .query(<span class="st">"revenue &gt; 10_000"</span>)              <span class="co"># filter rows</span></span>
+<span id="cb15-7"><a></a>    .groupby(<span class="st">"region"</span>)[<span class="st">"revenue"</span>]           <span class="co"># group by region</span></span>
+<span id="cb15-8"><a></a>    .<span class="bu">sum</span>()                                  <span class="co"># aggregate</span></span>
+<span id="cb15-9"><a></a>    .sort_values(ascending<span class="op">=</span><span class="va">False</span>)           <span class="co"># sort high to low</span></span>
+<span id="cb15-10"><a></a>    .plot(kind<span class="op">=</span><span class="st">"bar"</span>, title<span class="op">=</span><span class="st">"Revenue by Region"</span>)   <span class="co"># chart</span></span>
+<span id="cb15-11"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="highlight-box">
 <p>Every step is <strong>Pattern ⑥ — Methods</strong>: each returns an object, and the next method acts on it. This is the method chaining pattern you’ll see throughout AI-generated pandas code.</p>
 </div>
@@ -916,17 +931,17 @@ Kerry Back, Rice University
 <section id="pandas-more-capabilities" class="slide level2 center">
 <h2>pandas — More Capabilities</h2>
 <p>A taste of what else pandas can do:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="co"># Combine two tables on a shared key (like VLOOKUP)</span></span>
-<span id="cb15-2"><a></a>df <span class="op">=</span> pd.merge(prices, company_info, on<span class="op">=</span><span class="st">"ticker"</span>)</span>
-<span id="cb15-3"><a></a></span>
-<span id="cb15-4"><a></a><span class="co"># Reshape: rows → columns (like a pivot table)</span></span>
-<span id="cb15-5"><a></a>df.pivot_table(values<span class="op">=</span><span class="st">"revenue"</span>, index<span class="op">=</span><span class="st">"quarter"</span>, columns<span class="op">=</span><span class="st">"region"</span>)</span>
-<span id="cb15-6"><a></a></span>
-<span id="cb15-7"><a></a><span class="co"># Find missing data</span></span>
-<span id="cb15-8"><a></a>df.isnull().<span class="bu">sum</span>()</span>
-<span id="cb15-9"><a></a></span>
-<span id="cb15-10"><a></a><span class="co"># Summary statistics in one call</span></span>
-<span id="cb15-11"><a></a>df.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="co"># Combine two tables on a shared key (like VLOOKUP)</span></span>
+<span id="cb16-2"><a></a>df <span class="op">=</span> pd.merge(prices, company_info, on<span class="op">=</span><span class="st">"ticker"</span>)</span>
+<span id="cb16-3"><a></a></span>
+<span id="cb16-4"><a></a><span class="co"># Reshape: rows → columns (like a pivot table)</span></span>
+<span id="cb16-5"><a></a>df.pivot_table(values<span class="op">=</span><span class="st">"revenue"</span>, index<span class="op">=</span><span class="st">"quarter"</span>, columns<span class="op">=</span><span class="st">"region"</span>)</span>
+<span id="cb16-6"><a></a></span>
+<span id="cb16-7"><a></a><span class="co"># Find missing data</span></span>
+<span id="cb16-8"><a></a>df.isnull().<span class="bu">sum</span>()</span>
+<span id="cb16-9"><a></a></span>
+<span id="cb16-10"><a></a><span class="co"># Summary statistics in one call</span></span>
+<span id="cb16-11"><a></a>df.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="highlight-box">
 <p>Each of these is a <strong>method call (Pattern ⑥)</strong>. When AI generates code for data tasks, it will use pandas. Recognizing the method-chain pattern tells you what each line is doing — even if you don’t know the specific method name.</p>
 </div>
@@ -934,17 +949,17 @@ Kerry Back, Rice University
 <section id="visualization" class="slide level2 center">
 <h2>Visualization</h2>
 <p>The same method-chaining pattern — different <code>kind=</code>:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="co"># Distribution of one variable</span></span>
-<span id="cb16-2"><a></a>df[<span class="st">"revenue"</span>].plot(kind<span class="op">=</span><span class="st">"hist"</span>, bins<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb16-3"><a></a></span>
-<span id="cb16-4"><a></a><span class="co"># Comparison across categories</span></span>
-<span id="cb16-5"><a></a>df.groupby(<span class="st">"region"</span>)[<span class="st">"revenue"</span>].<span class="bu">sum</span>().plot(kind<span class="op">=</span><span class="st">"bar"</span>)</span>
-<span id="cb16-6"><a></a></span>
-<span id="cb16-7"><a></a><span class="co"># Relationship between two variables</span></span>
-<span id="cb16-8"><a></a>df.plot(kind<span class="op">=</span><span class="st">"scatter"</span>, x<span class="op">=</span><span class="st">"units"</span>, y<span class="op">=</span><span class="st">"revenue"</span>)</span>
-<span id="cb16-9"><a></a></span>
-<span id="cb16-10"><a></a><span class="co"># Trend over time</span></span>
-<span id="cb16-11"><a></a>df.set_index(<span class="st">"date"</span>)[<span class="st">"revenue"</span>].plot(kind<span class="op">=</span><span class="st">"line"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="co"># Distribution of one variable</span></span>
+<span id="cb17-2"><a></a>df[<span class="st">"revenue"</span>].plot(kind<span class="op">=</span><span class="st">"hist"</span>, bins<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb17-3"><a></a></span>
+<span id="cb17-4"><a></a><span class="co"># Comparison across categories</span></span>
+<span id="cb17-5"><a></a>df.groupby(<span class="st">"region"</span>)[<span class="st">"revenue"</span>].<span class="bu">sum</span>().plot(kind<span class="op">=</span><span class="st">"bar"</span>)</span>
+<span id="cb17-6"><a></a></span>
+<span id="cb17-7"><a></a><span class="co"># Relationship between two variables</span></span>
+<span id="cb17-8"><a></a>df.plot(kind<span class="op">=</span><span class="st">"scatter"</span>, x<span class="op">=</span><span class="st">"units"</span>, y<span class="op">=</span><span class="st">"revenue"</span>)</span>
+<span id="cb17-9"><a></a></span>
+<span id="cb17-10"><a></a><span class="co"># Trend over time</span></span>
+<span id="cb17-11"><a></a>df.set_index(<span class="st">"date"</span>)[<span class="st">"revenue"</span>].plot(kind<span class="op">=</span><span class="st">"line"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="highlight-box">
 <p>Different charts, same pattern: build a series or DataFrame, call <code>.plot(kind=...)</code>. When you see a visualization in AI-generated code, look for this pattern — then look at what <code>kind=</code> is set to.</p>
 </div>
@@ -996,13 +1011,13 @@ Kerry Back, Rice University
 </section>
 <section id="back-to-the-beginning" class="slide level2 center">
 <h2>Back to the Beginning</h2>
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a>products <span class="op">=</span> [<span class="st">"Widget"</span>, <span class="st">"Gadget"</span>, <span class="st">"Doohickey"</span>]   <span class="co"># ③ List — a collection</span></span>
-<span id="cb17-2"><a></a>revenues <span class="op">=</span> [<span class="dv">120_000</span>,  <span class="dv">85_000</span>,  <span class="dv">200_000</span>]          <span class="co"># ③ List — a collection</span></span>
-<span id="cb17-3"><a></a>costs    <span class="op">=</span> [ <span class="dv">80_000</span>,  <span class="dv">60_000</span>,  <span class="dv">140_000</span>]          <span class="co"># ③ List — a collection</span></span>
-<span id="cb17-4"><a></a></span>
-<span id="cb17-5"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(products)):                   <span class="co"># ⑤ Loop + ⑥ Functions</span></span>
-<span id="cb17-6"><a></a>    margin <span class="op">=</span> (revenues[i] <span class="op">-</span> costs[i]) <span class="op">/</span> revenues[i]  <span class="co"># ② Variables + ① Math</span></span>
-<span id="cb17-7"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>products[i]<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>margin<span class="sc">:.1%}</span><span class="ss"> margin"</span>)     <span class="co"># ⑥ Function + f-string</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a>products <span class="op">=</span> [<span class="st">"Widget"</span>, <span class="st">"Gadget"</span>, <span class="st">"Doohickey"</span>]   <span class="co"># ③ List — a collection</span></span>
+<span id="cb18-2"><a></a>revenues <span class="op">=</span> [<span class="dv">120_000</span>,  <span class="dv">85_000</span>,  <span class="dv">200_000</span>]          <span class="co"># ③ List — a collection</span></span>
+<span id="cb18-3"><a></a>costs    <span class="op">=</span> [ <span class="dv">80_000</span>,  <span class="dv">60_000</span>,  <span class="dv">140_000</span>]          <span class="co"># ③ List — a collection</span></span>
+<span id="cb18-4"><a></a></span>
+<span id="cb18-5"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(products)):                   <span class="co"># ⑤ Loop + ⑥ Functions</span></span>
+<span id="cb18-6"><a></a>    margin <span class="op">=</span> (revenues[i] <span class="op">-</span> costs[i]) <span class="op">/</span> revenues[i]  <span class="co"># ② Variables + ① Math</span></span>
+<span id="cb18-7"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>products[i]<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>margin<span class="sc">:.1%}</span><span class="ss"> margin"</span>)     <span class="co"># ⑥ Function + f-string</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="highlight-box">
 <p>This is the same code from slide 2. Every line is one of the 6 patterns. You now have the vocabulary to read it — and to read the code AI generates for you.</p>
 </div>

@@ -217,6 +217,29 @@ That's it. Everything else — writing the code, explaining errors, adding new c
 
 ---
 
+## Assignment Statements
+
+A single `=` sign stores a value under a name:
+
+```python
+price = 182.50
+company = "Apple"
+shares = 100
+total = price * shares
+```
+
+::: {.info-box}
+[How to read it]{.box-title}
+
+Read `price = 182.50` as **"price gets 182.50"** — not "price equals 182.50." The right side is computed first, then stored in the name on the left.
+:::
+
+::: {.highlight-box}
+When you see `df = pd.read_excel(...)` on the next slide, the same thing is happening — the result of `pd.read_excel(...)` is computed and stored in the name `df`.
+:::
+
+---
+
 ## Reading an Excel File
 
 ```python
