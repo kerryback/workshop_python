@@ -65,38 +65,42 @@ Running this prints the profit margin for each product. By the end of this sessi
 
 ## How Python Runs
 
-::: {.mermaid-sm}
-```{mermaid}
-%%| fig-width: 9
-%%| fig-height: 1.8
-%%{init: {'themeVariables': {'fontSize': '16px', 'fontFamily': 'Inter, sans-serif'}, 'flowchart': {'diagramPadding': 16}}}%%
-flowchart LR
-    P["Your Python Code"] -->|"interpreted"| M["Python Engine<br/>(runs your code)"]
-    P -->|"calls"| C["pandas / NumPy<br/>(pre-built libraries)"]
-    C -->|"already compiled,<br/>runs fast"| M
-```
-:::
-
 ```{=html}
-<script>
-/* Set SVG to exactly 1:1 scale (CSS width = viewBox width) so foreignObject boxes
-   exactly fit the measured text. The CSS transform: scale(1.4) on .mermaid-sm then
-   scales the whole diagram up uniformly — including the CSS text inside foreignObjects. */
-window.addEventListener('load', function() {
-  setTimeout(function() {
-    var svg = document.querySelector('.mermaid-sm svg.mermaid-js');
-    if (svg) {
-      var vb = svg.getAttribute('viewBox');
-      if (vb) {
-        var parts = vb.trim().split(/\s+/);
-        svg.setAttribute('width', String(Math.ceil(parseFloat(parts[2]))));
-        svg.setAttribute('height', String(Math.ceil(parseFloat(parts[3]))));
-      }
-      svg.style.maxWidth = 'none';
-    }
-  }, 300);
-});
-</script>
+<svg viewBox="0 0 1000 315" xmlns="http://www.w3.org/2000/svg"
+     style="width:100%;height:auto;display:block;">
+  <defs>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <!-- Node: Your Python Code -->
+  <rect x="5" y="115" width="285" height="72" rx="10" fill="#f0f6ff" stroke="#334155" stroke-width="3.5"/>
+  <text x="147" y="158" text-anchor="middle" font-family="Inter,sans-serif" font-size="32" font-weight="700" fill="#0f172a">Your Python Code</text>
+
+  <!-- Node: pandas / NumPy -->
+  <rect x="362" y="185" width="276" height="118" rx="10" fill="#f0f6ff" stroke="#334155" stroke-width="3.5"/>
+  <text x="500" y="228" text-anchor="middle" font-family="Inter,sans-serif" font-size="32" font-weight="700" fill="#0f172a">pandas / NumPy</text>
+  <text x="500" y="264" text-anchor="middle" font-family="Inter,sans-serif" font-size="22" fill="#334155">(pre-built libraries)</text>
+
+  <!-- Node: Python Engine -->
+  <rect x="710" y="100" width="285" height="118" rx="10" fill="#f0f6ff" stroke="#334155" stroke-width="3.5"/>
+  <text x="852" y="148" text-anchor="middle" font-family="Inter,sans-serif" font-size="32" font-weight="700" fill="#0f172a">Python Engine</text>
+  <text x="852" y="182" text-anchor="middle" font-family="Inter,sans-serif" font-size="22" fill="#334155">(runs your code)</text>
+
+  <!-- Arrow: Your Code → Python Engine (arc over top, labeled "interpreted") -->
+  <path d="M290,128 Q500,38 710,128" fill="none" stroke="#334155" stroke-width="3.5" marker-end="url(#arr)"/>
+  <text x="500" y="32" text-anchor="middle" font-family="Inter,sans-serif" font-size="24" font-style="italic" fill="#334155">interpreted</text>
+
+  <!-- Arrow: Your Code → pandas (labeled "calls") -->
+  <path d="M200,187 L360,215" fill="none" stroke="#334155" stroke-width="3.5" marker-end="url(#arr)"/>
+  <text x="250" y="212" text-anchor="middle" font-family="Inter,sans-serif" font-size="24" font-style="italic" fill="#334155">calls</text>
+
+  <!-- Arrow: pandas → Python Engine (labeled "compiled, runs fast") -->
+  <path d="M638,222 L708,192" fill="none" stroke="#334155" stroke-width="3.5" marker-end="url(#arr)"/>
+  <text x="598" y="165" text-anchor="middle" font-family="Inter,sans-serif" font-size="22" font-style="italic" fill="#334155">compiled —</text>
+  <text x="598" y="188" text-anchor="middle" font-family="Inter,sans-serif" font-size="22" font-style="italic" fill="#334155">runs fast</text>
+</svg>
 ```
 
 ::: {.info-box}

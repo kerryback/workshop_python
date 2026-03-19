@@ -326,31 +326,7 @@ $body-bg: $off-white;
   }
 }
 
-// ── Mermaid diagrams ──
-// CSS text inside SVG foreignObjects does NOT scale with SVG viewport/viewBox transforms.
-// Instead, apply a CSS transform to the HTML container — this scales everything uniformly
-// including foreignObject text. The JS (below the mermaid block in the QMD) first sets the
-// SVG to 1:1 scale (CSS width = viewBox width) so text fits, then the CSS transform
-// scales the whole rendered diagram up for presentation visibility.
-.mermaid-sm {
-  display: inline-block;         // shrink-wrap to SVG content for correct transform origin
-  transform: scale(1.4);
-  transform-origin: top left;
-  margin-bottom: 4em;            // compensate for layout space lost to transform
-  --mermaid-label-fg-color: #0f172a;
-  --mermaid-edge-color: #334155;
-  --mermaid-node-fg-color: #334155;
-}
-
-// Connector lines — thicker
-.mermaid-sm svg .edgePath path,
-.mermaid-sm svg .flowchart-link {
-  stroke-width: 2px !important;
-}
-
-.mermaid-sm svg marker path {
-  stroke-width: 1.5px !important;
-}
+// (How Python Runs diagram uses inline SVG — no extra CSS needed)
 
 // ── Code blocks ──
 .reveal pre {

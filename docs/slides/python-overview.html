@@ -94,7 +94,7 @@
     code span.vs { color: #f1fa8c; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-1b54fbaa001a245af134d82b4d57b542.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-257ccb4e956c483b986619da69b0465c.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -186,9 +186,6 @@
       margin-right: 0; 
     }
   </style>
-  <script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
-  <script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
-  <link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
   
   <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
@@ -252,43 +249,40 @@ Kerry Back, Rice University
 </section>
 <section id="how-python-runs" class="slide level2 center">
 <h2>How Python Runs</h2>
-<div class="mermaid-sm">
-<div class="cell" data-reveal="true" data-fig-width="9" data-fig-height="1.8" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class=""><p></p>
-<div>
-<pre class="mermaid mermaid-js">%%{init: {'themeVariables': {'fontSize': '16px', 'fontFamily': 'Inter, sans-serif'}, 'flowchart': {'diagramPadding': 16}}}%%
-flowchart LR
-    P["Your Python Code"] --&gt;|"interpreted"| M["Python Engine&lt;br/&gt;(runs your code)"]
-    P --&gt;|"calls"| C["pandas / NumPy&lt;br/&gt;(pre-built libraries)"]
-    C --&gt;|"already compiled,&lt;br/&gt;runs fast"| M
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-</div>
-<script>
-/* Set SVG to exactly 1:1 scale (CSS width = viewBox width) so foreignObject boxes
-   exactly fit the measured text. The CSS transform: scale(1.4) on .mermaid-sm then
-   scales the whole diagram up uniformly — including the CSS text inside foreignObjects. */
-window.addEventListener('load', function() {
-  setTimeout(function() {
-    var svg = document.querySelector('.mermaid-sm svg.mermaid-js');
-    if (svg) {
-      var vb = svg.getAttribute('viewBox');
-      if (vb) {
-        var parts = vb.trim().split(/\s+/);
-        svg.setAttribute('width', String(Math.ceil(parseFloat(parts[2]))));
-        svg.setAttribute('height', String(Math.ceil(parseFloat(parts[3]))));
-      }
-      svg.style.maxWidth = 'none';
-    }
-  }, 300);
-});
-</script>
+<svg viewbox="0 0 1000 315" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+  <defs>
+    <marker id="arr" markerwidth="10" markerheight="7" refx="9" refy="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#334155"></polygon>
+    </marker>
+  </defs>
+
+  <!-- Node: Your Python Code -->
+  <rect x="5" y="115" width="285" height="72" rx="10" fill="#f0f6ff" stroke="#334155" stroke-width="3.5"></rect>
+  <text x="147" y="158" text-anchor="middle" font-family="Inter,sans-serif" font-size="32" font-weight="700" fill="#0f172a">Your Python Code</text>
+
+  <!-- Node: pandas / NumPy -->
+  <rect x="362" y="185" width="276" height="118" rx="10" fill="#f0f6ff" stroke="#334155" stroke-width="3.5"></rect>
+  <text x="500" y="228" text-anchor="middle" font-family="Inter,sans-serif" font-size="32" font-weight="700" fill="#0f172a">pandas / NumPy</text>
+  <text x="500" y="264" text-anchor="middle" font-family="Inter,sans-serif" font-size="22" fill="#334155">(pre-built libraries)</text>
+
+  <!-- Node: Python Engine -->
+  <rect x="710" y="100" width="285" height="118" rx="10" fill="#f0f6ff" stroke="#334155" stroke-width="3.5"></rect>
+  <text x="852" y="148" text-anchor="middle" font-family="Inter,sans-serif" font-size="32" font-weight="700" fill="#0f172a">Python Engine</text>
+  <text x="852" y="182" text-anchor="middle" font-family="Inter,sans-serif" font-size="22" fill="#334155">(runs your code)</text>
+
+  <!-- Arrow: Your Code → Python Engine (arc over top, labeled "interpreted") -->
+  <path d="M290,128 Q500,38 710,128" fill="none" stroke="#334155" stroke-width="3.5" marker-end="url(#arr)"></path>
+  <text x="500" y="32" text-anchor="middle" font-family="Inter,sans-serif" font-size="24" font-style="italic" fill="#334155">interpreted</text>
+
+  <!-- Arrow: Your Code → pandas (labeled "calls") -->
+  <path d="M200,187 L360,215" fill="none" stroke="#334155" stroke-width="3.5" marker-end="url(#arr)"></path>
+  <text x="250" y="212" text-anchor="middle" font-family="Inter,sans-serif" font-size="24" font-style="italic" fill="#334155">calls</text>
+
+  <!-- Arrow: pandas → Python Engine (labeled "compiled, runs fast") -->
+  <path d="M638,222 L708,192" fill="none" stroke="#334155" stroke-width="3.5" marker-end="url(#arr)"></path>
+  <text x="598" y="165" text-anchor="middle" font-family="Inter,sans-serif" font-size="22" font-style="italic" fill="#334155">compiled —</text>
+  <text x="598" y="188" text-anchor="middle" font-family="Inter,sans-serif" font-size="22" font-style="italic" fill="#334155">runs fast</text>
+</svg>
 <div class="info-box">
 <p><span class="box-title">Two paths to execution</span></p>
 <ul>
@@ -402,7 +396,7 @@ window.addEventListener('load', function() {
 <span id="cb5-2"><a></a></span>
 <span id="cb5-3"><a></a>df <span class="op">=</span> pd.read_excel(<span class="st">"/content/drive/MyDrive/sales.xlsx"</span>)</span>
 <span id="cb5-4"><a></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="c54e1dd7" class="cell" data-execution_count="1">
+<div id="a163caf3" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div>
 <style scoped="">

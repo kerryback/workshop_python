@@ -18,7 +18,7 @@
     "href": "slides/python-overview.html#how-python-runs",
     "title": "Python for MBA Students",
     "section": "How Python Runs",
-    "text": "How Python Runs\n\n\n\n\n\n\n%%{init: {'themeVariables': {'fontSize': '16px', 'fontFamily': 'Inter, sans-serif'}, 'flowchart': {'diagramPadding': 16}}}%%\nflowchart LR\n    P[\"Your Python Code\"] --&gt;|\"interpreted\"| M[\"Python Engine&lt;br/&gt;(runs your code)\"]\n    P --&gt;|\"calls\"| C[\"pandas / NumPy&lt;br/&gt;(pre-built libraries)\"]\n    C --&gt;|\"already compiled,&lt;br/&gt;runs fast\"| M\n\n\n\n\n\n\n\n\n\nTwo paths to execution\n\nInterpreted: Python reads your code line by line and runs it — easy to write, slightly slower\nPre-built libraries: pandas and NumPy are written in C, compiled (converted to machine code the CPU can read directly) ahead of time — called by Python, runs very fast"
+    "text": "How Python Runs\n\n  \n    \n      \n    \n  \n\n  \n  \n  Your Python Code\n\n  \n  \n  pandas / NumPy\n  (pre-built libraries)\n\n  \n  \n  Python Engine\n  (runs your code)\n\n  \n  \n  interpreted\n\n  \n  \n  calls\n\n  \n  \n  compiled —\n  runs fast\n\n\nTwo paths to execution\n\nInterpreted: Python reads your code line by line and runs it — easy to write, slightly slower\nPre-built libraries: pandas and NumPy are written in C, compiled (converted to machine code the CPU can read directly) ahead of time — called by Python, runs very fast"
   },
   {
     "objectID": "slides/python-overview.html#scripts-and-notebooks",
