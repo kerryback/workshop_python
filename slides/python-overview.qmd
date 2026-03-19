@@ -2,6 +2,7 @@
 title: "Python for MBA Students"
 subtitle: "A Practical Overview"
 author: "Kerry Back, Rice University"
+jupyter: python3
 format:
   revealjs:
     theme: [default, revealjs-style.scss]
@@ -152,22 +153,39 @@ Hundreds more exist — for machine learning (`scikit-learn`), optimization (`sc
 
 ---
 
-## Reading a CSV File
+## Try It: Google Colab
+
+Google Colab is a free, browser-based Python notebook — nothing to install.
+
+::: {.info-box}
+[One-time setup — two steps]{.box-title}
+
+1. **Download the data file:** [sales.xlsx](https://raw.githubusercontent.com/kerryback/python_workshop_ver2/main/slides/files/sales.xlsx) — save it to your **Google Drive**
+2. **Open** [colab.research.google.com](https://colab.research.google.com) and start a new notebook
+3. **Ask Gemini:** *"Mount my Google Drive so I can access files from it"*
+:::
+
+::: {.highlight-box}
+Once your Drive is mounted, your file is at `/content/drive/MyDrive/sales.xlsx` — that's the path you'll pass to `pd.read_excel`.
+:::
+
+---
+
+## Reading an Excel File
 
 ```python
 import pandas as pd
 
-df = pd.read_csv("sales.csv")
+df = pd.read_excel("/content/drive/MyDrive/sales.xlsx")
 df.head()
 ```
 
-```
-   region      product   revenue   units
-0    East      Widget    42000      210
-1    West      Gadget    31500      180
-2   North      Widget    28000      140
-3    East     Doohickey  19500       95
-4   South      Gadget    22000      125
+```{python}
+#| echo: false
+import pandas as pd
+
+df = pd.read_excel("files/sales.xlsx")
+df.head()
 ```
 
 ::: {.highlight-box}
@@ -198,10 +216,6 @@ df.groupby("region")["revenue"].sum().plot(kind="bar", title="Revenue by Region"
 ::: {.highlight-box}
 **Each method returns an object; the next method acts on that object.** Under the hood, pandas runs these operations as precompiled C code — which is why it handles millions of rows without slowing down. This is the precompiled path from the earlier diagram.
 :::
-
----
-
-## Break {.section-divider}
 
 ---
 
@@ -434,7 +448,7 @@ for company in companies:
 ```python
 import pandas as pd
 
-df = pd.read_csv("sales.csv")
+df = pd.read_excel("sales.xlsx")
 
 tech    = df[df["sector"] == "Technology"]
 summary = tech.groupby("region")["revenue"].sum()
@@ -454,16 +468,12 @@ print(f"Revenue: ${summary[top]:,.0f}")
 - **② Variables** — `df`, `tech`, `summary`, `top`
 - **④ Conditional filter** — `df[df["sector"] == "Technology"]`
 - **⑥ Method chain** — `.groupby(...)[...].sum()`
-- **⑥ Methods** — `.idxmax()`, `.read_csv()`
+- **⑥ Methods** — `.idxmax()`, `.read_excel()`
 - **⑥ Functions** — `print(...)`
 :::
 
 :::
 :::
-
----
-
-## Break {.section-divider}
 
 ---
 
@@ -602,7 +612,7 @@ A complete analysis in a single method chain:
 ```python
 import pandas as pd
 
-df = pd.read_csv("sales.csv")
+df = pd.read_excel("sales.xlsx")
 
 (df
     .query("revenue > 10_000")              # filter rows
@@ -663,6 +673,30 @@ df.set_index("date")["revenue"].plot(kind="line")
 
 ::: {.highlight-box}
 Different charts, same pattern: build a series or DataFrame, call `.plot(kind=...)`. When you see a visualization in AI-generated code, look for this pattern — then look at what `kind=` is set to.
+:::
+
+---
+
+## Sample Dataset for Practice
+
+::: {.info-box}
+[stock_panel.xlsx — download link]{.box-title}
+
+**[stock_panel.xlsx](https://raw.githubusercontent.com/kerryback/python_workshop_ver2/main/slides/files/stock_panel.xlsx)**
+
+30 S&P 500 stocks × 36 months (2022–2024) — 1,080 rows, 13 columns:
+
+| Column | What it is |
+|--------|-----------|
+| `ticker`, `month`, `sector` | Stock identifier, year-month, industry sector |
+| `return`, `momentum`, `lagged_return` | Monthly return, 12-month momentum, prior-month return |
+| `marketcap_billions`, `pb` | Market cap ($ billions), price-to-book ratio |
+| `roe`, `grossmargin`, `assetturnover` | Return on equity, gross margin, asset turnover |
+| `gp_to_assets`, `asset_growth` | Gross profit / assets, year-over-year asset growth |
+:::
+
+::: {.highlight-box}
+Ask Gemini to: filter by sector · groupby and aggregate · pivot by ticker · plot returns over time · write results to a new Excel file with `df.to_excel(...)`.
 :::
 
 ---

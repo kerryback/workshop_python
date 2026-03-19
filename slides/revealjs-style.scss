@@ -334,17 +334,16 @@ $body-bg: $off-white;
 
 .reveal .mermaid {
   margin-top: 0.5em;
-  margin-bottom: 0.5em;
   transform: scale(3.5);
   transform-origin: top left;
   margin-bottom: 14em;
 }
 
-// Small mermaid (simple diagrams)
+// Centered mermaid (simple LR diagrams)
 .mermaid-sm .mermaid {
-  transform: scale(1.8) !important;
-  transform-origin: center center !important;
-  margin-bottom: 4em !important;
+  transform: scale(4.5) !important;
+  transform-origin: center top !important;
+  margin-bottom: 16em !important;
 }
 
 .reveal .mermaid .nodeLabel {
@@ -358,16 +357,26 @@ $body-bg: $off-white;
 
 // ── Code blocks ──
 .reveal pre {
-  background: $dark-navy;
+  background: $dark-navy !important;
   border-radius: 10px;
   padding: 0.8em 1.1em;
   font-size: 0.62em;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  color: #e2e8f0;
+  color: #e2e8f0 !important;
 }
 
 .reveal pre code {
-  color: #e2e8f0;
+  background: transparent !important;
+  color: #e2e8f0 !important;
+}
+
+// Inline code (backticks in body text) — force dark text on light bg
+.reveal :not(pre) > code {
+  background: rgba($dark-navy, 0.08);
+  color: $dark-navy;
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  font-size: 0.88em;
 }
 
 // ── Explainer text ──

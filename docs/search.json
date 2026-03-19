@@ -42,11 +42,18 @@
     "text": "What Is a Library?\nA library is a collection of pre-built code you can import and use.\n\nKey libraries for business\n\n\n\nLibrary\nWhat it does\n\n\n\n\npandas\nData tables — read, clean, reshape, summarize\n\n\nnumpy\nFast math on arrays of numbers\n\n\nmatplotlib\nCharts and plots\n\n\nseaborn\nStatistical visualization\n\n\n\n\n\nHundreds more exist — for machine learning (scikit-learn), optimization (scipy), web APIs, and more. import pandas as pd means: load pandas and call it pd for short."
   },
   {
-    "objectID": "slides/python-overview.html#reading-a-csv-file",
-    "href": "slides/python-overview.html#reading-a-csv-file",
+    "objectID": "slides/python-overview.html#try-it-google-colab",
+    "href": "slides/python-overview.html#try-it-google-colab",
     "title": "Python for MBA Students",
-    "section": "Reading a CSV File",
-    "text": "Reading a CSV File\nimport pandas as pd\n\ndf = pd.read_csv(\"sales.csv\")\ndf.head()\n   region      product   revenue   units\n0    East      Widget    42000      210\n1    West      Gadget    31500      180\n2   North      Widget    28000      140\n3    East     Doohickey  19500       95\n4   South      Gadget    22000      125\n\ndf is a DataFrame — think of it as a spreadsheet in Python. df.head() shows the first 5 rows."
+    "section": "Try It: Google Colab",
+    "text": "Try It: Google Colab\nGoogle Colab is a free, browser-based Python notebook — nothing to install.\n\nOne-time setup — two steps\n\nDownload the data file: sales.xlsx — save it to your Google Drive\nOpen colab.research.google.com and start a new notebook\nAsk Gemini: “Mount my Google Drive so I can access files from it”\n\n\n\nOnce your Drive is mounted, your file is at /content/drive/MyDrive/sales.xlsx — that’s the path you’ll pass to pd.read_excel."
+  },
+  {
+    "objectID": "slides/python-overview.html#reading-an-excel-file",
+    "href": "slides/python-overview.html#reading-an-excel-file",
+    "title": "Python for MBA Students",
+    "section": "Reading an Excel File",
+    "text": "Reading an Excel File\nimport pandas as pd\n\ndf = pd.read_excel(\"/content/drive/MyDrive/sales.xlsx\")\ndf.head()\n\n\n\n\n\n\n\n\n\nregion\nproduct\nrevenue\nunits\n\n\n\n\n0\nEast\nWidget\n42000\n210\n\n\n1\nWest\nGadget\n31500\n180\n\n\n2\nNorth\nWidget\n28000\n140\n\n\n3\nEast\nDoohickey\n19500\n95\n\n\n4\nSouth\nGadget\n22000\n125\n\n\n\n\n\n\n\n\ndf is a DataFrame — think of it as a spreadsheet in Python. df.head() shows the first 5 rows."
   },
   {
     "objectID": "slides/python-overview.html#method-chaining",
@@ -54,13 +61,6 @@
     "title": "Python for MBA Students",
     "section": "Method Chaining",
     "text": "Method Chaining\nOne line that groups, sums, and plots:\ndf.groupby(\"region\")[\"revenue\"].sum().plot(kind=\"bar\", title=\"Revenue by Region\")\n\nReading left to right\n\n\n\nStep\nCode\nReturns\n\n\n\n\n1\ndf.groupby(\"region\")\ngrouped data object\n\n\n2\n[\"revenue\"]\nrevenue values per group\n\n\n3\n.sum()\ntotal revenue per region\n\n\n4\n.plot(kind=\"bar\")\nbar chart\n\n\n\n\n\nEach method returns an object; the next method acts on that object. Under the hood, pandas runs these operations as precompiled C code — which is why it handles millions of rows without slowing down. This is the precompiled path from the earlier diagram."
-  },
-  {
-    "objectID": "slides/python-overview.html#break",
-    "href": "slides/python-overview.html#break",
-    "title": "Python for MBA Students",
-    "section": "Break",
-    "text": "Break"
   },
   {
     "objectID": "slides/python-overview.html#the-6-patterns",
@@ -130,14 +130,7 @@
     "href": "slides/python-overview.html#example-6",
     "title": "Python for MBA Students",
     "section": "Example 6",
-    "text": "Example 6\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"sales.csv\")\n\ntech    = df[df[\"sector\"] == \"Technology\"]\nsummary = tech.groupby(\"region\")[\"revenue\"].sum()\ntop     = summary.idxmax()\n\nprint(f\"Top tech region: {top}\")\nprint(f\"Revenue: ${summary[top]:,.0f}\")\n\n\nPatterns\n\nLibrary — import pandas as pd\n② Variables — df, tech, summary, top\n④ Conditional filter — df[df[\"sector\"] == \"Technology\"]\n⑥ Method chain — .groupby(...)[...].sum()\n⑥ Methods — .idxmax(), .read_csv()\n⑥ Functions — print(...)"
-  },
-  {
-    "objectID": "slides/python-overview.html#break-1",
-    "href": "slides/python-overview.html#break-1",
-    "title": "Python for MBA Students",
-    "section": "Break",
-    "text": "Break"
+    "text": "Example 6\n\n\nimport pandas as pd\n\ndf = pd.read_excel(\"sales.xlsx\")\n\ntech    = df[df[\"sector\"] == \"Technology\"]\nsummary = tech.groupby(\"region\")[\"revenue\"].sum()\ntop     = summary.idxmax()\n\nprint(f\"Top tech region: {top}\")\nprint(f\"Revenue: ${summary[top]:,.0f}\")\n\n\nPatterns\n\nLibrary — import pandas as pd\n② Variables — df, tech, summary, top\n④ Conditional filter — df[df[\"sector\"] == \"Technology\"]\n⑥ Method chain — .groupby(...)[...].sum()\n⑥ Methods — .idxmax(), .read_excel()\n⑥ Functions — print(...)"
   },
   {
     "objectID": "slides/python-overview.html#colab-gemini",
@@ -207,7 +200,7 @@
     "href": "slides/python-overview.html#pandas-analysis-in-one-pipeline",
     "title": "Python for MBA Students",
     "section": "pandas — Analysis in One Pipeline",
-    "text": "pandas — Analysis in One Pipeline\nA complete analysis in a single method chain:\nimport pandas as pd\n\ndf = pd.read_csv(\"sales.csv\")\n\n(df\n    .query(\"revenue &gt; 10_000\")              # filter rows\n    .groupby(\"region\")[\"revenue\"]           # group by region\n    .sum()                                  # aggregate\n    .sort_values(ascending=False)           # sort high to low\n    .plot(kind=\"bar\", title=\"Revenue by Region\")   # chart\n)\n\nEvery step is Pattern ⑥ — Methods: each returns an object, and the next method acts on it. This is the method chaining pattern you’ll see throughout AI-generated pandas code."
+    "text": "pandas — Analysis in One Pipeline\nA complete analysis in a single method chain:\nimport pandas as pd\n\ndf = pd.read_excel(\"sales.xlsx\")\n\n(df\n    .query(\"revenue &gt; 10_000\")              # filter rows\n    .groupby(\"region\")[\"revenue\"]           # group by region\n    .sum()                                  # aggregate\n    .sort_values(ascending=False)           # sort high to low\n    .plot(kind=\"bar\", title=\"Revenue by Region\")   # chart\n)\n\nEvery step is Pattern ⑥ — Methods: each returns an object, and the next method acts on it. This is the method chaining pattern you’ll see throughout AI-generated pandas code."
   },
   {
     "objectID": "slides/python-overview.html#pandas-more-capabilities",
@@ -222,6 +215,13 @@
     "title": "Python for MBA Students",
     "section": "Visualization",
     "text": "Visualization\nThe same method-chaining pattern — different kind=:\n# Distribution of one variable\ndf[\"revenue\"].plot(kind=\"hist\", bins=20)\n\n# Comparison across categories\ndf.groupby(\"region\")[\"revenue\"].sum().plot(kind=\"bar\")\n\n# Relationship between two variables\ndf.plot(kind=\"scatter\", x=\"units\", y=\"revenue\")\n\n# Trend over time\ndf.set_index(\"date\")[\"revenue\"].plot(kind=\"line\")\n\nDifferent charts, same pattern: build a series or DataFrame, call .plot(kind=...). When you see a visualization in AI-generated code, look for this pattern — then look at what kind= is set to."
+  },
+  {
+    "objectID": "slides/python-overview.html#sample-dataset-for-practice",
+    "href": "slides/python-overview.html#sample-dataset-for-practice",
+    "title": "Python for MBA Students",
+    "section": "Sample Dataset for Practice",
+    "text": "Sample Dataset for Practice\n\nstock_panel.xlsx — download link\nstock_panel.xlsx\n30 S&P 500 stocks × 36 months (2022–2024) — 1,080 rows, 13 columns:\n\n\n\n\n\n\n\nColumn\nWhat it is\n\n\n\n\nticker, month, sector\nStock identifier, year-month, industry sector\n\n\nreturn, momentum, lagged_return\nMonthly return, 12-month momentum, prior-month return\n\n\nmarketcap_billions, pb\nMarket cap ($ billions), price-to-book ratio\n\n\nroe, grossmargin, assetturnover\nReturn on equity, gross margin, asset turnover\n\n\ngp_to_assets, asset_growth\nGross profit / assets, year-over-year asset growth\n\n\n\n\n\nAsk Gemini to: filter by sector · groupby and aggregate · pivot by ticker · plot returns over time · write results to a new Excel file with df.to_excel(...)."
   },
   {
     "objectID": "slides/python-overview.html#back-to-the-beginning",
