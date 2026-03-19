@@ -66,40 +66,41 @@ Running this prints the profit margin for each product. By the end of this sessi
 ## How Python Runs
 
 ```{=html}
-<svg viewBox="0 0 1000 315" xmlns="http://www.w3.org/2000/svg"
+<svg viewBox="0 0 1000 220" xmlns="http://www.w3.org/2000/svg"
      style="width:100%;height:auto;display:block;">
   <defs>
-    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#334155"/>
+    <marker id="arr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#334155"/>
     </marker>
   </defs>
 
   <!-- Node: Your Python Code -->
-  <rect x="5" y="115" width="285" height="72" rx="10" fill="#f0f6ff" stroke="#334155" stroke-width="3.5"/>
-  <text x="147" y="158" text-anchor="middle" font-family="Inter,sans-serif" font-size="32" font-weight="700" fill="#0f172a">Your Python Code</text>
+  <rect x="5" y="75" width="205" height="70" rx="8" fill="#f0f6ff" stroke="#334155" stroke-width="2"/>
+  <text x="107" y="106" text-anchor="middle" font-family="Inter,sans-serif" font-size="18" font-weight="700" fill="#0f172a">Your Python Code</text>
+  <text x="107" y="128" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" fill="#334155">(your script)</text>
 
   <!-- Node: pandas / NumPy -->
-  <rect x="362" y="185" width="276" height="118" rx="10" fill="#f0f6ff" stroke="#334155" stroke-width="3.5"/>
-  <text x="500" y="228" text-anchor="middle" font-family="Inter,sans-serif" font-size="32" font-weight="700" fill="#0f172a">pandas / NumPy</text>
-  <text x="500" y="264" text-anchor="middle" font-family="Inter,sans-serif" font-size="22" fill="#334155">(pre-built libraries)</text>
+  <rect x="385" y="130" width="210" height="70" rx="8" fill="#f0f6ff" stroke="#334155" stroke-width="2"/>
+  <text x="490" y="161" text-anchor="middle" font-family="Inter,sans-serif" font-size="18" font-weight="700" fill="#0f172a">pandas / NumPy</text>
+  <text x="490" y="183" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" fill="#334155">(pre-built libraries)</text>
 
   <!-- Node: Python Engine -->
-  <rect x="710" y="100" width="285" height="118" rx="10" fill="#f0f6ff" stroke="#334155" stroke-width="3.5"/>
-  <text x="852" y="148" text-anchor="middle" font-family="Inter,sans-serif" font-size="32" font-weight="700" fill="#0f172a">Python Engine</text>
-  <text x="852" y="182" text-anchor="middle" font-family="Inter,sans-serif" font-size="22" fill="#334155">(runs your code)</text>
+  <rect x="760" y="65" width="235" height="70" rx="8" fill="#f0f6ff" stroke="#334155" stroke-width="2"/>
+  <text x="877" y="96" text-anchor="middle" font-family="Inter,sans-serif" font-size="18" font-weight="700" fill="#0f172a">Python Engine</text>
+  <text x="877" y="118" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" fill="#334155">(runs your code)</text>
 
   <!-- Arrow: Your Code → Python Engine (arc over top, labeled "interpreted") -->
-  <path d="M290,128 Q500,38 710,128" fill="none" stroke="#334155" stroke-width="3.5" marker-end="url(#arr)"/>
-  <text x="500" y="32" text-anchor="middle" font-family="Inter,sans-serif" font-size="24" font-style="italic" fill="#334155">interpreted</text>
+  <path d="M210,90 Q487,15 760,90" fill="none" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="487" y="12" text-anchor="middle" font-family="Inter,sans-serif" font-size="15" font-style="italic" fill="#334155">interpreted</text>
 
   <!-- Arrow: Your Code → pandas (labeled "calls") -->
-  <path d="M200,187 L360,215" fill="none" stroke="#334155" stroke-width="3.5" marker-end="url(#arr)"/>
-  <text x="250" y="212" text-anchor="middle" font-family="Inter,sans-serif" font-size="24" font-style="italic" fill="#334155">calls</text>
+  <path d="M160,145 L383,163" fill="none" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="255" y="142" text-anchor="middle" font-family="Inter,sans-serif" font-size="15" font-style="italic" fill="#334155">calls</text>
 
   <!-- Arrow: pandas → Python Engine (labeled "compiled, runs fast") -->
-  <path d="M638,222 L708,192" fill="none" stroke="#334155" stroke-width="3.5" marker-end="url(#arr)"/>
-  <text x="598" y="165" text-anchor="middle" font-family="Inter,sans-serif" font-size="22" font-style="italic" fill="#334155">compiled —</text>
-  <text x="598" y="188" text-anchor="middle" font-family="Inter,sans-serif" font-size="22" font-style="italic" fill="#334155">runs fast</text>
+  <path d="M595,158 L758,118" fill="none" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="675" y="118" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-style="italic" fill="#334155">already compiled,</text>
+  <text x="675" y="134" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-style="italic" fill="#334155">runs fast</text>
 </svg>
 ```
 

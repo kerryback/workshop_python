@@ -18,7 +18,7 @@
     "href": "slides/python-overview.html#how-python-runs",
     "title": "Python for MBA Students",
     "section": "How Python Runs",
-    "text": "How Python Runs\n\n  \n    \n      \n    \n  \n\n  \n  \n  Your Python Code\n\n  \n  \n  pandas / NumPy\n  (pre-built libraries)\n\n  \n  \n  Python Engine\n  (runs your code)\n\n  \n  \n  interpreted\n\n  \n  \n  calls\n\n  \n  \n  compiled —\n  runs fast\n\n\nTwo paths to execution\n\nInterpreted: Python reads your code line by line and runs it — easy to write, slightly slower\nPre-built libraries: pandas and NumPy are written in C, compiled (converted to machine code the CPU can read directly) ahead of time — called by Python, runs very fast"
+    "text": "How Python Runs\n\n  \n    \n      \n    \n  \n\n  \n  \n  Your Python Code\n  (your script)\n\n  \n  \n  pandas / NumPy\n  (pre-built libraries)\n\n  \n  \n  Python Engine\n  (runs your code)\n\n  \n  \n  interpreted\n\n  \n  \n  calls\n\n  \n  \n  already compiled,\n  runs fast\n\n\nTwo paths to execution\n\nInterpreted: Python reads your code line by line and runs it — easy to write, slightly slower\nPre-built libraries: pandas and NumPy are written in C, compiled (converted to machine code the CPU can read directly) ahead of time — called by Python, runs very fast"
   },
   {
     "objectID": "slides/python-overview.html#scripts-and-notebooks",
