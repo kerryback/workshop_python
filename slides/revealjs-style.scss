@@ -327,44 +327,29 @@ $body-bg: $off-white;
 }
 
 // ── Mermaid diagrams ──
-.reveal .mermaid svg {
-  max-width: 100%;
-  margin: 0 auto;
-}
-
-.reveal .mermaid {
-  margin-top: 0.5em;
-  transform: scale(3.5);
+// CSS text inside SVG foreignObjects does NOT scale with SVG viewport/viewBox transforms.
+// Instead, apply a CSS transform to the HTML container — this scales everything uniformly
+// including foreignObject text. The JS (below the mermaid block in the QMD) first sets the
+// SVG to 1:1 scale (CSS width = viewBox width) so text fits, then the CSS transform
+// scales the whole rendered diagram up for presentation visibility.
+.mermaid-sm {
+  display: inline-block;         // shrink-wrap to SVG content for correct transform origin
+  transform: scale(1.4);
   transform-origin: top left;
-  margin-bottom: 14em;
+  margin-bottom: 4em;            // compensate for layout space lost to transform
+  --mermaid-label-fg-color: #0f172a;
+  --mermaid-edge-color: #334155;
+  --mermaid-node-fg-color: #334155;
 }
 
-// Centered mermaid (simple LR diagrams)
-.mermaid-sm .mermaid {
-  transform: scale(4.5) !important;
-  transform-origin: center top !important;
-  margin-bottom: 16em !important;
+// Connector lines — thicker
+.mermaid-sm svg .edgePath path,
+.mermaid-sm svg .flowchart-link {
+  stroke-width: 2px !important;
 }
 
-.reveal .mermaid .nodeLabel {
-  font-weight: 900 !important;
-  font-size: 1.6em !important;
-  color: #0f172a !important;
-}
-
-.reveal .mermaid .edgeLabel {
-  font-weight: 800 !important;
-  font-size: 1.4em !important;
-  color: #0f172a !important;
-}
-
-.reveal .mermaid .edgePath path,
-.reveal .mermaid .flowchart-link {
-  stroke-width: 6px !important;
-}
-
-.reveal .mermaid marker path {
-  stroke-width: 3px !important;
+.mermaid-sm svg marker path {
+  stroke-width: 1.5px !important;
 }
 
 // ── Code blocks ──

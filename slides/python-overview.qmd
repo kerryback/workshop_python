@@ -67,6 +67,9 @@ Running this prints the profit margin for each product. By the end of this sessi
 
 ::: {.mermaid-sm}
 ```{mermaid}
+%%| fig-width: 9
+%%| fig-height: 1.8
+%%{init: {'themeVariables': {'fontSize': '16px', 'fontFamily': 'Inter, sans-serif'}, 'flowchart': {'diagramPadding': 16}}}%%
 flowchart LR
     P["Your Python Code"] -->|"interpreted"| M["Python Engine<br/>(runs your code)"]
     P -->|"calls"| C["pandas / NumPy<br/>(pre-built libraries)"]
@@ -74,11 +77,33 @@ flowchart LR
 ```
 :::
 
+```{=html}
+<script>
+/* Set SVG to exactly 1:1 scale (CSS width = viewBox width) so foreignObject boxes
+   exactly fit the measured text. The CSS transform: scale(1.4) on .mermaid-sm then
+   scales the whole diagram up uniformly — including the CSS text inside foreignObjects. */
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    var svg = document.querySelector('.mermaid-sm svg.mermaid-js');
+    if (svg) {
+      var vb = svg.getAttribute('viewBox');
+      if (vb) {
+        var parts = vb.trim().split(/\s+/);
+        svg.setAttribute('width', String(Math.ceil(parseFloat(parts[2]))));
+        svg.setAttribute('height', String(Math.ceil(parseFloat(parts[3]))));
+      }
+      svg.style.maxWidth = 'none';
+    }
+  }, 300);
+});
+</script>
+```
+
 ::: {.info-box}
 [Two paths to execution]{.box-title}
 
 - **Interpreted:** Python reads your code line by line and runs it — easy to write, slightly slower
-- **Pre-built libraries:** pandas and NumPy are written in C, compiled ahead of time — called by Python, runs very fast
+- **Pre-built libraries:** pandas and NumPy are written in C, compiled (converted to machine code the CPU can read directly) ahead of time — called by Python, runs very fast
 :::
 
 ---

@@ -94,7 +94,7 @@
     code span.vs { color: #f1fa8c; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-bd941fc9c5271c6a456eb2d4b8bc93a0.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-1b54fbaa001a245af134d82b4d57b542.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -253,12 +253,13 @@ Kerry Back, Rice University
 <section id="how-python-runs" class="slide level2 center">
 <h2>How Python Runs</h2>
 <div class="mermaid-sm">
-<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell" data-reveal="true" data-fig-width="9" data-fig-height="1.8" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<pre class="mermaid mermaid-js">flowchart LR
+<pre class="mermaid mermaid-js">%%{init: {'themeVariables': {'fontSize': '16px', 'fontFamily': 'Inter, sans-serif'}, 'flowchart': {'diagramPadding': 16}}}%%
+flowchart LR
     P["Your Python Code"] --&gt;|"interpreted"| M["Python Engine&lt;br/&gt;(runs your code)"]
     P --&gt;|"calls"| C["pandas / NumPy&lt;br/&gt;(pre-built libraries)"]
     C --&gt;|"already compiled,&lt;br/&gt;runs fast"| M
@@ -269,11 +270,30 @@ Kerry Back, Rice University
 </div>
 </div>
 </div>
+<script>
+/* Set SVG to exactly 1:1 scale (CSS width = viewBox width) so foreignObject boxes
+   exactly fit the measured text. The CSS transform: scale(1.4) on .mermaid-sm then
+   scales the whole diagram up uniformly — including the CSS text inside foreignObjects. */
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    var svg = document.querySelector('.mermaid-sm svg.mermaid-js');
+    if (svg) {
+      var vb = svg.getAttribute('viewBox');
+      if (vb) {
+        var parts = vb.trim().split(/\s+/);
+        svg.setAttribute('width', String(Math.ceil(parseFloat(parts[2]))));
+        svg.setAttribute('height', String(Math.ceil(parseFloat(parts[3]))));
+      }
+      svg.style.maxWidth = 'none';
+    }
+  }, 300);
+});
+</script>
 <div class="info-box">
 <p><span class="box-title">Two paths to execution</span></p>
 <ul>
 <li><strong>Interpreted:</strong> Python reads your code line by line and runs it — easy to write, slightly slower</li>
-<li><strong>Pre-built libraries:</strong> pandas and NumPy are written in C, compiled ahead of time — called by Python, runs very fast</li>
+<li><strong>Pre-built libraries:</strong> pandas and NumPy are written in C, compiled (converted to machine code the CPU can read directly) ahead of time — called by Python, runs very fast</li>
 </ul>
 </div>
 </section>
@@ -382,7 +402,7 @@ Kerry Back, Rice University
 <span id="cb5-2"><a></a></span>
 <span id="cb5-3"><a></a>df <span class="op">=</span> pd.read_excel(<span class="st">"/content/drive/MyDrive/sales.xlsx"</span>)</span>
 <span id="cb5-4"><a></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="5c6ca308" class="cell" data-execution_count="1">
+<div id="c54e1dd7" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div>
 <style scoped="">
