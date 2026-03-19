@@ -347,12 +347,24 @@ $body-bg: $off-white;
 }
 
 .reveal .mermaid .nodeLabel {
-  font-weight: 700 !important;
-  font-size: 1.1em !important;
+  font-weight: 900 !important;
+  font-size: 1.6em !important;
+  color: #0f172a !important;
 }
 
 .reveal .mermaid .edgeLabel {
-  font-weight: 600 !important;
+  font-weight: 800 !important;
+  font-size: 1.4em !important;
+  color: #0f172a !important;
+}
+
+.reveal .mermaid .edgePath path,
+.reveal .mermaid .flowchart-link {
+  stroke-width: 6px !important;
+}
+
+.reveal .mermaid marker path {
+  stroke-width: 3px !important;
 }
 
 // ── Code blocks ──
