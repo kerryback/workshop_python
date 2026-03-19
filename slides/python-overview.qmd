@@ -171,6 +171,22 @@ Once your Drive is mounted, your file is at `/content/drive/MyDrive/sales.xlsx` 
 
 ---
 
+## Colab Basics
+
+::: {.info-box}
+[Three things you need to know]{.box-title}
+
+1. **Add a code cell** — click the **+ Code** button at the top, or hover between cells and click **+ Code**
+2. **Run a cell** — press **Shift + Enter** (runs the cell and moves to the next)
+3. **See the output** — it appears directly below the cell
+:::
+
+::: {.highlight-box}
+That's it. Everything else — writing the code, explaining errors, adding new cells — you can ask **Gemini**.
+:::
+
+---
+
 ## Reading an Excel File
 
 ```python
@@ -215,6 +231,10 @@ df.groupby("region")["revenue"].sum().plot(kind="bar", title="Revenue by Region"
 
 ::: {.highlight-box}
 **Each method returns an object; the next method acts on that object.** Under the hood, pandas runs these operations as precompiled C code — which is why it handles millions of rows without slowing down. This is the precompiled path from the earlier diagram.
+:::
+
+::: {.highlight-box}
+We'll return to Colab for hands-on exercises after covering the 6 patterns.
 :::
 
 ---
@@ -500,9 +520,8 @@ print(f"Revenue: ${summary[top]:,.0f}")
 
 **[colab.research.google.com/github/kerryback/workshop_python/blob/main/python_overview_exercises.ipynb](https://colab.research.google.com/github/kerryback/workshop_python/blob/main/python_overview_exercises.ipynb)**
 
-- Free, runs in your browser — nothing to install
 - The notebook has one section per pattern — **① through ⑥**
-- **Shift + Enter** — run a cell and move to the next
+- Use the same Colab basics from earlier: **+ Code** to add a cell, **Shift + Enter** to run
 :::
 
 ---
@@ -512,10 +531,10 @@ print(f"Revenue: ${summary[top]:,.0f}")
 ::: {.info-box}
 [How to get code from Gemini]{.box-title}
 
-1. In the notebook, click the **Gemini** sparkle icon (top right) — or open a new code cell
+1. Click the **Gemini** sparkle icon (top right) — or open a new code cell
 2. Type your prompt describing what you want Python to do
 3. Gemini generates code — click **Insert** to add it to a cell
-4. Run the cell with **Shift + Enter**
+4. **Shift + Enter** to run
 :::
 
 ::: {.highlight-box}

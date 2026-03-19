@@ -362,13 +362,27 @@ Kerry Back, Rice University
 <p>Once your Drive is mounted, your file is at <code>/content/drive/MyDrive/sales.xlsx</code> — that’s the path you’ll pass to <code>pd.read_excel</code>.</p>
 </div>
 </section>
+<section id="colab-basics" class="slide level2 center">
+<h2>Colab Basics</h2>
+<div class="info-box">
+<p><span class="box-title">Three things you need to know</span></p>
+<ol type="1">
+<li><strong>Add a code cell</strong> — click the <strong>+ Code</strong> button at the top, or hover between cells and click <strong>+ Code</strong></li>
+<li><strong>Run a cell</strong> — press <strong>Shift + Enter</strong> (runs the cell and moves to the next)</li>
+<li><strong>See the output</strong> — it appears directly below the cell</li>
+</ol>
+</div>
+<div class="highlight-box">
+<p>That’s it. Everything else — writing the code, explaining errors, adding new cells — you can ask <strong>Gemini</strong>.</p>
+</div>
+</section>
 <section id="reading-an-excel-file" class="slide level2 center">
 <h2>Reading an Excel File</h2>
 <div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb5-2"><a></a></span>
 <span id="cb5-3"><a></a>df <span class="op">=</span> pd.read_excel(<span class="st">"/content/drive/MyDrive/sales.xlsx"</span>)</span>
 <span id="cb5-4"><a></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="2d049f9c" class="cell" data-execution_count="1">
+<div id="88336f9d" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div>
 <style scoped="">
@@ -481,6 +495,9 @@ Kerry Back, Rice University
 </div>
 <div class="highlight-box">
 <p><strong>Each method returns an object; the next method acts on that object.</strong> Under the hood, pandas runs these operations as precompiled C code — which is why it handles millions of rows without slowing down. This is the precompiled path from the earlier diagram.</p>
+</div>
+<div class="highlight-box">
+<p>We’ll return to Colab for hands-on exercises after covering the 6 patterns.</p>
 </div>
 </section>
 <section id="the-6-patterns" class="slide level2 section-divider center">
@@ -771,9 +788,8 @@ Kerry Back, Rice University
 <p><span class="box-title">Go to this link in your browser</span></p>
 <p><strong><a href="https://colab.research.google.com/github/kerryback/workshop_python/blob/main/python_overview_exercises.ipynb">colab.research.google.com/github/kerryback/workshop_python/blob/main/python_overview_exercises.ipynb</a></strong></p>
 <ul>
-<li>Free, runs in your browser — nothing to install</li>
 <li>The notebook has one section per pattern — <strong>① through ⑥</strong></li>
-<li><strong>Shift + Enter</strong> — run a cell and move to the next</li>
+<li>Use the same Colab basics from earlier: <strong>+ Code</strong> to add a cell, <strong>Shift + Enter</strong> to run</li>
 </ul>
 </div>
 </section>
@@ -782,10 +798,10 @@ Kerry Back, Rice University
 <div class="info-box">
 <p><span class="box-title">How to get code from Gemini</span></p>
 <ol type="1">
-<li>In the notebook, click the <strong>Gemini</strong> sparkle icon (top right) — or open a new code cell</li>
+<li>Click the <strong>Gemini</strong> sparkle icon (top right) — or open a new code cell</li>
 <li>Type your prompt describing what you want Python to do</li>
 <li>Gemini generates code — click <strong>Insert</strong> to add it to a cell</li>
-<li>Run the cell with <strong>Shift + Enter</strong></li>
+<li><strong>Shift + Enter</strong> to run</li>
 </ol>
 </div>
 <div class="highlight-box">
