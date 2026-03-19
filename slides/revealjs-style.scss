@@ -375,6 +375,9 @@ $body-bg: $off-white;
   font-size: 0.62em;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   color: #e2e8f0 !important;
+  box-sizing: border-box;
+  width: 100%;
+  overflow-x: auto;
 }
 
 .reveal pre code {
