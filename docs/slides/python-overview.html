@@ -368,7 +368,7 @@ Kerry Back, Rice University
 <span id="cb5-2"><a></a></span>
 <span id="cb5-3"><a></a>df <span class="op">=</span> pd.read_excel(<span class="st">"/content/drive/MyDrive/sales.xlsx"</span>)</span>
 <span id="cb5-4"><a></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="178b25b9" class="cell" data-execution_count="1">
+<div id="f08113af" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div>
 <style scoped="">
@@ -605,12 +605,14 @@ Kerry Back, Rice University
 </div><div class="column" style="width:43%;">
 <div class="info-box">
 <p><span class="box-title">Patterns</span></p>
+<div>
 <ul>
-<li><strong>② Variables</strong> — lines 1–4, each <code>name = value</code></li>
-<li><strong>① Objects &amp; Types</strong> — large integers; <code>0.25</code> is a float</li>
-<li><strong>④ Conditional</strong> — <code>if / else</code> with indented blocks</li>
-<li><strong>⑥ Functions</strong> — <code>print(...)</code> called twice</li>
+<li class="fragment"><strong>② Variables</strong> — lines 1–4, each <code>name = value</code></li>
+<li class="fragment"><strong>① Objects &amp; Types</strong> — large integers; <code>0.25</code> is a float</li>
+<li class="fragment"><strong>④ Conditional</strong> — <code>if / else</code> with indented blocks</li>
+<li class="fragment"><strong>⑥ Functions</strong> — <code>print(...)</code> called twice</li>
 </ul>
+</div>
 </div>
 </div></div>
 </section>
@@ -630,13 +632,15 @@ Kerry Back, Rice University
 </div><div class="column" style="width:43%;">
 <div class="info-box">
 <p><span class="box-title">Patterns</span></p>
+<div>
 <ul>
-<li><strong>③ Collections</strong> — three lists <code>[...]</code></li>
-<li><strong>② Variables</strong> — <code>total</code>, <code>value</code>, <code>i</code></li>
-<li><strong>⑤ Loop</strong> — <code>for i in range(...):</code></li>
-<li><strong>⑥ Functions</strong> — <code>len(...)</code>, <code>range(...)</code>, <code>print(...)</code></li>
-<li><strong>⑤ Accumulator</strong> — <code>total += value</code> inside loop</li>
+<li class="fragment"><strong>③ Collections</strong> — three lists <code>[...]</code></li>
+<li class="fragment"><strong>② Variables</strong> — <code>total</code>, <code>value</code>, <code>i</code></li>
+<li class="fragment"><strong>⑤ Loop</strong> — <code>for i in range(...):</code></li>
+<li class="fragment"><strong>⑥ Functions</strong> — <code>len(...)</code>, <code>range(...)</code>, <code>print(...)</code></li>
+<li class="fragment"><strong>⑤ Accumulator</strong> — <code>total += value</code> inside loop</li>
 </ul>
+</div>
 </div>
 </div></div>
 </section>
@@ -656,13 +660,15 @@ Kerry Back, Rice University
 </div><div class="column" style="width:43%;">
 <div class="info-box">
 <p><span class="box-title">Patterns</span></p>
+<div>
 <ul>
-<li><strong>③ Collections</strong> — list of dictionaries <code>[{...}, ...]</code></li>
-<li><strong>List comprehension</strong> — compact <code>for</code> loop in brackets</li>
-<li><strong>② Variables</strong> — <code>values</code>, <code>total</code></li>
-<li><strong>⑥ Functions</strong> — <code>sum(...)</code>, <code>print(...)</code></li>
-<li><strong>① Objects</strong> — strings and floats as dict values</li>
+<li class="fragment"><strong>③ Collections</strong> — list of dictionaries <code>[{...}, ...]</code></li>
+<li class="fragment"><strong>List comprehension</strong> — compact <code>for</code> loop in brackets</li>
+<li class="fragment"><strong>② Variables</strong> — <code>values</code>, <code>total</code></li>
+<li class="fragment"><strong>⑥ Functions</strong> — <code>sum(...)</code>, <code>print(...)</code></li>
+<li class="fragment"><strong>① Objects</strong> — strings and floats as dict values</li>
 </ul>
+</div>
 </div>
 </div></div>
 </section>
@@ -684,13 +690,15 @@ Kerry Back, Rice University
 </div><div class="column" style="width:43%;">
 <div class="info-box">
 <p><span class="box-title">Patterns</span></p>
+<div>
 <ul>
-<li><strong>⑥ Function def</strong> — <code>def</code> keyword, parameters, <code>return</code></li>
-<li><strong>② Variables</strong> — <code>margin</code>, <code>rating</code></li>
-<li><strong>① Objects</strong> — floats <code>0.30</code>, <code>0.15</code>; strings</li>
-<li><strong>④ Conditional</strong> — <code>if / elif / else</code> inside the function</li>
-<li><strong>⑥ Function call</strong> — <code>assess_margin(500_000, 320_000)</code></li>
+<li class="fragment"><strong>⑥ Function def</strong> — <code>def</code> keyword, parameters, <code>return</code></li>
+<li class="fragment"><strong>② Variables</strong> — <code>margin</code>, <code>rating</code></li>
+<li class="fragment"><strong>① Objects</strong> — floats <code>0.30</code>, <code>0.15</code>; strings</li>
+<li class="fragment"><strong>④ Conditional</strong> — <code>if / elif / else</code> inside the function</li>
+<li class="fragment"><strong>⑥ Function call</strong> — <code>assess_margin(500_000, 320_000)</code></li>
 </ul>
+</div>
 </div>
 </div></div>
 </section>
@@ -711,14 +719,16 @@ Kerry Back, Rice University
 </div><div class="column" style="width:43%;">
 <div class="info-box">
 <p><span class="box-title">Patterns</span></p>
+<div>
 <ul>
-<li><strong>③ Collections</strong> — two lists</li>
-<li><strong>⑤ Loop</strong> — <code>for company in companies:</code></li>
-<li><strong>② Variables</strong> — <code>clean</code>, <code>has_suffix</code></li>
-<li><strong>⑥ Method</strong> — <code>.title()</code> on a string object</li>
-<li><strong>④ Conditional</strong> — <code>if has_suffix:</code></li>
-<li><strong>⑥ Functions</strong> — <code>any(...)</code>, <code>print(...)</code></li>
+<li class="fragment"><strong>③ Collections</strong> — two lists</li>
+<li class="fragment"><strong>⑤ Loop</strong> — <code>for company in companies:</code></li>
+<li class="fragment"><strong>② Variables</strong> — <code>clean</code>, <code>has_suffix</code></li>
+<li class="fragment"><strong>⑥ Method</strong> — <code>.title()</code> on a string object</li>
+<li class="fragment"><strong>④ Conditional</strong> — <code>if has_suffix:</code></li>
+<li class="fragment"><strong>⑥ Functions</strong> — <code>any(...)</code>, <code>print(...)</code></li>
 </ul>
+</div>
 </div>
 </div></div>
 </section>
@@ -739,14 +749,16 @@ Kerry Back, Rice University
 </div><div class="column" style="width:43%;">
 <div class="info-box">
 <p><span class="box-title">Patterns</span></p>
+<div>
 <ul>
-<li><strong>Library</strong> — <code>import pandas as pd</code></li>
-<li><strong>② Variables</strong> — <code>df</code>, <code>tech</code>, <code>summary</code>, <code>top</code></li>
-<li><strong>④ Conditional filter</strong> — <code>df[df["sector"] == "Technology"]</code></li>
-<li><strong>⑥ Method chain</strong> — <code>.groupby(...)[...].sum()</code></li>
-<li><strong>⑥ Methods</strong> — <code>.idxmax()</code>, <code>.read_excel()</code></li>
-<li><strong>⑥ Functions</strong> — <code>print(...)</code></li>
+<li class="fragment"><strong>Library</strong> — <code>import pandas as pd</code></li>
+<li class="fragment"><strong>② Variables</strong> — <code>df</code>, <code>tech</code>, <code>summary</code>, <code>top</code></li>
+<li class="fragment"><strong>④ Conditional filter</strong> — <code>df[df["sector"] == "Technology"]</code></li>
+<li class="fragment"><strong>⑥ Method chain</strong> — <code>.groupby(...)[...].sum()</code></li>
+<li class="fragment"><strong>⑥ Methods</strong> — <code>.idxmax()</code>, <code>.read_excel()</code></li>
+<li class="fragment"><strong>⑥ Functions</strong> — <code>print(...)</code></li>
 </ul>
+</div>
 </div>
 </div></div>
 </section>

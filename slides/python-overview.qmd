@@ -285,10 +285,12 @@ else:
 ::: {.info-box}
 [Patterns]{.box-title}
 
+::: {.incremental}
 - **② Variables** — lines 1–4, each `name = value`
 - **① Objects & Types** — large integers; `0.25` is a float
 - **④ Conditional** — `if / else` with indented blocks
 - **⑥ Functions** — `print(...)` called twice
+:::
 :::
 
 :::
@@ -319,11 +321,13 @@ for i in range(len(tickers)):
 ::: {.info-box}
 [Patterns]{.box-title}
 
+::: {.incremental}
 - **③ Collections** — three lists `[...]`
 - **② Variables** — `total`, `value`, `i`
 - **⑤ Loop** — `for i in range(...):`
 - **⑥ Functions** — `len(...)`, `range(...)`, `print(...)`
 - **⑤ Accumulator** — `total += value` inside loop
+:::
 :::
 
 :::
@@ -354,11 +358,13 @@ print(f"Portfolio value: ${total:,.2f}")
 ::: {.info-box}
 [Patterns]{.box-title}
 
+::: {.incremental}
 - **③ Collections** — list of dictionaries `[{...}, ...]`
 - **List comprehension** — compact `for` loop in brackets
 - **② Variables** — `values`, `total`
 - **⑥ Functions** — `sum(...)`, `print(...)`
 - **① Objects** — strings and floats as dict values
+:::
 :::
 
 :::
@@ -391,11 +397,13 @@ print(f"Margin rating: {rating}")
 ::: {.info-box}
 [Patterns]{.box-title}
 
+::: {.incremental}
 - **⑥ Function def** — `def` keyword, parameters, `return`
 - **② Variables** — `margin`, `rating`
 - **① Objects** — floats `0.30`, `0.15`; strings
 - **④ Conditional** — `if / elif / else` inside the function
 - **⑥ Function call** — `assess_margin(500_000, 320_000)`
+:::
 :::
 
 :::
@@ -427,12 +435,14 @@ for company in companies:
 ::: {.info-box}
 [Patterns]{.box-title}
 
+::: {.incremental}
 - **③ Collections** — two lists
 - **⑤ Loop** — `for company in companies:`
 - **② Variables** — `clean`, `has_suffix`
 - **⑥ Method** — `.title()` on a string object
 - **④ Conditional** — `if has_suffix:`
 - **⑥ Functions** — `any(...)`, `print(...)`
+:::
 :::
 
 :::
@@ -464,12 +474,14 @@ print(f"Revenue: ${summary[top]:,.0f}")
 ::: {.info-box}
 [Patterns]{.box-title}
 
+::: {.incremental}
 - **Library** — `import pandas as pd`
 - **② Variables** — `df`, `tech`, `summary`, `top`
 - **④ Conditional filter** — `df[df["sector"] == "Technology"]`
 - **⑥ Method chain** — `.groupby(...)[...].sum()`
 - **⑥ Methods** — `.idxmax()`, `.read_excel()`
 - **⑥ Functions** — `print(...)`
+:::
 :::
 
 :::
