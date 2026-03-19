@@ -515,7 +515,7 @@ For each prompt on the following slides: type it into Gemini, run the code, then
 ## Prompt 1: Investment Growth
 
 ::: {.info-box}
-[Type this into Gemini]{.box-title}
+[Copy and paste this into Gemini]{.box-title}
 
 *"Write a Python function that calculates the future value of an investment given a starting amount, annual return rate, and number of years. Then call the function to show how $10,000 grows at 7% over 10, 20, and 30 years. Print the results in a formatted table."*
 :::
@@ -532,7 +532,7 @@ For each prompt on the following slides: type it into Gemini, run the code, then
 ## Prompt 2: Sales Summary
 
 ::: {.info-box}
-[Type this into Gemini]{.box-title}
+[Copy and paste this into Gemini]{.box-title}
 
 *"Write Python code that defines a list of 12 monthly sales figures. Calculate the best month, worst month, and monthly average. Also count how many months exceeded the average. Print a formatted summary report."*
 :::
@@ -549,7 +549,7 @@ For each prompt on the following slides: type it into Gemini, run the code, then
 ## Prompt 3: Employee Filter
 
 ::: {.info-box}
-[Type this into Gemini]{.box-title}
+[Copy and paste this into Gemini]{.box-title}
 
 *"Write Python code with a list of 6 employees. Each employee should have a name, department, and salary. Loop through the list and print the name and salary of anyone earning more than $80,000. At the end, print how many employees qualified."*
 :::
@@ -566,7 +566,7 @@ For each prompt on the following slides: type it into Gemini, run the code, then
 ## Prompt 4: Company Rankings
 
 ::: {.info-box}
-[Type this into Gemini]{.box-title}
+[Copy and paste this into Gemini]{.box-title}
 
 *"Write Python code with a list of 4 large companies, each with a name, annual revenue, and annual costs. Write a function to calculate profit margin. Sort the companies from highest to lowest margin and print a numbered ranking with each company's margin formatted as a percentage."*
 :::
@@ -583,7 +583,7 @@ For each prompt on the following slides: type it into Gemini, run the code, then
 ## Prompt 5: Pandas Analysis — All 6 Patterns
 
 ::: {.info-box}
-[Type this into Gemini]{.box-title}
+[Copy and paste this into Gemini]{.box-title}
 
 *"Write Python code using pandas that creates a DataFrame with columns for region, product, revenue, and units (at least 8 rows of made-up data). Then calculate total revenue and average revenue per unit for each region. Show the results sorted by total revenue, highest first."*
 :::
