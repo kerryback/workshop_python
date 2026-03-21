@@ -548,7 +548,7 @@ That's it. Everything else — writing the code, explaining errors, adding new c
 ::: {.info-box}
 [One-time setup — two steps]{.box-title}
 
-1. **Download this data file as usual (not in Colab):** [sales.xlsx](https://raw.githubusercontent.com/kerryback/python_workshop_ver2/main/slides/files/sales.xlsx) — save it to your **Google Drive**
+1. **Download this data file as usual (not in Colab):** [sales.xlsx](https://workshop.kerryback.com/slides/files/sales.xlsx) — save it to your **Google Drive**
 2. **Ask Gemini:** *"Mount my Google Drive so I can access files from it"*
 :::
 
@@ -743,7 +743,7 @@ Different charts, same pattern: build a series or DataFrame, call `.plot(kind=..
 ::: {.info-box}
 [stock_panel.xlsx — download link]{.box-title}
 
-**[stock_panel.xlsx](https://raw.githubusercontent.com/kerryback/python_workshop_ver2/main/slides/files/stock_panel.xlsx)**
+**[stock_panel.xlsx](https://workshop.kerryback.com/slides/files/stock_panel.xlsx)**
 
 30 S&P 500 stocks × 36 months (2022–2024) — 1,080 rows, 13 columns:
 
