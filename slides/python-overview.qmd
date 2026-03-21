@@ -185,91 +185,12 @@ Hundreds more exist — for machine learning (`scikit-learn`), optimization (`sc
 
 ---
 
-## Try It: Google Colab
-
-Google Colab is a free, browser-based Python notebook — nothing to install.
-
-::: {.info-box}
-[One-time setup — two steps]{.box-title}
-
-1. **Download the data file:** [sales.xlsx](https://raw.githubusercontent.com/kerryback/python_workshop_ver2/main/slides/files/sales.xlsx) — save it to your **Google Drive**
-2. **Open** [colab.research.google.com](https://colab.research.google.com) and start a new notebook
-3. **Ask Gemini:** *"Mount my Google Drive so I can access files from it"*
-:::
-
-::: {.highlight-box}
-Once your Drive is mounted, your file is at `/content/drive/MyDrive/sales.xlsx` — that's the path you'll pass to `pd.read_excel`.
-:::
-
----
-
-## Colab Basics
-
-::: {.info-box}
-[Three things you need to know]{.box-title}
-
-1. **Add a code cell** — click the **+ Code** button at the top, or hover between cells and click **+ Code**
-2. **Run a cell** — press **Shift + Enter** (runs the cell and moves to the next)
-3. **See the output** — it appears directly below the cell
-:::
-
-::: {.highlight-box}
-That's it. Everything else — writing the code, explaining errors, adding new cells — you can ask **Gemini**.
-:::
-
----
-
-## Assignment Statements
-
-A single `=` sign stores a value under a name:
-
-```python
-price = 182.50
-company = "Apple"
-shares = 100
-total = price * shares
-```
-
-::: {.info-box}
-[How to read it]{.box-title}
-
-Read `price = 182.50` as **"price gets 182.50"** — not "price equals 182.50." The right side is computed first, then stored in the name on the left.
-:::
-
-::: {.highlight-box}
-When you see `df = pd.read_excel(...)` on the next slide, the same thing is happening — the result of `pd.read_excel(...)` is computed and stored in the name `df`.
-:::
-
----
-
-## Reading an Excel File
-
-```python
-import pandas as pd
-
-df = pd.read_excel("/content/drive/MyDrive/sales.xlsx")
-df.head()
-```
-
-```{python}
-#| echo: false
-import pandas as pd
-
-df = pd.read_excel("files/sales.xlsx")
-df.head()
-```
-
-::: {.highlight-box}
-`df` is a **DataFrame** — think of it as a spreadsheet in Python. `df.head()` shows the first 5 rows.
-:::
-
----
 
 ## The 6 Patterns {.section-divider}
 
 ---
 
-## Almost All Python Is Built From 6 Patterns
+## Almost All Python Is Built From 6 Patterns {.smaller}
 
 | # | Pattern | One-liner example |
 |---|---------|-------------------|
@@ -304,29 +225,22 @@ df.head()
 
 ---
 
-## Method Chaining
+## Assignment Statements
 
-Read left to right — each method returns an object the next method acts on:
+A single `=` sign stores a value under a name:
 
 ```python
-df = pd.read_excel("sales.xlsx")
-
-df.groupby("region")["revenue"].sum().sort_values(ascending=False).plot(kind="bar")
+price = 182.50
+company = "Apple"
+shares = 100
+total = price * shares
 ```
 
-| Step | Code | Returns |
-|------|------|---------|
-| 1 | `df.groupby("region")` | grouped data object |
-| 2 | `["revenue"]` | revenue values per group |
-| 3 | `.sum()` | total revenue per region |
-| 4 | `.sort_values(ascending=False)` | sorted Series |
-| 5 | `.plot(kind="bar")` | bar chart |
+::: {.info-box}
+[How to read it]{.box-title}
 
-::: {.highlight-box}
-**Pattern ⑥ in action.** Under the hood, pandas runs these operations as precompiled C code — the "already compiled, runs fast" path from the earlier diagram.
+Read `price = 182.50` as **"price gets 182.50"** — not "price equals 182.50." The right side is computed first, then stored in the name on the left.
 :::
-
----
 
 ## Pattern Spotting {.section-divider}
 
@@ -559,6 +473,9 @@ print(f"Revenue: ${summary[top]:,.0f}")
 
 ---
 
+
+
+
 ## Colab + Gemini {.section-divider}
 
 ---
@@ -570,8 +487,26 @@ print(f"Revenue: ${summary[top]:,.0f}")
 
 **[colab.research.google.com/github/kerryback/workshop_python/blob/main/python_overview_exercises.ipynb](https://colab.research.google.com/github/kerryback/workshop_python/blob/main/python_overview_exercises.ipynb)**
 
+Google Colab is a free, browser-based Python notebook — nothing to install.
+
 - The notebook has one section per pattern — **① through ⑥**
-- Use the same Colab basics from earlier: **+ Code** to add a cell, **Shift + Enter** to run
+- Run the cells
+:::
+
+---
+
+## Colab Basics
+
+::: {.info-box}
+[Three things you need to know]{.box-title}
+
+1. **Add a code cell** — click the **+ Code** button at the top, or hover between cells and click **+ Code**
+2. **Run a cell** — press **Shift + Enter** (runs the cell and moves to the next)
+3. **See the output** — it appears directly below the cell
+:::
+
+::: {.highlight-box}
+That's it. Everything else — writing the code, explaining errors, adding new cells — you can ask **Gemini**.
 :::
 
 ---
@@ -587,13 +522,7 @@ print(f"Revenue: ${summary[top]:,.0f}")
 4. **Shift + Enter** to run
 :::
 
-::: {.highlight-box}
-For each prompt on the following slides: type it into Gemini, run the code, then use the "How to Spot Each Pattern" table to identify what's in the result.
-:::
-
----
-
-## Prompt 1: Investment Growth
+## Example
 
 ::: {.info-box}
 [Copy and paste this into Gemini]{.box-title}
@@ -610,15 +539,40 @@ For each prompt on the following slides: type it into Gemini, run the code, then
 
 ---
 
+## Working with Data {.section-divider}
+
+---
+
+## Uploading Data
+
+::: {.info-box}
+[One-time setup — two steps]{.box-title}
+
+1. **Download this data file as usual (not in Colab):** [sales.xlsx](https://raw.githubusercontent.com/kerryback/python_workshop_ver2/main/slides/files/sales.xlsx) — save it to your **Google Drive**
+2. **Ask Gemini:** *"Mount my Google Drive so I can access files from it"*
+:::
+
+::: {.highlight-box}
+Once your Drive is mounted, your file is at `/content/drive/MyDrive/sales.xlsx` — that's the path you'll pass to `pd.read_excel`.
+:::
+
+---
+
+
+
+
+
 ## Load the Sales Data
 
 Run this cell first — then use `df` in all the prompts below:
 
 ```python
 import pandas as pd
-df = pd.read_excel("sales.xlsx")
+df = pd.read_excel("/content/drive/MyDrive/sales.xlsx")
 df
 ```
+
+Think of `df` as an Excel table.
 
 ::: {.info-box}
 [What's in the data]{.box-title}
@@ -634,7 +588,7 @@ df
 
 ---
 
-## Prompt 2: Revenue by Region
+## Example 1
 
 ::: {.info-box}
 [Copy and paste this into Gemini]{.box-title}
@@ -651,7 +605,7 @@ df
 
 ---
 
-## Prompt 3: Filter and Enrich
+## Example 2: Filter and Enrich
 
 ::: {.info-box}
 [Copy and paste this into Gemini]{.box-title}
@@ -668,7 +622,7 @@ df
 
 ---
 
-## Prompt 4: Best Product per Region
+## Example 3: Best Product per Region
 
 ::: {.info-box}
 [Copy and paste this into Gemini]{.box-title}
@@ -684,7 +638,34 @@ df
 
 ---
 
-## Prompt 5: Full Pipeline with Chart
+## Example 4: Method Chaining {.smaller}
+
+
+
+::: {.info-box}
+[Copy and paste this into Gemini]{.box-title}
+
+*df.groupby("region")["revenue"].sum().sort_values(ascending=False).plot(kind="bar")*
+
+:::
+
+Read left to right — each method returns an object the next method acts on.
+
+| Step | Code | Returns |
+|------|------|---------|
+| 1 | `df.groupby("region")` | grouped data object |
+| 2 | `["revenue"]` | revenue values per group |
+| 3 | `.sum()` | total revenue per region |
+| 4 | `.sort_values(ascending=False)` | sorted Series |
+| 5 | `.plot(kind="bar")` | bar chart |
+
+::: {.highlight-box}
+**Pattern ⑥ in action.** Under the hood, pandas runs these operations as precompiled C code — the "already compiled, runs fast" path from the earlier diagram.
+:::
+
+---
+
+## Example 5: Full Pipeline with Chart
 
 ::: {.info-box}
 [Copy and paste this into Gemini]{.box-title}
@@ -708,33 +689,6 @@ result["total_revenue"].plot(kind="bar",              # ⑥ method
 
 ---
 
-## Working with Data {.section-divider}
-
----
-
-## pandas — Analysis in One Pipeline
-
-A complete analysis in a single method chain:
-
-```python
-import pandas as pd
-
-df = pd.read_excel("sales.xlsx")
-
-(df
-    .query("revenue > 10_000")              # filter rows
-    .groupby("region")["revenue"]           # group by region
-    .sum()                                  # aggregate
-    .sort_values(ascending=False)           # sort high to low
-    .plot(kind="bar", title="Revenue by Region")   # chart
-)
-```
-
-::: {.highlight-box}
-Every step is **Pattern ⑥ — Methods**: each returns an object, and the next method acts on it. This is the method chaining pattern you'll see throughout AI-generated pandas code.
-:::
-
----
 
 ## pandas — More Capabilities
 
@@ -784,7 +738,7 @@ Different charts, same pattern: build a series or DataFrame, call `.plot(kind=..
 
 ---
 
-## Sample Dataset for Practice
+## Another Dataset for Practice
 
 ::: {.info-box}
 [stock_panel.xlsx — download link]{.box-title}
@@ -813,9 +767,11 @@ Different charts, same pattern: build a series or DataFrame, call `.plot(kind=..
 
 ## More Exercises
 
-7. Create boxplots of the returns of all firms in the technology sector.
-8. Create a filled line chart of the cumulative equally weighted portfolio return by month.
-9. Sort into quintiles each month by momentum.  Compute the equally weighted return of each quintile each month.  Create a barplot of the mean return of each quintile.
-10. Create a scatterplot of returns versus momentum.  Overlay a regression line.
-11. Show the regression results (coefficients, $t$-statistics, $R^$, etc.) in a table.
-12. Compute the total return over the full time period of each stock and show the top 10 in a table.
+<ol start="7" style="padding-left: 2.5em;">
+<li>Create boxplots of the returns of all firms in the technology sector.</li>
+<li>Create a filled line chart of the cumulative equally weighted portfolio return by month.</li>
+<li>Sort into quintiles each month by momentum. Compute the equally weighted return of each quintile each month. Create a barplot of the mean return of each quintile.</li>
+<li>Create a scatterplot of returns versus momentum. Overlay a regression line.</li>
+<li>Show the regression results (coefficients, $t$-statistics, $R^2$, etc.) in a table.</li>
+<li>Compute the total return over the full time period of each stock and show the top 10 in a table.</li>
+</ol>
