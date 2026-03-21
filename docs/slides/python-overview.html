@@ -94,7 +94,7 @@
     code span.vs { color: #f1fa8c; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-257ccb4e956c483b986619da69b0465c.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-296d11cc56ed0a71aa317a6fa0a3a1ad.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -412,7 +412,7 @@ Kerry Back, Rice University
 <span id="cb6-2"><a></a></span>
 <span id="cb6-3"><a></a>df <span class="op">=</span> pd.read_excel(<span class="st">"/content/drive/MyDrive/sales.xlsx"</span>)</span>
 <span id="cb6-4"><a></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="5dc63609" class="cell" data-execution_count="1">
+<div id="edd55030" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div>
 <style scoped="">
@@ -483,51 +483,6 @@ Kerry Back, Rice University
 </div>
 <div class="highlight-box">
 <p><code>df</code> is a <strong>DataFrame</strong> — think of it as a spreadsheet in Python. <code>df.head()</code> shows the first 5 rows.</p>
-</div>
-</section>
-<section id="method-chaining" class="slide level2 center">
-<h2>Method Chaining</h2>
-<p>One line that groups, sums, and plots:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>df.groupby(<span class="st">"region"</span>)[<span class="st">"revenue"</span>].<span class="bu">sum</span>().plot(kind<span class="op">=</span><span class="st">"bar"</span>, title<span class="op">=</span><span class="st">"Revenue by Region"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="info-box">
-<p><span class="box-title">Reading left to right</span></p>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Step</th>
-<th>Code</th>
-<th>Returns</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td><code>df.groupby("region")</code></td>
-<td>grouped data object</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td><code>["revenue"]</code></td>
-<td>revenue values per group</td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td><code>.sum()</code></td>
-<td>total revenue per region</td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td><code>.plot(kind="bar")</code></td>
-<td>bar chart</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="highlight-box">
-<p><strong>Each method returns an object; the next method acts on that object.</strong> Under the hood, pandas runs these operations as precompiled C code — which is why it handles millions of rows without slowing down. This is the precompiled path from the earlier diagram.</p>
-</div>
-<div class="highlight-box">
-<p>We’ll return to Colab for hands-on exercises after covering the 6 patterns.</p>
 </div>
 </section>
 <section id="the-6-patterns" class="slide level2 section-divider center">
@@ -632,6 +587,52 @@ Kerry Back, Rice University
 </tr>
 </tbody>
 </table>
+</section>
+<section id="method-chaining" class="slide level2 center">
+<h2>Method Chaining</h2>
+<p>Read left to right — each method returns an object the next method acts on:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>df <span class="op">=</span> pd.read_excel(<span class="st">"sales.xlsx"</span>)</span>
+<span id="cb7-2"><a></a></span>
+<span id="cb7-3"><a></a>df.groupby(<span class="st">"region"</span>)[<span class="st">"revenue"</span>].<span class="bu">sum</span>().sort_values(ascending<span class="op">=</span><span class="va">False</span>).plot(kind<span class="op">=</span><span class="st">"bar"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Step</th>
+<th>Code</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td><code>df.groupby("region")</code></td>
+<td>grouped data object</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td><code>["revenue"]</code></td>
+<td>revenue values per group</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td><code>.sum()</code></td>
+<td>total revenue per region</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td><code>.sort_values(ascending=False)</code></td>
+<td>sorted Series</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td><code>.plot(kind="bar")</code></td>
+<td>bar chart</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-box">
+<p><strong>Pattern ⑥ in action.</strong> Under the hood, pandas runs these operations as precompiled C code — the “already compiled, runs fast” path from the earlier diagram.</p>
+</div>
 </section>
 <section id="pattern-spotting" class="slide level2 section-divider center">
 <h2>Pattern Spotting</h2>

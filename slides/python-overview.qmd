@@ -263,35 +263,6 @@ df.head()
 
 ---
 
-## Method Chaining
-
-One line that groups, sums, and plots:
-
-```python
-df.groupby("region")["revenue"].sum().plot(kind="bar", title="Revenue by Region")
-```
-
-::: {.info-box}
-[Reading left to right]{.box-title}
-
-| Step | Code | Returns |
-|------|------|---------|
-| 1 | `df.groupby("region")` | grouped data object |
-| 2 | `["revenue"]` | revenue values per group |
-| 3 | `.sum()` | total revenue per region |
-| 4 | `.plot(kind="bar")` | bar chart |
-:::
-
-::: {.highlight-box}
-**Each method returns an object; the next method acts on that object.** Under the hood, pandas runs these operations as precompiled C code — which is why it handles millions of rows without slowing down. This is the precompiled path from the earlier diagram.
-:::
-
-::: {.highlight-box}
-We'll return to Colab for hands-on exercises after covering the 6 patterns.
-:::
-
----
-
 ## The 6 Patterns {.section-divider}
 
 ---
@@ -328,6 +299,30 @@ We'll return to Colab for hands-on exercises after covering the 6 patterns.
 | **Functions & Methods** | `name(...)` = function · `object.method(...)` = method |
 | **List comprehension** | `[expr for item in collection]` — compact loop inside brackets |
 | **try / except** | `try:` + indented block, then `except:` + error handler |
+
+---
+
+## Method Chaining
+
+Read left to right — each method returns an object the next method acts on:
+
+```python
+df = pd.read_excel("sales.xlsx")
+
+df.groupby("region")["revenue"].sum().sort_values(ascending=False).plot(kind="bar")
+```
+
+| Step | Code | Returns |
+|------|------|---------|
+| 1 | `df.groupby("region")` | grouped data object |
+| 2 | `["revenue"]` | revenue values per group |
+| 3 | `.sum()` | total revenue per region |
+| 4 | `.sort_values(ascending=False)` | sorted Series |
+| 5 | `.plot(kind="bar")` | bar chart |
+
+::: {.highlight-box}
+**Pattern ⑥ in action.** Under the hood, pandas runs these operations as precompiled C code — the "already compiled, runs fast" path from the earlier diagram.
+:::
 
 ---
 

@@ -60,7 +60,7 @@
     "href": "slides/python-overview.html#method-chaining",
     "title": "Python for MBA Students",
     "section": "Method Chaining",
-    "text": "Method Chaining\nOne line that groups, sums, and plots:\ndf.groupby(\"region\")[\"revenue\"].sum().plot(kind=\"bar\", title=\"Revenue by Region\")\n\nReading left to right\n\n\n\nStep\nCode\nReturns\n\n\n\n\n1\ndf.groupby(\"region\")\ngrouped data object\n\n\n2\n[\"revenue\"]\nrevenue values per group\n\n\n3\n.sum()\ntotal revenue per region\n\n\n4\n.plot(kind=\"bar\")\nbar chart\n\n\n\n\n\nEach method returns an object; the next method acts on that object. Under the hood, pandas runs these operations as precompiled C code — which is why it handles millions of rows without slowing down. This is the precompiled path from the earlier diagram.\n\n\nWe’ll return to Colab for hands-on exercises after covering the 6 patterns."
+    "text": "Method Chaining\nRead left to right — each method returns an object the next method acts on:\ndf = pd.read_excel(\"sales.xlsx\")\n\ndf.groupby(\"region\")[\"revenue\"].sum().sort_values(ascending=False).plot(kind=\"bar\")\n\n\n\nStep\nCode\nReturns\n\n\n\n\n1\ndf.groupby(\"region\")\ngrouped data object\n\n\n2\n[\"revenue\"]\nrevenue values per group\n\n\n3\n.sum()\ntotal revenue per region\n\n\n4\n.sort_values(ascending=False)\nsorted Series\n\n\n5\n.plot(kind=\"bar\")\nbar chart\n\n\n\n\nPattern ⑥ in action. Under the hood, pandas runs these operations as precompiled C code — the “already compiled, runs fast” path from the earlier diagram."
   },
   {
     "objectID": "slides/python-overview.html#the-6-patterns",

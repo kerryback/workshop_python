@@ -25,12 +25,11 @@ $body-bg: $off-white;
 /*-- scss:rules --*/
 
 // ── Global slide styling ──
-// Vertically center all slide content
 .reveal .slides section {
   text-align: left;
   display: flex !important;
   flex-direction: column !important;
-  justify-content: center !important;
+  justify-content: flex-start !important;
   height: 100% !important;
   padding: 0.5em 0;
   overflow: hidden !important;
