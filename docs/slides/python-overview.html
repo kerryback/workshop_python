@@ -412,7 +412,7 @@ Kerry Back, Rice University
 <span id="cb6-2"><a></a></span>
 <span id="cb6-3"><a></a>df <span class="op">=</span> pd.read_excel(<span class="st">"/content/drive/MyDrive/sales.xlsx"</span>)</span>
 <span id="cb6-4"><a></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="e25bc9bb" class="cell" data-execution_count="1">
+<div id="5dc63609" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div>
 <style scoped="">
@@ -852,59 +852,102 @@ Kerry Back, Rice University
 <li><code>print()</code> with f-string formatting <strong>(Pattern ⑥)</strong></li>
 </ul>
 </section>
-<section id="prompt-2-sales-summary" class="slide level2 center">
-<h2>Prompt 2: Sales Summary</h2>
+<section id="load-the-sales-data" class="slide level2 center">
+<h2>Load the Sales Data</h2>
+<p>Run this cell first — then use <code>df</code> in all the prompts below:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb14-2"><a></a>df <span class="op">=</span> pd.read_excel(<span class="st">"sales.xlsx"</span>)</span>
+<span id="cb14-3"><a></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="info-box">
+<p><span class="box-title">What’s in the data</span></p>
+<p>10 rows · 4 columns: <strong>region</strong>, <strong>product</strong>, <strong>revenue</strong>, <strong>units</strong></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>region</th>
+<th>product</th>
+<th>revenue</th>
+<th>units</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>East</td>
+<td>Widget</td>
+<td>42000</td>
+<td>210</td>
+</tr>
+<tr class="even">
+<td>West</td>
+<td>Gadget</td>
+<td>31500</td>
+<td>180</td>
+</tr>
+<tr class="odd">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="prompt-2-revenue-by-region" class="slide level2 center">
+<h2>Prompt 2: Revenue by Region</h2>
 <div class="info-box">
 <p><span class="box-title">Copy and paste this into Gemini</span></p>
-<p><em>“Write Python code that defines a list of 12 monthly sales figures. Calculate the best month, worst month, and monthly average. Also count how many months exceeded the average. Print a formatted summary report.”</em></p>
+<p><em>“The variable</em> <code>df</code> <em>is a pandas DataFrame with columns: region, product, revenue, and units. Compute the total revenue and total units for each region. Sort by total revenue from highest to lowest and display the result.”</em></p>
 </div>
 <p><strong>After Gemini generates the code, look for:</strong></p>
 <ul>
-<li>A list of numbers <strong>(Pattern ③)</strong></li>
-<li>Built-in functions: <code>max()</code>, <code>min()</code>, <code>sum()</code>, <code>len()</code> <strong>(Pattern ⑥)</strong></li>
-<li>A loop or list comprehension to count months above average <strong>(Pattern ⑤)</strong></li>
-<li>A conditional inside the loop <strong>(Pattern ④)</strong></li>
+<li><code>df.groupby("region")</code> — grouping <strong>(Pattern ⑥ method)</strong></li>
+<li><code>.agg(...)</code> or <code>.sum()</code> — aggregating <strong>(Pattern ⑥)</strong></li>
+<li><code>.sort_values(...)</code> — sorting <strong>(Pattern ⑥)</strong></li>
+<li>A new variable storing the result <strong>(Pattern ②)</strong></li>
 </ul>
 </section>
-<section id="prompt-3-employee-filter" class="slide level2 center">
-<h2>Prompt 3: Employee Filter</h2>
+<section id="prompt-3-filter-and-enrich" class="slide level2 center">
+<h2>Prompt 3: Filter and Enrich</h2>
 <div class="info-box">
 <p><span class="box-title">Copy and paste this into Gemini</span></p>
-<p><em>“Write Python code with a list of 6 employees. Each employee should have a name, department, and salary. Loop through the list and print the name and salary of anyone earning more than $80,000. At the end, print how many employees qualified.”</em></p>
+<p><em>“Using</em> <code>df</code> <em>(columns: region, product, revenue, units), filter to rows where revenue exceeds 30,000. For those rows, add a new column called</em> <code>price_per_unit</code> <em>equal to revenue divided by units. Display the filtered table sorted by</em> <code>price_per_unit</code><em>.”</em></p>
 </div>
 <p><strong>After Gemini generates the code, look for:</strong></p>
 <ul>
-<li>A list of dictionaries — one dict per employee <strong>(Pattern ③)</strong></li>
-<li>A <code>for</code> loop iterating over the list <strong>(Pattern ⑤)</strong></li>
-<li>A conditional <code>if</code> checking the salary <strong>(Pattern ④)</strong></li>
-<li>An accumulator counting the matches <strong>(Pattern ⑤)</strong></li>
+<li><code>df[df["revenue"] &gt; 30000]</code> — conditional filter <strong>(Pattern ④)</strong></li>
+<li><code>df["price_per_unit"] = ...</code> — creating a new column <strong>(Pattern ②)</strong></li>
+<li>Division inside the expression <strong>(Pattern ①)</strong></li>
+<li><code>.sort_values("price_per_unit")</code> <strong>(Pattern ⑥)</strong></li>
 </ul>
 </section>
-<section id="prompt-4-company-rankings" class="slide level2 center">
-<h2>Prompt 4: Company Rankings</h2>
+<section id="prompt-4-best-product-per-region" class="slide level2 center">
+<h2>Prompt 4: Best Product per Region</h2>
 <div class="info-box">
 <p><span class="box-title">Copy and paste this into Gemini</span></p>
-<p><em>“Write Python code with a list of 4 large companies, each with a name, annual revenue, and annual costs. Write a function to calculate profit margin. Sort the companies from highest to lowest margin and print a numbered ranking with each company’s margin formatted as a percentage.”</em></p>
+<p><em>“Using</em> <code>df</code> <em>(columns: region, product, revenue, units), for each region find the product with the highest revenue. Show the result as a neat table with one row per region.”</em></p>
 </div>
 <p><strong>After Gemini generates the code, look for:</strong></p>
 <ul>
-<li>A list of dictionaries <strong>(Pattern ③)</strong></li>
-<li>A <code>def</code> function with a <code>return</code> statement <strong>(Pattern ⑥)</strong></li>
-<li>A sort — look for <code>sorted()</code> or <code>.sort()</code> with a <code>key=</code> argument <strong>(Pattern ⑥)</strong></li>
-<li>A loop with <code>enumerate()</code> for the numbering <strong>(Pattern ⑤)</strong></li>
+<li><code>groupby</code> combined with <code>idxmax()</code> or <code>apply()</code> <strong>(Pattern ⑥)</strong></li>
+<li><code>.loc[...]</code> to look up rows by index <strong>(Pattern ⑥)</strong></li>
+<li>Variable names storing intermediate results <strong>(Pattern ②)</strong></li>
 </ul>
 </section>
-<section id="prompt-5-pandas-analysis-all-6-patterns" class="slide level2 center">
-<h2>Prompt 5: Pandas Analysis — All 6 Patterns</h2>
+<section id="prompt-5-full-pipeline-with-chart" class="slide level2 center">
+<h2>Prompt 5: Full Pipeline with Chart</h2>
 <div class="info-box">
 <p><span class="box-title">Copy and paste this into Gemini</span></p>
-<p><em>“Write Python code using pandas that creates a DataFrame with columns for region, product, revenue, and units (at least 8 rows of made-up data). Then calculate total revenue and average revenue per unit for each region. Show the results sorted by total revenue, highest first.”</em></p>
+<p><em>“Using</em> <code>df</code> <em>(columns: region, product, revenue, units): add a column called</em> <code>price_per_unit</code> <em>(revenue ÷ units), then compute total revenue and mean price per unit grouped by product, sort by total revenue highest first, and plot a bar chart of total revenue by product titled ‘Revenue by Product’.”</em></p>
 </div>
-<p><strong>This is the synthesis prompt.</strong> In roughly 15 lines, you should find all 6 patterns:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd          <span class="co"># library import</span></span>
-<span id="cb14-2"><a></a>data <span class="op">=</span> {...}                 <span class="co"># ③ dictionary → collection</span></span>
-<span id="cb14-3"><a></a>df <span class="op">=</span> pd.DataFrame(data)      <span class="co"># ⑥ function call</span></span>
-<span id="cb14-4"><a></a>df.groupby(...).agg(...).sort_values(...)  <span class="co"># ⑥ method chain</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>This is the synthesis prompt.</strong> In roughly 10 lines you should find all 6 patterns:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a>df[<span class="st">"price_per_unit"</span>] <span class="op">=</span> df[<span class="st">"revenue"</span>] <span class="op">/</span> df[<span class="st">"units"</span>]   <span class="co"># ② variable  ① math</span></span>
+<span id="cb15-2"><a></a>result <span class="op">=</span> (df.groupby(<span class="st">"product"</span>)                       <span class="co"># ⑥ method chain</span></span>
+<span id="cb15-3"><a></a>            .agg(total_revenue<span class="op">=</span>(<span class="st">"revenue"</span>,<span class="st">"sum"</span>),</span>
+<span id="cb15-4"><a></a>                 mean_price<span class="op">=</span>(<span class="st">"price_per_unit"</span>,<span class="st">"mean"</span>))</span>
+<span id="cb15-5"><a></a>            .sort_values(<span class="st">"total_revenue"</span>, ascending<span class="op">=</span><span class="va">False</span>))</span>
+<span id="cb15-6"><a></a>result[<span class="st">"total_revenue"</span>].plot(kind<span class="op">=</span><span class="st">"bar"</span>,              <span class="co"># ⑥ method</span></span>
+<span id="cb15-7"><a></a>                             title<span class="op">=</span><span class="st">"Revenue by Product"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Can you name the pattern for every line Gemini produces?</strong></p>
 </section>
 <section id="working-with-data" class="slide level2 section-divider center">
@@ -913,17 +956,17 @@ Kerry Back, Rice University
 <section id="pandas-analysis-in-one-pipeline" class="slide level2 center">
 <h2>pandas — Analysis in One Pipeline</h2>
 <p>A complete analysis in a single method chain:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb15-2"><a></a></span>
-<span id="cb15-3"><a></a>df <span class="op">=</span> pd.read_excel(<span class="st">"sales.xlsx"</span>)</span>
-<span id="cb15-4"><a></a></span>
-<span id="cb15-5"><a></a>(df</span>
-<span id="cb15-6"><a></a>    .query(<span class="st">"revenue &gt; 10_000"</span>)              <span class="co"># filter rows</span></span>
-<span id="cb15-7"><a></a>    .groupby(<span class="st">"region"</span>)[<span class="st">"revenue"</span>]           <span class="co"># group by region</span></span>
-<span id="cb15-8"><a></a>    .<span class="bu">sum</span>()                                  <span class="co"># aggregate</span></span>
-<span id="cb15-9"><a></a>    .sort_values(ascending<span class="op">=</span><span class="va">False</span>)           <span class="co"># sort high to low</span></span>
-<span id="cb15-10"><a></a>    .plot(kind<span class="op">=</span><span class="st">"bar"</span>, title<span class="op">=</span><span class="st">"Revenue by Region"</span>)   <span class="co"># chart</span></span>
-<span id="cb15-11"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb16-2"><a></a></span>
+<span id="cb16-3"><a></a>df <span class="op">=</span> pd.read_excel(<span class="st">"sales.xlsx"</span>)</span>
+<span id="cb16-4"><a></a></span>
+<span id="cb16-5"><a></a>(df</span>
+<span id="cb16-6"><a></a>    .query(<span class="st">"revenue &gt; 10_000"</span>)              <span class="co"># filter rows</span></span>
+<span id="cb16-7"><a></a>    .groupby(<span class="st">"region"</span>)[<span class="st">"revenue"</span>]           <span class="co"># group by region</span></span>
+<span id="cb16-8"><a></a>    .<span class="bu">sum</span>()                                  <span class="co"># aggregate</span></span>
+<span id="cb16-9"><a></a>    .sort_values(ascending<span class="op">=</span><span class="va">False</span>)           <span class="co"># sort high to low</span></span>
+<span id="cb16-10"><a></a>    .plot(kind<span class="op">=</span><span class="st">"bar"</span>, title<span class="op">=</span><span class="st">"Revenue by Region"</span>)   <span class="co"># chart</span></span>
+<span id="cb16-11"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="highlight-box">
 <p>Every step is <strong>Pattern ⑥ — Methods</strong>: each returns an object, and the next method acts on it. This is the method chaining pattern you’ll see throughout AI-generated pandas code.</p>
 </div>
@@ -931,17 +974,17 @@ Kerry Back, Rice University
 <section id="pandas-more-capabilities" class="slide level2 center">
 <h2>pandas — More Capabilities</h2>
 <p>A taste of what else pandas can do:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="co"># Combine two tables on a shared key (like VLOOKUP)</span></span>
-<span id="cb16-2"><a></a>df <span class="op">=</span> pd.merge(prices, company_info, on<span class="op">=</span><span class="st">"ticker"</span>)</span>
-<span id="cb16-3"><a></a></span>
-<span id="cb16-4"><a></a><span class="co"># Reshape: rows → columns (like a pivot table)</span></span>
-<span id="cb16-5"><a></a>df.pivot_table(values<span class="op">=</span><span class="st">"revenue"</span>, index<span class="op">=</span><span class="st">"quarter"</span>, columns<span class="op">=</span><span class="st">"region"</span>)</span>
-<span id="cb16-6"><a></a></span>
-<span id="cb16-7"><a></a><span class="co"># Find missing data</span></span>
-<span id="cb16-8"><a></a>df.isnull().<span class="bu">sum</span>()</span>
-<span id="cb16-9"><a></a></span>
-<span id="cb16-10"><a></a><span class="co"># Summary statistics in one call</span></span>
-<span id="cb16-11"><a></a>df.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="co"># Combine two tables on a shared key (like VLOOKUP)</span></span>
+<span id="cb17-2"><a></a>df <span class="op">=</span> pd.merge(prices, company_info, on<span class="op">=</span><span class="st">"ticker"</span>)</span>
+<span id="cb17-3"><a></a></span>
+<span id="cb17-4"><a></a><span class="co"># Reshape: rows → columns (like a pivot table)</span></span>
+<span id="cb17-5"><a></a>df.pivot_table(values<span class="op">=</span><span class="st">"revenue"</span>, index<span class="op">=</span><span class="st">"quarter"</span>, columns<span class="op">=</span><span class="st">"region"</span>)</span>
+<span id="cb17-6"><a></a></span>
+<span id="cb17-7"><a></a><span class="co"># Find missing data</span></span>
+<span id="cb17-8"><a></a>df.isnull().<span class="bu">sum</span>()</span>
+<span id="cb17-9"><a></a></span>
+<span id="cb17-10"><a></a><span class="co"># Summary statistics in one call</span></span>
+<span id="cb17-11"><a></a>df.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="highlight-box">
 <p>Each of these is a <strong>method call (Pattern ⑥)</strong>. When AI generates code for data tasks, it will use pandas. Recognizing the method-chain pattern tells you what each line is doing — even if you don’t know the specific method name.</p>
 </div>
@@ -949,17 +992,17 @@ Kerry Back, Rice University
 <section id="visualization" class="slide level2 center">
 <h2>Visualization</h2>
 <p>The same method-chaining pattern — different <code>kind=</code>:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="co"># Distribution of one variable</span></span>
-<span id="cb17-2"><a></a>df[<span class="st">"revenue"</span>].plot(kind<span class="op">=</span><span class="st">"hist"</span>, bins<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb17-3"><a></a></span>
-<span id="cb17-4"><a></a><span class="co"># Comparison across categories</span></span>
-<span id="cb17-5"><a></a>df.groupby(<span class="st">"region"</span>)[<span class="st">"revenue"</span>].<span class="bu">sum</span>().plot(kind<span class="op">=</span><span class="st">"bar"</span>)</span>
-<span id="cb17-6"><a></a></span>
-<span id="cb17-7"><a></a><span class="co"># Relationship between two variables</span></span>
-<span id="cb17-8"><a></a>df.plot(kind<span class="op">=</span><span class="st">"scatter"</span>, x<span class="op">=</span><span class="st">"units"</span>, y<span class="op">=</span><span class="st">"revenue"</span>)</span>
-<span id="cb17-9"><a></a></span>
-<span id="cb17-10"><a></a><span class="co"># Trend over time</span></span>
-<span id="cb17-11"><a></a>df.set_index(<span class="st">"date"</span>)[<span class="st">"revenue"</span>].plot(kind<span class="op">=</span><span class="st">"line"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="co"># Distribution of one variable</span></span>
+<span id="cb18-2"><a></a>df[<span class="st">"revenue"</span>].plot(kind<span class="op">=</span><span class="st">"hist"</span>, bins<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb18-3"><a></a></span>
+<span id="cb18-4"><a></a><span class="co"># Comparison across categories</span></span>
+<span id="cb18-5"><a></a>df.groupby(<span class="st">"region"</span>)[<span class="st">"revenue"</span>].<span class="bu">sum</span>().plot(kind<span class="op">=</span><span class="st">"bar"</span>)</span>
+<span id="cb18-6"><a></a></span>
+<span id="cb18-7"><a></a><span class="co"># Relationship between two variables</span></span>
+<span id="cb18-8"><a></a>df.plot(kind<span class="op">=</span><span class="st">"scatter"</span>, x<span class="op">=</span><span class="st">"units"</span>, y<span class="op">=</span><span class="st">"revenue"</span>)</span>
+<span id="cb18-9"><a></a></span>
+<span id="cb18-10"><a></a><span class="co"># Trend over time</span></span>
+<span id="cb18-11"><a></a>df.set_index(<span class="st">"date"</span>)[<span class="st">"revenue"</span>].plot(kind<span class="op">=</span><span class="st">"line"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="highlight-box">
 <p>Different charts, same pattern: build a series or DataFrame, call <code>.plot(kind=...)</code>. When you see a visualization in AI-generated code, look for this pattern — then look at what <code>kind=</code> is set to.</p>
 </div>
@@ -1005,59 +1048,28 @@ Kerry Back, Rice University
 </tbody>
 </table>
 </div>
-<div class="highlight-box">
-<p>Ask Gemini to: filter by sector · groupby and aggregate · pivot by ticker · plot returns over time · write results to a new Excel file with <code>df.to_excel(...)</code>.</p>
-</div>
 </section>
-<section id="back-to-the-beginning" class="slide level2 center">
-<h2>Back to the Beginning</h2>
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a>products <span class="op">=</span> [<span class="st">"Widget"</span>, <span class="st">"Gadget"</span>, <span class="st">"Doohickey"</span>]   <span class="co"># ③ List — a collection</span></span>
-<span id="cb18-2"><a></a>revenues <span class="op">=</span> [<span class="dv">120_000</span>,  <span class="dv">85_000</span>,  <span class="dv">200_000</span>]          <span class="co"># ③ List — a collection</span></span>
-<span id="cb18-3"><a></a>costs    <span class="op">=</span> [ <span class="dv">80_000</span>,  <span class="dv">60_000</span>,  <span class="dv">140_000</span>]          <span class="co"># ③ List — a collection</span></span>
-<span id="cb18-4"><a></a></span>
-<span id="cb18-5"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(products)):                   <span class="co"># ⑤ Loop + ⑥ Functions</span></span>
-<span id="cb18-6"><a></a>    margin <span class="op">=</span> (revenues[i] <span class="op">-</span> costs[i]) <span class="op">/</span> revenues[i]  <span class="co"># ② Variables + ① Math</span></span>
-<span id="cb18-7"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>products[i]<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>margin<span class="sc">:.1%}</span><span class="ss"> margin"</span>)     <span class="co"># ⑥ Function + f-string</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="highlight-box">
-<p>This is the same code from slide 2. Every line is one of the 6 patterns. You now have the vocabulary to read it — and to read the code AI generates for you.</p>
-</div>
-</section>
-<section id="summary" class="slide level2 center">
-<h2>Summary</h2>
-<div class="three-cards">
-<div class="card card-dark">
-<p><span class="card-title">How Python works</span></p>
-<ul>
-<li>Near-English instructions</li>
-<li>Scripts run top-to-bottom</li>
-<li>Notebooks run cell-by-cell</li>
-<li>Libraries call precompiled C code</li>
-</ul>
-</div>
-<div class="card card-dark">
-<p><span class="card-title">The 6 patterns</span></p>
+<section id="exercises" class="slide level2 center">
+<h2>Exercises</h2>
 <ol type="1">
-<li>Objects &amp; types</li>
-<li>Variables</li>
-<li>Collections</li>
-<li>Conditionals</li>
-<li>Loops</li>
-<li>Functions &amp; methods</li>
+<li>Compute summary statistics (mean, median, …) for all variables.</li>
+<li>Compute a pie chart of marketcap by firm for the last month of the sample.</li>
+<li>Compute a pie chart of marketcap by sector for the last month of the sample.</li>
+<li>Create a filled density plot for returns.</li>
+<li>Create boxplots of returns by sector.</li>
+<li>Create a barplot of mean monthly return by sector.</li>
 </ol>
-</div>
-<div class="card card-dark">
-<p><span class="card-title">Your workflow</span></p>
-<ul>
-<li>Describe what you want in English</li>
-<li>AI generates the Python</li>
-<li>You read it, understand it, run it</li>
-<li>Ask AI to explain any line you’re unsure about</li>
-</ul>
-</div>
-</div>
-<div class="highlight-box">
-<p>You don’t need to memorize syntax. You need to recognize patterns — and now you can.</p>
-</div>
+</section>
+<section id="more-exercises" class="slide level2 center">
+<h2>More Exercises</h2>
+<ol start="7" type="1">
+<li>Create boxplots of the returns of all firms in the technology sector.</li>
+<li>Create a filled line chart of the cumulative equally weighted portfolio return by month.</li>
+<li>Sort into quintiles each month by momentum. Compute the equally weighted return of each quintile each month. Create a barplot of the mean return of each quintile.</li>
+<li>Create a scatterplot of returns versus momentum. Overlay a regression line.</li>
+<li>Show the regression results (coefficients, <span class="math inline">\(t\)</span>-statistics, <span class="math inline">\(R^\)</span>, etc.) in a table.</li>
+<li>Compute the total return over the full time period of each stock and show the top 10 in a table.</li>
+</ol>
 
 
 </section>

@@ -221,7 +221,7 @@
     "href": "slides/python-overview.html#sample-dataset-for-practice",
     "title": "Python for MBA Students",
     "section": "Sample Dataset for Practice",
-    "text": "Sample Dataset for Practice\n\nstock_panel.xlsx — download link\nstock_panel.xlsx\n30 S&P 500 stocks × 36 months (2022–2024) — 1,080 rows, 13 columns:\n\n\n\n\n\n\n\nColumn\nWhat it is\n\n\n\n\nticker, month, sector\nStock identifier, year-month, industry sector\n\n\nreturn, momentum, lagged_return\nMonthly return, 12-month momentum, prior-month return\n\n\nmarketcap_billions, pb\nMarket cap ($ billions), price-to-book ratio\n\n\nroe, grossmargin, assetturnover\nReturn on equity, gross margin, asset turnover\n\n\ngp_to_assets, asset_growth\nGross profit / assets, year-over-year asset growth\n\n\n\n\n\nAsk Gemini to: filter by sector · groupby and aggregate · pivot by ticker · plot returns over time · write results to a new Excel file with df.to_excel(...)."
+    "text": "Sample Dataset for Practice\n\nstock_panel.xlsx — download link\nstock_panel.xlsx\n30 S&P 500 stocks × 36 months (2022–2024) — 1,080 rows, 13 columns:\n\n\n\n\n\n\n\nColumn\nWhat it is\n\n\n\n\nticker, month, sector\nStock identifier, year-month, industry sector\n\n\nreturn, momentum, lagged_return\nMonthly return, 12-month momentum, prior-month return\n\n\nmarketcap_billions, pb\nMarket cap ($ billions), price-to-book ratio\n\n\nroe, grossmargin, assetturnover\nReturn on equity, gross margin, asset turnover\n\n\ngp_to_assets, asset_growth\nGross profit / assets, year-over-year asset growth"
   },
   {
     "objectID": "slides/python-overview.html#back-to-the-beginning",
@@ -257,5 +257,54 @@
     "title": "Python for MBA Students",
     "section": "Assignment Statements",
     "text": "Assignment Statements\nA single = sign stores a value under a name:\nprice = 182.50\ncompany = \"Apple\"\nshares = 100\ntotal = price * shares\n\nHow to read it\nRead price = 182.50 as “price gets 182.50” — not “price equals 182.50.” The right side is computed first, then stored in the name on the left.\n\n\nWhen you see df = pd.read_excel(...) on the next slide, the same thing is happening — the result of pd.read_excel(...) is computed and stored in the name df."
+  },
+  {
+    "objectID": "slides/python-overview.html#exercises",
+    "href": "slides/python-overview.html#exercises",
+    "title": "Python for MBA Students",
+    "section": "Exercises",
+    "text": "Exercises\n\nCompute summary statistics (mean, median, …) for all variables.\nCompute a pie chart of marketcap by firm for the last month of the sample.\nCompute a pie chart of marketcap by sector for the last month of the sample.\nCreate a filled density plot for returns.\nCreate boxplots of returns by sector.\nCreate a barplot of mean monthly return by sector."
+  },
+  {
+    "objectID": "slides/python-overview.html#more-exercises",
+    "href": "slides/python-overview.html#more-exercises",
+    "title": "Python for MBA Students",
+    "section": "More Exercises",
+    "text": "More Exercises\n\nCreate boxplots of the returns of all firms in the technology sector.\nCreate a filled line chart of the cumulative equally weighted portfolio return by month.\nSort into quintiles each month by momentum. Compute the equally weighted return of each quintile each month. Create a barplot of the mean return of each quintile.\nCreate a scatterplot of returns versus momentum. Overlay a regression line.\nShow the regression results (coefficients, \\(t\\)-statistics, \\(R^\\), etc.) in a table.\nCompute the total return over the full time period of each stock and show the top 10 in a table."
+  },
+  {
+    "objectID": "slides/python-overview.html#load-the-sales-data",
+    "href": "slides/python-overview.html#load-the-sales-data",
+    "title": "Python for MBA Students",
+    "section": "Load the Sales Data",
+    "text": "Load the Sales Data\nRun this cell first — then use df in all the prompts below:\nimport pandas as pd\ndf = pd.read_excel(\"sales.xlsx\")\ndf\n\nWhat’s in the data\n10 rows · 4 columns: region, product, revenue, units\n\n\n\nregion\nproduct\nrevenue\nunits\n\n\n\n\nEast\nWidget\n42000\n210\n\n\nWest\nGadget\n31500\n180\n\n\n…\n…\n…\n…"
+  },
+  {
+    "objectID": "slides/python-overview.html#prompt-2-revenue-by-region",
+    "href": "slides/python-overview.html#prompt-2-revenue-by-region",
+    "title": "Python for MBA Students",
+    "section": "Prompt 2: Revenue by Region",
+    "text": "Prompt 2: Revenue by Region\n\nCopy and paste this into Gemini\n“The variable df is a pandas DataFrame with columns: region, product, revenue, and units. Compute the total revenue and total units for each region. Sort by total revenue from highest to lowest and display the result.”\n\nAfter Gemini generates the code, look for:\n\ndf.groupby(\"region\") — grouping (Pattern ⑥ method)\n.agg(...) or .sum() — aggregating (Pattern ⑥)\n.sort_values(...) — sorting (Pattern ⑥)\nA new variable storing the result (Pattern ②)"
+  },
+  {
+    "objectID": "slides/python-overview.html#prompt-3-filter-and-enrich",
+    "href": "slides/python-overview.html#prompt-3-filter-and-enrich",
+    "title": "Python for MBA Students",
+    "section": "Prompt 3: Filter and Enrich",
+    "text": "Prompt 3: Filter and Enrich\n\nCopy and paste this into Gemini\n“Using df (columns: region, product, revenue, units), filter to rows where revenue exceeds 30,000. For those rows, add a new column called price_per_unit equal to revenue divided by units. Display the filtered table sorted by price_per_unit.”\n\nAfter Gemini generates the code, look for:\n\ndf[df[\"revenue\"] &gt; 30000] — conditional filter (Pattern ④)\ndf[\"price_per_unit\"] = ... — creating a new column (Pattern ②)\nDivision inside the expression (Pattern ①)\n.sort_values(\"price_per_unit\") (Pattern ⑥)"
+  },
+  {
+    "objectID": "slides/python-overview.html#prompt-4-best-product-per-region",
+    "href": "slides/python-overview.html#prompt-4-best-product-per-region",
+    "title": "Python for MBA Students",
+    "section": "Prompt 4: Best Product per Region",
+    "text": "Prompt 4: Best Product per Region\n\nCopy and paste this into Gemini\n“Using df (columns: region, product, revenue, units), for each region find the product with the highest revenue. Show the result as a neat table with one row per region.”\n\nAfter Gemini generates the code, look for:\n\ngroupby combined with idxmax() or apply() (Pattern ⑥)\n.loc[...] to look up rows by index (Pattern ⑥)\nVariable names storing intermediate results (Pattern ②)"
+  },
+  {
+    "objectID": "slides/python-overview.html#prompt-5-full-pipeline-with-chart",
+    "href": "slides/python-overview.html#prompt-5-full-pipeline-with-chart",
+    "title": "Python for MBA Students",
+    "section": "Prompt 5: Full Pipeline with Chart",
+    "text": "Prompt 5: Full Pipeline with Chart\n\nCopy and paste this into Gemini\n“Using df (columns: region, product, revenue, units): add a column called price_per_unit (revenue ÷ units), then compute total revenue and mean price per unit grouped by product, sort by total revenue highest first, and plot a bar chart of total revenue by product titled ‘Revenue by Product’.”\n\nThis is the synthesis prompt. In roughly 10 lines you should find all 6 patterns:\ndf[\"price_per_unit\"] = df[\"revenue\"] / df[\"units\"]   # ② variable  ① math\nresult = (df.groupby(\"product\")                       # ⑥ method chain\n            .agg(total_revenue=(\"revenue\",\"sum\"),\n                 mean_price=(\"price_per_unit\",\"mean\"))\n            .sort_values(\"total_revenue\", ascending=False))\nresult[\"total_revenue\"].plot(kind=\"bar\",              # ⑥ method\n                             title=\"Revenue by Product\")\nCan you name the pattern for every line Gemini produces?"
   }
 ]

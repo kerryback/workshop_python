@@ -613,72 +613,98 @@ For each prompt on the following slides: type it into Gemini, run the code, then
 
 ---
 
-## Prompt 2: Sales Summary
+## Load the Sales Data
 
-::: {.info-box}
-[Copy and paste this into Gemini]{.box-title}
-
-*"Write Python code that defines a list of 12 monthly sales figures. Calculate the best month, worst month, and monthly average. Also count how many months exceeded the average. Print a formatted summary report."*
-:::
-
-**After Gemini generates the code, look for:**
-
-- A list of numbers **(Pattern ③)**
-- Built-in functions: `max()`, `min()`, `sum()`, `len()` **(Pattern ⑥)**
-- A loop or list comprehension to count months above average **(Pattern ⑤)**
-- A conditional inside the loop **(Pattern ④)**
-
----
-
-## Prompt 3: Employee Filter
-
-::: {.info-box}
-[Copy and paste this into Gemini]{.box-title}
-
-*"Write Python code with a list of 6 employees. Each employee should have a name, department, and salary. Loop through the list and print the name and salary of anyone earning more than $80,000. At the end, print how many employees qualified."*
-:::
-
-**After Gemini generates the code, look for:**
-
-- A list of dictionaries — one dict per employee **(Pattern ③)**
-- A `for` loop iterating over the list **(Pattern ⑤)**
-- A conditional `if` checking the salary **(Pattern ④)**
-- An accumulator counting the matches **(Pattern ⑤)**
-
----
-
-## Prompt 4: Company Rankings
-
-::: {.info-box}
-[Copy and paste this into Gemini]{.box-title}
-
-*"Write Python code with a list of 4 large companies, each with a name, annual revenue, and annual costs. Write a function to calculate profit margin. Sort the companies from highest to lowest margin and print a numbered ranking with each company's margin formatted as a percentage."*
-:::
-
-**After Gemini generates the code, look for:**
-
-- A list of dictionaries **(Pattern ③)**
-- A `def` function with a `return` statement **(Pattern ⑥)**
-- A sort — look for `sorted()` or `.sort()` with a `key=` argument **(Pattern ⑥)**
-- A loop with `enumerate()` for the numbering **(Pattern ⑤)**
-
----
-
-## Prompt 5: Pandas Analysis — All 6 Patterns
-
-::: {.info-box}
-[Copy and paste this into Gemini]{.box-title}
-
-*"Write Python code using pandas that creates a DataFrame with columns for region, product, revenue, and units (at least 8 rows of made-up data). Then calculate total revenue and average revenue per unit for each region. Show the results sorted by total revenue, highest first."*
-:::
-
-**This is the synthesis prompt.** In roughly 15 lines, you should find all 6 patterns:
+Run this cell first — then use `df` in all the prompts below:
 
 ```python
-import pandas as pd          # library import
-data = {...}                 # ③ dictionary → collection
-df = pd.DataFrame(data)      # ⑥ function call
-df.groupby(...).agg(...).sort_values(...)  # ⑥ method chain
+import pandas as pd
+df = pd.read_excel("sales.xlsx")
+df
+```
+
+::: {.info-box}
+[What's in the data]{.box-title}
+
+10 rows · 4 columns: **region**, **product**, **revenue**, **units**
+
+| region | product | revenue | units |
+|--------|---------|---------|-------|
+| East | Widget | 42000 | 210 |
+| West | Gadget | 31500 | 180 |
+| … | … | … | … |
+:::
+
+---
+
+## Prompt 2: Revenue by Region
+
+::: {.info-box}
+[Copy and paste this into Gemini]{.box-title}
+
+*"The variable* `df` *is a pandas DataFrame with columns: region, product, revenue, and units. Compute the total revenue and total units for each region. Sort by total revenue from highest to lowest and display the result."*
+:::
+
+**After Gemini generates the code, look for:**
+
+- `df.groupby("region")` — grouping **(Pattern ⑥ method)**
+- `.agg(...)` or `.sum()` — aggregating **(Pattern ⑥)**
+- `.sort_values(...)` — sorting **(Pattern ⑥)**
+- A new variable storing the result **(Pattern ②)**
+
+---
+
+## Prompt 3: Filter and Enrich
+
+::: {.info-box}
+[Copy and paste this into Gemini]{.box-title}
+
+*"Using* `df` *(columns: region, product, revenue, units), filter to rows where revenue exceeds 30,000. For those rows, add a new column called* `price_per_unit` *equal to revenue divided by units. Display the filtered table sorted by* `price_per_unit`*."*
+:::
+
+**After Gemini generates the code, look for:**
+
+- `df[df["revenue"] > 30000]` — conditional filter **(Pattern ④)**
+- `df["price_per_unit"] = ...` — creating a new column **(Pattern ②)**
+- Division inside the expression **(Pattern ①)**
+- `.sort_values("price_per_unit")` **(Pattern ⑥)**
+
+---
+
+## Prompt 4: Best Product per Region
+
+::: {.info-box}
+[Copy and paste this into Gemini]{.box-title}
+
+*"Using* `df` *(columns: region, product, revenue, units), for each region find the product with the highest revenue. Show the result as a neat table with one row per region."*
+:::
+
+**After Gemini generates the code, look for:**
+
+- `groupby` combined with `idxmax()` or `apply()` **(Pattern ⑥)**
+- `.loc[...]` to look up rows by index **(Pattern ⑥)**
+- Variable names storing intermediate results **(Pattern ②)**
+
+---
+
+## Prompt 5: Full Pipeline with Chart
+
+::: {.info-box}
+[Copy and paste this into Gemini]{.box-title}
+
+*"Using* `df` *(columns: region, product, revenue, units): add a column called* `price_per_unit` *(revenue ÷ units), then compute total revenue and mean price per unit grouped by product, sort by total revenue highest first, and plot a bar chart of total revenue by product titled 'Revenue by Product'."*
+:::
+
+**This is the synthesis prompt.** In roughly 10 lines you should find all 6 patterns:
+
+```python
+df["price_per_unit"] = df["revenue"] / df["units"]   # ② variable  ① math
+result = (df.groupby("product")                       # ⑥ method chain
+            .agg(total_revenue=("revenue","sum"),
+                 mean_price=("price_per_unit","mean"))
+            .sort_values("total_revenue", ascending=False))
+result["total_revenue"].plot(kind="bar",              # ⑥ method
+                             title="Revenue by Product")
 ```
 
 **Can you name the pattern for every line Gemini produces?**
@@ -779,63 +805,20 @@ Different charts, same pattern: build a series or DataFrame, call `.plot(kind=..
 | `gp_to_assets`, `asset_growth` | Gross profit / assets, year-over-year asset growth |
 :::
 
-::: {.highlight-box}
-Ask Gemini to: filter by sector · groupby and aggregate · pivot by ticker · plot returns over time · write results to a new Excel file with `df.to_excel(...)`.
-:::
+## Exercises
 
----
+1. Compute summary statistics (mean, median, ...) for all variables. 
+2. Compute a pie chart of marketcap by firm for the last month of the sample.
+3. Compute a pie chart of marketcap by sector for the last month of the sample.
+4. Create a filled density plot for returns.
+5. Create boxplots of returns by sector.
+6. Create a barplot of mean monthly return by sector.
 
-## Back to the Beginning
+## More Exercises
 
-```python
-products = ["Widget", "Gadget", "Doohickey"]   # ③ List — a collection
-revenues = [120_000,  85_000,  200_000]          # ③ List — a collection
-costs    = [ 80_000,  60_000,  140_000]          # ③ List — a collection
-
-for i in range(len(products)):                   # ⑤ Loop + ⑥ Functions
-    margin = (revenues[i] - costs[i]) / revenues[i]  # ② Variables + ① Math
-    print(f"{products[i]}: {margin:.1%} margin")     # ⑥ Function + f-string
-```
-
-::: {.highlight-box}
-This is the same code from slide 2. Every line is one of the 6 patterns. You now have the vocabulary to read it — and to read the code AI generates for you.
-:::
-
----
-
-## Summary
-
-::: {.three-cards}
-::: {.card .card-dark}
-[How Python works]{.card-title}
-
-- Near-English instructions
-- Scripts run top-to-bottom
-- Notebooks run cell-by-cell
-- Libraries call precompiled C code
-:::
-
-::: {.card .card-dark}
-[The 6 patterns]{.card-title}
-
-1. Objects & types
-2. Variables
-3. Collections
-4. Conditionals
-5. Loops
-6. Functions & methods
-:::
-
-::: {.card .card-dark}
-[Your workflow]{.card-title}
-
-- Describe what you want in English
-- AI generates the Python
-- You read it, understand it, run it
-- Ask AI to explain any line you're unsure about
-:::
-:::
-
-::: {.highlight-box}
-You don't need to memorize syntax. You need to recognize patterns — and now you can.
-:::
+7. Create boxplots of the returns of all firms in the technology sector.
+8. Create a filled line chart of the cumulative equally weighted portfolio return by month.
+9. Sort into quintiles each month by momentum.  Compute the equally weighted return of each quintile each month.  Create a barplot of the mean return of each quintile.
+10. Create a scatterplot of returns versus momentum.  Overlay a regression line.
+11. Show the regression results (coefficients, $t$-statistics, $R^$, etc.) in a table.
+12. Compute the total return over the full time period of each stock and show the top 10 in a table.
