@@ -42,27 +42,6 @@
     "text": "What Is a Library?\nA library is a collection of pre-built code you can import and use.\n\nKey libraries for business\n\n\n\nLibrary\nWhat it does\n\n\n\n\npandas\nData tables — read, clean, reshape, summarize\n\n\nnumpy\nFast math on arrays of numbers\n\n\nmatplotlib\nCharts and plots\n\n\nseaborn\nStatistical visualization\n\n\n\n\n\nHundreds more exist — for machine learning (scikit-learn), optimization (scipy), web APIs, and more. import pandas as pd means: load pandas and call it pd for short."
   },
   {
-    "objectID": "slides/python-overview.html#try-it-google-colab",
-    "href": "slides/python-overview.html#try-it-google-colab",
-    "title": "Python for MBA Students",
-    "section": "Try It: Google Colab",
-    "text": "Try It: Google Colab\nGoogle Colab is a free, browser-based Python notebook — nothing to install.\n\nOne-time setup — two steps\n\nDownload the data file: sales.xlsx — save it to your Google Drive\nOpen colab.research.google.com and start a new notebook\nAsk Gemini: “Mount my Google Drive so I can access files from it”\n\n\n\nOnce your Drive is mounted, your file is at /content/drive/MyDrive/sales.xlsx — that’s the path you’ll pass to pd.read_excel."
-  },
-  {
-    "objectID": "slides/python-overview.html#reading-an-excel-file",
-    "href": "slides/python-overview.html#reading-an-excel-file",
-    "title": "Python for MBA Students",
-    "section": "Reading an Excel File",
-    "text": "Reading an Excel File\nimport pandas as pd\n\ndf = pd.read_excel(\"/content/drive/MyDrive/sales.xlsx\")\ndf.head()\n\n\n\n\n\n\n\n\n\nregion\nproduct\nrevenue\nunits\n\n\n\n\n0\nEast\nWidget\n42000\n210\n\n\n1\nWest\nGadget\n31500\n180\n\n\n2\nNorth\nWidget\n28000\n140\n\n\n3\nEast\nDoohickey\n19500\n95\n\n\n4\nSouth\nGadget\n22000\n125\n\n\n\n\n\n\n\n\ndf is a DataFrame — think of it as a spreadsheet in Python. df.head() shows the first 5 rows."
-  },
-  {
-    "objectID": "slides/python-overview.html#method-chaining",
-    "href": "slides/python-overview.html#method-chaining",
-    "title": "Python for MBA Students",
-    "section": "Method Chaining",
-    "text": "Method Chaining\nRead left to right — each method returns an object the next method acts on:\ndf = pd.read_excel(\"sales.xlsx\")\n\ndf.groupby(\"region\")[\"revenue\"].sum().sort_values(ascending=False).plot(kind=\"bar\")\n\n\n\nStep\nCode\nReturns\n\n\n\n\n1\ndf.groupby(\"region\")\ngrouped data object\n\n\n2\n[\"revenue\"]\nrevenue values per group\n\n\n3\n.sum()\ntotal revenue per region\n\n\n4\n.sort_values(ascending=False)\nsorted Series\n\n\n5\n.plot(kind=\"bar\")\nbar chart\n\n\n\n\nPattern ⑥ in action. Under the hood, pandas runs these operations as precompiled C code — the “already compiled, runs fast” path from the earlier diagram."
-  },
-  {
     "objectID": "slides/python-overview.html#the-6-patterns",
     "href": "slides/python-overview.html#the-6-patterns",
     "title": "Python for MBA Students",
@@ -82,6 +61,13 @@
     "title": "Python for MBA Students",
     "section": "How to Spot Each Pattern",
     "text": "How to Spot Each Pattern\n\n\n\n\n\n\n\nPattern\nWhat to look for\n\n\n\n\nObjects & Types\nLiteral values: 42, 3.14, \"text\", True / False\n\n\nVariables\nname = value — a single = sign\n\n\nCollections\n[...] = list (ordered) · {key: value, ...} = dictionary\n\n\nConditionals\nif / elif / else followed by : and an indented block\n\n\nLoops\nfor ... in ...: or while ...: followed by an indented block\n\n\nFunctions & Methods\nname(...) = function · object.method(...) = method\n\n\nList comprehension\n[expr for item in collection] — compact loop inside brackets\n\n\ntry / except\ntry: + indented block, then except: + error handler"
+  },
+  {
+    "objectID": "slides/python-overview.html#assignment-statements",
+    "href": "slides/python-overview.html#assignment-statements",
+    "title": "Python for MBA Students",
+    "section": "Assignment Statements",
+    "text": "Assignment Statements\nA single = sign stores a value under a name:\nprice = 182.50\ncompany = \"Apple\"\nshares = 100\ntotal = price * shares\n\nHow to read it\nRead price = 182.50 as “price gets 182.50” — not “price equals 182.50.” The right side is computed first, then stored in the name on the left."
   },
   {
     "objectID": "slides/python-overview.html#pattern-spotting",
@@ -147,104 +133,6 @@
     "text": "Open the Companion Notebook\n\nGo to this link in your browser\ncolab.research.google.com/github/kerryback/workshop_python/blob/main/python_overview_exercises.ipynb\nGoogle Colab is a free, browser-based Python notebook — nothing to install.\n\nThe notebook has one section per pattern — ① through ⑥\nRun the cells"
   },
   {
-    "objectID": "slides/python-overview.html#using-gemini-in-colab",
-    "href": "slides/python-overview.html#using-gemini-in-colab",
-    "title": "Python for MBA Students",
-    "section": "Using Gemini in Colab",
-    "text": "Using Gemini in Colab\n\nHow to get code from Gemini\n\nClick the Gemini sparkle icon (top right) — or open a new code cell\nType your prompt describing what you want Python to do\nGemini generates code — click Insert to add it to a cell\nShift + Enter to run"
-  },
-  {
-    "objectID": "slides/python-overview.html#prompt-1-investment-growth",
-    "href": "slides/python-overview.html#prompt-1-investment-growth",
-    "title": "Python for MBA Students",
-    "section": "Prompt 1: Investment Growth",
-    "text": "Prompt 1: Investment Growth\n\nCopy and paste this into Gemini\n“Write a Python function that calculates the future value of an investment given a starting amount, annual return rate, and number of years. Then call the function to show how $10,000 grows at 7% over 10, 20, and 30 years. Print the results in a formatted table.”\n\nAfter Gemini generates the code, look for:\n\nA def block — the function definition (Pattern ⑥)\n** — exponentiation for compounding math (Pattern ①)\nA loop to call the function for each time horizon (Pattern ⑤)\nprint() with f-string formatting (Pattern ⑥)"
-  },
-  {
-    "objectID": "slides/python-overview.html#prompt-2-sales-summary",
-    "href": "slides/python-overview.html#prompt-2-sales-summary",
-    "title": "Python for MBA Students",
-    "section": "Prompt 2: Sales Summary",
-    "text": "Prompt 2: Sales Summary\n\nCopy and paste this into Gemini\n“Write Python code that defines a list of 12 monthly sales figures. Calculate the best month, worst month, and monthly average. Also count how many months exceeded the average. Print a formatted summary report.”\n\nAfter Gemini generates the code, look for:\n\nA list of numbers (Pattern ③)\nBuilt-in functions: max(), min(), sum(), len() (Pattern ⑥)\nA loop or list comprehension to count months above average (Pattern ⑤)\nA conditional inside the loop (Pattern ④)"
-  },
-  {
-    "objectID": "slides/python-overview.html#prompt-3-employee-filter",
-    "href": "slides/python-overview.html#prompt-3-employee-filter",
-    "title": "Python for MBA Students",
-    "section": "Prompt 3: Employee Filter",
-    "text": "Prompt 3: Employee Filter\n\nCopy and paste this into Gemini\n“Write Python code with a list of 6 employees. Each employee should have a name, department, and salary. Loop through the list and print the name and salary of anyone earning more than $80,000. At the end, print how many employees qualified.”\n\nAfter Gemini generates the code, look for:\n\nA list of dictionaries — one dict per employee (Pattern ③)\nA for loop iterating over the list (Pattern ⑤)\nA conditional if checking the salary (Pattern ④)\nAn accumulator counting the matches (Pattern ⑤)"
-  },
-  {
-    "objectID": "slides/python-overview.html#prompt-4-company-rankings",
-    "href": "slides/python-overview.html#prompt-4-company-rankings",
-    "title": "Python for MBA Students",
-    "section": "Prompt 4: Company Rankings",
-    "text": "Prompt 4: Company Rankings\n\nCopy and paste this into Gemini\n“Write Python code with a list of 4 large companies, each with a name, annual revenue, and annual costs. Write a function to calculate profit margin. Sort the companies from highest to lowest margin and print a numbered ranking with each company’s margin formatted as a percentage.”\n\nAfter Gemini generates the code, look for:\n\nA list of dictionaries (Pattern ③)\nA def function with a return statement (Pattern ⑥)\nA sort — look for sorted() or .sort() with a key= argument (Pattern ⑥)\nA loop with enumerate() for the numbering (Pattern ⑤)"
-  },
-  {
-    "objectID": "slides/python-overview.html#prompt-5-pandas-analysis-all-6-patterns",
-    "href": "slides/python-overview.html#prompt-5-pandas-analysis-all-6-patterns",
-    "title": "Python for MBA Students",
-    "section": "Prompt 5: Pandas Analysis — All 6 Patterns",
-    "text": "Prompt 5: Pandas Analysis — All 6 Patterns\n\nCopy and paste this into Gemini\n“Write Python code using pandas that creates a DataFrame with columns for region, product, revenue, and units (at least 8 rows of made-up data). Then calculate total revenue and average revenue per unit for each region. Show the results sorted by total revenue, highest first.”\n\nThis is the synthesis prompt. In roughly 15 lines, you should find all 6 patterns:\nimport pandas as pd          # library import\ndata = {...}                 # ③ dictionary → collection\ndf = pd.DataFrame(data)      # ⑥ function call\ndf.groupby(...).agg(...).sort_values(...)  # ⑥ method chain\nCan you name the pattern for every line Gemini produces?"
-  },
-  {
-    "objectID": "slides/python-overview.html#working-with-data",
-    "href": "slides/python-overview.html#working-with-data",
-    "title": "Python for MBA Students",
-    "section": "Working with Data",
-    "text": "Working with Data"
-  },
-  {
-    "objectID": "slides/python-overview.html#pandas-analysis-in-one-pipeline",
-    "href": "slides/python-overview.html#pandas-analysis-in-one-pipeline",
-    "title": "Python for MBA Students",
-    "section": "pandas — Analysis in One Pipeline",
-    "text": "pandas — Analysis in One Pipeline\nA complete analysis in a single method chain:\nimport pandas as pd\n\ndf = pd.read_excel(\"sales.xlsx\")\n\n(df\n    .query(\"revenue &gt; 10_000\")              # filter rows\n    .groupby(\"region\")[\"revenue\"]           # group by region\n    .sum()                                  # aggregate\n    .sort_values(ascending=False)           # sort high to low\n    .plot(kind=\"bar\", title=\"Revenue by Region\")   # chart\n)\n\nEvery step is Pattern ⑥ — Methods: each returns an object, and the next method acts on it. This is the method chaining pattern you’ll see throughout AI-generated pandas code."
-  },
-  {
-    "objectID": "slides/python-overview.html#pandas-more-capabilities",
-    "href": "slides/python-overview.html#pandas-more-capabilities",
-    "title": "Python for MBA Students",
-    "section": "pandas — More Capabilities",
-    "text": "pandas — More Capabilities\nA taste of what else pandas can do:\n# Combine two tables on a shared key (like VLOOKUP)\ndf = pd.merge(prices, company_info, on=\"ticker\")\n\n# Reshape: rows → columns (like a pivot table)\ndf.pivot_table(values=\"revenue\", index=\"quarter\", columns=\"region\")\n\n# Find missing data\ndf.isnull().sum()\n\n# Summary statistics in one call\ndf.describe()\n\nEach of these is a method call (Pattern ⑥). When AI generates code for data tasks, it will use pandas. Recognizing the method-chain pattern tells you what each line is doing — even if you don’t know the specific method name."
-  },
-  {
-    "objectID": "slides/python-overview.html#visualization",
-    "href": "slides/python-overview.html#visualization",
-    "title": "Python for MBA Students",
-    "section": "Visualization",
-    "text": "Visualization\nThe same method-chaining pattern — different kind=:\n# Distribution of one variable\ndf[\"revenue\"].plot(kind=\"hist\", bins=20)\n\n# Comparison across categories\ndf.groupby(\"region\")[\"revenue\"].sum().plot(kind=\"bar\")\n\n# Relationship between two variables\ndf.plot(kind=\"scatter\", x=\"units\", y=\"revenue\")\n\n# Trend over time\ndf.set_index(\"date\")[\"revenue\"].plot(kind=\"line\")\n\nDifferent charts, same pattern: build a series or DataFrame, call .plot(kind=...). When you see a visualization in AI-generated code, look for this pattern — then look at what kind= is set to."
-  },
-  {
-    "objectID": "slides/python-overview.html#sample-dataset-for-practice",
-    "href": "slides/python-overview.html#sample-dataset-for-practice",
-    "title": "Python for MBA Students",
-    "section": "Sample Dataset for Practice",
-    "text": "Sample Dataset for Practice\n\nstock_panel.xlsx — download link\nstock_panel.xlsx\n30 S&P 500 stocks × 36 months (2022–2024) — 1,080 rows, 13 columns:\n\n\n\n\n\n\n\nColumn\nWhat it is\n\n\n\n\nticker, month, sector\nStock identifier, year-month, industry sector\n\n\nreturn, momentum, lagged_return\nMonthly return, 12-month momentum, prior-month return\n\n\nmarketcap_billions, pb\nMarket cap ($ billions), price-to-book ratio\n\n\nroe, grossmargin, assetturnover\nReturn on equity, gross margin, asset turnover\n\n\ngp_to_assets, asset_growth\nGross profit / assets, year-over-year asset growth"
-  },
-  {
-    "objectID": "slides/python-overview.html#back-to-the-beginning",
-    "href": "slides/python-overview.html#back-to-the-beginning",
-    "title": "Python for MBA Students",
-    "section": "Back to the Beginning",
-    "text": "Back to the Beginning\nproducts = [\"Widget\", \"Gadget\", \"Doohickey\"]   # ③ List — a collection\nrevenues = [120_000,  85_000,  200_000]          # ③ List — a collection\ncosts    = [ 80_000,  60_000,  140_000]          # ③ List — a collection\n\nfor i in range(len(products)):                   # ⑤ Loop + ⑥ Functions\n    margin = (revenues[i] - costs[i]) / revenues[i]  # ② Variables + ① Math\n    print(f\"{products[i]}: {margin:.1%} margin\")     # ⑥ Function + f-string\n\nThis is the same code from slide 2. Every line is one of the 6 patterns. You now have the vocabulary to read it — and to read the code AI generates for you."
-  },
-  {
-    "objectID": "slides/python-overview.html#summary",
-    "href": "slides/python-overview.html#summary",
-    "title": "Python for MBA Students",
-    "section": "Summary",
-    "text": "Summary\n\n\nHow Python works\n\nNear-English instructions\nScripts run top-to-bottom\nNotebooks run cell-by-cell\nLibraries call precompiled C code\n\n\n\nThe 6 patterns\n\nObjects & types\nVariables\nCollections\nConditionals\nLoops\nFunctions & methods\n\n\n\nYour workflow\n\nDescribe what you want in English\nAI generates the Python\nYou read it, understand it, run it\nAsk AI to explain any line you’re unsure about\n\n\n\n\nYou don’t need to memorize syntax. You need to recognize patterns — and now you can."
-  },
-  {
-    "objectID": "index.html#python-for-mba-students",
-    "href": "index.html#python-for-mba-students",
-    "title": "Python Workshop",
-    "section": "Python for MBA Students",
-    "text": "Python for MBA Students\nA 3-hour overview of Python fundamentals — designed for MBA students who will use AI to write code but need to understand what Python looks like and how it works.\n\nMaterials\n\nSlide Deck: Python for MBA Students\nCompanion Exercises (Google Colab)\n\n\n\nTopics Covered\n\nBig Picture — how Python runs, scripts vs. notebooks, Google Colab\nLibraries — pandas, NumPy, matplotlib; reading data; method chaining\nThe 6 Patterns — objects & types, variables, collections, conditionals, loops, functions & methods\nPattern Spotting — reading AI-generated code examples\nWorking with Data — pandas pipelines, visualization\n\n\n\nAdditional Resources\n\nPython Tutor — visualize code execution step by step\nPython Cheat Sheet — concise syntax reference\nAutomate the Boring Stuff with Python — free online book\nReal Python — tutorials and articles"
-  },
-  {
     "objectID": "slides/python-overview.html#colab-basics",
     "href": "slides/python-overview.html#colab-basics",
     "title": "Python for MBA Students",
@@ -252,60 +140,11 @@
     "text": "Colab Basics\n\nThree things you need to know\n\nAdd a code cell — click the + Code button at the top, or hover between cells and click + Code\nRun a cell — press Shift + Enter (runs the cell and moves to the next)\nSee the output — it appears directly below the cell\n\n\n\nThat’s it. Everything else — writing the code, explaining errors, adding new cells — you can ask Gemini."
   },
   {
-    "objectID": "slides/python-overview.html#assignment-statements",
-    "href": "slides/python-overview.html#assignment-statements",
+    "objectID": "slides/python-overview.html#using-gemini-in-colab",
+    "href": "slides/python-overview.html#using-gemini-in-colab",
     "title": "Python for MBA Students",
-    "section": "Assignment Statements",
-    "text": "Assignment Statements\nA single = sign stores a value under a name:\nprice = 182.50\ncompany = \"Apple\"\nshares = 100\ntotal = price * shares\n\nHow to read it\nRead price = 182.50 as “price gets 182.50” — not “price equals 182.50.” The right side is computed first, then stored in the name on the left."
-  },
-  {
-    "objectID": "slides/python-overview.html#exercises",
-    "href": "slides/python-overview.html#exercises",
-    "title": "Python for MBA Students",
-    "section": "Exercises",
-    "text": "Exercises\n\nCompute summary statistics (mean, median, …) for all variables.\nCompute a pie chart of marketcap by firm for the last month of the sample.\nCompute a pie chart of marketcap by sector for the last month of the sample.\nCreate a filled density plot for returns.\nCreate boxplots of returns by sector.\nCreate a barplot of mean monthly return by sector."
-  },
-  {
-    "objectID": "slides/python-overview.html#more-exercises",
-    "href": "slides/python-overview.html#more-exercises",
-    "title": "Python for MBA Students",
-    "section": "More Exercises",
-    "text": "More Exercises\n\n\nCreate boxplots of the returns of all firms in the technology sector.\n\n\nCreate a filled line chart of the cumulative equally weighted portfolio return by month.\n\n\nSort into quintiles each month by momentum. Compute the equally weighted return of each quintile each month. Create a barplot of the mean return of each quintile.\n\n\nCreate a scatterplot of returns versus momentum. Overlay a regression line.\n\n\nShow the regression results (coefficients, \\(t\\)-statistics, \\(R^2\\), etc.) in a table.\n\n\nCompute the total return over the full time period of each stock and show the top 10 in a table."
-  },
-  {
-    "objectID": "slides/python-overview.html#load-the-sales-data",
-    "href": "slides/python-overview.html#load-the-sales-data",
-    "title": "Python for MBA Students",
-    "section": "Load the Sales Data",
-    "text": "Load the Sales Data\nRun this cell first — then use df in all the prompts below:\nimport pandas as pd\ndf = pd.read_excel(\"/content/drive/MyDrive/sales.xlsx\")\ndf\nThink of df as an Excel table.\n\nWhat’s in the data\n10 rows · 4 columns: region, product, revenue, units\n\n\n\nregion\nproduct\nrevenue\nunits\n\n\n\n\nEast\nWidget\n42000\n210\n\n\nWest\nGadget\n31500\n180\n\n\n…\n…\n…\n…"
-  },
-  {
-    "objectID": "slides/python-overview.html#prompt-2-revenue-by-region",
-    "href": "slides/python-overview.html#prompt-2-revenue-by-region",
-    "title": "Python for MBA Students",
-    "section": "Prompt 2: Revenue by Region",
-    "text": "Prompt 2: Revenue by Region\n\nCopy and paste this into Gemini\n“The variable df is a pandas DataFrame with columns: region, product, revenue, and units. Compute the total revenue and total units for each region. Sort by total revenue from highest to lowest and display the result.”\n\nAfter Gemini generates the code, look for:\n\ndf.groupby(\"region\") — grouping (Pattern ⑥ method)\n.agg(...) or .sum() — aggregating (Pattern ⑥)\n.sort_values(...) — sorting (Pattern ⑥)\nA new variable storing the result (Pattern ②)"
-  },
-  {
-    "objectID": "slides/python-overview.html#prompt-3-filter-and-enrich",
-    "href": "slides/python-overview.html#prompt-3-filter-and-enrich",
-    "title": "Python for MBA Students",
-    "section": "Prompt 3: Filter and Enrich",
-    "text": "Prompt 3: Filter and Enrich\n\nCopy and paste this into Gemini\n“Using df (columns: region, product, revenue, units), filter to rows where revenue exceeds 30,000. For those rows, add a new column called price_per_unit equal to revenue divided by units. Display the filtered table sorted by price_per_unit.”\n\nAfter Gemini generates the code, look for:\n\ndf[df[\"revenue\"] &gt; 30000] — conditional filter (Pattern ④)\ndf[\"price_per_unit\"] = ... — creating a new column (Pattern ②)\nDivision inside the expression (Pattern ①)\n.sort_values(\"price_per_unit\") (Pattern ⑥)"
-  },
-  {
-    "objectID": "slides/python-overview.html#prompt-4-best-product-per-region",
-    "href": "slides/python-overview.html#prompt-4-best-product-per-region",
-    "title": "Python for MBA Students",
-    "section": "Prompt 4: Best Product per Region",
-    "text": "Prompt 4: Best Product per Region\n\nCopy and paste this into Gemini\n“Using df (columns: region, product, revenue, units), for each region find the product with the highest revenue. Show the result as a neat table with one row per region.”\n\nAfter Gemini generates the code, look for:\n\ngroupby combined with idxmax() or apply() (Pattern ⑥)\n.loc[...] to look up rows by index (Pattern ⑥)\nVariable names storing intermediate results (Pattern ②)"
-  },
-  {
-    "objectID": "slides/python-overview.html#prompt-5-full-pipeline-with-chart",
-    "href": "slides/python-overview.html#prompt-5-full-pipeline-with-chart",
-    "title": "Python for MBA Students",
-    "section": "Prompt 5: Full Pipeline with Chart",
-    "text": "Prompt 5: Full Pipeline with Chart\n\nCopy and paste this into Gemini\n“Using df (columns: region, product, revenue, units): add a column called price_per_unit (revenue ÷ units), then compute total revenue and mean price per unit grouped by product, sort by total revenue highest first, and plot a bar chart of total revenue by product titled ‘Revenue by Product’.”\n\nThis is the synthesis prompt. In roughly 10 lines you should find all 6 patterns:\ndf[\"price_per_unit\"] = df[\"revenue\"] / df[\"units\"]   # ② variable  ① math\nresult = (df.groupby(\"product\")                       # ⑥ method chain\n            .agg(total_revenue=(\"revenue\",\"sum\"),\n                 mean_price=(\"price_per_unit\",\"mean\"))\n            .sort_values(\"total_revenue\", ascending=False))\nresult[\"total_revenue\"].plot(kind=\"bar\",              # ⑥ method\n                             title=\"Revenue by Product\")\nCan you name the pattern for every line Gemini produces?"
+    "section": "Using Gemini in Colab",
+    "text": "Using Gemini in Colab\n\nHow to get code from Gemini\n\nClick the Gemini sparkle icon (top right) — or open a new code cell\nType your prompt describing what you want Python to do\nGemini generates code — click Insert to add it to a cell\nShift + Enter to run"
   },
   {
     "objectID": "slides/python-overview.html#example",
@@ -315,11 +154,25 @@
     "text": "Example\n\nCopy and paste this into Gemini\n“Write a Python function that calculates the future value of an investment given a starting amount, annual return rate, and number of years. Then call the function to show how $10,000 grows at 7% over 10, 20, and 30 years. Print the results in a formatted table.”\n\nAfter Gemini generates the code, look for:\n\nA def block — the function definition (Pattern ⑥)\n** — exponentiation for compounding math (Pattern ①)\nA loop to call the function for each time horizon (Pattern ⑤)\nprint() with f-string formatting (Pattern ⑥)"
   },
   {
+    "objectID": "slides/python-overview.html#working-with-data",
+    "href": "slides/python-overview.html#working-with-data",
+    "title": "Python for MBA Students",
+    "section": "Working with Data",
+    "text": "Working with Data"
+  },
+  {
     "objectID": "slides/python-overview.html#uploading-data",
     "href": "slides/python-overview.html#uploading-data",
     "title": "Python for MBA Students",
     "section": "Uploading Data",
     "text": "Uploading Data\n\nOne-time setup — two steps\n\nDownload this data file as usual (not in Colab): sales.xlsx — save it to your Google Drive\nAsk Gemini: “Mount my Google Drive so I can access files from it”\n\n\n\nOnce your Drive is mounted, your file is at /content/drive/MyDrive/sales.xlsx — that’s the path you’ll pass to pd.read_excel."
+  },
+  {
+    "objectID": "slides/python-overview.html#load-the-sales-data",
+    "href": "slides/python-overview.html#load-the-sales-data",
+    "title": "Python for MBA Students",
+    "section": "Load the Sales Data",
+    "text": "Load the Sales Data\nRun this cell first — then use df in all the prompts below:\nimport pandas as pd\ndf = pd.read_excel(\"/content/drive/MyDrive/sales.xlsx\")\ndf\nThink of df as an Excel table.\n\nWhat’s in the data\n10 rows · 4 columns: region, product, revenue, units\n\n\n\nregion\nproduct\nrevenue\nunits\n\n\n\n\nEast\nWidget\n42000\n210\n\n\nWest\nGadget\n31500\n180\n\n\n…\n…\n…\n…"
   },
   {
     "objectID": "slides/python-overview.html#example-1-1",
@@ -357,10 +210,45 @@
     "text": "Example 5: Full Pipeline with Chart\n\nCopy and paste this into Gemini\n“Using df (columns: region, product, revenue, units): add a column called price_per_unit (revenue ÷ units), then compute total revenue and mean price per unit grouped by product, sort by total revenue highest first, and plot a bar chart of total revenue by product titled ‘Revenue by Product’.”\n\nThis is the synthesis prompt. In roughly 10 lines you should find all 6 patterns:\ndf[\"price_per_unit\"] = df[\"revenue\"] / df[\"units\"]   # ② variable  ① math\nresult = (df.groupby(\"product\")                       # ⑥ method chain\n            .agg(total_revenue=(\"revenue\",\"sum\"),\n                 mean_price=(\"price_per_unit\",\"mean\"))\n            .sort_values(\"total_revenue\", ascending=False))\nresult[\"total_revenue\"].plot(kind=\"bar\",              # ⑥ method\n                             title=\"Revenue by Product\")\nCan you name the pattern for every line Gemini produces?"
   },
   {
+    "objectID": "slides/python-overview.html#pandas-more-capabilities",
+    "href": "slides/python-overview.html#pandas-more-capabilities",
+    "title": "Python for MBA Students",
+    "section": "pandas — More Capabilities",
+    "text": "pandas — More Capabilities\nA taste of what else pandas can do:\n# Combine two tables on a shared key (like VLOOKUP)\ndf = pd.merge(prices, company_info, on=\"ticker\")\n\n# Reshape: rows → columns (like a pivot table)\ndf.pivot_table(values=\"revenue\", index=\"quarter\", columns=\"region\")\n\n# Find missing data\ndf.isnull().sum()\n\n# Summary statistics in one call\ndf.describe()\n\nEach of these is a method call (Pattern ⑥). When AI generates code for data tasks, it will use pandas. Recognizing the method-chain pattern tells you what each line is doing — even if you don’t know the specific method name."
+  },
+  {
+    "objectID": "slides/python-overview.html#visualization",
+    "href": "slides/python-overview.html#visualization",
+    "title": "Python for MBA Students",
+    "section": "Visualization",
+    "text": "Visualization\nThe same method-chaining pattern — different kind=:\n# Distribution of one variable\ndf[\"revenue\"].plot(kind=\"hist\", bins=20)\n\n# Comparison across categories\ndf.groupby(\"region\")[\"revenue\"].sum().plot(kind=\"bar\")\n\n# Relationship between two variables\ndf.plot(kind=\"scatter\", x=\"units\", y=\"revenue\")\n\n# Trend over time\ndf.set_index(\"date\")[\"revenue\"].plot(kind=\"line\")\n\nDifferent charts, same pattern: build a series or DataFrame, call .plot(kind=...). When you see a visualization in AI-generated code, look for this pattern — then look at what kind= is set to."
+  },
+  {
     "objectID": "slides/python-overview.html#another-dataset-for-practice",
     "href": "slides/python-overview.html#another-dataset-for-practice",
     "title": "Python for MBA Students",
     "section": "Another Dataset for Practice",
     "text": "Another Dataset for Practice\n\nstock_panel.xlsx — download link\nstock_panel.xlsx\n30 S&P 500 stocks × 36 months (2022–2024) — 1,080 rows, 13 columns:\n\n\n\n\n\n\n\nColumn\nWhat it is\n\n\n\n\nticker, month, sector\nStock identifier, year-month, industry sector\n\n\nreturn, momentum, lagged_return\nMonthly return, 12-month momentum, prior-month return\n\n\nmarketcap_billions, pb\nMarket cap ($ billions), price-to-book ratio\n\n\nroe, grossmargin, assetturnover\nReturn on equity, gross margin, asset turnover\n\n\ngp_to_assets, asset_growth\nGross profit / assets, year-over-year asset growth"
+  },
+  {
+    "objectID": "slides/python-overview.html#exercises",
+    "href": "slides/python-overview.html#exercises",
+    "title": "Python for MBA Students",
+    "section": "Exercises",
+    "text": "Exercises\n\nCompute summary statistics (mean, median, …) for all variables.\nCompute a pie chart of marketcap by firm for the last month of the sample.\nCompute a pie chart of marketcap by sector for the last month of the sample.\nCreate a filled density plot for returns.\nCreate boxplots of returns by sector.\nCreate a barplot of mean monthly return by sector."
+  },
+  {
+    "objectID": "slides/python-overview.html#more-exercises",
+    "href": "slides/python-overview.html#more-exercises",
+    "title": "Python for MBA Students",
+    "section": "More Exercises",
+    "text": "More Exercises\n\n\nCreate boxplots of the returns of all firms in the technology sector.\n\n\nCreate a filled line chart of the cumulative equally weighted portfolio return by month.\n\n\nSort into quintiles each month by momentum. Compute the equally weighted return of each quintile each month. Create a barplot of the mean return of each quintile.\n\n\nCreate a scatterplot of returns versus momentum. Overlay a regression line.\n\n\nShow the regression results (coefficients, \\(t\\)-statistics, \\(R^2\\), etc.) in a table.\n\n\nCompute the total return over the full time period of each stock and show the top 10 in a table."
+  },
+  {
+    "objectID": "index.html#python-for-mba-students",
+    "href": "index.html#python-for-mba-students",
+    "title": "Python Workshop",
+    "section": "Python for MBA Students",
+    "text": "Python for MBA Students\nA 3-hour overview of Python fundamentals — designed for MBA students who will use AI to write code but need to understand what Python looks like and how it works.\n\nMaterials\n\nSlide Deck: Python for MBA Students\nCompanion Exercises (Google Colab)\n\n\n\nTopics Covered\n\nBig Picture — how Python runs, scripts vs. notebooks, Google Colab\nLibraries — pandas, NumPy, matplotlib; reading data; method chaining\nThe 6 Patterns — objects & types, variables, collections, conditionals, loops, functions & methods\nPattern Spotting — reading AI-generated code examples\nWorking with Data — pandas pipelines, visualization\n\n\n\nAdditional Resources\n\nPython Tutor — visualize code execution step by step\nPython Cheat Sheet — concise syntax reference\nAutomate the Boring Stuff with Python — free online book\nPython for Data Analysis — another free online book, written by the creator of pandas, who used to be at AQR\nReal Python — tutorials and articles"
   }
 ]

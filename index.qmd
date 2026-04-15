@@ -31,4 +31,5 @@ A 3-hour overview of Python fundamentals — designed for MBA students who will 
 - [Python Tutor](http://pythontutor.com/) — visualize code execution step by step
 - [Python Cheat Sheet](https://www.python-cheatsheet.org/) — concise syntax reference
 - [Automate the Boring Stuff with Python](https://automatetheboringstuff.com/) — free online book
+- [Python for Data Analysis](https://wesmckinney.com/book/) — another free online book, written by the creator of pandas, who used to be at AQR
 - [Real Python](https://realpython.com/) — tutorials and articles
